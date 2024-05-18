@@ -1,0 +1,83 @@
+<section class="services-area ptb-100 bg-f4f6fc">
+    <div class="container-fluid">
+
+        <section class="ptb-100 bg-f4f6fc">
+            {{#each data.projects}}
+            {{#if left}}
+            <div class="overview-item">
+                <div class="container max-width-1290">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="overview-left-img">
+                                <img src={{img}} alt="image" style="border:1px solid #eeeeee;border-radius:10px;">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6">
+                            <div class="overview-content pl-4">
+                                <span class="number">{{id}}</span>  
+                                <h3>{{title}}</h3>
+                                <p style="font-family:georgia;font-size:15px; important!">{{desc}}</p>
+                                <br />
+                                <h3>Module</h3>
+                                <ul>
+                                    {{#each modules}}
+                                    <li>
+                                        <i class='bx bx-badge-check'></i>
+                                        <span style="font-family:georgia;font-size:14px; important!">{{this}}</span>
+                                    </li>
+                                    {{/each}}
+                                </ul>
+                                <h3>Technology Used</h3>
+                                <p style="font-family:georgia;font-size:15px; important!">{{technology_used}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{else}}
+            <div class="overview-item">
+                <div class="container max-width-1290">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="overview-content pl-3">
+                                <span class="number">{{id}}</span>
+                                <h3>{{title}}</h3>
+                                <p style="font-family:georgia;font-size:15px; important!">{{desc}}</p>
+                                <h3>Module</h3>
+                                <ul>
+                                    {{#each modules}}
+                                    <li>
+                                        <i class='bx bx-badge-check'></i>
+                                       <span style="font-family:georgia;font-size:14px; important!">{{this}}</span>
+                                    </li>
+                                    {{/each}}
+                                </ul>
+                                <h3>Technology Used</h3>
+                                <p style="font-family:georgia;font-size:15px; important!">{{technology_used}}</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6">
+                            <div class="overview-right-img">
+                                <img src={{img}} alt="image" style="border:1px solid #eeeeee;border-radius:10px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+               
+            {{/if}}
+            {{/each}}
+
+    </div>
+    </div>
+    </div>
+</section>
+
+</div>
+
+<div class="shape9">
+    <img src="assets/img/shape/9.png" alt="image">
+</div>
+</section>
