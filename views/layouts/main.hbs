@@ -6,8 +6,274 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name=”description” content="seecog softwares is an innovation services firm with dedicated focus in developing commercial technology solutions for firms in the technology sector such as , SaaS providers, e-business , e-learning , healthcare and e-commerce organizations">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"/>
 
 
+  <style>
+        /* Banner Styles */
+        .banner {
+            position: relative;
+            width: 100%;
+            height: 100px; /* Adjust as needed */
+            background: linear-gradient(135deg, #E0F7FA, #B3E5FC); /* Crystal light blue gradient */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 15px; /* Rounded corners for elegance */
+        }
+
+        .banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.5) 0%, transparent 60%);
+            z-index: 1;
+        }
+
+        .banner h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: bold;
+            color: #004680; /* Deep blue for contrast */
+            z-index: 2;
+            margin: 0;
+            text-transform: uppercase;
+            text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .banner span {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #007acc; /* Light blue accent */
+            margin-top: 10px;
+            z-index: 2;
+            text-transform: capitalize;
+        }
+    </style>
+
+<style>
+    .navbar-brand {
+    display: flex; /* Align image and text */
+    align-items: center; /* Center items vertically */
+    gap: 10px; /* Add space between image and text */
+    padding: 10px;
+    font-weight: bold;
+    font-size: 27px;
+    text-decoration: none; /* Remove underline */
+    color: #333; /* Default text color */
+    transition: color 0.3s; /* Smooth hover effect for text */
+}
+
+.navbar-brand img {
+    width: 300px; /* Set width for oval shape */
+    height: 100px; /* Set height for oval shape */
+    object-fit: cover; /* Maintain aspect ratio */
+    border-radius: 50%; /* Smooth edges for ellipse */
+    border: 10px solid transparent; /* Transparent border initially */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
+    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth hover transitions */
+}
+
+.navbar-brand img:hover {
+    border-color: #f0f0f0; /* Highlight border on hover */
+    box-shadow: 0 0 25px rgba(0, 122, 204, 0.6); /* Add glow effect */
+    transform: scale(1.05); /* Slightly enlarge the image */
+    filter: brightness(1.2); /* Lighten the image */
+}
+
+.navbar-brand:hover {
+    color: #007acc; /* Change text color on hover */
+}
+
+</style>
+
+
+<style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            max-width: 100%;
+            margin: 50px auto;
+            background: linear-gradient(135deg, #e8f5ff, #ffffff);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+        }
+
+        .grid-title {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #004680;
+            margin-bottom: 20px;
+        }
+
+        .grid-title span {
+            display: block;
+            font-size: 1.2rem;
+            color: #007acc;
+            font-weight: 400;
+        }
+
+        .grid-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: #ffffff;
+            border: 2px solid #e3f2fd;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+        }
+
+        .grid-item i {
+            font-size: 2.5rem;
+            color: #007acc;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+
+        .grid-item span {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+
+        .grid-item:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border-color: #80d4ff;
+        }
+
+        .grid-item:hover i {
+            color: #004680;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .grid-container {
+                padding: 20px;
+                gap: 15px;
+            }
+
+            .grid-item {
+                padding: 15px;
+            }
+
+            .grid-item i {
+                font-size: 2rem;
+            }
+
+            .grid-item span {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .grid-container {
+                padding: 15px;
+                gap: 10px;
+            }
+
+            .grid-title {
+                font-size: 1.5rem;
+            }
+
+            .grid-title span {
+                font-size: 1rem;
+            }
+
+            .grid-item {
+                padding: 10px;
+            }
+
+            .grid-item i {
+                font-size: 1.8rem;
+            }
+
+            .grid-item span {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+<style>
+     /* General styling for the banner */
+        .services-banner {
+            font-family: 'Poppins', sans-serif; /* Beautiful, modern font */
+            font-size: 1.1rem;
+            color: #333;
+            background: linear-gradient(135deg, #f0f0f0, #ffffff);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            width: 90%;
+            margin: 20px auto;
+        }
+
+        /* Style the unordered list */
+        .services-banner ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Style for individual list items */
+        .services-banner li {
+            margin: 10px 0;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            background: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+        }
+
+        /* Special style for the first list item */
+        .services-banner li:first-child {
+            background: linear-gradient(135deg, #cce7ff, #e3f2fd); /* Premium blue gradient */
+            color: #00274d;
+            font-weight: bold;
+            border: 2px solid #80bfff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .services-banner li:first-child i {
+            color: #00274d; /* Match icon color with the text */
+        }
+
+        /* Hover effect for all list items */
+        .services-banner li:hover {
+            background: #eef6ff;
+            transform: translateX(5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Styling the icons */
+        .services-banner li i {
+            margin-right: 15px;
+            font-size: 1.8rem;
+            color: #0056b3;
+            transition: color 0.3s, transform 0.2s;
+        }
+
+        /* Icon hover effect */
+        .services-banner li:hover i {
+            color: #ff5733;
+            transform: scale(1.2);
+        }
+    </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Permanent+Marker&display=swap" rel="stylesheet">
@@ -57,7 +323,7 @@
                 <div class="container">
                     <nav class="navbar navbar-expand-md navbar-light">
                         <a class="navbar-brand" href="index.html">
-                            <img src="./assets/img/sm_logo.jpg" style="width:120px;height:100px;" alt="logo">
+                            <img src="./assets/img/sm_logo.jpg" style="width:100px;height:100px;" alt="logo">
                         </a>
 
                         <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
@@ -89,7 +355,63 @@
 						<div class="row align-items-center pt-5">
 							<div class="col-lg-6 col-md-12">
 								<div class="saas-image mt-70">
-									<img src="assets/img/saas-shape/arrow.png" class="wow fadeInDown" data-wow-delay="0.6s" alt="arrow">
+
+<div class="banner">
+        <div>
+            <h6>Seecog Softwares (Rise for Excellence)</h6>
+            {{!-- <span>Empowering Tomorrow</span> --}}
+        </div>
+    </div>
+
+<div class="grid-container">
+        {{!-- <div class="grid-title">
+            Industries 
+            <span>by seecog softwares</span>
+        </div> --}}
+        <div class="grid-item">
+            <i class="fas fa-hospital"></i>
+            <span>Healthcare</span>
+        </div>
+        <div class="grid-item">
+            <i class="fas fa-money-bill-wave"></i>
+            <span>Finance</span>
+        </div>
+        <div class="grid-item">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Retail</span>
+        </div>
+        <div class="grid-item">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Education</span>
+        </div>
+        <div class="grid-item">
+            <i class="fas fa-industry"></i>
+            <span>Manufacturing</span>
+        </div>
+        <div class="grid-item">
+            <i class="fas fa-truck"></i>
+            <span>Transportation</span>
+        </div>
+        <div class="grid-item">
+            <i class="fas fa-bolt"></i>
+            <span>Energy</span>
+        </div>
+        <div class="grid-item">
+            <i class="fas fa-building"></i>
+            <span>Real Estate</span>
+        </div>
+        <div class="grid-item">
+            <i class="fas fa-landmark"></i>
+            <span>Government</span>
+        </div>
+        <div class="grid-item">
+            <i class="fas fa-wifi"></i>
+            <span>Telecom</span>
+        </div>
+    </div>
+
+
+									{{!-- <img src="assets/img/saas-shape/arrow.png" class="wow fadeInDown" data-wow-delay="0.6s" alt="arrow">
 									<img src="assets/img/saas-shape/box1.png" class="wow fadeInUp" data-wow-delay="0.6s" alt="box1">
 									<img src="assets/img/saas-shape/boy1.png" class="wow fadeInLeft" data-wow-delay="0.6s" alt="boy1">
 									<img src="assets/img/saas-shape/boy2.png" class="wow zoomIn" data-wow-delay="0.6s" alt="boy2">
@@ -103,16 +425,33 @@
 									<img src="assets/img/saas-shape/monitor.png" class="wow zoomIn" data-wow-delay="0.6s" alt="monitor">
 
                                     <!-- Main image -->
-									<img src="assets/img/saas-shape/main-image.png" class="wow zoomIn" data-wow-delay="0.6s" alt="main-image.png">
+									<img src="assets/img/saas-shape/main-image.png" class="wow zoomIn" data-wow-delay="0.6s" alt="main-image.png"> --}}
 								</div>
 							</div>
 
 							<div class="col-lg-6 col-md-12">
 								<div class="hero-content pl-4">
-									<h1>seecog softwares</h1>
-                                    <p>10 years of experience in custom software development services, 50+ successfully released cases, 50+ tech experts.
+									{{!-- <h5>Cloud Solutions + Artificial Intelligence (AI) and Machine Learning (ML) + Data Science and Big Data + Mobile App Development + Web Development + Cybersecurity + DevOps and Automation + Blockchain Technology + Internet of Things (IoT) + Augmented Reality (AR) and Virtual Reality (VR) + Robotic Process Automation (RPA) + Game Development ..</h5> --}}
+                        <div class="services-banner">
+        <ul>
+            {{!-- <li><i class="fas fa-cloud"></i> Our Solutions : </li> --}}
+            <li><i class="fas fa-cloud"></i> Cloud Solutions</li>
+            <li><i class="fas fa-robot"></i> Artificial Intelligence (AI) and Machine Learning (ML)</li>
+            <li><i class="fas fa-database"></i> Data Science and Big Data</li>
+            <li><i class="fas fa-mobile-alt"></i> Mobile App Development</li>
+            <li><i class="fas fa-code"></i> Web Development</li>
+            <li><i class="fas fa-shield-alt"></i> Cybersecurity</li>
+            <li><i class="fas fa-cogs"></i> DevOps and Automation</li>
+            <li><i class="fas fa-link"></i> Blockchain Technology</li>
+            <li><i class="fas fa-wifi"></i> Internet of Things (IoT)</li>
+            <li><i class="fas fa-vr-cardboard"></i> Augmented/Virtual Reality (AR) / (VR)</li>
+            <li><i class="fas fa-cogs"></i> Robotic Process Automation (RPA)</li>
+            {{!-- <li><i class="fas fa-gamepad"></i> Game Development</li> --}}
+        </ul>
+    </div>
+                                    {{!-- <p>10 years of experience in custom software development services, 50+ successfully released cases, 50+ tech experts.
 Seecog softwares will help you to design, develop, and implement any custom software based on your ideas and needs.We belive in innovations
-.</p>
+.</p> --}}
                                     
                                     {{!-- <div class="banner-btn">
                                         Seecog softwares has a number of case studies detailing the successful software development projects on which we have collaborated with our clients. We are proud of the work our project teams do and happy to be trusted by the businesses.
@@ -883,6 +1222,69 @@ Seecog softwares will help you to design, develop, and implement any custom soft
 
         <div class="go-top"><i class='bx bx-chevron-up'></i></div>
         
+        <script>
+        const industries = [
+            "Healthcare",
+            "Finance",
+            "Retail",
+            "Education",
+            "Manufacturing",
+            "Transportation",
+            "Energy",
+            "Real Estate",
+            "Government",
+            "Telecom"
+        ];
+
+        const canvas = document.getElementById("industryCanvas");
+        const ctx = canvas.getContext("2d");
+        const centerX = canvas.width / 2;
+        const centerY = canvas.height / 2;
+        const radius = 200;
+        const textRadius = 240;
+
+        // Draw the circular banner
+        function drawBanner() {
+            // Draw outer circle
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+            ctx.fillStyle = "#cce7ff";
+            ctx.fill();
+            ctx.lineWidth = 5;
+            ctx.strokeStyle = "#80bfff";
+            ctx.stroke();
+        }
+
+        // Draw industries in a circular layout
+        function drawIndustries() {
+            const angleStep = (2 * Math.PI) / industries.length;
+            ctx.font = "16px Poppins";
+            ctx.fillStyle = "#333";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+
+            industries.forEach((industry, index) => {
+                const angle = index * angleStep - Math.PI / 2; // Offset to start from top
+                const x = centerX + textRadius * Math.cos(angle);
+                const y = centerY + textRadius * Math.sin(angle);
+
+                // Draw industry text
+                ctx.save();
+                ctx.translate(x, y);
+                ctx.rotate(angle + Math.PI / 2);
+                ctx.fillText(industry, 0, 0);
+                ctx.restore();
+            });
+        }
+
+        // Draw all elements
+        function drawCanvas() {
+            drawBanner();
+            drawIndustries();
+        }
+
+        drawCanvas();
+    </script>
         <!-- jQuery Min JS -->
         <script src="assets/js/jquery.min.js"></script>
         <!-- Popper Min JS -->
