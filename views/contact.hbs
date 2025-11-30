@@ -1,95 +1,114 @@
-<section class="contact-area ptb-100">
+<!-- Start Contact Area -->
+<section class="contact-page-area ptb-100">
             <div class="container">
-                <div class="contact-inner">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-12">
-                            <div class="contact-features-list">
-                                <h3>Contact Us</h3>
-                                <p><b>Send Email</b> : {{data.email}}</p>
-                                <p><b>Phone</b> : {{data.contact}}</p>
-                                <p>
-                                    <b>Address</b> : {{data.address}}
-                                </p>
+        <div class="section-title">
+            <h2>Get In <span>Touch</span></h2>
+            <p>Let's discuss how we can help transform your business</p>
+        </div>
 
-                                <ul>
-                                    <li><i class='bx bx-badge-check'></i> Staff works from our offices in India</li>
-                                    <li><i class='bx bx-badge-check'></i> Scale up/ down on demand</li>
-                                    <li><i class='bx bx-badge-check'></i> One time or on going projects</li>
-                                    <li><i class='bx bx-badge-check'></i> Hire based on skill set</li>
+        <div class="contact-wrapper-modern">
+            <!-- Contact Information -->
+            <div class="contact-info-modern">
+                <div class="contact-info-card">
+                    <div class="info-icon">
+                        <i class='bx bx-map'></i>
+                    </div>
+                    <h3>Our Location</h3>
+                    <p>{{data.address}}</p>
+                    <a href="https://www.google.com/maps/place/seecog+softwares/@12.950505,77.6074284,15z/data=!4m5!3m4!1s0x0:0xf12507f444878834!8m2!3d12.950505!4d77.6074284" target="_blank" class="info-link">View on Map <i class='bx bx-right-arrow-alt'></i></a>
+                </div>
+
+                <div class="contact-info-card">
+                    <div class="info-icon">
+                        <i class='bx bx-envelope'></i>
+                    </div>
+                    <h3>Email Us</h3>
+                    <p>{{data.email}}</p>
+                    <a href="mailto:{{data.email}}" class="info-link">Send Email <i class='bx bx-right-arrow-alt'></i></a>
+                </div>
+
+                <div class="contact-info-card">
+                    <div class="info-icon">
+                        <i class='bx bx-phone'></i>
+                    </div>
+                    <h3>Call Us</h3>
+                    <p>{{data.contact}}</p>
+                    <a href="tel:{{data.contact}}" class="info-link">Call Now <i class='bx bx-right-arrow-alt'></i></a>
+                </div>
+
+                <div class="contact-features-modern">
+                    <h4>Why Choose Us</h4>
+                    <ul>
+                        <li><i class='bx bx-check-circle'></i> Staff works from our offices in India</li>
+                        <li><i class='bx bx-check-circle'></i> Scale up/down on demand</li>
+                        <li><i class='bx bx-check-circle'></i> One time or ongoing projects</li>
+                        <li><i class='bx bx-check-circle'></i> Hire based on skill set</li>
                                 </ul>
                             </div>
                         </div>
 
-                        <div class="col-lg-6 col-md-12">
-                            <div class="contact-form">
-                                <h3>Let's Start Your Free Trial</h3>
+            <!-- Contact Form -->
+            <div class="contact-form-modern">
+                <div class="form-header">
+                    <h3>Send Us a Message</h3>
+                    <p>Fill out the form below and we'll get back to you within 24 hours</p>
+                </div>
+                <form id="contactForm" class="modern-contact-form">
+                    <div class="form-row">
+                        <div class="form-group-modern">
+                            <label for="name">Full Name <span>*</span></label>
+                            <input type="text" name="name" id="name" class="form-control-modern" required data-error="Please enter your name" placeholder="John Doe">
+                                                <div class="help-block with-errors"></div>
+                                        </div>
 
-                                <form id="contactForm">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="form-group">
-                                                <input type="text" name="name" id="name" class="form-control" required data-error="Please enter your name" placeholder="Your Name">
+                        <div class="form-group-modern">
+                            <label for="email">Email Address <span>*</span></label>
+                            <input type="email" name="email" id="email" class="form-control-modern" required data-error="Please enter your email" placeholder="john@example.com">
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="form-group">
-                                                <input type="email" name="email" id="email" class="form-control" required data-error="Please enter your email" placeholder="Your Email">
+                    <div class="form-row">
+                        <div class="form-group-modern">
+                            <label for="phone_number">Phone Number <span>*</span></label>
+                            <input type="tel" name="phone_number" id="phone_number" required data-error="Please enter your number" class="form-control-modern" placeholder="+91 1234567890">
+                                                <div class="help-block with-errors"></div>
+                                        </div>
+
+                        <div class="form-group-modern">
+                            <label for="msg_subject">Subject <span>*</span></label>
+                            <input type="text" name="msg_subject" id="msg_subject" class="form-control-modern" required data-error="Please enter your subject" placeholder="Project Inquiry">
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="form-group">
-                                                <input type="text" name="phone_number" id="phone_number" required data-error="Please enter your number" class="form-control" placeholder="Your Phone">
+                    <div class="form-group-modern">
+                        <label for="message">Message <span>*</span></label>
+                        <textarea name="message" class="form-control-modern" id="message" rows="6" required data-error="Write your message" placeholder="Tell us about your project..."></textarea>
                                                 <div class="help-block with-errors"></div>
-                                            </div>
                                         </div>
 
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="form-group">
-                                                <input type="text" name="msg_subject" id="msg_subject" class="form-control" required data-error="Please enter your subject" placeholder="Your Subject">
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-12 col-md-12">
-                                            <div class="form-group">
-                                                <textarea name="message" class="form-control" id="message" cols="30" rows="6" required data-error="Write your message" placeholder="Your Message"></textarea>
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-12 col-md-12">
-                                            <button type="submit" class="default-btn"><i class='bx bxs-paper-plane'></i>Send Message<span></span></button>
+                    <button type="submit" class="default-btn modern-submit-btn">
+                        <i class='bx bxs-paper-plane'></i>
+                        Send Message
+                        <span></span>
+                    </button>
                                             <div id="msgSubmit" class="h3 text-center hidden"></div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                    </div>
                                 </form>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="contact-info">
-                        <div class="contact-info-content">
-                            <h3>Contact us by Phone Number or Email Address</h3>
-                            <h2>
-                                <a href="tel:+0881306298615">+91 8147614116</a>
-                                <span>OR</span>
-                                <a href="mailto:info@seecogsoftwares.com">info@seecogsoftwares.com</a>
-                            </h2>
-    
-                            <ul class="social">
-                                <li><a href="#" target="_blank"><i class="bx bxl-twitter"></i></a></li>
-                                <li><a href="#" target="_blank"><i class="bx bxl-youtube"></i></a></li>
-                                <li><a href="#" target="_blank"><i class='bx bxl-facebook'></i></a></li>
-                                <li><a href="#" target="_blank"><i class="bx bxl-linkedin"></i></a></li>
-                                <li><a href="#" target="_blank"><i class="bx bxl-instagram"></i></a></li>
+        <!-- Social Media -->
+        <div class="contact-social-modern">
+            <h3>Connect With Us</h3>
+            <ul class="social-modern">
+                <li><a href="https://www.facebook.com/Seecog-Softwares-Pvt-Ltd-104466532038084" target="_blank" aria-label="Facebook"><i class="bx bxl-facebook"></i></a></li>
+                <li><a href="https://twitter.com/seecogsoftwares" target="_blank" aria-label="Twitter"><i class="bx bxl-twitter"></i></a></li>
+                <li><a href="https://www.linkedin.com/company/seecog-softwares-pvt-ltd/" target="_blank" aria-label="LinkedIn"><i class="bx bxl-linkedin"></i></a></li>
+                <li><a href="#" target="_blank" aria-label="YouTube"><i class="bx bxl-youtube"></i></a></li>
+                <li><a href="#" target="_blank" aria-label="Instagram"><i class="bx bxl-instagram"></i></a></li>
                             </ul>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
+<!-- End Contact Area -->

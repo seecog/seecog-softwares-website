@@ -1,27 +1,45 @@
 
 /*! #######################################################################
 
-	MeanMenu 2.0.7
+	MeanMenu 2.0.7 - Mobile Responsive Hamburger Menu
 	--------
 
 	To be used with jquery.meanmenu.js by Chris Wharton (http://www.meanthemes.com/plugins/meanmenu/)
 
 ####################################################################### */
 
-/* hide the link until viewport size is reached */
+/* Hide the link until viewport size is reached */
 a.meanmenu-reveal {
 	display: none;
 }
 
-/* when under viewport size, .mean-container is added to body */
+/* ========================================
+   Mobile Menu Container & Bar
+======================================== */
+
+/* When under viewport size, .mean-container is added to body */
+.mean-container {
+	position: relative;
+	z-index: 999999 !important;
+	overflow: visible !important;
+}
+
 .mean-container .mean-bar {
 	float: left;
 	width: 100%;
-	position: absolute;
+	position: absolute !important;
 	background: transparent;
-	padding: 0 0 0;
-	z-index: 999;
+	padding: 0;
+	z-index: 999999 !important;
+	overflow: visible !important;
+	top: 0 !important;
+	left: 0 !important;
+	right: 0 !important;
 }
+
+/* ========================================
+   Hamburger Icon (Reveal Button)
+======================================== */
 
 .mean-container a.meanmenu-reveal {
 	width: 35px;
@@ -35,46 +53,148 @@ a.meanmenu-reveal {
 	text-indent: -9999em;
 	line-height: 22px;
 	font-size: 1px;
-	display: block;
+	display: block !important;
 	font-weight: 700;
 	padding-top: 9px;
+	z-index: 999999 !important;
+	visibility: visible !important;
+	opacity: 1 !important;
+	pointer-events: auto !important;
 }
 
+/* Hamburger icon spans (three lines) */
 .mean-container a.meanmenu-reveal span {
-	display: block;
+	display: block !important;
 	background: #000000;
 	height: 4px;
-    margin-top: 3px;
-    border-radius: 3px;
+	margin-top: 3px;
+	border-radius: 3px;
+	visibility: visible !important;
 }
+
+/* Hide hamburger menu on mobile view */
+@media only screen and (max-width: 991px) {
+	.mean-container a.meanmenu-reveal {
+		display: none !important;
+		visibility: hidden !important;
+		opacity: 0 !important;
+		pointer-events: none !important;
+	}
+	
+	.mean-container .mean-bar {
+		display: none !important;
+		visibility: hidden !important;
+		opacity: 0 !important;
+	}
+	
+	.mean-container .mean-nav {
+		display: none !important;
+		visibility: hidden !important;
+		opacity: 0 !important;
+	}
+}
+
+/* ========================================
+   Mobile Menu Navigation
+======================================== */
 
 .mean-container .mean-nav {
 	float: left;
 	width: 100%;
 	background: #ffffff;
 	margin-top: 62px;
+	display: block !important;
+	visibility: visible !important;
+	opacity: 1 !important;
+	z-index: 99998 !important;
+	position: relative;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+	border-radius: var(--radius-lg);
+	overflow: visible !important;
+	max-height: none !important;
+	height: auto !important;
 }
 
+/* Menu List Container */
 .mean-container .mean-nav ul {
 	padding: 0;
 	margin: 0;
 	width: 100%;
 	border: none;
 	list-style-type: none;
+	max-height: none !important;
+	height: auto !important;
+	overflow: visible !important;
+	overflow-y: visible !important;
+	overflow-x: visible !important;
 }
+
+/* Show menu when opened (not closed) */
+.mean-container:not(.meanclose) .mean-nav ul:first-child {
+	display: block !important;
+	visibility: visible !important;
+	opacity: 1 !important;
+	max-height: none !important;
+	height: auto !important;
+	overflow: visible !important;
+	overflow-y: visible !important;
+	overflow-x: visible !important;
+}
+
+/* Hide menu when closed */
+.mean-container.meanclose .mean-nav ul:first-child {
+	display: none !important;
+}
+
+/* Override inline styles when menu is open - JavaScript slideDown sets inline styles */
+.mean-container:not(.meanclose) .mean-nav ul:first-child[style] {
+	display: block !important;
+	visibility: visible !important;
+	opacity: 1 !important;
+	max-height: 9999px !important;
+	height: auto !important;
+	overflow: visible !important;
+	overflow-y: visible !important;
+	overflow-x: visible !important;
+}
+
+/* Override any inline style attributes that might restrict height */
+.mean-container:not(.meanclose) .mean-nav ul:first-child[style*="max-height"],
+.mean-container:not(.meanclose) .mean-nav ul:first-child[style*="overflow"] {
+	max-height: 9999px !important;
+	overflow: visible !important;
+	overflow-y: visible !important;
+	overflow-x: visible !important;
+}
+
+/* ========================================
+   Menu List Items
+======================================== */
 
 .mean-container .mean-nav ul li {
 	position: relative;
 	float: left;
 	width: 100%;
+	display: block !important;
+}
+
+/* Ensure list items are visible when menu is open */
+.mean-container:not(.meanclose) .mean-nav ul li {
+	display: block !important;
+	visibility: visible !important;
+	opacity: 1 !important;
 }
 
 .mean-container .mean-nav ul li a i {
 	display: none;
 }
 
+/* ========================================
+   Menu Links
+======================================== */
+
 .mean-container .mean-nav ul li a {
-	display: block;
+	display: block !important;
 	float: left;
 	width: 90%;
 	padding: 1em 5% 13px;
@@ -83,11 +203,32 @@ a.meanmenu-reveal {
 	color: #677294;
 	border-top: 1px solid #DBEEFD;
 	text-decoration: none;
+	visibility: visible !important;
+	opacity: 1 !important;
+	transition: all 0.3s ease;
+}
+
+/* Ensure menu items are visible when menu is open */
+.mean-container:not(.meanclose) .mean-nav ul li a {
+	visibility: visible !important;
+	opacity: 1 !important;
+	display: block !important;
+}
+
+.mean-container .mean-nav ul li a:hover {
+	background: rgba(0, 212, 255, 0.05);
+	color: #000000;
+	padding-left: 8%;
 }
 
 .mean-container .mean-nav ul li a.active {
 	color: #000000;
+	font-weight: 600;
 }
+
+/* ========================================
+   Submenu Links
+======================================== */
 
 .mean-container .mean-nav ul li li a {
 	width: 80%;
@@ -121,17 +262,16 @@ a.meanmenu-reveal {
 	padding: 1em 25% 13px;
 }
 
-.mean-container .mean-nav ul li a:hover {
-	background: #252525;
-	background: rgba(255,255,255,0.1);
-}
+/* ========================================
+   Expand/Collapse Button
+======================================== */
 
 .mean-container .mean-nav ul li a.mean-expand {
 	margin-top: 1px;
 	width: 100%;
 	height: 24px;
 	padding: 11px !important;
-	text-align: right ;
+	text-align: right;
 	position: absolute;
 	right: 0;
 	top: 0;
@@ -141,6 +281,9 @@ a.meanmenu-reveal {
 	border: none !important;
 }
 
+/* ========================================
+   Other Elements
+======================================== */
 
 .mean-container .mean-push {
 	float: left;
@@ -154,16 +297,77 @@ a.meanmenu-reveal {
 	width: 100%;
 	padding: 0;
 	margin: 0;
+	max-height: none !important;
+	height: auto !important;
+	overflow: visible !important;
+	overflow-y: visible !important;
+	overflow-x: visible !important;
 }
 
 /* Fix for box sizing on Foundation Framework etc. */
-.mean-container .mean-bar, .mean-container .mean-bar * {
+.mean-container .mean-bar, 
+.mean-container .mean-bar * {
 	-webkit-box-sizing: content-box;
 	-moz-box-sizing: content-box;
 	box-sizing: content-box;
 }
 
-
 .mean-remove {
 	display: none !important;
+}
+
+/* ========================================
+   Mobile Responsive Enhancements
+======================================== */
+
+@media only screen and (max-width: 991px) {
+	/* Hide hamburger menu completely on mobile view */
+	.mean-container {
+		display: none !important;
+		visibility: hidden !important;
+		opacity: 0 !important;
+		pointer-events: none !important;
+	}
+	
+	.mean-container .mean-bar {
+		display: none !important;
+		visibility: hidden !important;
+		opacity: 0 !important;
+	}
+	
+	.mean-container .mean-nav {
+		display: none !important;
+		visibility: hidden !important;
+		opacity: 0 !important;
+	}
+	
+	.mean-container a.meanmenu-reveal {
+		display: none !important;
+		visibility: hidden !important;
+		opacity: 0 !important;
+		pointer-events: none !important;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	.mean-container .mean-nav {
+		margin-top: 55px;
+	}
+	
+	.mean-container .mean-nav ul li a {
+		padding: 0.9em 5% 12px;
+		font-size: 15px;
+	}
+}
+
+@media only screen and (max-width: 480px) {
+	.mean-container .mean-nav {
+		margin-top: 50px;
+		border-radius: var(--radius-md);
+	}
+	
+	.mean-container .mean-nav ul li a {
+		padding: 0.85em 5% 11px;
+		font-size: 14px;
+	}
 }
