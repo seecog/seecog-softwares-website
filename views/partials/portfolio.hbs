@@ -1,83 +1,59 @@
-<section class="services-area ptb-100 bg-f4f6fc">
-    <div class="container-fluid">
+<!-- Start Portfolio Area -->
+<section class="portfolio-page-area ptb-100">
+    <div class="container">
+        <div class="section-title">
+            <h2>Our <span>Portfolio</span></h2>
+            <p>Showcasing innovative solutions that drive success for our clients</p>
+        </div>
 
-        <section class="ptb-100 bg-f4f6fc">
+        {{#if data.projects}}
+        <div class="portfolio-grid">
             {{#each data.projects}}
-            {{#if left}}
-            <div class="overview-item">
-                <div class="container max-width-1290">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6 col-md-6">
-                            <div class="overview-left-img">
-                                <img src={{img}} alt="image" style="border:1px solid #eeeeee;border-radius:10px;">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-md-6">
-                            <div class="overview-content pl-4">
-                                <span class="number">{{id}}</span>  
+            <div class="portfolio-card-modern" data-aos="fade-up" data-aos-delay="{{@index}}00">
+                <div class="portfolio-card-image-wrapper">
+                    <img src="{{img}}" alt="{{title}}" class="portfolio-image">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-overlay-content">
+                            <span class="portfolio-number">#{{id}}</span>
                                 <h3>{{title}}</h3>
-                                <p style="font-family:georgia;font-size:15px; important!">{{desc}}</p>
-                                <br />
-                                <h3>Module</h3>
-                                <ul>
-                                    {{#each modules}}
-                                    <li>
-                                        <i class='bx bx-badge-check'></i>
-                                        <span style="font-family:georgia;font-size:14px; important!">{{this}}</span>
-                                    </li>
-                                    {{/each}}
-                                </ul>
-                                <h3>Technology Used</h3>
-                                <p style="font-family:georgia;font-size:15px; important!">{{technology_used}}</p>
-                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="portfolio-card-body">
+                    <div class="portfolio-header">
+                        <h3>{{title}}</h3>
+                        <span class="portfolio-badge">Project {{id}}</span>
             </div>
-            {{else}}
-            <div class="overview-item">
-                <div class="container max-width-1290">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6 col-md-6">
-                            <div class="overview-content pl-3">
-                                <span class="number">{{id}}</span>
-                                <h3>{{title}}</h3>
-                                <p style="font-family:georgia;font-size:15px; important!">{{desc}}</p>
-                                <h3>Module</h3>
-                                <ul>
+                    <p class="portfolio-description">{{desc}}</p>
+                    
+                    {{#if modules}}
+                    <div class="portfolio-modules">
+                        <h4><i class='bx bx-list-check'></i> Key Modules</h4>
+                        <ul class="module-list">
                                     {{#each modules}}
-                                    <li>
-                                        <i class='bx bx-badge-check'></i>
-                                       <span style="font-family:georgia;font-size:14px; important!">{{this}}</span>
-                                    </li>
+                            <li><i class='bx bx-check-circle'></i> {{this}}</li>
                                     {{/each}}
                                 </ul>
-                                <h3>Technology Used</h3>
-                                <p style="font-family:georgia;font-size:15px; important!">{{technology_used}}</p>
                             </div>
-                        </div>
-
-                        <div class="col-lg-6 col-md-6">
-                            <div class="overview-right-img">
-                                <img src={{img}} alt="image" style="border:1px solid #eeeeee;border-radius:10px;">
-                            </div>
-                        </div>
+                    {{/if}}
+                    
+                    {{#if technology_used}}
+                    <div class="portfolio-tech">
+                        <h4><i class='bx bx-code-alt'></i> Technology Stack</h4>
+                        <p class="tech-stack-text">{{technology_used}}</p>
                     </div>
+                    {{/if}}
                 </div>
             </div>
-               
-            {{/if}}
             {{/each}}
-
     </div>
+        {{else}}
+        <div class="no-portfolio">
+            <i class='bx bx-folder-open'></i>
+            <h3>Portfolio Coming Soon</h3>
+            <p>We're working on showcasing our amazing projects. Check back soon!</p>
     </div>
+        {{/if}}
     </div>
 </section>
-
-</div>
-
-<div class="shape9">
-    <img src="assets/img/shape/9.png" alt="image">
-</div>
-</section>
+<!-- End Portfolio Area -->

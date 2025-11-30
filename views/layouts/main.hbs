@@ -9,271 +9,6 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"/>
 
 
-  <style>
-        /* Banner Styles */
-        .banner {
-            position: relative;
-            width: 100%;
-            height: 100px; /* Adjust as needed */
-            background: linear-gradient(135deg, #E0F7FA, #B3E5FC); /* Crystal light blue gradient */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            text-align: center;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            border-radius: 15px; /* Rounded corners for elegance */
-        }
-
-        .banner::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.5) 0%, transparent 60%);
-            z-index: 1;
-        }
-
-        .banner h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 3rem;
-            font-weight: bold;
-            color: #004680; /* Deep blue for contrast */
-            z-index: 2;
-            margin: 0;
-            text-transform: uppercase;
-            text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
-        }
-
-        .banner span {
-            display: block;
-            font-size: 1.5rem;
-            font-weight: 400;
-            color: #007acc; /* Light blue accent */
-            margin-top: 10px;
-            z-index: 2;
-            text-transform: capitalize;
-        }
-    </style>
-
-<style>
-    .navbar-brand {
-    display: flex; /* Align image and text */
-    align-items: center; /* Center items vertically */
-    gap: 10px; /* Add space between image and text */
-    padding: 10px;
-    font-weight: bold;
-    font-size: 27px;
-    text-decoration: none; /* Remove underline */
-    color: #333; /* Default text color */
-    transition: color 0.3s; /* Smooth hover effect for text */
-}
-
-.navbar-brand img {
-    width: 300px; /* Set width for oval shape */
-    height: 100px; /* Set height for oval shape */
-    object-fit: cover; /* Maintain aspect ratio */
-    border-radius: 50%; /* Smooth edges for ellipse */
-    border: 10px solid transparent; /* Transparent border initially */
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
-    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth hover transitions */
-}
-
-.navbar-brand img:hover {
-    border-color: #f0f0f0; /* Highlight border on hover */
-    box-shadow: 0 0 25px rgba(0, 122, 204, 0.6); /* Add glow effect */
-    transform: scale(1.05); /* Slightly enlarge the image */
-    filter: brightness(1.2); /* Lighten the image */
-}
-
-.navbar-brand:hover {
-    color: #007acc; /* Change text color on hover */
-}
-
-</style>
-
-
-<style>
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-            padding: 30px;
-            max-width: 100%;
-            margin: 50px auto;
-            background: linear-gradient(135deg, #e8f5ff, #ffffff);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            border-radius: 15px;
-        }
-
-        .grid-title {
-            text-align: center;
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #004680;
-            margin-bottom: 20px;
-        }
-
-        .grid-title span {
-            display: block;
-            font-size: 1.2rem;
-            color: #007acc;
-            font-weight: 400;
-        }
-
-        .grid-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            background: #ffffff;
-            border: 2px solid #e3f2fd;
-            border-radius: 10px;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
-        }
-
-        .grid-item i {
-            font-size: 2.5rem;
-            color: #007acc;
-            margin-bottom: 10px;
-            transition: color 0.3s;
-        }
-
-        .grid-item span {
-            font-size: 1rem;
-            font-weight: bold;
-            color: #333;
-            text-align: center;
-        }
-
-        .grid-item:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            border-color: #80d4ff;
-        }
-
-        .grid-item:hover i {
-            color: #004680;
-        }
-
-        /* Media Queries for Responsiveness */
-        @media (max-width: 768px) {
-            .grid-container {
-                padding: 20px;
-                gap: 15px;
-            }
-
-            .grid-item {
-                padding: 15px;
-            }
-
-            .grid-item i {
-                font-size: 2rem;
-            }
-
-            .grid-item span {
-                font-size: 0.9rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .grid-container {
-                padding: 15px;
-                gap: 10px;
-            }
-
-            .grid-title {
-                font-size: 1.5rem;
-            }
-
-            .grid-title span {
-                font-size: 1rem;
-            }
-
-            .grid-item {
-                padding: 10px;
-            }
-
-            .grid-item i {
-                font-size: 1.8rem;
-            }
-
-            .grid-item span {
-                font-size: 0.8rem;
-            }
-        }
-    </style>
-<style>
-     /* General styling for the banner */
-        .services-banner {
-            font-family: 'Poppins', sans-serif; /* Beautiful, modern font */
-            font-size: 1.1rem;
-            color: #333;
-            background: linear-gradient(135deg, #f0f0f0, #ffffff);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-            width: 90%;
-            margin: 20px auto;
-        }
-
-        /* Style the unordered list */
-        .services-banner ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        /* Style for individual list items */
-        .services-banner li {
-            margin: 10px 0;
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            background: #f9f9f9;
-            border-radius: 8px;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
-        }
-
-        /* Special style for the first list item */
-        .services-banner li:first-child {
-            background: linear-gradient(135deg, #cce7ff, #e3f2fd); /* Premium blue gradient */
-            color: #00274d;
-            font-weight: bold;
-            border: 2px solid #80bfff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .services-banner li:first-child i {
-            color: #00274d; /* Match icon color with the text */
-        }
-
-        /* Hover effect for all list items */
-        .services-banner li:hover {
-            background: #eef6ff;
-            transform: translateX(5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Styling the icons */
-        .services-banner li i {
-            margin-right: 15px;
-            font-size: 1.8rem;
-            color: #0056b3;
-            transition: color 0.3s, transform 0.2s;
-        }
-
-        /* Icon hover effect */
-        .services-banner li:hover i {
-            color: #ff5733;
-            transform: scale(1.2);
-        }
-    </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Permanent+Marker&display=swap" rel="stylesheet">
@@ -290,6 +25,8 @@
         <link rel="stylesheet" href="assets/css/odometer.min.css">
         <!-- MeanMenu CSS -->
         <link rel="stylesheet" href="assets/css/meanmenu.css">
+        <!-- Mobile Menu CSS - New Custom Design -->
+        <link rel="stylesheet" href="assets/css/mobile-menu.css">
         <!-- Magnific Popup Min CSS -->
         <link rel="stylesheet" href="assets/css/magnific-popup.min.css">
         <!-- Style CSS -->
@@ -302,9 +39,90 @@
         <link rel="icon" type="image/png" href="assets/img/logo.jpg">
     </head>
 
-    <body style="font-family:Segoe UI Bold;font-size:19px;">
+    <body>
         <!-- Start Preloader Area -->
        
+
+        <!-- New Mobile Menu Wrapper -->
+        <div class="mobile-menu-wrapper">
+            <!-- Hamburger Toggle Button -->
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Overlay -->
+            <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+            <!-- Menu Panel -->
+            <div class="mobile-menu-panel" id="mobileMenuPanel">
+                <!-- Menu Header -->
+                <div class="mobile-menu-header">
+                    <div class="logo">
+                        <a href="/">
+                            <img src="./assets/img/sm_logo.jpg" alt="logo">
+                        </a>
+                        <span class="logo-text">Seecog Softwares</span>
+                    </div>
+                </div>
+
+                <!-- Menu Navigation -->
+                <nav class="mobile-menu-nav">
+                    <ul>
+                        <li>
+                            <a href="/" class="nav-link">
+                                <i class='bx bx-home'></i>
+                                <span>Home</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/services" class="nav-link">
+                                <i class='bx bx-briefcase'></i>
+                                <span>Services</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/industries" class="nav-link">
+                                <i class='bx bx-building'></i>
+                                <span>Industries</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/portfolio" class="nav-link">
+                                <i class='bx bx-folder'></i>
+                                <span>Portfolio</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/culture" class="nav-link">
+                                <i class='bx bx-group'></i>
+                                <span>Our Culture</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/contact" class="nav-link">
+                                <i class='bx bx-envelope'></i>
+                                <span>Contact Us</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <!-- Menu Footer -->
+                <div class="mobile-menu-footer">
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class='bx bxl-facebook'></i></a>
+                        <a href="#" aria-label="Twitter"><i class='bx bxl-twitter'></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class='bx bxl-linkedin'></i></a>
+                        <a href="#" aria-label="Instagram"><i class='bx bxl-instagram'></i></a>
+                    </div>
+                    <div class="copyright">
+                        <p>&copy; 2024 Seecog Softwares. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="navbar-area navbar-style-two">
             <div class="strax-responsive-nav">
@@ -312,7 +130,7 @@
                     <div class="strax-responsive-menu">
                         <div class="logo">
                             <a href="/">
-                                <img src="./assets/img/sm_logo.jpg" style="width:80px;height:70px;" alt="logo">
+                                <img src="./assets/img/sm_logo.jpg" class="responsive-logo" alt="logo">
                             </a>
                         </div>
                     </div>
@@ -323,7 +141,7 @@
                 <div class="container">
                     <nav class="navbar navbar-expand-md navbar-light">
                         <a class="navbar-brand" href="index.html">
-                            <img src="./assets/img/sm_logo.jpg" style="width:100px;height:100px;" alt="logo">
+                            <img src="./assets/img/sm_logo.jpg" class="main-logo" alt="logo">
                         </a>
 
                         <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
@@ -358,7 +176,7 @@
 
 <div class="banner">
         <div>
-            <h6>Seecog Softwares (Rise for Excellence)</h6>
+            <h6>End-to-End Software Engineering, Consulting & IT Staffing Solutions</h6>
             {{!-- <span>Empowering Tomorrow</span> --}}
         </div>
     </div>
@@ -471,65 +289,6 @@ Seecog softwares will help you to design, develop, and implement any custom soft
 		</div>
 		<!-- End SaaS Main Banner -->
         
-        <!-- Start Features Area -->
-        <section class="features-area pt-100 pb-70 bg-f4f6fc">
-            <div class="container max-width-1290">
-                <div class="section-title" style="margin-top:20px;">
-                    <h2>Our amazing services</h2>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="features-box-one">
-                            <i class='bx bx-cog bg-13c4a1'></i>
-                            <h3>Mobile App Development</h3>
-                            <p style="font-family: georgia;">Build a feature-rich and highly effective mobile app for your business and expand your brand reach.</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="features-box-one">
-                            <i class='bx bxs-check-shield bg-6610f2'></i>
-                            <h3>Web app development</h3>
-                            <p style="font-family: georgia;">Create a custom web app from scratch to showcase your products and services and improve your marketing capabilities.</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="features-box-one">
-                            <i class='bx bx-timer bg-ffb700'></i>
-                            <h3>UI / UX</h3>
-                            <p style="font-family: georgia;">Allow users to interact with an ultimately clean and elegant user interface of your application in an intuitive and effective way.</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="features-box-one">
-                            <i class='bx bx-badge-check bg-fc3549'></i>
-                            <h3>DevOps</h3>
-                            <p style="font-family: georgia;">Increase productivity by using the power of Continuous Integration and Continuous Delivery.</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="features-box-one">
-                            <i class='bx bxs-lock-open bg-00d280'></i>
-                            <h3>Manual & Automation QA</h3>
-                            <p style="font-family: georgia;">Perfect the quality of the application and make sure that the product is consistently tested to ensure smooth user experience.</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="features-box-one">
-                            <i class='bx bxs-droplet-half bg-ff612f'></i>
-                            <h3>IT Consulting</h3>
-                            <p style="font-family: georgia;">Get qualified people to assist you in creating a functioning product and providing you with a comprehensive service package.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End Features Area -->
 
         <!-- Start Services Area -->
         {{!-- <section class="services-area ptb-100"> --}}
@@ -573,20 +332,11 @@ Seecog softwares will help you to design, develop, and implement any custom soft
         {{!-- </section> --}}
         <!-- End Services Area -->
  
- <div class="section-title" style="margin-top:20px;">
-                    <h2>Industries we support</h2>
-                </div>
         {{> industries}}
 {{!-- {{{body}}} --}}
 
- <div class="section-title" style="margin-top:20px;">
-                    <h2>Our Services</h2>
-                </div>
         {{> services}}
 
-        <div class="section-title" style="margin-top:20px;">
-                    <h2>Our Culture</h2>
-                </div>
         {{> culture}}
 
         <!-- Start Video Presentation Area -->
@@ -1137,56 +887,56 @@ Seecog softwares will help you to design, develop, and implement any custom soft
                 <div class="clients-logo-list align-items-center">
                     <div class="single-clients-logo">
                         <a href="#">
-                            <img src="assets/img/technologies/react.png" alt="image" style="width:100px;height:80px;">
+                            <img src="assets/img/technologies/react.png" alt="image" class="tech-logo">
                         </a>
                     </div>
 
                     <div class="single-clients-logo">
                         <a href="#">
-                            <img src="assets/img/technologies/angular.png" alt="image" style="width:100px;height:80px;">
+                            <img src="assets/img/technologies/angular.png" alt="image" class="tech-logo">
                         </a>
                     </div>
 
 
                     <div class="single-clients-logo">
                         <a href="#">
-                            <img src="assets/img/technologies/blockchain.png" alt="image" style="width:100px;height:80px;">
+                            <img src="assets/img/technologies/blockchain.png" alt="image" class="tech-logo">
                         </a>
                     </div>
 
                     <div class="single-clients-logo">
                         <a href="#">
-                            <img src="assets/img/technologies/java.png" alt="image" style="width:100px;height:80px;">
+                            <img src="assets/img/technologies/java.png" alt="image" class="tech-logo">
                         </a>
                     </div>
 
                     <div class="single-clients-logo">
                         <a href="#">
-                            <img src="assets/img/technologies/python.png" alt="image" style="width:100px;height:80px;">
+                            <img src="assets/img/technologies/python.png" alt="image" class="tech-logo">
                         </a>
                     </div>
 
                     <div class="single-clients-logo">
                         <a href="#">
-                            <img src="assets/img/technologies/android.png" alt="image" style="width:100px;height:80px;">
+                            <img src="assets/img/technologies/android.png" alt="image" class="tech-logo">
                         </a>
                     </div>
 
                     <div class="single-clients-logo">
                         <a href="#">
-                            <img src="assets/img/technologies/ios.png" alt="image" style="width:100px;height:80px;">
+                            <img src="assets/img/technologies/ios.png" alt="image" class="tech-logo">
                         </a>
                     </div>
 
                     <div class="single-clients-logo">
                         <a href="#">
-                            <img src="assets/img/technologies/ml.png" alt="image" style="width:100px;height:80px;">
+                            <img src="assets/img/technologies/ml.png" alt="image" class="tech-logo">
                         </a>
                     </div>
 
                     <div class="single-clients-logo">
                         <a href="#">
-                            <img src="assets/img/technologies/ai.png" alt="image" style="width:100px;height:80px;" style="width:100px;height:100px;">
+                            <img src="assets/img/technologies/ai.png" alt="image" class="tech-logo">
                         </a>
                     </div>
                 </div>
@@ -1301,6 +1051,8 @@ Seecog softwares will help you to design, develop, and implement any custom soft
         <script src="assets/js/owl.carousel.min.js"></script>
         <!-- MeanMenu JS -->
         <script src="assets/js/jquery.meanmenu.js"></script>
+        <!-- Mobile Menu JS - New Custom Menu -->
+        <script src="assets/js/mobile-menu.js"></script>
         <!-- WOW Min JS -->
         <script src="assets/js/wow.min.js"></script>
         <!-- Message Conversation JS -->
