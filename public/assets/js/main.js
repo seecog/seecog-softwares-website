@@ -100,6 +100,23 @@ jQuery(function ($) {
         });
     })(jQuery);
 
+
+
+/* ===============================
+   DISABLE DEMO / CHAT OVERLAYS
+   (Fix footer links click issue)
+================================ */
+$(window).on('load', function () {
+    $('.chat-widget, .demo-chat, .buy-now-btn, .envytheme-demo')
+        .css({
+            'pointer-events': 'none',
+            'z-index': '0'
+        });
+});
+
+
+
+
     // Feedback Slides
     $('.feedback-slides').owlCarousel({
         loop: true,

@@ -1,1 +1,82 @@
-<h1>Technologies!</h1>
+<section class="technologies-section">
+  <div class="container">
+    <h1 class="page-title">Technologies</h1>
+    <p class="page-subtitle">
+      We use proven and modern technologies to deliver scalable, secure, and high-performance solutions.
+    </p>
+
+    <div class="tech-grid">
+      <div class="tech-card">Frontend</div>
+      <div class="tech-card">Backend</div>
+      <div class="tech-card">Mobile Applications</div>
+      <div class="tech-card">Cloud & DevOps</div>
+      <div class="tech-card">Databases</div>
+      <div class="tech-card">Automation & Integrations</div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* Section background – matches site dark gradient */
+.technologies-section {
+  padding: 90px 0;
+  background: linear-gradient(135deg, #0a0f2c 0%, #120f3d 50%, #1b0f4f 100%);
+  color: #ffffff;
+}
+
+/* Headings */
+.page-title {
+  font-size: 46px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, #6ec1ff, #8a6cff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.page-subtitle {
+  text-align: center;
+  font-size: 17px;
+  color: #cfd6ff;
+  max-width: 720px;
+  margin: 0 auto 60px;
+}
+
+/* Grid */
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+}
+
+/* Cards */
+.tech-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.02)
+  );
+  border: 1px solid rgba(110, 193, 255, 0.15);
+  border-radius: 18px;
+  padding: 42px 20px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  color: #e9ecff;
+  transition: all 0.35s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* Hover effect – same glow style as footer icons */
+.tech-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(138, 108, 255, 0.6);
+  background: linear-gradient(
+    135deg,
+    rgba(110, 193, 255, 0.15),
+    rgba(138, 108, 255, 0.15)
+  );
+  box-shadow: 0 20px 45px rgba(138, 108, 255, 0.35);
+}
+</style>
