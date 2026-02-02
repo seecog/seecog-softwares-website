@@ -6,7 +6,7 @@
   },
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "PORT=3003 node ./bin/www"
   },
   "type": "commonjs",
   "dependencies": {

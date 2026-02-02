@@ -1,28 +1,87 @@
 <!-- Start Services Area -->
-<section class="services-page-area ptb-100">
+<style>
+    .service-card-modern:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15) !important;
+        border-radius: 16px !important;
+    }
+    .service-card-modern:hover .service-card-header {
+        border-radius: 16px 16px 0 0 !important;
+        overflow: hidden !important;
+    }
+    .service-card-modern:hover .service-card-header img {
+        transform: scale(1.05);
+        border-radius: 16px 16px 0 0 !important;
+    }
+    .whatsapp-icon-btn:hover {
+        transform: scale(1.15);
+        color: #20ba5a !important;
+    }
+</style>
+<section class="services-page-area" style="padding: 40px 0;">
     <div class="container">
-                <div class="section-title">
-            <h2>Our <span>Services</span></h2>
-            <p>Comprehensive technology solutions tailored to transform your business</p>
+                <div class="section-title" style="margin-bottom: 30px; text-align: center;">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 30px;">
+                <h2 style="margin: 0;">Services <span> we provide</span></h2>
+                <a href="https://wa.me/917348820668" target="_blank" class="whatsapp-icon-btn" style="color: #25D366; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s ease;">
+                    <i class='bx bxl-whatsapp' style="font-size: 28px;"></i>
+                </a>
+            </div>
+            <p style="margin: 0; text-align: center; padding: 0 40px;">Comprehensive technology solutions tailored to transform your business</p>
         </div>
 
         <!-- Service Cards Grid -->
         <div class="services-grid">
-            <!-- Service 1: IoT Strategy Consulting -->
-            <div class="service-card-modern">
-                <div class="service-card-header">
-                    <div class="service-icon-wrapper">
-                        <i class='bx bx-network-chart'></i>
-                    </div>
-                    <span class="service-number">01</span>
+
+            <div class="service-card-modern" style="border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; background: white;">
+                <div class="service-card-header" style="width: 100%; position: relative; overflow: hidden;">
+                    <img src="/assets/services/aiml.png" alt="IoT Strategy" style="width: 100%; height: auto; display: block; object-fit: cover; border-radius: 16px 16px 0 0; transition: transform 0.3s ease;">
+                    {{!-- <span class="service-number" style="position: absolute; top: 16px; right: 16px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); color: #333; font-weight: 700; font-size: 18px; padding: 8px 16px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">01</span> --}}
                 </div>
                 <div class="service-card-body">
-                    <h3>IoT Strategy Consulting</h3>
-                    <p>Assess your readiness and predict ROI for Industrial IoT investments. We help you navigate the complex IoT landscape with strategic consulting that ensures maximum return on investment.</p>
+                    <h3>AI/ML Integration (Practical, Business Use)</h3>
+                    <p>Add practical AI features to your existing product—without disrupting your current workflows. We integrate chatbots, document intelligence, and predictive insights to automate operations, improve support, and help teams make faster, data-driven decisions.</p>
                     <ul class="service-features">
-                        <li><i class='bx bx-check-circle'></i> ROI Assessment</li>
-                        <li><i class='bx bx-check-circle'></i> Technology Readiness</li>
-                        <li><i class='bx bx-check-circle'></i> Strategic Planning</li>
+                        <li><i class='bx bx-check-circle'></i> Chatbots & AI Support Agents</li>
+                        <li><i class='bx bx-check-circle'></i> Document OCR + Data Extraction</li>
+                        <li><i class='bx bx-check-circle'></i> Recommendations & Predictive Analytics</li>
+                    </ul>
+                </div>
+                <div class="service-card-footer">
+                    <a href="#contact" class="service-link">Learn More <i class='bx bx-right-arrow-alt'></i></a>
+              </div>
+            </div>
+
+            <div class="service-card-modern" style="border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; background: white;">
+                <div class="service-card-header" style="width: 100%; position: relative; overflow: hidden;">
+                    <img src="/assets/services/it.png" alt="IoT Strategy" style="width: 100%; height: auto; display: block; object-fit: cover; border-radius: 16px 16px 0 0; transition: transform 0.3s ease;">
+                    {{!-- <span class="service-number" style="position: absolute; top: 16px; right: 16px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); color: #333; font-weight: 700; font-size: 18px; padding: 8px 16px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">01</span> --}}
+                </div>
+                <div class="service-card-body">
+                    <h3>IT Staff Augmentation</h3>
+                    <p>Scale your team quickly with skilled developers and tech specialists—without long hiring cycles. We provide vetted talent that fits your tech stack, works with your process, and delivers from day one (remote or onsite).</p>
+                    <ul class="service-features">
+                        <li><i class='bx bx-check-circle'></i> Dedicated Developers & Full Teams</li>
+                        <li><i class='bx bx-check-circle'></i> Flexible Hiring: Short/Long Term</li>
+                        <li><i class='bx bx-check-circle'></i> Fast Onboarding + Ongoing Support</li>
+                    </ul>
+                </div>
+                <div class="service-card-footer">
+                    <a href="#contact" class="service-link">Learn More <i class='bx bx-right-arrow-alt'></i></a>
+              </div>
+            </div>
+            <div class="service-card-modern" style="border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; background: white;">
+                <div class="service-card-header" style="width: 100%; position: relative; overflow: hidden;">
+                    <img src="/assets/services/iot.png" alt="IoT Strategy" style="width: 100%; height: auto; display: block; object-fit: cover; border-radius: 16px 16px 0 0; transition: transform 0.3s ease;">
+                    {{!-- <span class="service-number" style="position: absolute; top: 16px; right: 16px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); color: #333; font-weight: 700; font-size: 18px; padding: 8px 16px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">02</span> --}}
+                </div>
+                <div class="service-card-body">
+                    <h3>IoT Strategy and Implementation</h3>
+                    <p>Turn your IoT idea into a real, scalable solution. We help you define the right use-cases, choose the best architecture, and build secure device-to-cloud systems that deliver measurable ROI.</p>
+                    <ul class="service-features">
+                        <li><i class='bx bx-check-circle'></i> ROI & Use-Case Assessment</li>
+                        <li><i class='bx bx-check-circle'></i> TArchitecture, Security & Device Planning</li>
+                        <li><i class='bx bx-check-circle'></i> Pilot to Production Deployment</li>
                     </ul>
                 </div>
                 <div class="service-card-footer">
@@ -31,20 +90,18 @@
             </div>
 
             <!-- Service 2: IoT Implementation -->
-            <div class="service-card-modern">
-                <div class="service-card-header">
-                    <div class="service-icon-wrapper">
-                        <i class='bx bx-chip'></i>
-              </div>
-                    <span class="service-number">02</span>
+            <div class="service-card-modern" style="border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; background: white;">
+                <div class="service-card-header" style="width: 100%; position: relative; overflow: hidden;">
+                    <img src="/assets/services/web.png" alt="Web Development" style="width: 100%; height: auto; display: block; object-fit: cover; border-radius: 16px 16px 0 0; transition: transform 0.3s ease;">
+                    {{!-- <span class="service-number" style="position: absolute; top: 16px; right: 16px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); color: #333; font-weight: 700; font-size: 18px; padding: 8px 16px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">03</span> --}}
             </div>
                 <div class="service-card-body">
-                    <h3>IoT Implementation</h3>
-                    <p>Transform your ideas into reality with our innovative IoT solutions. We design and implement custom IoT platforms, devices, and communication networks tailored to your unique business needs.</p>
+                    <h3>Web Application design and development</h3>
+                    <p>We design and build fast, modern web applications—dashboards, portals, and SaaS platforms—focused on clean UI, secure backend APIs, and smooth performance across all devices.</p>
                     <ul class="service-features">
-                        <li><i class='bx bx-check-circle'></i> Custom Solutions</li>
-                        <li><i class='bx bx-check-circle'></i> Platform Integration</li>
-                        <li><i class='bx bx-check-circle'></i> Prototyping & Testing</li>
+                        <li><i class='bx bx-check-circle'></i> UI/UX & Responsive Design</li>
+                        <li><i class='bx bx-check-circle'></i> Backend APIs & Third-Party Integrations</li>
+                        <li><i class='bx bx-check-circle'></i> Performance, Security & Deployment</li>
                     </ul>
           </div>
                 <div class="service-card-footer">
@@ -52,43 +109,21 @@
               </div>
             </div>
 
-            <!-- Service 3: Website Design & Development -->
-            <div class="service-card-modern">
-                <div class="service-card-header">
-                    <div class="service-icon-wrapper">
-                        <i class='bx bx-code-alt'></i>
-              </div>
-                    <span class="service-number">03</span>
-            </div>
-                <div class="service-card-body">
-                    <h3>Website Design & Development</h3>
-                    <p>Create a powerful online presence with our cutting-edge web solutions. From responsive websites to complex web applications, we bring your digital vision to life with modern design and robust functionality.</p>
-                    <ul class="service-features">
-                        <li><i class='bx bx-check-circle'></i> Responsive Design</li>
-                        <li><i class='bx bx-check-circle'></i> Modern UI/UX</li>
-                        <li><i class='bx bx-check-circle'></i> Performance Optimized</li>
-                    </ul>
-          </div>
-                <div class="service-card-footer">
-                    <a href="#contact" class="service-link">Learn More <i class='bx bx-right-arrow-alt'></i></a>
-              </div>
-            </div>
+            
 
             <!-- Service 4: Mobile Application Development -->
-            <div class="service-card-modern">
-                <div class="service-card-header">
-                    <div class="service-icon-wrapper">
-                        <i class='bx bx-mobile'></i>
-              </div>
-                    <span class="service-number">04</span>
+            <div class="service-card-modern" style="border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; background: white;">
+                <div class="service-card-header" style="width: 100%; position: relative; overflow: hidden;">
+                    <img src="/assets/services/mobile.png" alt="Mobile Development" style="width: 100%; height: auto; display: block; object-fit: cover; border-radius: 16px 16px 0 0; transition: transform 0.3s ease;">
+                    {{!-- <span class="service-number" style="position: absolute; top: 16px; right: 16px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); color: #333; font-weight: 700; font-size: 18px; padding: 8px 16px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">04</span> --}}
             </div>
                 <div class="service-card-body">
                     <h3>Mobile Application Development</h3>
-                    <p>Build powerful mobile experiences for iOS and Android. Our award-winning mobile solutions enhance customer engagement and boost operational efficiency across industries.</p>
+                    <p>Build high-quality mobile apps for Android and iOS with great UI, smooth performance, and reliable releases. From MVP to full product, we handle development, testing, and launch.</p>
                     <ul class="service-features">
-                        <li><i class='bx bx-check-circle'></i> Native & Cross-Platform</li>
-                        <li><i class='bx bx-check-circle'></i> App Store Optimization</li>
-                        <li><i class='bx bx-check-circle'></i> Enterprise Solutions</li>
+                        <li><i class='bx bx-check-circle'></i> Native & Cross-Platform Apps</li>
+                        <li><i class='bx bx-check-circle'></i> App Store / Play Store Launch Support</li>
+                        <li><i class='bx bx-check-circle'></i> Maintenance, Updates & Scaling</li>
                     </ul>
           </div>
                 <div class="service-card-footer">
@@ -97,20 +132,18 @@
             </div>
 
             <!-- Service 5: SEO -->
-            <div class="service-card-modern">
-                <div class="service-card-header">
-                    <div class="service-icon-wrapper">
-                        <i class='bx bx-search-alt-2'></i>
-              </div>
-                    <span class="service-number">05</span>
+            <div class="service-card-modern" style="border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; background: white;">
+                <div class="service-card-header" style="width: 100%; position: relative; overflow: hidden;">
+                    <img src="/assets/services/seo.png" alt="SEO and Digital Marketing" style="width: 100%; height: auto; display: block; object-fit: cover; border-radius: 16px 16px 0 0; transition: transform 0.3s ease;">
+                    {{!-- <span class="service-number" style="position: absolute; top: 16px; right: 16px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); color: #333; font-weight: 700; font-size: 18px; padding: 8px 16px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">05</span> --}}
             </div>
                 <div class="service-card-body">
-                    <h3>Search Engine Optimization</h3>
-                    <p>Drive organic traffic and improve your search rankings with our comprehensive SEO strategies. We optimize your website to rank higher and attract quality visitors at the lowest cost.</p>
+                    <h3>SEO and Digital Marketing</h3>
+                    <p>Grow your online presence with data-driven SEO and performance marketing. We improve your website’s visibility, bring the right audience to your pages, and convert visitors into leads through smart content, optimization, and targeted campaigns.</p>
                     <ul class="service-features">
-                        <li><i class='bx bx-check-circle'></i> On-Page Optimization</li>
-                        <li><i class='bx bx-check-circle'></i> Link Building</li>
-                        <li><i class='bx bx-check-circle'></i> Analytics & Reporting</li>
+                        <li><i class='bx bx-check-circle'></i> Technical & On-Page SEO Optimization</li>
+                        <li><i class='bx bx-check-circle'></i> Content Strategy + Local/Keyword Targeting</li>
+                        <li><i class='bx bx-check-circle'></i> Analytics, Reporting & Conversion Tracking</li>
                     </ul>
           </div>
                 <div class="service-card-footer">
@@ -118,28 +151,6 @@
               </div>
             </div>
 
-            <!-- Service 6: Digital Marketing -->
-            <div class="service-card-modern">
-                <div class="service-card-header">
-                    <div class="service-icon-wrapper">
-                        <i class='bx bx-bullhorn'></i>
-              </div>
-                    <span class="service-number">06</span>
-            </div>
-                <div class="service-card-body">
-                    <h3>Digital Marketing</h3>
-                    <p>Amplify your brand presence across social media platforms. Our digital marketing strategies help you connect with your audience, build brand awareness, and drive conversions.</p>
-                    <ul class="service-features">
-                        <li><i class='bx bx-check-circle'></i> Social Media Management</li>
-                        <li><i class='bx bx-check-circle'></i> Content Strategy</li>
-                        <li><i class='bx bx-check-circle'></i> Campaign Management</li>
-                    </ul>
-          </div>
-                <div class="service-card-footer">
-                    <a href="#contact" class="service-link">Learn More <i class='bx bx-right-arrow-alt'></i></a>
-              </div>
-            </div>
-          </div>
   </div>
 </section>
 <!-- End Services Area -->
