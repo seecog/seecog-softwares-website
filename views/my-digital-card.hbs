@@ -1,0 +1,470 @@
+<!-- Start My Digital Card Area -->
+<section
+  class="digital-card-page-area ptb-100"
+  id="digital-card-section"
+  data-vcf-company="Seecog Softwares Pvt Ltd"
+  data-vcf-email="info@seecogsoftwares.com"
+  data-vcf-phone="+917625067691"
+  data-vcf-website="https://seecogsoftwares.com"
+  data-vcf-address="Site No. 26, Prestige Cube Building, Laskar Hosur Rd, Adugodi, Koramangala, Bengaluru, Karnataka 560030, India"
+>
+  <div class="container">
+    <!-- Hero -->
+    <div class="section-title digital-card-hero text-center">
+      <h2>My <span>Digital Card</span></h2>
+      <br class="mb-4" />
+      <p>Share our contact instantly — Save, Scan, or Connect</p>
+    </div>
+
+    <!-- Two-column layout: Left content | Right sticky card -->
+    <div class="row digital-card-layout">
+      <!-- Left column: Intro, Trust, Actions, Services -->
+      <div class="col-lg-7 col-md-12 digital-card-left">
+        <div class="digital-intro-card dc-shadow">
+          <h3 class="digital-intro-heading">Software Development &amp; IT
+            Services</h3>
+          <p class="digital-intro-text">We build web, mobile, cloud and
+            AI-powered solutions for startups and enterprises.</p>
+        </div>
+
+        <div class="digital-trust-row">
+          <div class="trust-bullet"><i class="bx bx-check-circle"></i>
+            Business-first approach</div>
+          <div class="trust-bullet"><i class="bx bx-check-circle"></i>
+            Clean, scalable delivery</div>
+          <div class="trust-bullet"><i class="bx bx-check-circle"></i>
+            Reliable support &amp; maintenance</div>
+        </div>
+
+        <div class="digital-actions-card dc-shadow">
+          <h4 class="actions-heading">Quick Actions</h4>
+          <div class="actions-grid">
+            <button
+              type="button"
+              class="action-btn"
+              id="saveContactBtn"
+              aria-label="Save Contact (vCard)"
+            >
+              <i class="bx bx-download"></i>
+              <span>Save Contact (vCard)</span>
+            </button>
+            <a
+              href="mailto:info@seecogsoftwares.com?subject=Business%20Inquiry%20-%20Seecog&body=Hi%20Team%2C%0A%0AI%20want%20to%20discuss%20a%20project.%0A%0AThanks"
+              class="action-btn"
+              aria-label="Send Email"
+            >
+              <i class="bx bx-envelope"></i>
+              <span>Email</span>
+            </a>
+            <a href="tel:+917625067691" class="action-btn" aria-label="Call">
+              <i class="bx bx-phone"></i>
+              <span>Call</span>
+            </a>
+            <a
+              href="https://wa.me/917625067691?text=Hi%20Seecog%20Team%2C%20I%20want%20to%20discuss%20a%20project."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="action-btn"
+              aria-label="WhatsApp"
+            >
+              <i class="bx bxl-whatsapp"></i>
+              <span>WhatsApp</span>
+            </a>
+            <a
+              href="/contact#contactForm"
+              class="action-btn"
+              aria-label="Book a Meeting"
+            >
+              <i class="bx bx-calendar"></i>
+              <span>Book a Meeting</span>
+            </a>
+            <a
+              href="/contact#contactForm"
+              class="action-btn action-btn-primary"
+              aria-label="Get a Quote"
+            >
+              <i class="bx bx-file"></i>
+              <span>Get a Quote</span>
+            </a>
+            <button
+              type="button"
+              class="action-btn"
+              id="copyLinkBtn"
+              aria-label="Copy Link"
+            >
+              <i class="bx bx-link-alt"></i>
+              <span>Copy Link</span>
+            </button>
+            <button
+              type="button"
+              class="action-btn"
+              id="shareBtn"
+              aria-label="Share"
+            >
+              <i class="bx bx-share-alt"></i>
+              <span>Share</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="digital-services-card dc-shadow">
+          <h4 class="services-heading">Services We Offer</h4>
+          <div class="services-tiles">
+            <a href="/services" class="service-tile">Web Application Development</a>
+            <a href="/services" class="service-tile">Mobile App Development</a>
+            <a href="/services" class="service-tile">UI/UX Design</a>
+            <a href="/services" class="service-tile">Cloud &amp; DevOps</a>
+            <a href="/services" class="service-tile">AI/ML Integration</a>
+            <a href="/services" class="service-tile">QA &amp; Automation</a>
+            <a href="/services" class="service-tile">IT Staff Augmentation</a>
+            <a href="/services" class="service-tile">SEO &amp; Digital Marketing</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right column: Sticky Digital Card -->
+      <div class="col-lg-5 col-md-12 digital-card-right">
+        <div class="digital-card-sticky-wrap">
+          <div class="digital-card-modern dc-shadow">
+            <div class="digital-card-header">
+              <div class="digital-card-logo">
+                <img
+                  src="/assets/img/sm_logo.jpg"
+                  alt="Seecog Softwares"
+                  class="card-logo-img"
+                />
+              </div>
+              <h3>{{data.companyName}}</h3>
+              <p class="card-tagline">Technology with Purpose. Progress with
+                Impact.</p>
+            </div>
+
+            <div class="digital-card-body">
+              <div class="card-info-row">
+                <i class="bx bx-envelope" aria-hidden="true"></i>
+                <div>
+                  <span class="card-label">Email</span>
+                  <a
+                    href="mailto:info@seecogsoftwares.com?subject=Business%20Inquiry"
+                  >{{data.email}}</a>
+                </div>
+              </div>
+              <div class="card-info-row">
+                <i class="bx bx-phone" aria-hidden="true"></i>
+                <div>
+                  <span class="card-label">Phone</span>
+                  <a href="tel:+917625067691">{{data.contact}}</a>
+                </div>
+              </div>
+              <div class="card-info-row">
+                <i class="bx bx-map" aria-hidden="true"></i>
+                <div>
+                  <span class="card-label">Address</span>
+                  <a
+                    href="https://www.google.com/maps/place/seecog+softwares"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >{{data.address}}</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="digital-card-actions">
+              <a
+                href="mailto:info@seecogsoftwares.com?subject=Business%20Inquiry"
+                class="card-action-btn"
+                title="Email"
+                aria-label="Email"
+              >
+                <i class="bx bx-envelope"></i>
+                <span>Email</span>
+              </a>
+              <a
+                href="tel:+917625067691"
+                class="card-action-btn"
+                title="Call"
+                aria-label="Call"
+              >
+                <i class="bx bx-phone"></i>
+                <span>Call</span>
+              </a>
+              <a
+                href="https://wa.me/917625067691?text=Hi%20Seecog%20Team%2C%20I%20want%20to%20discuss%20a%20project."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="card-action-btn"
+                title="WhatsApp"
+                aria-label="WhatsApp"
+              >
+                <i class="bx bxl-whatsapp"></i>
+                <span>WhatsApp</span>
+              </a>
+              <a
+                href="/contact#contactForm"
+                class="card-action-btn"
+                title="Contact Form"
+                aria-label="Contact"
+              >
+                <i class="bx bx-message-dots"></i>
+                <span>Contact</span>
+              </a>
+            </div>
+
+            <div class="digital-card-social">
+              <a
+                href="https://www.linkedin.com/company/seecog-softwares-pvt-ltd/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              ><i class="bx bxl-linkedin"></i></a>
+              <a
+                href="https://www.facebook.com/profile.php?id=61585373592616"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+              ><i class="bx bxl-facebook"></i></a>
+              <a
+                href="https://twitter.com/seecogsoftwares"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Twitter"
+              ><i class="bx bxl-twitter"></i></a>
+              <a
+                href="https://wa.me/917625067691?text=Hi%20Seecog%20Team"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+              ><i class="bx bxl-whatsapp"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast -->
+    <div
+      id="copyToast"
+      class="dc-toast"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+      hidden
+    >
+      <span>Link copied!</span>
+    </div>
+
+    <!-- Mobile sticky bar -->
+    <div
+      class="dc-sticky-actions"
+      id="stickyActions"
+      aria-label="Quick contact actions"
+    >
+      <a
+        href="mailto:info@seecogsoftwares.com?subject=Business%20Inquiry"
+        class="sticky-btn"
+        aria-label="Email"
+      ><i class="bx bx-envelope"></i></a>
+      <a href="tel:+917625067691" class="sticky-btn" aria-label="Call"><i
+          class="bx bx-phone"
+        ></i></a>
+      <a
+        href="https://wa.me/917625067691?text=Hi%20Seecog%20Team"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="sticky-btn"
+        aria-label="WhatsApp"
+      ><i class="bx bxl-whatsapp"></i></a>
+      <a
+        href="/contact#contactForm"
+        class="sticky-btn sticky-btn-primary"
+        aria-label="Get a Quote"
+      ><i class="bx bx-file"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Organization","name":"Seecog
+  Softwares Pvt Ltd","email":"info@seecogsoftwares.com","telephone":"+91
+  7625067691","url":"https://seecogsoftwares.com","address":{"@type":"PostalAddress","streetAddress":"Site
+  No. 26, Prestige Cube Building, Laskar Hosur Rd, Adugodi,
+  Koramangala","addressLocality":"Bengaluru","addressRegion":"Karnataka","postalCode":"560030","addressCountry":"IN"}}
+</script>
+
+<!-- VCF, Copy Link, Share - vanilla JS -->
+<script>
+  (function() { 'use strict'; function runWhenReady(fn) { if
+  (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', fn); } else { fn(); } }
+  runWhenReady(function() { var section =
+  document.getElementById('digital-card-section'); if (!section) return; var
+  vcfData = { company: section.getAttribute('data-vcf-company') || 'Seecog
+  Softwares Pvt Ltd', email: section.getAttribute('data-vcf-email') ||
+  'info@seecogsoftwares.com', phone: (section.getAttribute('data-vcf-phone') ||
+  '+917625067691').replace(/\s/g, ''), website:
+  section.getAttribute('data-vcf-website') || 'https://seecogsoftwares.com',
+  address: section.getAttribute('data-vcf-address') || 'Site No. 26, Prestige
+  Cube Building, Laskar Hosur Rd, Adugodi, Koramangala, Bengaluru, Karnataka
+  560030, India' }; function escapeVcf(str) { if (!str) return ''; return
+  String(str).replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g,
+  '\\,').replace(/\n/g, '\\n'); } function downloadVCF() { var adrEscaped =
+  (vcfData.address || '').replace(/\\/g, '\\\\').replace(/;/g,
+  '\\;').replace(/,/g, '\\,'); var content = [ 'BEGIN:VCARD', 'VERSION:3.0',
+  'FN:' + escapeVcf(vcfData.company), 'ORG:' + escapeVcf(vcfData.company),
+  'TEL;TYPE=WORK,VOICE:' + vcfData.phone, 'EMAIL;TYPE=WORK:' + (vcfData.email ||
+  ''), 'URL:' + (vcfData.website || ''), 'ADR;TYPE=WORK:;;' + adrEscaped +
+  ';;;;', 'END:VCARD' ].join('\r\n'); try { var blob = new Blob([content], {
+  type: 'text/vcard;charset=utf-8' }); var url = URL.createObjectURL(blob); var
+  a = document.createElement('a'); a.href = url; a.download =
+  'Seecog-Softwares.vcf'; a.style.display = 'none';
+  document.body.appendChild(a); a.click(); setTimeout(function() {
+  document.body.removeChild(a); URL.revokeObjectURL(url); }, 100);
+  showToast('Contact saved!'); } catch (err) { showToast('Could not save. Try
+  again.'); } } function showToast(msg) { msg = msg || 'Link copied!'; var t =
+  document.getElementById('copyToast'); if (!t) return; var span =
+  t.querySelector('span'); if (span) span.textContent = msg;
+  t.removeAttribute('hidden'); t.classList.add('dc-toast-visible');
+  setTimeout(function() { t.classList.remove('dc-toast-visible');
+  setTimeout(function() { t.setAttribute('hidden', ''); }, 300); }, 2500); }
+  function copyLink() { var url = window.location.href; if (navigator.clipboard
+  && navigator.clipboard.writeText) {
+  navigator.clipboard.writeText(url).then(function() { showToast('Link
+  copied!'); }).catch(function() { fallbackCopy(url); }); } else {
+  fallbackCopy(url); } } function fallbackCopy(text) { var ta =
+  document.createElement('textarea'); ta.value = text;
+  ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.left =
+  '0'; ta.style.top = '0'; ta.style.width = '2em'; ta.style.height = '2em';
+  ta.style.padding = '0'; ta.style.border = 'none'; ta.style.outline = 'none';
+  ta.style.boxShadow = 'none'; ta.style.background = 'transparent';
+  ta.style.opacity = '0'; document.body.appendChild(ta); ta.focus();
+  ta.select(); ta.setSelectionRange(0, text.length); var ok = false; try { ok =
+  document.execCommand('copy'); } catch (e) {} document.body.removeChild(ta); if
+  (ok) showToast('Link copied!'); else showToast('Copy failed. Please copy
+  manually.'); } function sharePage() { var title = 'Seecog Softwares - Digital
+  Card'; var url = window.location.href; if (navigator.share && typeof
+  navigator.share === 'function') { navigator.share({ title: title, url: url,
+  text: 'Check out Seecog Softwares' }) .then(function() { showToast('Shared!');
+  }) .catch(function(err) { if (err.name !== 'AbortError') { copyLink(); } }); }
+  else { copyLink(); } } function initStickyBar() { var bar =
+  document.getElementById('stickyActions'); if (!bar) return; var onScroll =
+  function() { bar.classList.toggle('dc-sticky-visible', window.scrollY > 350);
+  }; window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  } var saveBtn = document.getElementById('saveContactBtn'); var copyBtn =
+  document.getElementById('copyLinkBtn'); var shareBtnEl =
+  document.getElementById('shareBtn'); if (saveBtn)
+  saveBtn.addEventListener('click', function(e) { e.preventDefault();
+  downloadVCF(); }); if (copyBtn) copyBtn.addEventListener('click', function(e)
+  { e.preventDefault(); copyLink(); }); if (shareBtnEl)
+  shareBtnEl.addEventListener('click', function(e) { e.preventDefault();
+  sharePage(); }); initStickyBar(); }); })();
+</script>
+
+<style>
+  .digital-card-page-area { background: linear-gradient(135deg, #f8f9fc 0%,
+  #f0f4ff 50%, #eef2ff 100%); position: relative; overflow-x: hidden; }
+  .dc-shadow { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06), 0 10px 40px rgba(0,
+  0, 0, 0.08); border-radius: 16px; } .digital-card-hero { margin-bottom: 20px
+  !important; } .digital-card-hero h2 { font-size: 32px; } .digital-card-hero p
+  { font-size: 16px; color: #555; margin: 0 auto; } /* Two-column layout */
+  .digital-card-layout { align-items: flex-start; gap: 0; } .digital-card-left {
+  padding-right: 24px; } .digital-card-right { padding-left: 24px; } /* Sticky
+  card wrapper - desktop only */ .digital-card-sticky-wrap { position: relative;
+  } @media (min-width: 992px) { .digital-card-sticky-wrap { position: sticky;
+  top: 100px; } } .digital-card-modern { background: #fff; border-radius: 24px;
+  max-width: 420px; width: 100%; overflow: hidden; transition: transform 0.3s
+  ease, box-shadow 0.3s ease; } .digital-card-modern:hover { transform:
+  translateY(-4px); box-shadow: 0 24px 70px rgba(0, 0, 0, 0.15), 0 8px 30px
+  rgba(0, 0, 0, 0.08) !important; } .digital-card-header { background:
+  linear-gradient(135deg, #0a0f2c 0%, #1b0f4f 100%); color: #fff; padding: 40px
+  30px; text-align: center; } .digital-card-logo { margin-bottom: 20px; }
+  .card-logo-img { width: 100px; height: 100px; border-radius: 50%; object-fit:
+  cover; border: 4px solid rgba(255, 255, 255, 0.2); } .digital-card-header h3 {
+  font-size: 22px; font-weight: 700; margin: 0 0 8px; color: #fff; }
+  .card-tagline { font-size: 14px; opacity: 0.9; margin: 0; } .digital-card-body
+  { padding: 30px; } .card-info-row { display: flex; align-items: flex-start;
+  gap: 16px; margin-bottom: 20px; } .card-info-row:last-child { margin-bottom:
+  0; } .card-info-row i { font-size: 22px; color: #6c5ce7; flex-shrink: 0;
+  margin-top: 2px; } .card-info-row div { flex: 1; } .card-label { display:
+  block; font-size: 12px; color: #6c757d; text-transform: uppercase;
+  letter-spacing: 0.5px; margin-bottom: 4px; } .card-info-row a { color: #333;
+  text-decoration: none; font-size: 15px; word-break: break-word; }
+  .card-info-row a:hover { color: #6c5ce7; } .digital-card-actions { display:
+  grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: #eee;
+  border-top: 1px solid #eee; } .card-action-btn { display: flex;
+  flex-direction: column; align-items: center; justify-content: center; padding:
+  16px 8px; background: #fff; color: #333; text-decoration: none; font-size:
+  12px; transition: all 0.2s ease; } .card-action-btn:hover,
+  .card-action-btn:focus { background: #f8f9fc; color: #6c5ce7; box-shadow: 0
+  2px 8px rgba(108, 92, 231, 0.15); outline: 2px solid #6c5ce7; outline-offset:
+  -2px; } .card-action-btn i { font-size: 22px; margin-bottom: 6px; }
+  .digital-card-social { display: flex; justify-content: center; gap: 16px;
+  padding: 24px; background: #f8f9fc; border-top: 1px solid #eee; }
+  .digital-card-social a { width: 44px; height: 44px; display: flex;
+  align-items: center; justify-content: center; background: #fff; border-radius:
+  50%; color: #555; font-size: 20px; text-decoration: none; transition: all 0.2s
+  ease; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); } .digital-card-social
+  a:hover, .digital-card-social a:focus { color: #fff; transform:
+  translateY(-2px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12); }
+  .digital-card-social a:nth-child(1):hover { background: #0a66c2; }
+  .digital-card-social a:nth-child(2):hover { background: #1877f2; }
+  .digital-card-social a:nth-child(3):hover { background: #1da1f2; }
+  .digital-card-social a:nth-child(4):hover { background: #25D366; } /* Left
+  column sections */ .digital-intro-card { background: #fff; padding: 24px 28px;
+  margin-bottom: 20px; } .digital-intro-heading { font-size: 20px; font-weight:
+  700; color: #1a1a2e; margin: 0 0 12px; } .digital-intro-text { font-size:
+  15px; color: #555; margin: 0; line-height: 1.6; } .digital-trust-row {
+  display: flex; flex-wrap: wrap; gap: 12px 24px; margin-bottom: 24px; }
+  .trust-bullet { display: flex; align-items: center; gap: 8px; font-size: 14px;
+  color: #444; } .trust-bullet i { color: #6c5ce7; font-size: 18px; flex-shrink:
+  0; } .digital-actions-card { background: #fff; padding: 24px 28px;
+  margin-bottom: 24px; } .actions-heading { font-size: 16px; font-weight: 600;
+  color: #333; margin: 0 0 16px; } .actions-grid { display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+  .action-btn { display: flex; flex-direction: column; align-items: center;
+  justify-content: center; padding: 14px 12px; background: #f8f9fc; border: 1px
+  solid #e8ecf4; border-radius: 12px; color: #333; text-decoration: none;
+  font-size: 12px; cursor: pointer; transition: all 0.2s ease; border: none;
+  font-family: inherit; } .action-btn:hover, .action-btn:focus { background:
+  #fff; color: #6c5ce7; border-color: #c4b8f5; box-shadow: 0 4px 12px rgba(108,
+  92, 231, 0.15); outline: 2px solid #6c5ce7; outline-offset: 2px; } .action-btn
+  i { font-size: 22px; margin-bottom: 6px; } .action-btn-primary { background:
+  linear-gradient(135deg, #6c5ce7 0%, #5b4cdb 100%); border: 1px solid #6c5ce7;
+  color: #fff; } .action-btn-primary:hover, .action-btn-primary:focus {
+  background: linear-gradient(135deg, #5b4cdb 0%, #4a3cc9 100%); color: #fff;
+  box-shadow: 0 6px 20px rgba(108, 92, 231, 0.4); } .digital-services-card {
+  background: #fff; padding: 24px 28px; } .services-heading { font-size: 16px;
+  font-weight: 600; color: #333; margin: 0 0 16px; } .services-tiles { display:
+  flex; flex-wrap: wrap; gap: 10px; } .service-tile { display: inline-block;
+  padding: 10px 16px; background: #f8f9fc; border: 1px solid #e8ecf4;
+  border-radius: 10px; font-size: 13px; color: #444; text-decoration: none;
+  transition: all 0.2s ease; } .service-tile:hover { background: #fff; color:
+  #6c5ce7; border-color: #c4b8f5; box-shadow: 0 4px 12px rgba(108, 92, 231,
+  0.12); } .dc-toast { position: fixed; bottom: 24px; left: 50%; transform:
+  translateX(-50%) translateY(20px); background: #1a1a2e; color: #fff; padding:
+  12px 24px; border-radius: 12px; font-size: 14px; box-shadow: 0 8px 30px
+  rgba(0, 0, 0, 0.2); z-index: 9999; opacity: 0; transition: opacity 0.3s,
+  transform 0.3s; pointer-events: none; } .dc-toast-visible { opacity: 1;
+  transform: translateX(-50%) translateY(0); } .dc-sticky-actions { position:
+  fixed; bottom: 0; left: 0; right: 0; display: flex; justify-content:
+  space-around; padding: 12px 16px; background: #fff; box-shadow: 0 -4px 20px
+  rgba(0, 0, 0, 0.1); z-index: 999; opacity: 0; visibility: hidden; transform:
+  translateY(100%); transition: opacity 0.3s, visibility 0.3s, transform 0.3s; }
+  .dc-sticky-visible { opacity: 1; visibility: visible; transform:
+  translateY(0); } .sticky-btn { width: 48px; height: 48px; display: flex;
+  align-items: center; justify-content: center; background: #f8f9fc;
+  border-radius: 12px; color: #333; font-size: 22px; text-decoration: none;
+  transition: all 0.2s; } .sticky-btn:hover, .sticky-btn:focus { background:
+  #6c5ce7; color: #fff; outline: 2px solid #6c5ce7; outline-offset: 2px; }
+  .sticky-btn-primary { background: linear-gradient(135deg, #6c5ce7 0%, #5b4cdb
+  100%); color: #fff; } @media (max-width: 991px) { .digital-card-left {
+  padding-right: 0; padding-left: 0; } .digital-card-right { padding-left: 0;
+  margin-bottom: 24px; } .digital-card-sticky-wrap { position: relative
+  !important; top: auto !important; } .digital-card-modern { max-width: 100%;
+  margin: 0 auto 24px; } .actions-grid { grid-template-columns: repeat(2, 1fr);
+  } .dc-sticky-actions { display: flex; } } @media (min-width: 992px) {
+  .dc-sticky-actions { display: none; } } @media (max-width: 575px) {
+  .digital-card-hero h2 { font-size: 26px; } .digital-intro-card,
+  .digital-actions-card, .digital-services-card { padding: 20px; } }
+</style>
+<!-- End My Digital Card Area -->

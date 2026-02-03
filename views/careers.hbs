@@ -1,0 +1,518 @@
+<!-- Start Careers Area -->
+<section class="careers-page-area ptb-100">
+  <div class="container">
+    <div class="careers-inner">
+      <!-- Hero -->
+      <div class="careers-hero dc-shadow">
+        <h1>Careers at Seecog Softwares</h1>
+        <p>Join a team building scalable web, mobile, cloud and AI solutions.</p>
+        <div class="careers-hero-cta">
+          <a href="#open-positions" class="default-btn"><i
+              class="bx bx-briefcase"
+            ></i>
+            View Open Roles
+            <span></span></a>
+          <a href="#apply-form" class="optional-btn"><i
+              class="bx bx-paper-plane"
+            ></i>
+            Apply Now</a>
+        </div>
+      </div>
+
+      <!-- Why Join Us -->
+      <div class="careers-section careers-why-join">
+        <h2>Why Join Us</h2>
+        <div class="benefits-grid">
+          <div class="benefit-card dc-shadow">
+            <i class="bx bx-trending-up"></i>
+            <h4>Growth & Learning</h4>
+            <p>Mentorship, hands-on projects, and skill development.</p>
+          </div>
+          <div class="benefit-card dc-shadow">
+            <i class="bx bx-group"></i>
+            <h4>Strong Team Culture</h4>
+            <p>Collaborative environment with ownership and transparency.</p>
+          </div>
+          <div class="benefit-card dc-shadow">
+            <i class="bx bx-bulb"></i>
+            <h4>Meaningful Work</h4>
+            <p>Work on real products and client solutions with impact.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Open Positions -->
+      <div class="careers-section careers-positions" id="open-positions">
+        <h2>Open Positions</h2>
+        <div class="positions-filters dc-shadow">
+          <input
+            type="text"
+            id="positionSearch"
+            class="filter-search"
+            placeholder="Search by title or skills..."
+            aria-label="Search positions"
+          />
+          <select
+            id="filterDepartment"
+            class="filter-select"
+            aria-label="Filter by department"
+          >
+            <option value="">All Departments</option>
+            <option value="Engineering">Engineering</option>
+            <option value="Design">Design</option>
+            <option value="Sales">Sales</option>
+          </select>
+          <select
+            id="filterLocation"
+            class="filter-select"
+            aria-label="Filter by location"
+          >
+            <option value="">All Locations</option>
+            <option value="Remote / Bengaluru">Remote / Bengaluru</option>
+            <option value="Bengaluru">Bengaluru</option>
+          </select>
+          <select
+            id="filterType"
+            class="filter-select"
+            aria-label="Filter by type"
+          >
+            <option value="">All Types</option>
+            <option value="Full-time">Full-time</option>
+            <option value="Intern / Full-time">Intern / Full-time</option>
+          </select>
+        </div>
+        <div id="positionsList" class="positions-list">
+          <!-- Filled by JS -->
+        </div>
+        <div id="noPositions" class="no-positions" hidden>
+          <p>No positions match your filters. Try adjusting your search.</p>
+        </div>
+      </div>
+
+      <!-- Hiring Process -->
+      <div class="careers-section careers-process">
+        <h2>Hiring Process</h2>
+        <div class="process-steps">
+          <div class="process-step dc-shadow">
+            <span class="step-num">1</span>
+            <h4>Apply</h4>
+            <p>Submit your application with resume and details</p>
+          </div>
+          <div class="process-step dc-shadow">
+            <span class="step-num">2</span>
+            <h4>Screen</h4>
+            <p>Initial review and short phone/video screening</p>
+          </div>
+          <div class="process-step dc-shadow">
+            <span class="step-num">3</span>
+            <h4>Interview</h4>
+            <p>Technical and culture-fit interviews</p>
+          </div>
+          <div class="process-step dc-shadow">
+            <span class="step-num">4</span>
+            <h4>Offer</h4>
+            <p>Decision and offer discussion</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="careers-section careers-faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-accordion dc-shadow">
+          <div class="faq-item">
+            <button
+              type="button"
+              class="faq-question"
+              aria-expanded="false"
+              aria-controls="faq1"
+              id="faq1-btn"
+            >
+              <span>What is the typical hiring timeline?</span>
+              <i class="bx bx-chevron-down"></i>
+            </button>
+            <div
+              class="faq-answer"
+              id="faq1"
+              role="region"
+              aria-labelledby="faq1-btn"
+            >
+              <p>From application to offer typically takes 2–3 weeks, depending
+                on role and availability.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button
+              type="button"
+              class="faq-question"
+              aria-expanded="false"
+              aria-controls="faq2"
+              id="faq2-btn"
+            >
+              <span>Do you offer remote work?</span>
+              <i class="bx bx-chevron-down"></i>
+            </button>
+            <div
+              class="faq-answer"
+              id="faq2"
+              role="region"
+              aria-labelledby="faq2-btn"
+            >
+              <p>Yes. Most roles support remote or hybrid work. Location varies
+                by role.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button
+              type="button"
+              class="faq-question"
+              aria-expanded="false"
+              aria-controls="faq3"
+              id="faq3-btn"
+            >
+              <span>What benefits do you offer?</span>
+              <i class="bx bx-chevron-down"></i>
+            </button>
+            <div
+              class="faq-answer"
+              id="faq3"
+              role="region"
+              aria-labelledby="faq3-btn"
+            >
+              <p>We offer competitive compensation, learning budget, flexible
+                hours, and a supportive team culture.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Apply Form -->
+      <div class="careers-section careers-apply" id="apply-form">
+        <h2>Apply Now</h2>
+        <form id="careersApplyForm" class="careers-apply-form dc-shadow">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Full Name <span>*</span></label>
+              <input
+                type="text"
+                name="name"
+                required
+                placeholder="Your full name"
+                id="careersName"
+              />
+            </div>
+            <div class="form-group">
+              <label>Email <span>*</span></label>
+              <input
+                type="email"
+                name="email"
+                required
+                placeholder="you@example.com"
+                id="careersEmail"
+              />
+              <span class="form-error" id="emailError" hidden></span>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Phone <span>*</span></label>
+              <input
+                type="tel"
+                name="phone"
+                required
+                placeholder="+91 9876543210"
+                id="careersPhone"
+              />
+              <span class="form-error" id="phoneError" hidden></span>
+            </div>
+            <div class="form-group">
+              <label>Role Interested In <span>*</span></label>
+              <select name="role" required id="careersRole">
+                <option value="">Select a role</option>
+                <option value="Frontend Developer">Frontend Developer</option>
+                <option value="Backend Developer (Node.js)">Backend Developer
+                  (Node.js)</option>
+                <option value="UI/UX Designer">UI/UX Designer</option>
+                <option value="Business Development Executive">Business
+                  Development Executive</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Experience (years)</label>
+              <input type="text" name="experience" placeholder="e.g. 2" />
+            </div>
+            <div class="form-group">
+              <label>Portfolio / LinkedIn URL</label>
+              <input
+                type="url"
+                name="portfolio"
+                placeholder="https://linkedin.com/in/you"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Resume Upload (PDF/DOC/DOCX, max 5MB)</label>
+            <input
+              type="file"
+              name="resume"
+              id="careersResume"
+              accept=".pdf,.doc,.docx"
+            />
+            <span class="form-error" id="resumeError" hidden></span>
+            <span class="file-name" id="resumeFileName"></span>
+          </div>
+          <div class="form-group">
+            <label>Message <span>*</span></label>
+            <textarea
+              name="message"
+              rows="5"
+              required
+              placeholder="Tell us about yourself and why you want to join..."
+            ></textarea>
+          </div>
+          <button type="submit" class="default-btn" id="careersSubmitBtn">
+            <i class="bx bx-paper-plane"></i>
+            Submit Application
+            <span></span>
+          </button>
+        </form>
+      </div>
+
+      <!-- Footer CTA -->
+      <div class="careers-cta dc-shadow">
+        <h3>Prefer email?</h3>
+        <p>Send your resume to
+          <a
+            href="mailto:info@seecogsoftwares.com?subject=Application%20-%20Seecog%20Softwares"
+          >info@seecogsoftwares.com</a>
+          with the subject:
+          <strong>Application - &lt;Role&gt;</strong>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Toast -->
+<div
+  id="careersToast"
+  class="careers-toast"
+  role="status"
+  aria-live="polite"
+  hidden
+></div>
+
+<script>
+  (function() { 'use strict'; var POSITIONS = [ { id: 'FE-01', title: 'Frontend
+  Developer', department: 'Engineering', experience: '1–3 years', location:
+  'Remote / Bengaluru', type: 'Full-time', skills: ['HTML', 'CSS', 'JavaScript',
+  'React'], shortDescription: 'Build modern UI with strong performance and clean
+  components.' }, { id: 'BE-01', title: 'Backend Developer (Node.js)',
+  department: 'Engineering', experience: '1–3 years', location: 'Remote /
+  Bengaluru', type: 'Full-time', skills: ['Node.js', 'Express', 'SQL', 'APIs'],
+  shortDescription: 'Develop secure APIs, services, and scalable backend
+  modules.' }, { id: 'UX-01', title: 'UI/UX Designer', department: 'Design',
+  experience: '0–2 years', location: 'Remote / Bengaluru', type: 'Intern /
+  Full-time', skills: ['Figma', 'Wireframes', 'Prototyping'], shortDescription:
+  'Design clean user flows and premium UI screens.' }, { id: 'BD-01', title:
+  'Business Development Executive', department: 'Sales', experience: '0–2
+  years', location: 'Bengaluru', type: 'Intern / Full-time', skills:
+  ['Communication', 'Lead Gen', 'Client Handling'], shortDescription: 'Drive
+  outreach, lead generation and client coordination.' } ]; var RESUME_MAX_MB =
+  5; var EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; var PHONE_REGEX =
+  /^\+?[0-9\s\-()]{10,15}$/; function renderPositions(list) { var container =
+  document.getElementById('positionsList'); var noPos =
+  document.getElementById('noPositions'); if (!container) return; var html =
+  list.map(function(p) { var skillsHtml = p.skills.map(function(s) { return
+  '<span class="skill-tag">' + s + '</span>'; }).join(''); return '<div
+  class="position-card dc-shadow" data-role="' + p.title + '">' + '<div
+  class="position-info">' + '<h4>' + p.title + '</h4>' + '<p
+  class="position-desc">' + p.shortDescription + '</p>' + '<div
+  class="position-meta">' + '<span><i class="bx bx-time-five"></i> ' +
+  p.experience + '</span>' + '<span><i class="bx bx-map"></i> ' + p.location +
+  '</span>' + '<span><i class="bx bx-briefcase"></i> ' + p.type + '</span>' +
+  '</div>' + '<div class="position-skills">' + skillsHtml + '</div>' + '</div>'
+  + '<a href="#apply-form" class="default-btn btn-sm careers-apply-btn"
+  data-role="' + p.title + '">Apply</a>' + '</div>'; }).join('');
+  container.innerHTML = html; if (list.length === 0) { noPos &&
+  noPos.removeAttribute('hidden'); } else { noPos &&
+  noPos.setAttribute('hidden', ''); } bindApplyButtons(); } function
+  filterPositions() { var search = (document.getElementById('positionSearch') ||
+  {}).value.toLowerCase() || ''; var dept =
+  (document.getElementById('filterDepartment') || {}).value || ''; var loc =
+  (document.getElementById('filterLocation') || {}).value || ''; var typ =
+  (document.getElementById('filterType') || {}).value || ''; var filtered =
+  POSITIONS.filter(function(p) { var matchSearch = !search || (p.title + ' ' +
+  p.skills.join(' ')).toLowerCase().indexOf(search) >= 0; var matchDept = !dept
+  || p.department === dept; var matchLoc = !loc || p.location === loc; var
+  matchTyp = !typ || p.type === typ; return matchSearch && matchDept && matchLoc
+  && matchTyp; }); renderPositions(filtered); } function bindApplyButtons() {
+  document.querySelectorAll('.careers-apply-btn').forEach(function(btn) {
+  btn.addEventListener('click', function(e) { e.preventDefault(); var role =
+  btn.getAttribute('data-role'); var sel =
+  document.getElementById('careersRole'); if (sel && role) { sel.value = role;
+  if (sel.querySelector('option[value="' + role + '"]') === null) { sel.value =
+  'Other'; } } var form = document.getElementById('apply-form'); if (form)
+  form.scrollIntoView({ behavior: 'smooth', block: 'start' }); }); }); }
+  function initFilters() { ['positionSearch', 'filterDepartment',
+  'filterLocation', 'filterType'].forEach(function(id) { var el =
+  document.getElementById(id); if (el) el.addEventListener('input',
+  filterPositions).addEventListener('change', filterPositions); });
+  renderPositions(POSITIONS); } function initFAQ() {
+  document.querySelectorAll('.faq-question').forEach(function(btn) {
+  btn.addEventListener('click', function() { var expanded =
+  btn.getAttribute('aria-expanded') === 'true';
+  btn.setAttribute('aria-expanded', !expanded); var target =
+  document.getElementById(btn.getAttribute('aria-controls')); if (target)
+  target.classList.toggle('faq-open', !expanded); }); }); } function
+  showToast(msg, isError) { var t = document.getElementById('careersToast'); if
+  (!t) return; t.textContent = msg; t.className = 'careers-toast
+  careers-toast-visible' + (isError ? ' careers-toast-error' : '');
+  t.removeAttribute('hidden'); setTimeout(function() {
+  t.classList.remove('careers-toast-visible'); setTimeout(function() {
+  t.setAttribute('hidden', ''); }, 300); }, 4000); } function
+  validateEmail(email) { return EMAIL_REGEX.test((email || '').trim()); }
+  function validatePhone(phone) { var digits = (phone || '').replace(/\D/g, '');
+  return digits.length >= 10 && digits.length <= 15; } function
+  validateResume(file) { if (!file || !file.name) return { ok: true }; var ext =
+  (file.name.split('.').pop() || '').toLowerCase(); if (['pdf', 'doc',
+  'docx'].indexOf(ext) < 0) return { ok: false, msg: 'Only PDF, DOC, DOCX
+  allowed.' }; var sizeMB = file.size / (1024 * 1024); if (sizeMB >
+  RESUME_MAX_MB) return { ok: false, msg: 'File must be under ' + RESUME_MAX_MB
+  + ' MB.' }; return { ok: true }; } function initForm() { var form =
+  document.getElementById('careersApplyForm'); var resumeInput =
+  document.getElementById('careersResume'); var fileNameEl =
+  document.getElementById('resumeFileName'); var submitBtn =
+  document.getElementById('careersSubmitBtn'); if (resumeInput && fileNameEl) {
+  resumeInput.addEventListener('change', function() { var f =
+  resumeInput.files[0]; fileNameEl.textContent = f ? f.name : ''; var err =
+  document.getElementById('resumeError'); if (err) { err.hidden = true;
+  err.textContent = ''; } }); } if (!form) return;
+  form.addEventListener('submit', function(e) { e.preventDefault(); var email =
+  form.querySelector('[name="email"]'); var phone =
+  form.querySelector('[name="phone"]'); var resume =
+  form.querySelector('[name="resume"]'); var emailErr =
+  document.getElementById('emailError'); var phoneErr =
+  document.getElementById('phoneError'); var resumeErr =
+  document.getElementById('resumeError'); if (emailErr) { emailErr.hidden =
+  true; emailErr.textContent = ''; } if (phoneErr) { phoneErr.hidden = true;
+  phoneErr.textContent = ''; } if (resumeErr) { resumeErr.hidden = true;
+  resumeErr.textContent = ''; } var valid = true; if (!validateEmail(email ?
+  email.value : '')) { if (emailErr) { emailErr.textContent = 'Enter a valid
+  email.'; emailErr.hidden = false; valid = false; } } if (!validatePhone(phone
+  ? phone.value : '')) { if (phoneErr) { phoneErr.textContent = 'Enter a valid
+  phone (10–15 digits).'; phoneErr.hidden = false; valid = false; } } var resVal
+  = validateResume(resume ? resume.files[0] : null); if (!resVal.ok) { if
+  (resumeErr) { resumeErr.textContent = resVal.msg; resumeErr.hidden = false;
+  valid = false; } } if (!valid) return; if (submitBtn) { submitBtn.disabled =
+  true; submitBtn.classList.add('careers-loading'); } setTimeout(function() {
+  form.reset(); if (fileNameEl) fileNameEl.textContent = '';
+  showToast('Application submitted successfully!'); if (submitBtn) {
+  submitBtn.disabled = false; submitBtn.classList.remove('careers-loading'); }
+  }, 800); }); } function init() { initFilters(); initFAQ(); initForm(); } if
+  (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init); } else { init(); } })();
+</script>
+
+<style>
+  .careers-page-area { background: linear-gradient(135deg, #f8f9fc 0%, #f0f4ff
+  50%, #eef2ff 100%); } .careers-inner { max-width: 960px; margin: 0 auto; }
+  .dc-shadow { box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 12px 48px
+  rgba(0,0,0,0.06); border-radius: 20px; } .careers-hero { text-align: center;
+  padding: 48px 32px; background: linear-gradient(135deg, #0a0f2c 0%, #1b0f4f
+  100%); color: #fff; border-radius: 20px; margin-bottom: 56px; } .careers-hero
+  h1 { font-size: 38px; font-weight: 700; margin: 0 0 16px; letter-spacing:
+  -0.5px; } .careers-hero p { font-size: 18px; opacity: 0.92; margin: 0 0 32px;
+  line-height: 1.6; max-width: 560px; margin-left: auto; margin-right: auto; }
+  .careers-hero-cta { display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 16px; } .careers-section { margin-bottom: 56px; } .careers-section h2 {
+  font-size: 28px; font-weight: 700; margin-bottom: 28px; color: #1a1a2e;
+  text-align: center; letter-spacing: -0.3px; } .benefits-grid { display: grid;
+  grid-template-columns: repeat(3, 1fr); gap: 24px; } .benefit-card { padding:
+  32px 28px; background: #fff; border-radius: 20px; text-align: center;
+  transition: all 0.3s ease; border: 1px solid rgba(108,92,231,0.08); }
+  .benefit-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px
+  rgba(108,92,231,0.15) !important; border-color: rgba(108,92,231,0.2); }
+  .benefit-card i { font-size: 48px; color: #6c5ce7; margin-bottom: 20px;
+  display: block; } .benefit-card h4 { font-size: 18px; font-weight: 600;
+  margin-bottom: 12px; color: #1a1a2e; } .benefit-card p { font-size: 15px;
+  color: #555; margin: 0; line-height: 1.6; } .positions-filters { display:
+  grid; grid-template-columns: 1fr auto auto auto; gap: 16px; padding: 24px;
+  background: #fff; border-radius: 20px; margin-bottom: 28px; align-items:
+  center; } .filter-search { padding: 14px 18px; border: 1px solid #e8ecf4;
+  border-radius: 12px; font-size: 15px; } .filter-search:focus { outline: none;
+  border-color: #6c5ce7; box-shadow: 0 0 0 3px rgba(108,92,231,0.12); }
+  .filter-select { padding: 14px 18px; border: 1px solid #e8ecf4; border-radius:
+  12px; font-size: 14px; min-width: 160px; } .positions-list { display: flex;
+  flex-direction: column; gap: 20px; } .position-card { display: flex;
+  flex-wrap: wrap; align-items: center; justify-content: space-between; gap:
+  24px; padding: 28px; background: #fff; border-radius: 20px; transition: all
+  0.3s ease; border: 1px solid rgba(0,0,0,0.04); } .position-card:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08) !important; border-color:
+  rgba(108,92,231,0.15); } .position-info { flex: 1; min-width: 240px; }
+  .position-info h4 { font-size: 19px; font-weight: 600; margin: 0 0 10px;
+  color: #1a1a2e; } .position-desc { font-size: 15px; color: #555; margin: 0 0
+  14px; line-height: 1.55; } .position-meta { display: flex; flex-wrap: wrap;
+  gap: 20px; font-size: 14px; color: #555; } .position-meta span { display:
+  flex; align-items: center; gap: 8px; } .position-meta i { font-size: 18px;
+  color: #6c5ce7; } .position-skills { display: flex; flex-wrap: wrap; gap:
+  10px; margin-top: 14px; } .skill-tag { font-size: 12px; padding: 6px 12px;
+  background: linear-gradient(135deg, #f0f4ff, #f8f9ff); color: #6c5ce7;
+  border-radius: 10px; font-weight: 500; } .btn-sm { padding: 12px 24px;
+  font-size: 14px; font-weight: 600; border-radius: 12px; } .no-positions {
+  text-align: center; padding: 48px; color: #666; font-size: 16px; }
+  .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap:
+  24px; } .process-step { padding: 28px 24px; background: #fff; border-radius:
+  20px; text-align: center; transition: all 0.3s ease; } .process-step:hover {
+  transform: translateY(-4px); box-shadow: 0 12px 36px rgba(108,92,231,0.12)
+  !important; } .step-num { display: inline-flex; align-items: center;
+  justify-content: center; width: 48px; height: 48px; background:
+  linear-gradient(135deg, #6c5ce7, #5b4cdb); color: #fff; border-radius: 50%;
+  font-weight: 700; font-size: 18px; margin-bottom: 20px; } .process-step h4 {
+  font-size: 18px; font-weight: 600; margin: 0 0 10px; color: #1a1a2e; }
+  .process-step p { font-size: 14px; color: #555; margin: 0; line-height: 1.5; }
+  .faq-accordion { background: #fff; border-radius: 20px; overflow: hidden; }
+  .faq-item { border-bottom: 1px solid #eee; } .faq-item:last-child {
+  border-bottom: none; } .faq-question { width: 100%; display: flex;
+  align-items: center; justify-content: space-between; padding: 22px 28px;
+  background: none; border: none; font-size: 16px; font-weight: 600; color:
+  #1a1a2e; cursor: pointer; text-align: left; transition: background 0.2s; }
+  .faq-question:hover { background: #fafbff; } .faq-question i { font-size:
+  22px; color: #6c5ce7; transition: transform 0.3s; flex-shrink: 0; margin-left:
+  12px; } .faq-question[aria-expanded="true"] i { transform: rotate(180deg); }
+  .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s
+  ease; } .faq-answer.faq-open { max-height: 140px; } .faq-answer p { margin: 0;
+  padding: 0 28px 24px; color: #555; line-height: 1.65; font-size: 15px; }
+  .careers-apply-form { padding: 40px; background: #fff; border-radius: 20px;
+  max-width: 640px; margin: 0 auto; } .form-row { display: grid;
+  grid-template-columns: 1fr 1fr; gap: 24px; } .form-group { margin-bottom:
+  22px; } .form-group label { display: block; margin-bottom: 10px; font-weight:
+  600; color: #333; font-size: 14px; } .form-group input, .form-group select,
+  .form-group textarea { width: 100%; padding: 14px 18px; border: 1px solid
+  #e8ecf4; border-radius: 12px; font-size: 15px; } .form-group input:focus,
+  .form-group select:focus, .form-group textarea:focus { outline: none;
+  border-color: #6c5ce7; box-shadow: 0 0 0 3px rgba(108,92,231,0.12); }
+  .form-error { display: block; font-size: 12px; color: #dc3545; margin-top:
+  6px; } .file-name { font-size: 13px; color: #6c5ce7; margin-top: 6px; display:
+  block; font-weight: 500; } .careers-loading { opacity: 0.7; pointer-events:
+  none; } .careers-toast { position: fixed; bottom: 32px; left: 50%; transform:
+  translateX(-50%); background: #1a1a2e; color: #fff; padding: 16px 32px;
+  border-radius: 14px; font-size: 15px; z-index: 9999; opacity: 0; transition:
+  opacity 0.3s; box-shadow: 0 12px 40px rgba(0,0,0,0.2); }
+  .careers-toast-visible { opacity: 1; } .careers-toast-error { background:
+  #dc3545; } .careers-cta { text-align: center; padding: 40px 36px; background:
+  #fff; border-radius: 20px; } .careers-cta h3 { font-size: 22px; font-weight:
+  600; margin: 0 0 14px; color: #1a1a2e; } .careers-cta p { font-size: 16px;
+  color: #555; margin: 0; line-height: 1.6; } .careers-cta a { color: #6c5ce7;
+  font-weight: 600; } @media (max-width: 991px) { .benefits-grid {
+  grid-template-columns: 1fr; } .process-steps { grid-template-columns:
+  repeat(2, 1fr); } .positions-filters { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 767px) { .process-steps { grid-template-columns: 1fr; } }
+  @media (max-width: 575px) { .form-row { grid-template-columns: 1fr; }
+  .position-card { flex-direction: column; align-items: stretch; }
+  .positions-filters { grid-template-columns: 1fr; } .careers-hero h1 {
+  font-size: 28px; } .careers-hero { padding: 36px 24px; } }
+</style>
+<!-- End Careers Area -->
