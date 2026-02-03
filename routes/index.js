@@ -8,7 +8,7 @@ var path = require("path");
 var dataInfo = null;
 function getDataSet() {
   const filePath = path.join(__dirname, "dataset/data.json");
-//   console.log("the fie : ", filePath);
+  //   console.log("the fie : ", filePath);
   fs.readFile(filePath, "utf8", (err, data) => {
     // console.log("The data is : ", data);
     dataInfo = JSON.parse(data);
@@ -36,7 +36,7 @@ router.get("/technologies", function (req, res, next) {
 });
 
 router.get("/contact", function (req, res, next) {
-  console.log("The contact page info : ",dataInfo,dataInfo.contact_page)
+  console.log("The contact page info : ", dataInfo, dataInfo.contact_page)
   res.render("contact", {
     layout: "contact_main",
     data: dataInfo.contact_page,
@@ -69,11 +69,51 @@ router.get("/portfolio", function (req, res, next) {
     data: dataInfo.portfolio_page
   });
 });
+
+router.get("/my-digital-card", function (req, res, next) {
+  const contactData = (dataInfo && dataInfo.contact_page) || {
+    email: "info@seecogsoftwares.com",
+    contact: "+91 7625067691",
+    address: "Site No. 26, Prestige Cube Building, Laskar, Hosur Rd, Adugodi, Koramangala, Bengaluru, Karnataka 560030"
+  };
+  res.render("my-digital-card", {
+    layout: "contact_main",
+    data: {
+      title: "My Digital Card",
+      subTitle: "Your digital identity at a glance",
+      companyName: "Seecog Softwares Pvt Ltd",
+      ...contactData
+    }
+  });
+});
+
 router.get("/culture", function (req, res, next) {
-  console.log("Inside culture *** ");
   res.render("culture", {
     layout: "contact_main",
     data: dataInfo.culture_page
+  });
+});
+
+router.get("/careers", function (req, res, next) {
+  res.render("careers", {
+    layout: "contact_main",
+    data: {
+      title: "Careers",
+      subTitle: "Build your career with us"
+    }
+  });
+});
+
+router.get("/partners", function (req, res, next) {
+  const portfolio = (dataInfo && dataInfo.portfolio_page && dataInfo.portfolio_page.projects) || [];
+  const selectedProjects = portfolio.slice(0, 3);
+  res.render("partners", {
+    layout: "contact_main",
+    data: {
+      title: "Partners",
+      subTitle: "Our trusted partners and valued clients",
+      selectedProjects: selectedProjects
+    }
   });
 });
 
