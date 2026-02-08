@@ -1,8 +1,8 @@
 var express = require("express");
 var router = express.Router();
-// var axios = require("axios");
 var fs = require("fs");
 var path = require("path");
+var careersController = require("../controllers/careersController");
 
 //start
 var dataInfo = null;
@@ -94,15 +94,8 @@ router.get("/culture", function (req, res, next) {
   });
 });
 
-router.get("/careers", function (req, res, next) {
-  res.render("careers", {
-    layout: "contact_main",
-    data: {
-      title: "Careers",
-      subTitle: "Build your career with us"
-    }
-  });
-});
+router.get("/careers", careersController.getCareers);
+router.post("/careers/apply", careersController.postApply);
 
 router.get("/partners", function (req, res, next) {
   const portfolio = (dataInfo && dataInfo.portfolio_page && dataInfo.portfolio_page.projects) || [];

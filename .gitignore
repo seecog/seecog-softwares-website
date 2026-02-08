@@ -26,6 +26,10 @@ Thumbs.db
 # Temp
 tmp/
 
+# Uploads
+uploads/
+public/careers/
+
 # Build
 dist/
 build/

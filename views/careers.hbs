@@ -12,10 +12,6 @@
             ></i>
             View Open Roles
             <span></span></a>
-          <a href="#apply-form" class="optional-btn"><i
-              class="bx bx-paper-plane"
-            ></i>
-            Apply Now</a>
         </div>
       </div>
 
@@ -77,12 +73,34 @@
             aria-label="Filter by type"
           >
             <option value="">All Types</option>
-            <option value="Full-time">Full-time</option>
-            <option value="Intern / Full-time">Intern / Full-time</option>
+            <option value="FULL_TIME">Full-time</option>
+            <option value="PART_TIME">Part-time</option>
+            <option value="CONTRACT">Contract</option>
+            <option value="INTERN">Intern</option>
           </select>
         </div>
         <div id="positionsList" class="positions-list">
-          <!-- Filled by JS -->
+          {{#if data.jobs}}{{#each data.jobs}}
+          <div class="position-card dc-shadow" data-job-id="{{this.id}}" data-title="{{this.title}}" data-department="{{this.department}}" data-location="{{this.location}}" data-type="{{this.job_type}}">
+            <div class="position-info">
+              <h4>{{this.title}}</h4>
+              <p class="position-desc">{{this.description}}</p>
+              <div class="position-meta">
+                <span><i class="bx bx-map"></i> {{this.location}}</span>
+                <span><i class="bx bx-briefcase"></i> {{this.job_type}}</span>
+                {{#if this.department}}<span><i class="bx bx-building"></i> {{this.department}}</span>{{/if}}
+              </div>
+            </div>
+            <button type="button" class="default-btn btn-sm careers-apply-btn" data-job-id="{{this.id}}" data-job-title="{{this.title}}" onclick="window.openCareersApplyModal(this); return false;">Apply</button>
+          </div>
+          {{/each}}{{else}}
+          <div class="position-card dc-shadow no-jobs-msg">
+            <div class="position-info">
+              <h4>No open positions at the moment</h4>
+              <p class="position-desc">We're always looking for talented people. Check back soon or send us your resume.</p>
+            </div>
+          </div>
+          {{/if}}
         </div>
         <div id="noPositions" class="no-positions" hidden>
           <p>No positions match your filters. Try adjusting your search.</p>
@@ -186,101 +204,6 @@
         </div>
       </div>
 
-      <!-- Apply Form -->
-      <div class="careers-section careers-apply" id="apply-form">
-        <h2>Apply Now</h2>
-        <form id="careersApplyForm" class="careers-apply-form dc-shadow">
-          <div class="form-row">
-            <div class="form-group">
-              <label>Full Name <span>*</span></label>
-              <input
-                type="text"
-                name="name"
-                required
-                placeholder="Your full name"
-                id="careersName"
-              />
-            </div>
-            <div class="form-group">
-              <label>Email <span>*</span></label>
-              <input
-                type="email"
-                name="email"
-                required
-                placeholder="you@example.com"
-                id="careersEmail"
-              />
-              <span class="form-error" id="emailError" hidden></span>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label>Phone <span>*</span></label>
-              <input
-                type="tel"
-                name="phone"
-                required
-                placeholder="+91 9876543210"
-                id="careersPhone"
-              />
-              <span class="form-error" id="phoneError" hidden></span>
-            </div>
-            <div class="form-group">
-              <label>Role Interested In <span>*</span></label>
-              <select name="role" required id="careersRole">
-                <option value="">Select a role</option>
-                <option value="Frontend Developer">Frontend Developer</option>
-                <option value="Backend Developer (Node.js)">Backend Developer
-                  (Node.js)</option>
-                <option value="UI/UX Designer">UI/UX Designer</option>
-                <option value="Business Development Executive">Business
-                  Development Executive</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label>Experience (years)</label>
-              <input type="text" name="experience" placeholder="e.g. 2" />
-            </div>
-            <div class="form-group">
-              <label>Portfolio / LinkedIn URL</label>
-              <input
-                type="url"
-                name="portfolio"
-                placeholder="https://linkedin.com/in/you"
-              />
-            </div>
-          </div>
-          <div class="form-group">
-            <label>Resume Upload (PDF/DOC/DOCX, max 5MB)</label>
-            <input
-              type="file"
-              name="resume"
-              id="careersResume"
-              accept=".pdf,.doc,.docx"
-            />
-            <span class="form-error" id="resumeError" hidden></span>
-            <span class="file-name" id="resumeFileName"></span>
-          </div>
-          <div class="form-group">
-            <label>Message <span>*</span></label>
-            <textarea
-              name="message"
-              rows="5"
-              required
-              placeholder="Tell us about yourself and why you want to join..."
-            ></textarea>
-          </div>
-          <button type="submit" class="default-btn" id="careersSubmitBtn">
-            <i class="bx bx-paper-plane"></i>
-            Submit Application
-            <span></span>
-          </button>
-        </form>
-      </div>
-
       <!-- Footer CTA -->
       <div class="careers-cta dc-shadow">
         <h3>Prefer email?</h3>
@@ -295,6 +218,49 @@
   </div>
 </section>
 
+<!-- Apply Modal -->
+<div id="applyModal" class="careers-modal" aria-hidden="true">
+  <div class="careers-modal-overlay"></div>
+  <div class="careers-modal-content dc-shadow">
+    <button type="button" class="careers-modal-close" aria-label="Close">&times;</button>
+    <h3 id="applyModalTitle">Apply for this position</h3>
+    <div id="applyModalError" class="careers-modal-error" hidden></div>
+    <form id="careersApplyForm" class="careers-apply-form" method="post" action="/careers/apply" enctype="multipart/form-data">
+      <input type="hidden" name="job_id" id="careersJobId" value="">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Full Name <span>*</span></label>
+          <input type="text" name="full_name" required placeholder="Your full name" id="careersName" />
+        </div>
+        <div class="form-group">
+          <label>Email <span>*</span></label>
+          <input type="email" name="email" required placeholder="you@example.com" id="careersEmail" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>LinkedIn URL <span>*</span></label>
+          <input type="url" name="linkedin_url" required placeholder="https://linkedin.com/in/you" />
+        </div>
+        <div class="form-group">
+          <label>Portfolio URL (optional)</label>
+          <input type="url" name="portfolio_url" placeholder="https://yourportfolio.com" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Resume (PDF/DOC/DOCX, max 5MB) <span>*</span></label>
+        <input type="file" name="resume" id="careersResume" accept=".pdf,.doc,.docx" required />
+        <span class="file-name" id="resumeFileName"></span>
+      </div>
+      <button type="submit" class="default-btn" id="careersSubmitBtn">
+        <i class="bx bx-paper-plane"></i>
+        Submit Application
+        <span></span>
+      </button>
+    </form>
+  </div>
+</div>
+
 <!-- Toast -->
 <div
   id="careersToast"
@@ -305,120 +271,167 @@
 ></div>
 
 <script>
-  (function() { 'use strict'; var POSITIONS = [ { id: 'FE-01', title: 'Frontend
-  Developer', department: 'Engineering', experience: '1–3 years', location:
-  'Remote / Bengaluru', type: 'Full-time', skills: ['HTML', 'CSS', 'JavaScript',
-  'React'], shortDescription: 'Build modern UI with strong performance and clean
-  components.' }, { id: 'BE-01', title: 'Backend Developer (Node.js)',
-  department: 'Engineering', experience: '1–3 years', location: 'Remote /
-  Bengaluru', type: 'Full-time', skills: ['Node.js', 'Express', 'SQL', 'APIs'],
-  shortDescription: 'Develop secure APIs, services, and scalable backend
-  modules.' }, { id: 'UX-01', title: 'UI/UX Designer', department: 'Design',
-  experience: '0–2 years', location: 'Remote / Bengaluru', type: 'Intern /
-  Full-time', skills: ['Figma', 'Wireframes', 'Prototyping'], shortDescription:
-  'Design clean user flows and premium UI screens.' }, { id: 'BD-01', title:
-  'Business Development Executive', department: 'Sales', experience: '0–2
-  years', location: 'Bengaluru', type: 'Intern / Full-time', skills:
-  ['Communication', 'Lead Gen', 'Client Handling'], shortDescription: 'Drive
-  outreach, lead generation and client coordination.' } ]; var RESUME_MAX_MB =
-  5; var EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; var PHONE_REGEX =
-  /^\+?[0-9\s\-()]{10,15}$/; function renderPositions(list) { var container =
-  document.getElementById('positionsList'); var noPos =
-  document.getElementById('noPositions'); if (!container) return; var html =
-  list.map(function(p) { var skillsHtml = p.skills.map(function(s) { return
-  '<span class="skill-tag">' + s + '</span>'; }).join(''); return '<div
-  class="position-card dc-shadow" data-role="' + p.title + '">' + '<div
-  class="position-info">' + '<h4>' + p.title + '</h4>' + '<p
-  class="position-desc">' + p.shortDescription + '</p>' + '<div
-  class="position-meta">' + '<span><i class="bx bx-time-five"></i> ' +
-  p.experience + '</span>' + '<span><i class="bx bx-map"></i> ' + p.location +
-  '</span>' + '<span><i class="bx bx-briefcase"></i> ' + p.type + '</span>' +
-  '</div>' + '<div class="position-skills">' + skillsHtml + '</div>' + '</div>'
-  + '<a href="#apply-form" class="default-btn btn-sm careers-apply-btn"
-  data-role="' + p.title + '">Apply</a>' + '</div>'; }).join('');
-  container.innerHTML = html; if (list.length === 0) { noPos &&
-  noPos.removeAttribute('hidden'); } else { noPos &&
-  noPos.setAttribute('hidden', ''); } bindApplyButtons(); } function
-  filterPositions() { var search = (document.getElementById('positionSearch') ||
-  {}).value.toLowerCase() || ''; var dept =
-  (document.getElementById('filterDepartment') || {}).value || ''; var loc =
-  (document.getElementById('filterLocation') || {}).value || ''; var typ =
-  (document.getElementById('filterType') || {}).value || ''; var filtered =
-  POSITIONS.filter(function(p) { var matchSearch = !search || (p.title + ' ' +
-  p.skills.join(' ')).toLowerCase().indexOf(search) >= 0; var matchDept = !dept
-  || p.department === dept; var matchLoc = !loc || p.location === loc; var
-  matchTyp = !typ || p.type === typ; return matchSearch && matchDept && matchLoc
-  && matchTyp; }); renderPositions(filtered); } function bindApplyButtons() {
-  document.querySelectorAll('.careers-apply-btn').forEach(function(btn) {
-  btn.addEventListener('click', function(e) { e.preventDefault(); var role =
-  btn.getAttribute('data-role'); var sel =
-  document.getElementById('careersRole'); if (sel && role) { sel.value = role;
-  if (sel.querySelector('option[value="' + role + '"]') === null) { sel.value =
-  'Other'; } } var form = document.getElementById('apply-form'); if (form)
-  form.scrollIntoView({ behavior: 'smooth', block: 'start' }); }); }); }
-  function initFilters() { ['positionSearch', 'filterDepartment',
-  'filterLocation', 'filterType'].forEach(function(id) { var el =
-  document.getElementById(id); if (el) el.addEventListener('input',
-  filterPositions).addEventListener('change', filterPositions); });
-  renderPositions(POSITIONS); } function initFAQ() {
-  document.querySelectorAll('.faq-question').forEach(function(btn) {
-  btn.addEventListener('click', function() { var expanded =
-  btn.getAttribute('aria-expanded') === 'true';
-  btn.setAttribute('aria-expanded', !expanded); var target =
-  document.getElementById(btn.getAttribute('aria-controls')); if (target)
-  target.classList.toggle('faq-open', !expanded); }); }); } function
-  showToast(msg, isError) { var t = document.getElementById('careersToast'); if
-  (!t) return; t.textContent = msg; t.className = 'careers-toast
-  careers-toast-visible' + (isError ? ' careers-toast-error' : '');
-  t.removeAttribute('hidden'); setTimeout(function() {
-  t.classList.remove('careers-toast-visible'); setTimeout(function() {
-  t.setAttribute('hidden', ''); }, 300); }, 4000); } function
-  validateEmail(email) { return EMAIL_REGEX.test((email || '').trim()); }
-  function validatePhone(phone) { var digits = (phone || '').replace(/\D/g, '');
-  return digits.length >= 10 && digits.length <= 15; } function
-  validateResume(file) { if (!file || !file.name) return { ok: true }; var ext =
-  (file.name.split('.').pop() || '').toLowerCase(); if (['pdf', 'doc',
-  'docx'].indexOf(ext) < 0) return { ok: false, msg: 'Only PDF, DOC, DOCX
-  allowed.' }; var sizeMB = file.size / (1024 * 1024); if (sizeMB >
-  RESUME_MAX_MB) return { ok: false, msg: 'File must be under ' + RESUME_MAX_MB
-  + ' MB.' }; return { ok: true }; } function initForm() { var form =
-  document.getElementById('careersApplyForm'); var resumeInput =
-  document.getElementById('careersResume'); var fileNameEl =
-  document.getElementById('resumeFileName'); var submitBtn =
-  document.getElementById('careersSubmitBtn'); if (resumeInput && fileNameEl) {
-  resumeInput.addEventListener('change', function() { var f =
-  resumeInput.files[0]; fileNameEl.textContent = f ? f.name : ''; var err =
-  document.getElementById('resumeError'); if (err) { err.hidden = true;
-  err.textContent = ''; } }); } if (!form) return;
-  form.addEventListener('submit', function(e) { e.preventDefault(); var email =
-  form.querySelector('[name="email"]'); var phone =
-  form.querySelector('[name="phone"]'); var resume =
-  form.querySelector('[name="resume"]'); var emailErr =
-  document.getElementById('emailError'); var phoneErr =
-  document.getElementById('phoneError'); var resumeErr =
-  document.getElementById('resumeError'); if (emailErr) { emailErr.hidden =
-  true; emailErr.textContent = ''; } if (phoneErr) { phoneErr.hidden = true;
-  phoneErr.textContent = ''; } if (resumeErr) { resumeErr.hidden = true;
-  resumeErr.textContent = ''; } var valid = true; if (!validateEmail(email ?
-  email.value : '')) { if (emailErr) { emailErr.textContent = 'Enter a valid
-  email.'; emailErr.hidden = false; valid = false; } } if (!validatePhone(phone
-  ? phone.value : '')) { if (phoneErr) { phoneErr.textContent = 'Enter a valid
-  phone (10–15 digits).'; phoneErr.hidden = false; valid = false; } } var resVal
-  = validateResume(resume ? resume.files[0] : null); if (!resVal.ok) { if
-  (resumeErr) { resumeErr.textContent = resVal.msg; resumeErr.hidden = false;
-  valid = false; } } if (!valid) return; if (submitBtn) { submitBtn.disabled =
-  true; submitBtn.classList.add('careers-loading'); } setTimeout(function() {
-  form.reset(); if (fileNameEl) fileNameEl.textContent = '';
-  showToast('Application submitted successfully!'); if (submitBtn) {
-  submitBtn.disabled = false; submitBtn.classList.remove('careers-loading'); }
-  }, 800); }); } function init() { initFilters(); initFAQ(); initForm(); } if
-  (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', init); } else { init(); } })();
+(function() {
+  window.openCareersApplyModal = function(btn) {
+    if (!btn) return;
+    var jobId = btn.getAttribute && btn.getAttribute('data-job-id');
+    var jobTitle = btn.getAttribute && btn.getAttribute('data-job-title');
+    var modal = document.getElementById('applyModal');
+    var jobIdEl = document.getElementById('careersJobId');
+    var titleEl = document.getElementById('applyModalTitle');
+    var errEl = document.getElementById('applyModalError');
+    if (jobIdEl) jobIdEl.value = jobId || '';
+    if (titleEl) titleEl.textContent = 'Apply for: ' + (jobTitle || 'Position');
+    if (errEl) { errEl.hidden = true; errEl.textContent = ''; }
+    if (modal) {
+      modal.classList.add('careers-modal-open');
+      modal.setAttribute('aria-hidden', 'false');
+    }
+  };
+  function filterPositions() {
+    var search = (document.getElementById('positionSearch') || {}).value.toLowerCase() || '';
+    var dept = (document.getElementById('filterDepartment') || {}).value || '';
+    var loc = (document.getElementById('filterLocation') || {}).value || '';
+    var typ = (document.getElementById('filterType') || {}).value || '';
+    var cards = document.querySelectorAll('#positionsList .position-card');
+    var visible = 0;
+    cards.forEach(function(card) {
+      var title = (card.getAttribute('data-title') || '').toLowerCase();
+      var cardDept = card.getAttribute('data-department') || '';
+      var cardLoc = card.getAttribute('data-location') || '';
+      var cardTyp = card.getAttribute('data-type') || '';
+      var matchSearch = !search || title.indexOf(search) >= 0;
+      var matchDept = !dept || cardDept === dept;
+      var matchLoc = !loc || cardLoc === loc;
+      var matchTyp = !typ || cardTyp === typ;
+      var show = matchSearch && matchDept && matchLoc && matchTyp;
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    var noPos = document.getElementById('noPositions');
+    if (noPos) noPos.hidden = visible > 0;
+  }
+  function openModal(jobId, jobTitle) {
+    var modal = document.getElementById('applyModal');
+    var jobIdEl = document.getElementById('careersJobId');
+    var titleEl = document.getElementById('applyModalTitle');
+    var errEl = document.getElementById('applyModalError');
+    if (jobIdEl) jobIdEl.value = jobId || '';
+    if (titleEl) titleEl.textContent = 'Apply for: ' + (jobTitle || 'Position');
+    if (errEl) { errEl.hidden = true; errEl.textContent = ''; }
+    if (modal) { modal.classList.add('careers-modal-open'); modal.setAttribute('aria-hidden', 'false'); }
+  }
+  function closeModal() {
+    var modal = document.getElementById('applyModal');
+    var form = document.getElementById('careersApplyForm');
+    if (modal) { modal.classList.remove('careers-modal-open'); modal.setAttribute('aria-hidden', 'true'); }
+    if (form) form.reset();
+    var fn = document.getElementById('resumeFileName');
+    if (fn) fn.textContent = '';
+  }
+  function showToast(msg, isErr) {
+    var t = document.getElementById('careersToast');
+    if (!t) return;
+    t.textContent = msg;
+    t.className = 'careers-toast careers-toast-visible' + (isErr ? ' careers-toast-error' : '');
+    t.hidden = false;
+    setTimeout(function() { t.classList.remove('careers-toast-visible'); t.hidden = true; }, 4000);
+  }
+  function findApplyBtn(el) {
+    while (el && el !== document.body) {
+      if (el.classList && el.classList.contains('careers-apply-btn')) return el;
+      el = el.parentElement;
+    }
+    return null;
+  }
+  function bindApplyButtons() {
+    document.addEventListener('click', function(e) {
+      var btn = findApplyBtn(e.target);
+      if (btn) {
+        e.preventDefault();
+        e.stopPropagation();
+        openModal(btn.getAttribute('data-job-id'), btn.getAttribute('data-job-title'));
+      }
+    }, true);
+  }
+  function initModal() {
+    var modal = document.getElementById('applyModal');
+    var overlay = modal && modal.querySelector('.careers-modal-overlay');
+    var closeBtn = modal && modal.querySelector('.careers-modal-close');
+    if (overlay) overlay.addEventListener('click', closeModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  }
+  function initForm() {
+    var form = document.getElementById('careersApplyForm');
+    if (!form) return;
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var btn = document.getElementById('careersSubmitBtn');
+      var errEl = document.getElementById('applyModalError');
+      var jobId = document.getElementById('careersJobId').value;
+      if (!jobId) { if (errEl) { errEl.textContent = 'Please select a job.'; errEl.hidden = false; } return; }
+      var fd = new FormData(form);
+      if (btn) { btn.disabled = true; btn.classList.add('careers-loading'); }
+      if (errEl) { errEl.hidden = true; errEl.textContent = ''; }
+      fetch('/careers/apply', { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } })
+        .then(function(r) { return r.json().then(function(d) { return { ok: r.ok, data: d }; }); })
+        .then(function(result) {
+          if (result.ok && result.data && result.data.success) {
+            showToast('Application submitted successfully!');
+            closeModal();
+          } else {
+            if (errEl) { errEl.textContent = (result.data && result.data.error) || 'Submission failed.'; errEl.hidden = false; }
+          }
+        })
+        .catch(function() {
+          if (errEl) { errEl.textContent = 'Network error. Please try again.'; errEl.hidden = false; }
+        })
+        .finally(function() {
+          if (btn) { btn.disabled = false; btn.classList.remove('careers-loading'); }
+        });
+    });
+    var resumeInput = document.getElementById('careersResume');
+    var fileNameEl = document.getElementById('resumeFileName');
+    if (resumeInput && fileNameEl) resumeInput.addEventListener('change', function() { fileNameEl.textContent = resumeInput.files[0] ? resumeInput.files[0].name : ''; });
+  }
+  function initFAQ() {
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', !expanded);
+        var target = document.getElementById(btn.getAttribute('aria-controls'));
+        if (target) target.classList.toggle('faq-open', !expanded);
+      });
+    });
+  }
+  function init() {
+    ['positionSearch','filterDepartment','filterLocation','filterType'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('input', filterPositions);
+        el.addEventListener('change', filterPositions);
+      }
+    });
+    bindApplyButtons();
+    initModal();
+    initForm();
+    initFAQ();
+    filterPositions();
+    var qs = new URLSearchParams(window.location.search);
+    if (qs.get('success')) showToast(decodeURIComponent(qs.get('success')));
+    if (qs.get('error')) showToast(decodeURIComponent(qs.get('error')), true);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
 </script>
 
 <style>
   .careers-page-area { background: linear-gradient(135deg, #f8f9fc 0%, #f0f4ff
-  50%, #eef2ff 100%); } .careers-inner { max-width: 960px; margin: 0 auto; }
+  50%, #eef2ff 100%); isolation: isolate; } .careers-inner { max-width: 960px; margin: 0 auto; }
   .dc-shadow { box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 12px 48px
   rgba(0,0,0,0.06); border-radius: 20px; } .careers-hero { text-align: center;
   padding: 48px 32px; background: linear-gradient(135deg, #0a0f2c 0%, #1b0f4f
@@ -460,8 +473,9 @@
   color: #6c5ce7; } .position-skills { display: flex; flex-wrap: wrap; gap:
   10px; margin-top: 14px; } .skill-tag { font-size: 12px; padding: 6px 12px;
   background: linear-gradient(135deg, #f0f4ff, #f8f9ff); color: #6c5ce7;
-  border-radius: 10px; font-weight: 500; } .btn-sm { padding: 12px 24px;
-  font-size: 14px; font-weight: 600; border-radius: 12px; } .no-positions {
+  border-radius: 10px; font-weight: 500; }   .btn-sm { padding: 12px 24px;
+  font-size: 14px; font-weight: 600; border-radius: 12px; }
+  .careers-apply-btn { cursor: pointer; pointer-events: auto !important; } .no-positions {
   text-align: center; padding: 48px; color: #666; font-size: 16px; }
   .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap:
   24px; } .process-step { padding: 28px 24px; background: #fff; border-radius:
@@ -505,8 +519,17 @@
   #dc3545; } .careers-cta { text-align: center; padding: 40px 36px; background:
   #fff; border-radius: 20px; } .careers-cta h3 { font-size: 22px; font-weight:
   600; margin: 0 0 14px; color: #1a1a2e; } .careers-cta p { font-size: 16px;
-  color: #555; margin: 0; line-height: 1.6; } .careers-cta a { color: #6c5ce7;
-  font-weight: 600; } @media (max-width: 991px) { .benefits-grid {
+  color: #555; margin: 0; line-height: 1.6; }   .careers-cta a { color: #6c5ce7;
+  font-weight: 600; }
+  .careers-modal { position: fixed; inset: 0; z-index: 99999; display: flex; align-items: center; justify-content: center; padding: 20px; opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s; pointer-events: none; }
+  .careers-modal-open { opacity: 1; visibility: visible; pointer-events: auto; }
+  .careers-modal-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); }
+  .careers-modal-content { position: relative; background: #fff; border-radius: 20px; padding: 32px; max-width: 540px; width: 100%; max-height: 90vh; overflow-y: auto; }
+  .careers-modal-close { position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border: none; background: #f0f4ff; border-radius: 50%; font-size: 24px; cursor: pointer; color: #555; line-height: 1; }
+  .careers-modal-close:hover { background: #e0e4ec; color: #333; }
+  .careers-modal-content h3 { margin: 0 0 24px; font-size: 22px; color: #1a1a2e; }
+  .careers-modal-error { background: #f8d7da; color: #721c24; padding: 12px 16px; border-radius: 10px; margin-bottom: 16px; font-size: 14px; }
+  @media (max-width: 991px) { .benefits-grid {
   grid-template-columns: 1fr; } .process-steps { grid-template-columns:
   repeat(2, 1fr); } .positions-filters { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 767px) { .process-steps { grid-template-columns: 1fr; } }

@@ -43,6 +43,7 @@
               type="button"
               class="action-btn"
               id="saveContactBtn"
+              data-action="save-vcard"
               aria-label="Save Contact (vCard)"
             >
               <i class="bx bx-download"></i>
@@ -294,70 +295,156 @@
 
 <!-- VCF, Copy Link, Share - vanilla JS -->
 <script>
-  (function() { 'use strict'; function runWhenReady(fn) { if
-  (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', fn); } else { fn(); } }
-  runWhenReady(function() { var section =
-  document.getElementById('digital-card-section'); if (!section) return; var
-  vcfData = { company: section.getAttribute('data-vcf-company') || 'Seecog
-  Softwares Pvt Ltd', email: section.getAttribute('data-vcf-email') ||
-  'info@seecogsoftwares.com', phone: (section.getAttribute('data-vcf-phone') ||
-  '+917625067691').replace(/\s/g, ''), website:
-  section.getAttribute('data-vcf-website') || 'https://seecogsoftwares.com',
-  address: section.getAttribute('data-vcf-address') || 'Site No. 26, Prestige
-  Cube Building, Laskar Hosur Rd, Adugodi, Koramangala, Bengaluru, Karnataka
-  560030, India' }; function escapeVcf(str) { if (!str) return ''; return
-  String(str).replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g,
-  '\\,').replace(/\n/g, '\\n'); } function downloadVCF() { var adrEscaped =
-  (vcfData.address || '').replace(/\\/g, '\\\\').replace(/;/g,
-  '\\;').replace(/,/g, '\\,'); var content = [ 'BEGIN:VCARD', 'VERSION:3.0',
-  'FN:' + escapeVcf(vcfData.company), 'ORG:' + escapeVcf(vcfData.company),
-  'TEL;TYPE=WORK,VOICE:' + vcfData.phone, 'EMAIL;TYPE=WORK:' + (vcfData.email ||
-  ''), 'URL:' + (vcfData.website || ''), 'ADR;TYPE=WORK:;;' + adrEscaped +
-  ';;;;', 'END:VCARD' ].join('\r\n'); try { var blob = new Blob([content], {
-  type: 'text/vcard;charset=utf-8' }); var url = URL.createObjectURL(blob); var
-  a = document.createElement('a'); a.href = url; a.download =
-  'Seecog-Softwares.vcf'; a.style.display = 'none';
-  document.body.appendChild(a); a.click(); setTimeout(function() {
-  document.body.removeChild(a); URL.revokeObjectURL(url); }, 100);
-  showToast('Contact saved!'); } catch (err) { showToast('Could not save. Try
-  again.'); } } function showToast(msg) { msg = msg || 'Link copied!'; var t =
-  document.getElementById('copyToast'); if (!t) return; var span =
-  t.querySelector('span'); if (span) span.textContent = msg;
-  t.removeAttribute('hidden'); t.classList.add('dc-toast-visible');
-  setTimeout(function() { t.classList.remove('dc-toast-visible');
-  setTimeout(function() { t.setAttribute('hidden', ''); }, 300); }, 2500); }
-  function copyLink() { var url = window.location.href; if (navigator.clipboard
-  && navigator.clipboard.writeText) {
-  navigator.clipboard.writeText(url).then(function() { showToast('Link
-  copied!'); }).catch(function() { fallbackCopy(url); }); } else {
-  fallbackCopy(url); } } function fallbackCopy(text) { var ta =
-  document.createElement('textarea'); ta.value = text;
-  ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.left =
-  '0'; ta.style.top = '0'; ta.style.width = '2em'; ta.style.height = '2em';
-  ta.style.padding = '0'; ta.style.border = 'none'; ta.style.outline = 'none';
-  ta.style.boxShadow = 'none'; ta.style.background = 'transparent';
-  ta.style.opacity = '0'; document.body.appendChild(ta); ta.focus();
-  ta.select(); ta.setSelectionRange(0, text.length); var ok = false; try { ok =
-  document.execCommand('copy'); } catch (e) {} document.body.removeChild(ta); if
-  (ok) showToast('Link copied!'); else showToast('Copy failed. Please copy
-  manually.'); } function sharePage() { var title = 'Seecog Softwares - Digital
-  Card'; var url = window.location.href; if (navigator.share && typeof
-  navigator.share === 'function') { navigator.share({ title: title, url: url,
-  text: 'Check out Seecog Softwares' }) .then(function() { showToast('Shared!');
-  }) .catch(function(err) { if (err.name !== 'AbortError') { copyLink(); } }); }
-  else { copyLink(); } } function initStickyBar() { var bar =
-  document.getElementById('stickyActions'); if (!bar) return; var onScroll =
-  function() { bar.classList.toggle('dc-sticky-visible', window.scrollY > 350);
-  }; window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
-  } var saveBtn = document.getElementById('saveContactBtn'); var copyBtn =
-  document.getElementById('copyLinkBtn'); var shareBtnEl =
-  document.getElementById('shareBtn'); if (saveBtn)
-  saveBtn.addEventListener('click', function(e) { e.preventDefault();
-  downloadVCF(); }); if (copyBtn) copyBtn.addEventListener('click', function(e)
-  { e.preventDefault(); copyLink(); }); if (shareBtnEl)
-  shareBtnEl.addEventListener('click', function(e) { e.preventDefault();
-  sharePage(); }); initStickyBar(); }); })();
+(function() {
+  'use strict';
+  function showToast(msg) {
+    var t = document.getElementById('copyToast');
+    if (!t) return;
+    var span = t.querySelector('span');
+    if (span) span.textContent = msg || 'Link copied!';
+    t.removeAttribute('hidden');
+    t.classList.add('dc-toast-visible');
+    clearTimeout(showToast._tid);
+    showToast._tid = setTimeout(function() {
+      t.classList.remove('dc-toast-visible');
+      setTimeout(function() { t.setAttribute('hidden', ''); }, 300);
+    }, 2500);
+  }
+  function escapeVCardValue(val) {
+    if (!val) return '';
+    return String(val).replace(/\\/g, '\\\\').replace(/\n/g, '\\n').replace(/,/g, '\\,').replace(/;/g, '\\;');
+  }
+  function buildVCard(o) {
+    var lines = ['BEGIN:VCARD', 'VERSION:3.0'];
+    if (o.fullName) lines.push('FN:' + escapeVCardValue(o.fullName));
+    if (o.org) lines.push('ORG:' + escapeVCardValue(o.org));
+    if (o.email) lines.push('EMAIL;TYPE=INTERNET:' + escapeVCardValue(o.email));
+    if (o.phone) lines.push('TEL;TYPE=WORK,CELL:' + escapeVCardValue(o.phone));
+    var street = escapeVCardValue(o.address || ''), city = escapeVCardValue(o.city || ''), state = escapeVCardValue(o.state || ''), postal = escapeVCardValue(o.postalCode || ''), country = escapeVCardValue(o.country || '');
+    if (street || city || state || postal || country) lines.push('ADR;TYPE=WORK:;;' + street + ';' + city + ';' + state + ';' + postal + ';' + country);
+    if (o.url) lines.push('URL:' + escapeVCardValue(o.url));
+    lines.push('END:VCARD');
+    return lines.join('\r\n');
+  }
+  function triggerDownload(href, filename) {
+    var a = document.createElement('a');
+    a.href = href;
+    a.download = filename || 'Seecog-Softwares.vcf';
+    a.setAttribute('download', a.download);
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+  function handleSaveVCard(e) {
+    if (e) e.preventDefault();
+    showToast('Downloading vCard...');
+    var section = document.getElementById('digital-card-section');
+    if (!section) {
+      showToast('Error: Page not ready. Please refresh.');
+      return;
+    }
+    var company = section.getAttribute('data-vcf-company') || 'Seecog Softwares Pvt Ltd';
+    var email = section.getAttribute('data-vcf-email') || 'info@seecogsoftwares.com';
+    var phone = (section.getAttribute('data-vcf-phone') || '+917625067691').replace(/\s/g, '');
+    var url = section.getAttribute('data-vcf-website') || 'https://seecogsoftwares.com';
+    var fullAddr = section.getAttribute('data-vcf-address') || 'Site No. 26, Prestige Cube Building, Laskar Hosur Rd, Adugodi, Koramangala, Bengaluru, Karnataka 560030, India';
+    var parts = fullAddr.split(',').map(function(p) { return p.trim(); });
+    var street = parts.length >= 4 ? parts.slice(0, -3).join(', ') : fullAddr;
+    var city = parts.length >= 3 ? parts[parts.length - 3] : '';
+    var statePostal = parts.length >= 2 ? parts[parts.length - 2] : '';
+    var country = parts.length >= 1 ? parts[parts.length - 1] : 'India';
+    var statePostalSplit = statePostal.split(/\s+/);
+    var state = statePostalSplit[0] || '';
+    var postalCode = statePostalSplit[1] || '560030';
+    var data = { fullName: company, org: company, email: email, phone: phone, address: street, city: city, state: state, postalCode: postalCode, country: country, url: url };
+    var vcf = buildVCard(data);
+    var ok = false;
+    try {
+      var blob = new Blob([vcf], { type: 'text/vcard;charset=utf-8' });
+      var blobUrl = URL.createObjectURL(blob);
+      triggerDownload(blobUrl, 'Seecog-Softwares.vcf');
+      setTimeout(function() { URL.revokeObjectURL(blobUrl); }, 2000);
+      ok = true;
+    } catch (err) {
+      try {
+        var dataUri = 'data:text/vcard;charset=utf-8,' + encodeURIComponent(vcf);
+        triggerDownload(dataUri, 'Seecog-Softwares.vcf');
+        ok = true;
+      } catch (e2) {}
+    }
+    setTimeout(function() {
+      showToast(ok ? 'vCard downloaded! Check your Downloads folder.' : 'Download failed. Please try again.');
+    }, 600);
+  }
+  function copyLink(e) {
+    if (e) e.preventDefault();
+    var url = window.location.href;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(function() { showToast('Link copied!'); }).catch(function() { fallbackCopy(url); });
+    } else {
+      fallbackCopy(url);
+    }
+  }
+  function fallbackCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.cssText = 'position:fixed;left:0;top:0;width:2em;height:2em;padding:0;border:none;outline:none;opacity:0;';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    ta.setSelectionRange(0, text.length);
+    var ok = false;
+    try { ok = document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(ta);
+    showToast(ok ? 'Link copied!' : 'Copy failed. Please copy manually.');
+  }
+  function sharePage(e) {
+    if (e) e.preventDefault();
+    var title = 'Seecog Softwares - Digital Card';
+    var url = window.location.href;
+    if (navigator.share && typeof navigator.share === 'function') {
+      navigator.share({ title: title, url: url, text: 'Check out Seecog Softwares' })
+        .then(function() { showToast('Shared!'); })
+        .catch(function(err) { if (err.name !== 'AbortError') copyLink(); });
+    } else {
+      copyLink();
+    }
+  }
+  function initStickyBar() {
+    var bar = document.getElementById('stickyActions');
+    if (!bar) return;
+    function onScroll() { bar.classList.toggle('dc-sticky-visible', window.scrollY > 350); }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+  function findParentWith(el, fn) {
+    var n = el;
+    while (n && n !== document) {
+      if (fn(n)) return n;
+      n = n.parentElement;
+    }
+    return null;
+  }
+  function init() {
+    document.addEventListener('click', function(e) {
+      var t = findParentWith(e.target, function(n) {
+        return n.id === 'saveContactBtn' || (n.getAttribute && n.getAttribute('data-action') === 'save-vcard');
+      });
+      if (t) { e.preventDefault(); handleSaveVCard(e); return; }
+      t = findParentWith(e.target, function(n) { return n.id === 'copyLinkBtn'; });
+      if (t) { e.preventDefault(); copyLink(e); return; }
+      t = findParentWith(e.target, function(n) { return n.id === 'shareBtn'; });
+      if (t) { e.preventDefault(); sharePage(e); }
+    }, true);
+    initStickyBar();
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
 </script>
 
 <style>
