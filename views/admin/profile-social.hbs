@@ -1,0 +1,26 @@
+<div class="admin-header">
+  <h1>Social Media</h1>
+</div>
+{{#if flash.success}}<div class="flash-success">{{flash.success}}</div>{{/if}}
+{{#if flash.error}}<div class="flash-error">{{flash.error}}</div>{{/if}}
+<div class="admin-card">
+  <form method="POST" action="/admin/profile/social">
+    <div class="form-group">
+      <label>Facebook URL</label>
+      <input type="url" name="facebook_url" class="form-control" value="{{social.facebook_url}}" placeholder="https://facebook.com/...">
+    </div>
+    <div class="form-group">
+      <label>LinkedIn URL</label>
+      <input type="url" name="linkedin_url" class="form-control" value="{{social.linkedin_url}}" placeholder="https://linkedin.com/...">
+    </div>
+    <div class="form-group">
+      <label>WhatsApp URL</label>
+      <input type="url" name="whatsapp_url" class="form-control" value="{{social.whatsapp_url}}" placeholder="https://wa.me/...">
+    </div>
+    <div class="form-group">
+      <label>Twitter URL</label>
+      <input type="url" name="twitter_url" class="form-control" value="{{social.twitter_url}}" placeholder="https://twitter.com/...">
+    </div>
+    <button type="submit" class="btn btn-admin">Save</button>
+  </form>
+</div>

@@ -1,0 +1,33 @@
+<div class="admin-header">
+  <h1>Applications <span style="font-size:16px;color:#666;font-weight:400;">({{applications.length}} total)</span></h1>
+</div>
+{{#if flash.success}}<div class="flash-success">{{flash.success}}</div>{{/if}}
+{{#if flash.error}}<div class="flash-error">{{flash.error}}</div>{{/if}}
+<div class="admin-card">
+  {{#if applications.length}}
+  <table>
+    <thead>
+      <tr>
+        <th>Candidate</th>
+        <th>Email</th>
+        <th>Job</th>
+        <th>Applied</th>
+        <th>Resume</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each applications}}
+      <tr>
+        <td>{{this.full_name}}</td>
+        <td><a href="mailto:{{this.email}}">{{this.email}}</a></td>
+        <td>{{#if this.Job}}<a href="/admin/jobs/{{this.Job.id}}/applications">{{this.Job.title}}</a>{{else}}-{{/if}}</td>
+        <td>{{this.applied_at}}</td>
+        <td><a href="/admin/applications/{{this.id}}/resume" target="_blank" class="btn btn-sm">View Resume</a></td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  {{else}}
+  <p>No applications yet.</p>
+  {{/if}}
+</div>

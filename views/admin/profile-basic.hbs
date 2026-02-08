@@ -1,0 +1,22 @@
+<div class="admin-header">
+  <h1>Basic Info</h1>
+</div>
+{{#if flash.success}}<div class="flash-success">{{flash.success}}</div>{{/if}}
+{{#if flash.error}}<div class="flash-error">{{flash.error}}</div>{{/if}}
+<div class="admin-card">
+  <form method="POST" action="/admin/profile/basic">
+    <div class="form-group">
+      <label>Address</label>
+      <textarea name="address" class="form-control" rows="3">{{profile.address}}</textarea>
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" name="email" class="form-control" value="{{profile.email}}">
+    </div>
+    <div class="form-group">
+      <label>Phone</label>
+      <input type="text" name="phone" class="form-control" value="{{profile.phone}}">
+    </div>
+    <button type="submit" class="btn btn-admin">Save</button>
+  </form>
+</div>
