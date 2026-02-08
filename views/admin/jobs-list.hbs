@@ -1,0 +1,47 @@
+<div class="admin-header">
+  <h1>Jobs</h1>
+  <a href="/admin/jobs/new" class="btn btn-admin">New Job</a>
+</div>
+{{#if flash.success}}<div class="flash-success">{{flash.success}}</div>{{/if}}
+{{#if flash.error}}<div class="flash-error">{{flash.error}}</div>{{/if}}
+<div class="admin-card">
+  {{#if jobs.length}}
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Department</th>
+        <th>Location</th>
+        <th>Type</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each jobs}}
+      <tr>
+        <td>{{this.title}}</td>
+        <td>{{this.department}}</td>
+        <td>{{this.location}}</td>
+        <td>{{this.job_type}}</td>
+        <td>
+          <span class="badge-{{this.status}}">{{this.status}}</span>
+        </td>
+        <td>
+          <a href="/admin/jobs/{{this.id}}/edit" style="margin-right: 8px;">Edit</a>
+          <a href="/admin/jobs/{{this.id}}/applications" style="margin-right: 8px;">Applications</a>
+          <form method="POST" action="/admin/jobs/{{this.id}}/toggle" style="display:inline;">
+            <button type="submit" class="btn btn-sm" style="padding: 4px 8px; font-size: 12px;">{{#if this.isPublished}}Unpublish{{else}}Publish{{/if}}</button>
+          </form>
+          <form method="POST" action="/admin/jobs/{{this.id}}/delete" style="display:inline;" onsubmit="return confirm('Delete this job?');">
+            <button type="submit" class="btn btn-sm" style="padding: 4px 8px; font-size: 12px; color: #dc3545;">Delete</button>
+          </form>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  {{else}}
+  <p>No jobs yet. <a href="/admin/jobs/new">Create one</a>.</p>
+  {{/if}}
+</div>
