@@ -54,6 +54,43 @@ router.get("/industries", function (req, res, next) {
   });
 });
 
+router.get("/our-products", function (req, res, next) {
+  const productsData = (dataInfo && dataInfo.products_page) || {
+    title: "Our Products",
+    subTitle: "Innovative solutions to streamline your business",
+    products: [
+      {
+        id: 1,
+        icon: "bx bx-user-circle",
+        title: "Mini HR 360",
+        description: "A comprehensive HR management solution to handle recruitment, payroll, attendance, leave management, and employee records.",
+        url: "https://minihr360.seecogsoftwares.com",
+        buttonText: "Visit Mini HR 360",
+      },
+      {
+        id: 2,
+        icon: "bx bx-group",
+        title: "Mini CRM 360",
+        description: "Manage customer relationships, track leads, automate sales pipelines, and grow your business with powerful CRM tools.",
+        url: "https://minicrm360.seecogsoftwares.com",
+        buttonText: "Visit Mini CRM 360",
+      },
+      {
+        id: 3,
+        icon: "bx bx-package",
+        title: "Mini ERP 360",
+        description: "End-to-end enterprise resource planning for inventory, procurement, finance, and operations.",
+        url: "https://minierp360.seecogsoftwares.com",
+        buttonText: "Visit Mini ERP 360",
+      },
+    ],
+  };
+  res.render("our-products", {
+    layout: "contact_main",
+    data: productsData,
+  });
+});
+
 router.get("/services", function (req, res, next) {
   res.render("services", {
     layout: "contact_main",
