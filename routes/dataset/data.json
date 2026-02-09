@@ -10,6 +10,36 @@
         "title": "Our Culture",
         "subTitle": "We work as a family"
       },
+    "products_page" : {
+        "title": "Our Products",
+        "subTitle": "Innovative solutions to streamline your business",
+        "products": [
+          {
+            "id": 1,
+            "icon": "bx bx-user-circle",
+            "title": "Mini HR 360",
+            "description": "A comprehensive HR management solution to handle recruitment, payroll, attendance, leave management, and employee records—all in one place. Streamline your HR operations and empower your workforce.",
+            "url": "https://petserviceinhome.com",
+            "buttonText": "Visit Mini HR 360"
+          },
+          {
+            "id": 2,
+            "icon": "bx bx-group",
+            "title": "Mini CRM 360",
+            "description": "Manage customer relationships, track leads, automate sales pipelines, and grow your business with powerful CRM tools. Mini CRM 360 helps you close deals faster and build lasting customer connections.",
+            "url": "https://minicrm360.seecogsoftwares.com",
+            "buttonText": "Visit Mini CRM 360"
+          },
+          {
+            "id": 3,
+            "icon": "bx bx-package",
+            "title": "Mini ERP 360",
+            "description": "End-to-end enterprise resource planning for inventory, procurement, finance, and operations. Mini ERP 360 integrates your business processes for better visibility and decision-making.",
+            "url": "https://minierp360.seecogsoftwares.com",
+            "buttonText": "Visit Mini ERP 360"
+          }
+        ]
+      },
       "portfolio_page" : {
         "title": "Portfolio",
         "subTitle":

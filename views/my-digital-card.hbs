@@ -16,226 +16,81 @@
       <p>Share our contact instantly — Save, Scan, or Connect</p>
     </div>
 
-    <!-- Two-column layout: Left content | Right sticky card -->
-    <div class="row digital-card-layout">
-      <!-- Left column: Intro, Trust, Actions, Services -->
-      <div class="col-lg-7 col-md-12 digital-card-left">
-        <div class="digital-intro-card dc-shadow">
-          <h3 class="digital-intro-heading">Software Development &amp; IT
-            Services</h3>
-          <p class="digital-intro-text">We build web, mobile, cloud and
-            AI-powered solutions for startups and enterprises.</p>
-        </div>
-
-        <div class="digital-trust-row">
-          <div class="trust-bullet"><i class="bx bx-check-circle"></i>
-            Business-first approach</div>
-          <div class="trust-bullet"><i class="bx bx-check-circle"></i>
-            Clean, scalable delivery</div>
-          <div class="trust-bullet"><i class="bx bx-check-circle"></i>
-            Reliable support &amp; maintenance</div>
-        </div>
-
-        <div class="digital-actions-card dc-shadow">
-          <h4 class="actions-heading">Quick Actions</h4>
-          <div class="actions-grid">
-            <button
-              type="button"
-              class="action-btn"
-              id="saveContactBtn"
-              data-action="save-vcard"
-              aria-label="Save Contact (vCard)"
-            >
-              <i class="bx bx-download"></i>
-              <span>Save Contact (vCard)</span>
-            </button>
-            <a
-              href="mailto:info@seecogsoftwares.com?subject=Business%20Inquiry%20-%20Seecog&body=Hi%20Team%2C%0A%0AI%20want%20to%20discuss%20a%20project.%0A%0AThanks"
-              class="action-btn"
-              aria-label="Send Email"
-            >
-              <i class="bx bx-envelope"></i>
-              <span>Email</span>
-            </a>
-            <a href="tel:+917625067691" class="action-btn" aria-label="Call">
-              <i class="bx bx-phone"></i>
-              <span>Call</span>
-            </a>
-            <a
-              href="https://wa.me/917625067691?text=Hi%20Seecog%20Team%2C%20I%20want%20to%20discuss%20a%20project."
-              target="_blank"
-              rel="noopener noreferrer"
-              class="action-btn"
-              aria-label="WhatsApp"
-            >
-              <i class="bx bxl-whatsapp"></i>
-              <span>WhatsApp</span>
-            </a>
-            <a
-              href="/contact#contactForm"
-              class="action-btn"
-              aria-label="Book a Meeting"
-            >
-              <i class="bx bx-calendar"></i>
-              <span>Book a Meeting</span>
-            </a>
-            <a
-              href="/contact#contactForm"
-              class="action-btn action-btn-primary"
-              aria-label="Get a Quote"
-            >
-              <i class="bx bx-file"></i>
-              <span>Get a Quote</span>
-            </a>
-            <button
-              type="button"
-              class="action-btn"
-              id="copyLinkBtn"
-              aria-label="Copy Link"
-            >
-              <i class="bx bx-link-alt"></i>
-              <span>Copy Link</span>
-            </button>
-            <button
-              type="button"
-              class="action-btn"
-              id="shareBtn"
-              aria-label="Share"
-            >
-              <i class="bx bx-share-alt"></i>
-              <span>Share</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="digital-services-card dc-shadow">
-          <h4 class="services-heading">Services We Offer</h4>
-          <div class="services-tiles">
-            <a href="/services" class="service-tile">Web Application Development</a>
-            <a href="/services" class="service-tile">Mobile App Development</a>
-            <a href="/services" class="service-tile">UI/UX Design</a>
-            <a href="/services" class="service-tile">Cloud &amp; DevOps</a>
-            <a href="/services" class="service-tile">AI/ML Integration</a>
-            <a href="/services" class="service-tile">QA &amp; Automation</a>
-            <a href="/services" class="service-tile">IT Staff Augmentation</a>
-            <a href="/services" class="service-tile">SEO &amp; Digital Marketing</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Right column: Sticky Digital Card -->
-      <div class="col-lg-5 col-md-12 digital-card-right">
+    <!-- Card layout: centered digital card -->
+    <div class="row digital-card-layout justify-content-center">
+      <div class="col-lg-5 col-md-8 col-12 digital-card-right">
         <div class="digital-card-sticky-wrap">
-          <div class="digital-card-modern dc-shadow">
-            <div class="digital-card-header">
-              <div class="digital-card-logo">
-                <img
-                  src="/assets/img/sm_logo.jpg"
-                  alt="Seecog Softwares"
-                  class="card-logo-img"
-                />
+          <div class="dc-right-wrapper dc-shadow">
+            <!-- Blue section: all company info -->
+            <div class="dc-blue-card" id="dc-card-for-pdf">
+              <div class="dc-blue-header">
+                <div class="dc-blue-brand">
+                  <div class="dc-blue-logo">
+                    <img src="/assets/img/sm_logo.jpg" alt="Seecog Softwares" class="dc-logo-img" />
+                  </div>
+                  <div class="dc-brand-text">
+                    <h3 class="dc-company-name">{{data.companyName}}</h3>
+                    <p class="dc-slogan">Technology with Purpose. Progress with Impact.</p>
+                  </div>
+                </div>
+                <button type="button" class="dc-share-btn" id="dcShareIconBtn" aria-label="Share card">
+                  <i class="bx bx-share-alt"></i>
+                </button>
               </div>
-              <h3>{{data.companyName}}</h3>
-              <p class="card-tagline">Technology with Purpose. Progress with
-                Impact.</p>
+              <div class="dc-divider"></div>
+              <div class="dc-contact-list">
+                <a href="mailto:info@seecogsoftwares.com?subject=Business%20Inquiry" class="dc-contact-row">
+                  <i class="bx bx-envelope"></i>
+                  <span>{{data.email}}</span>
+                </a>
+                <a href="https://www.google.com/maps/place/seecog+softwares" target="_blank" rel="noopener noreferrer" class="dc-contact-row">
+                  <i class="bx bx-map"></i>
+                  <span>{{data.address}}</span>
+                </a>
+              </div>
+              
             </div>
-
-            <div class="digital-card-body">
-              <div class="card-info-row">
-                <i class="bx bx-envelope" aria-hidden="true"></i>
-                <div>
-                  <span class="card-label">Email</span>
-                  <a
-                    href="mailto:info@seecogsoftwares.com?subject=Business%20Inquiry"
-                  >{{data.email}}</a>
+            <!-- White section: services only -->
+            <div class="dc-white-services" id="dc-services-for-pdf">
+              <h4 class="dc-services-title">Services We Offer</h4>
+              <div class="dc-services-cat">
+                <span class="dc-cat-label">Development</span>
+                <div class="dc-services-pills">
+                  <a href="/services" class="dc-pill">Web Application Development</a>
+                  <a href="/services" class="dc-pill">Mobile App Development</a>
+                  <a href="/services" class="dc-pill">UI/UX Design</a>
+                  <a href="/services" class="dc-pill">AI / ML Integration</a>
+                  <a href="/services" class="dc-pill">Cloud &amp; DevOps</a>
+                  <a href="/services" class="dc-pill">QA &amp; Automation</a>
                 </div>
               </div>
-              <div class="card-info-row">
-                <i class="bx bx-phone" aria-hidden="true"></i>
-                <div>
-                  <span class="card-label">Phone</span>
-                  <a href="tel:+917625067691">{{data.contact}}</a>
+              <div class="dc-services-cat">
+                <span class="dc-cat-label">Outsourcing</span>
+                <div class="dc-services-pills">
+                  <a href="/services" class="dc-pill">IT Staff Augmentation</a>
+                  <a href="/services" class="dc-pill">Dedicated Development Teams</a>
+                  <a href="/services" class="dc-pill">Project-Based Hiring</a>
+                  <a href="/services" class="dc-pill">Remote Developers</a>
                 </div>
               </div>
-              <div class="card-info-row">
-                <i class="bx bx-map" aria-hidden="true"></i>
-                <div>
-                  <span class="card-label">Address</span>
-                  <a
-                    href="https://www.google.com/maps/place/seecog+softwares"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >{{data.address}}</a>
-                </div>
+              <div class="dc-action-row">
+                <a href="mailto:info@seecogsoftwares.com?subject=Business%20Inquiry" class="dc-action-btn" aria-label="Email">
+                  <i class="bx bx-envelope"></i>
+                  <span>Email</span>
+                </a>
+                <a href="tel:+917625067691" class="dc-action-btn" aria-label="Call">
+                  <i class="bx bx-phone"></i>
+                  <span>Call</span>
+                </a>
+                <a href="https://wa.me/917625067691?text=Hi%20Seecog%20Team%2C%20I%20want%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" class="dc-action-btn" aria-label="WhatsApp">
+                  <i class="bx bxl-whatsapp"></i>
+                  <span>WhatsApp</span>
+                </a>
+                <button type="button" class="dc-action-btn" id="dcSaveContactBtn" data-action="save-vcard" aria-label="Save Contact (vCard)">
+                  <i class="bx bx-download"></i>
+                  <span>Save Contact</span>
+                </button>
               </div>
-            </div>
-
-            <div class="digital-card-actions">
-              <a
-                href="mailto:info@seecogsoftwares.com?subject=Business%20Inquiry"
-                class="card-action-btn"
-                title="Email"
-                aria-label="Email"
-              >
-                <i class="bx bx-envelope"></i>
-                <span>Email</span>
-              </a>
-              <a
-                href="tel:+917625067691"
-                class="card-action-btn"
-                title="Call"
-                aria-label="Call"
-              >
-                <i class="bx bx-phone"></i>
-                <span>Call</span>
-              </a>
-              <a
-                href="https://wa.me/917625067691?text=Hi%20Seecog%20Team%2C%20I%20want%20to%20discuss%20a%20project."
-                target="_blank"
-                rel="noopener noreferrer"
-                class="card-action-btn"
-                title="WhatsApp"
-                aria-label="WhatsApp"
-              >
-                <i class="bx bxl-whatsapp"></i>
-                <span>WhatsApp</span>
-              </a>
-              <a
-                href="/contact#contactForm"
-                class="card-action-btn"
-                title="Contact Form"
-                aria-label="Contact"
-              >
-                <i class="bx bx-message-dots"></i>
-                <span>Contact</span>
-              </a>
-            </div>
-
-            <div class="digital-card-social">
-              <a
-                href="https://www.linkedin.com/company/seecog-softwares-pvt-ltd/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-              ><i class="bx bxl-linkedin"></i></a>
-              <a
-                href="https://www.facebook.com/profile.php?id=61585373592616"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-              ><i class="bx bxl-facebook"></i></a>
-              <a
-                href="https://twitter.com/seecogsoftwares"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Twitter"
-              ><i class="bx bxl-twitter"></i></a>
-              <a
-                href="https://wa.me/917625067691?text=Hi%20Seecog%20Team"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="WhatsApp"
-              ><i class="bx bxl-whatsapp"></i></a>
             </div>
           </div>
         </div>
@@ -284,6 +139,8 @@
   </div>
 </section>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <!-- JSON-LD -->
 <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Organization","name":"Seecog
@@ -411,6 +268,62 @@
       copyLink();
     }
   }
+  function generateAndSharePDF(e) {
+    if (e) e.preventDefault();
+    showToast('Generating PDF...');
+    var cardEl = document.querySelector('.dc-right-wrapper');
+    var shareBtn = document.getElementById('dcShareIconBtn');
+    if (!cardEl) {
+      showToast('Card not found. Please refresh.');
+      return;
+    }
+    if (typeof html2canvas === 'undefined') {
+      showToast('PDF libraries not loaded. Please refresh.');
+      return;
+    }
+    var jspdfLib = (typeof jspdf !== 'undefined' && jspdf) || (typeof window !== 'undefined' && (window.jspdf || window.jsPDF));
+    if (!jspdfLib) {
+      showToast('PDF libraries not loaded. Please refresh.');
+      return;
+    }
+    var shareDisplay = shareBtn ? shareBtn.style.display : '';
+    if (shareBtn) shareBtn.style.display = 'none';
+    cardEl.scrollIntoView({ behavior: 'instant', block: 'center' });
+    setTimeout(function() {
+      html2canvas(cardEl, { scale: 2, backgroundColor: '#f8f9fc', useCORS: true, logging: false })
+        .then(function(canvas) {
+          var dataUrl = canvas.toDataURL('image/png');
+          if (shareBtn) shareBtn.style.display = shareDisplay;
+          var img = new Image();
+          img.onload = function() {
+            var PdfConstructor = jspdfLib.jsPDF || jspdfLib;
+            if (!PdfConstructor) { showToast('PDF library error.'); return; }
+            var pdf = new PdfConstructor({ unit: 'mm', format: 'a4', orientation: 'portrait' });
+            var pageW = pdf.internal.pageSize.getWidth();
+            var pageH = pdf.internal.pageSize.getHeight();
+            var margin = 15;
+            var maxW = pageW - 2 * margin;
+            var maxH = pageH - 2 * margin;
+            var imgW = img.width;
+            var imgH = img.height;
+            var ratio = Math.min(maxW / imgW, maxH / imgH);
+            var finalW = imgW * ratio;
+            var finalH = imgH * ratio;
+            var x = (pageW - finalW) / 2;
+            var y = (pageH - finalH) / 2;
+            pdf.addImage(dataUrl, 'PNG', x, y, finalW, finalH);
+            pdf.save('seecog-digital-card.pdf');
+            showToast('PDF saved to Downloads!');
+          };
+          img.src = dataUrl;
+        })
+        .catch(function(err) {
+          if (shareBtn) shareBtn.style.display = shareDisplay;
+          console.error('PDF generation failed:', err);
+          showToast('PDF failed. Please try again.');
+        });
+    }, 400);
+  }
   function initStickyBar() {
     var bar = document.getElementById('stickyActions');
     if (!bar) return;
@@ -429,13 +342,15 @@
   function init() {
     document.addEventListener('click', function(e) {
       var t = findParentWith(e.target, function(n) {
-        return n.id === 'saveContactBtn' || (n.getAttribute && n.getAttribute('data-action') === 'save-vcard');
+        return n.id === 'saveContactBtn' || n.id === 'dcSaveContactBtn' || (n.getAttribute && n.getAttribute('data-action') === 'save-vcard');
       });
       if (t) { e.preventDefault(); handleSaveVCard(e); return; }
       t = findParentWith(e.target, function(n) { return n.id === 'copyLinkBtn'; });
       if (t) { e.preventDefault(); copyLink(e); return; }
       t = findParentWith(e.target, function(n) { return n.id === 'shareBtn'; });
-      if (t) { e.preventDefault(); sharePage(e); }
+      if (t) { e.preventDefault(); sharePage(e); return; }
+      t = findParentWith(e.target, function(n) { return n.id === 'dcShareIconBtn'; });
+      if (t) { e.preventDefault(); generateAndSharePDF(e); }
     }, true);
     initStickyBar();
   }
@@ -448,6 +363,14 @@
 </script>
 
 <style>
+  .dc-pdf-export .dc-right-wrapper { transform: none !important; }
+  .dc-pdf-export .dc-blue-card { background: #1b3a8c !important; }
+  .dc-pdf-export .dc-white-services { background: #fff !important; }
+  .dc-pdf-export .dc-action-btn { background: #1b3a8c !important; }
+  .dc-pdf-export .dc-pill { background: #f0f4ff !important; color: #333 !important;
+  border-color: #e0e4ec !important; }
+  .dc-pdf-export .dc-services-title { color: #1a1a2e !important; }
+  .dc-pdf-export .dc-cat-label { color: #6c5ce7 !important; }
   .digital-card-page-area { background: linear-gradient(135deg, #f8f9fc 0%,
   #f0f4ff 50%, #eef2ff 100%); position: relative; overflow-x: hidden; }
   .dc-shadow { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06), 0 10px 40px rgba(0,
@@ -455,48 +378,67 @@
   !important; } .digital-card-hero h2 { font-size: 32px; } .digital-card-hero p
   { font-size: 16px; color: #555; margin: 0 auto; } /* Two-column layout */
   .digital-card-layout { align-items: flex-start; gap: 0; } .digital-card-left {
-  padding-right: 24px; } .digital-card-right { padding-left: 24px; } /* Sticky
+  padding-right: 24px; } .digital-card-right { margin-left: auto; margin-right:
+  auto; } /* Sticky
   card wrapper - desktop only */ .digital-card-sticky-wrap { position: relative;
   } @media (min-width: 992px) { .digital-card-sticky-wrap { position: sticky;
-  top: 100px; } } .digital-card-modern { background: #fff; border-radius: 24px;
-  max-width: 420px; width: 100%; overflow: hidden; transition: transform 0.3s
-  ease, box-shadow 0.3s ease; } .digital-card-modern:hover { transform:
-  translateY(-4px); box-shadow: 0 24px 70px rgba(0, 0, 0, 0.15), 0 8px 30px
-  rgba(0, 0, 0, 0.08) !important; } .digital-card-header { background:
-  linear-gradient(135deg, #0a0f2c 0%, #1b0f4f 100%); color: #fff; padding: 40px
-  30px; text-align: center; } .digital-card-logo { margin-bottom: 20px; }
-  .card-logo-img { width: 100px; height: 100px; border-radius: 50%; object-fit:
-  cover; border: 4px solid rgba(255, 255, 255, 0.2); } .digital-card-header h3 {
-  font-size: 22px; font-weight: 700; margin: 0 0 8px; color: #fff; }
-  .card-tagline { font-size: 14px; opacity: 0.9; margin: 0; } .digital-card-body
-  { padding: 30px; } .card-info-row { display: flex; align-items: flex-start;
-  gap: 16px; margin-bottom: 20px; } .card-info-row:last-child { margin-bottom:
-  0; } .card-info-row i { font-size: 22px; color: #6c5ce7; flex-shrink: 0;
-  margin-top: 2px; } .card-info-row div { flex: 1; } .card-label { display:
-  block; font-size: 12px; color: #6c757d; text-transform: uppercase;
-  letter-spacing: 0.5px; margin-bottom: 4px; } .card-info-row a { color: #333;
-  text-decoration: none; font-size: 15px; word-break: break-word; }
-  .card-info-row a:hover { color: #6c5ce7; } .digital-card-actions { display:
-  grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: #eee;
-  border-top: 1px solid #eee; } .card-action-btn { display: flex;
-  flex-direction: column; align-items: center; justify-content: center; padding:
-  16px 8px; background: #fff; color: #333; text-decoration: none; font-size:
-  12px; transition: all 0.2s ease; } .card-action-btn:hover,
-  .card-action-btn:focus { background: #f8f9fc; color: #6c5ce7; box-shadow: 0
-  2px 8px rgba(108, 92, 231, 0.15); outline: 2px solid #6c5ce7; outline-offset:
-  -2px; } .card-action-btn i { font-size: 22px; margin-bottom: 6px; }
-  .digital-card-social { display: flex; justify-content: center; gap: 16px;
-  padding: 24px; background: #f8f9fc; border-top: 1px solid #eee; }
-  .digital-card-social a { width: 44px; height: 44px; display: flex;
-  align-items: center; justify-content: center; background: #fff; border-radius:
-  50%; color: #555; font-size: 20px; text-decoration: none; transition: all 0.2s
-  ease; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); } .digital-card-social
-  a:hover, .digital-card-social a:focus { color: #fff; transform:
-  translateY(-2px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12); }
-  .digital-card-social a:nth-child(1):hover { background: #0a66c2; }
-  .digital-card-social a:nth-child(2):hover { background: #1877f2; }
-  .digital-card-social a:nth-child(3):hover { background: #1da1f2; }
-  .digital-card-social a:nth-child(4):hover { background: #25D366; } /* Left
+  top: 100px; } }   /* Right column: Blue card + White services */
+  .dc-right-wrapper { max-width: 420px; width: 100%; margin: 0 auto;
+  border-radius: 24px;
+  overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .dc-right-wrapper:hover { transform: translateY(-4px); box-shadow: 0 24px 70px
+  rgba(0,0,0,0.15) !important; }   .dc-blue-card { background: linear-gradient(135deg,
+  #0a0f2c 0%, #1b3a8c 50%, #1b0f4f 100%); color: #fff; padding: 28px 24px;
+  border-radius: 24px 24px 0 0; text-align: center; } .dc-blue-header { display:
+  flex; justify-content: center; align-items: center; flex-direction: column;
+  margin-bottom: 20px; position: relative; } .dc-blue-header .dc-share-btn {
+  position: absolute; top: 0; right: 0; } .dc-blue-brand { display: flex;
+  flex-direction: column; align-items: center; gap: 16px; flex: 1; min-width: 0;
+  } .dc-blue-logo { flex-shrink: 0; } .dc-logo-img {
+  width: 64px; height: 64px; border-radius: 14px; object-fit: cover; border: 3px
+  solid rgba(255,255,255,0.25); } .dc-brand-text { flex: 1; min-width: 0; }
+  .dc-brand-text { text-align: center; } .dc-company-name { font-size: 18px;
+  font-weight: 700; margin: 0 0 6px; color: #fff; line-height: 1.3; } .dc-slogan {
+  font-size: 13px; color:
+  rgba(255,255,255,0.95); margin: 0; line-height: 1.4; font-weight: 500; }
+  .dc-share-btn { width: 42px; height: 42px; flex-shrink: 0; display: flex;
+  align-items: center; justify-content: center; background:
+  rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius:
+  12px; color: #fff; font-size: 20px; cursor: pointer; transition: all 0.2s; }
+  .dc-share-btn:hover { background: rgba(255,255,255,0.25); }
+  .dc-divider { height: 1px; background: rgba(255,255,255,0.25); margin: 0 0
+  20px; }   .dc-contact-list { display: flex; flex-direction: column; gap: 14px;
+  margin-bottom: 20px; align-items: center; } .dc-contact-row { display: flex;
+  align-items: center; justify-content: center; gap: 12px; color:
+  rgba(255,255,255,0.98); text-decoration: none; text-align: center;
+  font-size: 13px; line-height: 1.45; transition: opacity 0.2s; } .dc-contact-row:hover { opacity: 0.95; } .dc-contact-row i { font-size: 18px; flex-shrink: 0;
+  margin-top: 1px; color: rgba(255,255,255,0.9); }   .dc-contact-row span { word-break: break-word; color: rgba(255,255,255,0.98);
+  text-align: center; }   .dc-action-row { display: grid;
+  grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 20px;
+  max-width: 100%; }
+  .dc-action-btn { display: flex; flex-direction: column; align-items: center;
+  justify-content: center; padding: 12px 6px; border-radius: 10px; font-size:
+  10px; cursor: pointer; transition: all 0.2s; text-decoration: none;
+  font-family: inherit; }
+  .dc-white-services .dc-action-btn { background: linear-gradient(135deg,
+  #1b3a8c 0%, #1b0f4f 100%); border: 1px solid rgba(27,58,140,0.5); color: #fff;
+  }
+  .dc-white-services .dc-action-btn:hover { background: linear-gradient(135deg,
+  #0a0f2c 0%, #1b3a8c 100%); color: #fff; box-shadow: 0 4px 12px rgba(27,58,140,0.35); }
+  .dc-action-btn i { font-size: 18px; margin-bottom: 4px; }   .dc-white-services {
+  background: #fff; padding: 24px 24px; border-radius: 0 0 24px 24px; border-top:
+  1px solid #eee; text-align: center; } .dc-services-title { font-size: 17px;
+  font-weight: 600; color: #1a1a2e; margin: 0 0 18px; } .dc-services-cat {
+  margin-bottom: 18px; } .dc-services-cat:last-child { margin-bottom: 0; }
+  .dc-cat-label { display: block; font-size: 11px; font-weight: 600; color:
+  #6c5ce7; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom:
+  10px; } .dc-services-pills { display: flex; flex-wrap: wrap; gap: 8px;
+  justify-content: center; } .dc-pill { display: inline-block;
+  padding: 8px 14px; background: #f8f9fc; border: 1px solid #e8ecf4;
+  border-radius: 999px; font-size: 12px; color: #444; text-decoration: none;
+  transition: all 0.2s; box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
+  .dc-pill:hover { background: #fff; color: #6c5ce7; border-color: #c4b8f5;
+  box-shadow: 0 4px 12px rgba(108,92,231,0.12); } /* Left
   column sections */ .digital-intro-card { background: #fff; padding: 24px 28px;
   margin-bottom: 20px; } .digital-intro-heading { font-size: 20px; font-weight:
   700; color: #1a1a2e; margin: 0 0 12px; } .digital-intro-text { font-size:
@@ -547,8 +489,7 @@
   100%); color: #fff; } @media (max-width: 991px) { .digital-card-left {
   padding-right: 0; padding-left: 0; } .digital-card-right { padding-left: 0;
   margin-bottom: 24px; } .digital-card-sticky-wrap { position: relative
-  !important; top: auto !important; } .digital-card-modern { max-width: 100%;
-  margin: 0 auto 24px; } .actions-grid { grid-template-columns: repeat(2, 1fr);
+  !important; top: auto !important; }   .dc-right-wrapper { max-width: 100%; margin: 0 auto 24px; } .actions-grid { grid-template-columns: repeat(2, 1fr);
   } .dc-sticky-actions { display: flex; } } @media (min-width: 992px) {
   .dc-sticky-actions { display: none; } } @media (max-width: 575px) {
   .digital-card-hero h2 { font-size: 26px; } .digital-intro-card,
