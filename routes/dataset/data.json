@@ -17,27 +17,41 @@
           {
             "id": 1,
             "icon": "bx bx-user-circle",
-            "title": "Mini HR 360",
+            "image": "/assets/img/services/mini-hr-360.png",
+            "title": "Mini-hr-360",
             "description": "A comprehensive HR management solution to handle recruitment, payroll, attendance, leave management, and employee records—all in one place. Streamline your HR operations and empower your workforce.",
             "url": "https://petserviceinhome.com",
-            "buttonText": "Visit Mini HR 360"
+            "buttonText": "Visit Now"
           },
           {
             "id": 2,
             "icon": "bx bx-group",
-            "title": "Mini CRM 360",
+            "image": "/assets/img/services/mini-crm-360.png",
+            "title": "Mini-crm-360",
             "description": "Manage customer relationships, track leads, automate sales pipelines, and grow your business with powerful CRM tools. Mini CRM 360 helps you close deals faster and build lasting customer connections.",
             "url": "https://minicrm360.seecogsoftwares.com",
-            "buttonText": "Visit Mini CRM 360"
+            "buttonText": "Visit Now"
           },
           {
             "id": 3,
-            "icon": "bx bx-package",
-            "title": "Mini ERP 360",
-            "description": "End-to-end enterprise resource planning for inventory, procurement, finance, and operations. Mini ERP 360 integrates your business processes for better visibility and decision-making.",
-            "url": "https://minierp360.seecogsoftwares.com",
-            "buttonText": "Visit Mini ERP 360"
+            "icon": "bx bx-book-open",
+            "image": "/assets/img/services/mini-wiki-360.png",
+            "title": "Mini-Wiki-360",
+            "description": "Centralize your company knowledge in one organized workspace. Mini-Wiki-360 is a Confluence-style knowledge management platform that helps teams create and organize documents, folders, access control, and easy collaboration.",
+            "url": "https://miniwiki360.seecogsoftwares.com",
+            "buttonText": "Visit Now"
+          },
+          {
+            "id": 4,
+            "icon": "bx bx-task",
+            "image": "/assets/img/services/mini-project-manager.png",
+            "title": "Mini-Project-Manager",
+            "description": "Plan, track, and deliver projects with clarity and control. Mini-Project-Manager is a lightweight yet powerful project management platform that helps teams manage tasks, it ensures transparency, accountability, and on-time delivery for both internal and client projects.",
+            "url": "https://miniprojectmanager.seecogsoftwares.com",
+            "buttonText": "Visit Now"
           }
+
+
         ]
       },
       "portfolio_page" : {

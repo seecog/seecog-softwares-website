@@ -247,6 +247,11 @@
   text-align: center;
 }
 
+/* Our Products star - golden yellow */
+.mobile-menu-nav .nav-products-star {
+  color: #ffd700 !important;
+}
+
 /* Submenu */
 .mobile-menu-nav ul li ul {
   background: rgba(0, 212, 255, 0.05);
