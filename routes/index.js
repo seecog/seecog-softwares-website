@@ -62,6 +62,7 @@ router.get("/our-products", function (req, res, next) {
       {
         id: 1,
         icon: "bx bx-user-circle",
+        image: "/assets/img/services/mini-hr-360.png",
         title: "Mini HR 360",
         description: "A comprehensive HR management solution to handle recruitment, payroll, attendance, leave management, and employee records.",
         url: "https://minihr360.seecogsoftwares.com",
@@ -70,6 +71,7 @@ router.get("/our-products", function (req, res, next) {
       {
         id: 2,
         icon: "bx bx-group",
+        image: "/assets/img/services/mini-crm-360.png",
         title: "Mini CRM 360",
         description: "Manage customer relationships, track leads, automate sales pipelines, and grow your business with powerful CRM tools.",
         url: "https://minicrm360.seecogsoftwares.com",
