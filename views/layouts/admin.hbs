@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,37 +9,185 @@
   <link rel="stylesheet" href="/assets/css/boxicons.min.css">
   <link rel="icon" href="/assets/img/sm_logo.jpg">
   <style>
-    :root { --admin-sidebar: #1a1a2e; --admin-accent: #6c5ce7; }
-    body { background: #f8f9fc; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
-    .admin-wrap { display: flex; min-height: 100vh; }
-    .admin-sidebar { width: 240px; background: var(--admin-sidebar); color: #fff; flex-shrink: 0; }
-    .admin-sidebar .brand { padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-    .admin-sidebar .brand a { color: #fff; text-decoration: none; font-weight: 700; }
-    .admin-nav { padding: 16px 0; }
-    .admin-nav-section { margin-bottom: 20px; }
-    .admin-nav-section-title { padding: 8px 20px; font-size: 11px; text-transform: uppercase; color: rgba(255,255,255,0.5); }
-    .admin-nav a { display: block; padding: 10px 20px; color: rgba(255,255,255,0.8); text-decoration: none; }
-    .admin-nav a:hover { background: rgba(255,255,255,0.1); color: #fff; }
-    .admin-nav a.active { background: rgba(108,92,231,0.4); color: #fff; }
-    .admin-main { flex: 1; padding: 24px; overflow: auto; }
-    .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
-    .admin-header h1 { font-size: 24px; margin: 0; color: #1a1a2e; }
-    .admin-card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); padding: 24px; margin-bottom: 24px; }
-    .flash-success { background: #d4edda; color: #155724; padding: 12px 16px; border-radius: 8px; margin-bottom: 16px; }
-    .flash-error { background: #f8d7da; color: #721c24; padding: 12px 16px; border-radius: 8px; margin-bottom: 16px; }
-    .btn-admin { background: var(--admin-accent); color: #fff; border: none; padding: 10px 20px; border-radius: 8px; }
-    .btn-admin:hover { background: #5b4cdb; color: #fff; }
-    .form-group { margin-bottom: 16px; }
-    .form-group label { display: block; margin-bottom: 6px; font-weight: 600; }
-    .form-control { width: 100%; padding: 10px 12px; border: 1px solid #e0e4ec; border-radius: 8px; }
-    table { width: 100%; }
-    table th { text-align: left; padding: 12px; border-bottom: 1px solid #eee; }
-    table td { padding: 12px; border-bottom: 1px solid #eee; }
-    .badge-draft { background: #6c757d; color: #fff; padding: 4px 8px; border-radius: 6px; font-size: 12px; }
-    .badge-published { background: #28a745; color: #fff; padding: 4px 8px; border-radius: 6px; font-size: 12px; }
-    .badge-closed { background: #dc3545; color: #fff; padding: 4px 8px; border-radius: 6px; font-size: 12px; }
+    :root {
+      --admin-sidebar: #1a1a2e;
+      --admin-accent: #6c5ce7;
+    }
+
+    body {
+      background: #f8f9fc;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    .admin-wrap {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .admin-sidebar {
+      width: 240px;
+      background: var(--admin-sidebar);
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .admin-sidebar .brand {
+      padding: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .admin-sidebar .brand a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .admin-nav {
+      padding: 16px 0;
+    }
+
+    .admin-nav-section {
+      margin-bottom: 20px;
+    }
+
+    .admin-nav-section-title {
+      padding: 8px 20px;
+      font-size: 11px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .admin-nav a {
+      display: block;
+      padding: 10px 20px;
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+    }
+
+    .admin-nav a:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    .admin-nav a.active {
+      background: rgba(108, 92, 231, 0.4);
+      color: #fff;
+    }
+
+    .admin-main {
+      flex: 1;
+      padding: 24px;
+      overflow: auto;
+    }
+
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .admin-header h1 {
+      font-size: 24px;
+      margin: 0;
+      color: #1a1a2e;
+    }
+
+    .admin-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .flash-success {
+      background: #d4edda;
+      color: #155724;
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+    }
+
+    .flash-error {
+      background: #f8d7da;
+      color: #721c24;
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+    }
+
+    .btn-admin {
+      background: var(--admin-accent);
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+    }
+
+    .btn-admin:hover {
+      background: #5b4cdb;
+      color: #fff;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #e0e4ec;
+      border-radius: 8px;
+    }
+
+    table {
+      width: 100%;
+    }
+
+    table th {
+      text-align: left;
+      padding: 12px;
+      border-bottom: 1px solid #eee;
+    }
+
+    table td {
+      padding: 12px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .badge-draft {
+      background: #6c757d;
+      color: #fff;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+
+    .badge-published {
+      background: #28a745;
+      color: #fff;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+
+    .badge-closed {
+      background: #dc3545;
+      color: #fff;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+    }
   </style>
 </head>
+
 <body>
   <div class="admin-wrap">
     <aside class="admin-sidebar">
@@ -46,13 +195,18 @@
       <nav class="admin-nav">
         <div class="admin-nav-section">
           <div class="admin-nav-section-title">Profile</div>
-          <a href="/admin/profile/basic" {{#if activeProfileBasic}}class="active"{{/if}}><i class='bx bx-info-circle'></i> Basic Info</a>
-          <a href="/admin/profile/social" {{#if activeProfileSocial}}class="active"{{/if}}><i class='bx bx-share-alt'></i> Social Media</a>
+          <a href="/admin/profile/basic" {{#if activeProfileBasic}}class="active" {{/if}}><i
+              class='bx bx-info-circle'></i> Basic Info</a>
+          <a href="/admin/profile/social" {{#if activeProfileSocial}}class="active" {{/if}}><i
+              class='bx bx-share-alt'></i> Social Media</a>
         </div>
         <div class="admin-nav-section">
           <div class="admin-nav-section-title">Workspace</div>
-          <a href="/admin/jobs" {{#if activeJobs}}class="active"{{/if}}><i class='bx bx-briefcase'></i> Jobs</a>
-          <a href="/admin/applications" {{#if activeApplications}}class="active"{{/if}}><i class='bx bx-file'></i> Applications</a>
+          <a href="/admin/jobs" {{#if activeJobs}}class="active" {{/if}}><i class='bx bx-briefcase'></i> Jobs</a>
+          <a href="/admin/applications" {{#if activeApplications}}class="active" {{/if}}><i class='bx bx-file'></i>
+            Applications</a>
+          <a href="/recruit/resumes" {{#if activeResumes}}class="active" {{/if}}><i class='bx bx-file-find'></i>
+            Resumes</a>
         </div>
         <div class="admin-nav-section">
           <a href="/" target="_blank"><i class='bx bx-globe'></i> View Site</a>
@@ -67,4 +221,5 @@
   <script src="/assets/js/jquery.min.js"></script>
   <script src="/assets/js/bootstrap.min.js"></script>
 </body>
+
 </html>

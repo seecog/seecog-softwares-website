@@ -1,0 +1,115 @@
+<form action="{{#if isNew}}/recruit/resumes/new{{else}}/recruit/resumes/{{template.id}}/edit{{/if}}" method="POST">
+    <header class="recruit-header p-0 mb-4" style="border: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-1" style="font-size: 13px;">
+                        <li class="breadcrumb-item"><a href="/recruit/resumes" class="text-muted">Resumes</a></li>
+                        <li class="breadcrumb-item active">{{#if isNew}}Create New Resume{{else}}Edit Resume{{/if}}
+                        </li>
+                    </ol>
+                </nav>
+                <h1 style="font-size: 24px; margin: 0;">{{#if isNew}}Create Resume{{else}}Edit Resume{{/if}}</h1>
+            </div>
+            <div style="display: flex; gap: 12px;">
+                <a href="/recruit/resumes" class="btn btn-light"
+                    style="border-radius: 8px; padding: 10px 24px;">Cancel</a>
+                <button type="submit" class="btn btn-primary"
+                    style="background-color: var(--recruit-accent); border: none; border-radius: 8px; padding: 10px 24px;">
+                    Save Resume
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="recruit-op-card mb-4" style="text-align: left; padding: 24px;">
+                <h5 style="font-size: 16px; margin-bottom: 20px;"><i class='bx bx-cog'></i> Template Configuration</h5>
+
+                <div class="form-group mb-3">
+                    <label class="form-label" style="font-size: 13px; font-weight: 600;">Template Name *</label>
+                    <input type="text" name="title" class="form-control" required
+                        placeholder="e.g. Node.js Senior Backend" style="border-radius: 8px;"
+                        value="{{template.title}}">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label class="form-label" style="font-size: 13px; font-weight: 600;">Technology Stack *</label>
+                    <div class="technology-checkbox-group"
+                        style="background: #f8fafc; padding: 16px; border-radius: 8px; max-height: 200px; overflow-y: auto; border: 1px solid #e2e8f0;">
+                        {{#each techList}}
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="technologies" value="{{this}}"
+                                id="tech-{{@index}}">
+                            <label class="form-check-label" for="tech-{{@index}}" style="font-size: 13px;">
+                                {{this}}
+                            </label>
+                        </div>
+                        {{/each}}
+                    </div>
+                    <small class="text-muted mt-1 d-block">Select all that apply</small>
+                </div>
+
+                <div class="form-group mb-0">
+                    <label class="form-label" style="font-size: 13px; font-weight: 600;">Short Summary</label>
+                    <textarea name="summary" class="form-control" placeholder="Short description for the card grid"
+                        style="border-radius: 8px; height: 100px;">{{template.summary}}</textarea>
+                </div>
+            </div>
+
+            <div class="recruit-op-card" style="text-align: left; padding: 24px;">
+                <h5 style="font-size: 16px; margin-bottom: 20px;"><i class='bx bx-purchase-tag'></i> Smart Placeholders
+                </h5>
+                <p class="text-muted" style="font-size: 12px; margin-bottom: 16px;">Click a tag below to insert dynamic
+                    content into the editor cursor position.</p>
+                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                    <button type="button" class="btn btn-sm btn-outline-primary placeholder-btn"
+                        data-tag="{{name}}">Candidate Name</button>
+                    <button type="button" class="btn btn-sm btn-outline-primary placeholder-btn"
+                        data-tag="{{email}}">Email Address</button>
+                    <button type="button" class="btn btn-sm btn-outline-primary placeholder-btn"
+                        data-tag="{{phone}}">Phone Number</button>
+                    <button type="button" class="btn btn-sm btn-outline-primary placeholder-btn"
+                        data-tag="{{experience}}">Total Experience</button>
+                    <button type="button" class="btn btn-sm btn-outline-primary placeholder-btn"
+                        data-tag="{{skills}}">Skills List</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="recruit-op-card p-0" style="overflow: hidden; border: none; height: 100%;">
+                <textarea id="editor" name="content">{{template.content}}</textarea>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('editor', {
+        height: 600,
+        removeButtons: 'About',
+        contentsCss: [
+            'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap',
+            'body { font-family: "Inter", sans-serif; padding: 40px; }'
+        ]
+    });
+
+    document.querySelectorAll('.placeholder-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const tag = this.getAttribute('data-tag');
+            CKEDITOR.instances.editor.insertHtml(tag);
+        });
+    });
+
+    {{#unless isNew}}
+    const selectedTech = [{{#each template.technologies}}"{{this}}"{{#unless @last}}, {{/unless}}{{/each}}];
+    document.querySelectorAll('input[name="technologies"]').forEach(checkbox => {
+        if (selectedTech.includes(checkbox.value)) {
+            checkbox.checked = true;
+        }
+    });
+    {{/unless}}
+</script>

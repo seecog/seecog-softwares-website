@@ -141,6 +141,7 @@ var session = require('express-session');
 
 var indexRouter = require('./routes/index');
 var adminRouter = require('./routes/admin');
+var recruitRouter = require('./routes/recruit');
 var flashMiddleware = require('./middleware/flash');
 
 var app = express();
@@ -151,13 +152,20 @@ var app = express();
 var hbs = require('express-handlebars');
 
 app.engine('hbs', hbs({
-  extname: 'hbs',
-  defaultLayout: 'default',
-  layoutsDir: path.join(__dirname, 'views/layouts'),
-  partialsDir: path.join(__dirname, 'views/partials'),
-  helpers: {
-    eq: function(a, b) { return a === b; }
-  }
+   extname: 'hbs',
+   defaultLayout: 'default',
+   layoutsDir: path.join(__dirname, 'views/layouts'),
+   partialsDir: path.join(__dirname, 'views/partials'),
+   runtimeOptions: {
+      allowProtoPropertiesByDefault: true,
+      allowProtoMethodsByDefault: true,
+   },
+   helpers: {
+      eq: function (a, b) { return a === b; },
+      array: function () {
+         return Array.prototype.slice.call(arguments, 0, -1);
+      }
+   }
 }));
 
 app.set('views', path.join(__dirname, 'views'));
@@ -167,8 +175,14 @@ app.set('view engine', 'hbs');
    GLOBAL VARIABLES (YEAR FOR FOOTER)
 ================================ */
 app.use(function (req, res, next) {
-  res.locals.year = new Date().getFullYear();
-  next();
+   res.locals.year = new Date().getFullYear();
+   // Add render logging for debugging
+   const _render = res.render;
+   res.render = function (view, options, callback) {
+      console.log(`[RENDER] View: ${view}, Layout: ${options && options.layout !== undefined ? options.layout : 'default'}`);
+      _render.call(this, view, options, callback);
+   };
+   next();
 });
 
 /* ===============================
@@ -179,10 +193,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session({
-  secret: process.env.SESSION_SECRET || 'seecog-admin-secret-change-in-production',
-  resave: false,
-  saveUninitialized: false,
-  cookie: { secure: process.env.NODE_ENV === 'production', httpOnly: true }
+   secret: process.env.SESSION_SECRET || 'seecog-admin-secret-change-in-production',
+   resave: false,
+   saveUninitialized: false,
+   cookie: { secure: process.env.NODE_ENV === 'production', httpOnly: true }
 }));
 app.use(flashMiddleware);
 app.use(express.static(path.join(__dirname, 'public')));
@@ -191,23 +205,26 @@ app.use(express.static(path.join(__dirname, 'public')));
    ROUTES
 ================================ */
 app.use('/admin', adminRouter);
+app.use('/recruit', recruitRouter);
 app.use('/', indexRouter);
 
 /* ===============================
    404 HANDLER
 ================================ */
-app.use(function(req, res, next) {
-  next(createError(404));
+app.use(function (req, res, next) {
+   next(createError(404));
 });
 
 /* ===============================
    ERROR HANDLER
 ================================ */
-app.use(function(err, req, res, next) {
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-  res.status(err.status || 500);
-  res.render('error');
+app.use(function (err, req, res, next) {
+   console.error('[SERVER ERROR]', err);
+   res.locals.message = err.message;
+   res.locals.error = req.app.get('env') === 'development' ? err : {};
+   res.status(err.status || 500);
+   // Force NO layout for error page to see the actual error content instead of the homepage fallback
+   res.render('error', { layout: false });
 });
 
 /* ===============================
