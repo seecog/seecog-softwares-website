@@ -30,7 +30,14 @@ async function postLogin(req, res) {
     }
     req.session.adminUserId = user.id;
     req.session.adminEmail = user.email;
-    return res.redirect('/admin/dashboard');
+    req.session.save((err) => {
+      if (err) {
+        console.error('Session save error:', err);
+        req.flashMessage('error', 'An error occurred. Please try again.');
+        return res.redirect('/admin/login');
+      }
+      return res.redirect('/admin/dashboard');
+    });
   } catch (err) {
     console.error('Login error:', err);
     req.flashMessage('error', 'An error occurred. Please try again.');
