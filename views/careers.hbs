@@ -81,25 +81,53 @@
         </div>
         <div id="positionsList" class="positions-list">
           {{#if data.jobs}}{{#each data.jobs}}
-          <div class="position-card dc-shadow" data-job-id="{{this.id}}" data-title="{{this.title}}" data-department="{{this.department}}" data-location="{{this.location}}" data-type="{{this.job_type}}">
-            <div class="position-info">
-              <h4>{{this.title}}</h4>
-              <p class="position-desc">{{this.description}}</p>
-              <div class="position-meta">
-                <span><i class="bx bx-map"></i> {{this.location}}</span>
-                <span><i class="bx bx-briefcase"></i> {{this.job_type}}</span>
-                {{#if this.department}}<span><i class="bx bx-building"></i> {{this.department}}</span>{{/if}}
+              <div
+                class="position-card dc-shadow"
+                data-job-id="{{this.id}}"
+                data-title="{{this.title}}"
+                data-department="{{this.department}}"
+                data-location="{{this.location}}"
+                data-type="{{this.job_type}}"
+              >
+                <div class="position-info">
+                  <div class="position-title-row">
+                    <h4>{{this.title}}</h4>
+                    <button
+                      type="button"
+                      class="position-expand-btn"
+                      data-desc-id="pos-desc-{{this.id}}"
+                      aria-expanded="false"
+                      aria-label="Expand description"
+                    ><i class="bx bx-chevron-down"></i></button>
+                  </div>
+                  <p
+                    class="position-desc"
+                    id="pos-desc-{{this.id}}"
+                  >{{this.description}}</p>
+                  <div class="position-meta">
+                    <span><i class="bx bx-map"></i> {{this.location}}</span>
+                    <span><i class="bx bx-briefcase"></i>
+                      {{this.job_type}}</span>
+                    {{#if this.department}}<span><i class="bx bx-building"></i>
+                        {{this.department}}</span>{{/if}}
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  class="default-btn btn-sm careers-apply-btn"
+                  data-job-id="{{this.id}}"
+                  data-job-title="{{this.title}}"
+                  onclick="window.openCareersApplyModal(this); return false;"
+                >Apply</button>
+              </div>
+            {{/each}}{{else}}
+            <div class="position-card dc-shadow no-jobs-msg">
+              <div class="position-info">
+                <h4>No open positions at the moment</h4>
+                <p class="position-desc">We're always looking for talented
+                  people. Check back soon or send us your resume.</p>
               </div>
             </div>
-            <button type="button" class="default-btn btn-sm careers-apply-btn" data-job-id="{{this.id}}" data-job-title="{{this.title}}" onclick="window.openCareersApplyModal(this); return false;">Apply</button>
-          </div>
-          {{/each}}{{else}}
-          <div class="position-card dc-shadow no-jobs-msg">
-            <div class="position-info">
-              <h4>No open positions at the moment</h4>
-              <p class="position-desc">We're always looking for talented people. Check back soon or send us your resume.</p>
-            </div>
-          </div>
           {{/if}}
         </div>
         <div id="noPositions" class="no-positions" hidden>
@@ -222,34 +250,71 @@
 <div id="applyModal" class="careers-modal" aria-hidden="true">
   <div class="careers-modal-overlay"></div>
   <div class="careers-modal-content dc-shadow">
-    <button type="button" class="careers-modal-close" aria-label="Close">&times;</button>
+    <button
+      type="button"
+      class="careers-modal-close"
+      aria-label="Close"
+    >&times;</button>
     <h3 id="applyModalTitle">Apply for this position</h3>
     <div id="applyModalError" class="careers-modal-error" hidden></div>
-    <form id="careersApplyForm" class="careers-apply-form" method="post" action="/careers/apply" enctype="multipart/form-data">
-      <input type="hidden" name="job_id" id="careersJobId" value="">
+    <form
+      id="careersApplyForm"
+      class="careers-apply-form"
+      method="post"
+      action="/careers/apply"
+      enctype="multipart/form-data"
+    >
+      <input type="hidden" name="job_id" id="careersJobId" value="" />
       <div class="form-row">
         <div class="form-group">
           <label>Full Name <span>*</span></label>
-          <input type="text" name="full_name" required placeholder="Your full name" id="careersName" />
+          <input
+            type="text"
+            name="full_name"
+            required
+            placeholder="Your full name"
+            id="careersName"
+          />
         </div>
         <div class="form-group">
           <label>Email <span>*</span></label>
-          <input type="email" name="email" required placeholder="you@example.com" id="careersEmail" />
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="you@example.com"
+            id="careersEmail"
+          />
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
           <label>LinkedIn URL <span>*</span></label>
-          <input type="url" name="linkedin_url" required placeholder="https://linkedin.com/in/you" />
+          <input
+            type="url"
+            name="linkedin_url"
+            required
+            placeholder="https://linkedin.com/in/you"
+          />
         </div>
         <div class="form-group">
           <label>Portfolio URL (optional)</label>
-          <input type="url" name="portfolio_url" placeholder="https://yourportfolio.com" />
+          <input
+            type="url"
+            name="portfolio_url"
+            placeholder="https://yourportfolio.com"
+          />
         </div>
       </div>
       <div class="form-group">
         <label>Resume (PDF/DOC/DOCX, max 5MB) <span>*</span></label>
-        <input type="file" name="resume" id="careersResume" accept=".pdf,.doc,.docx" required />
+        <input
+          type="file"
+          name="resume"
+          id="careersResume"
+          accept=".pdf,.doc,.docx"
+          required
+        />
         <span class="file-name" id="resumeFileName"></span>
       </div>
       <button type="submit" class="default-btn" id="careersSubmitBtn">
@@ -271,273 +336,654 @@
 ></div>
 
 <script>
-(function() {
-  window.openCareersApplyModal = function(btn) {
+  (function() { window.openCareersApplyModal = function(btn) { if (!btn) return;
+  var jobId = btn.getAttribute && btn.getAttribute('data-job-id'); var jobTitle
+  = btn.getAttribute && btn.getAttribute('data-job-title'); var modal =
+  document.getElementById('applyModal'); var jobIdEl =
+  document.getElementById('careersJobId'); var titleEl =
+  document.getElementById('applyModalTitle'); var errEl =
+  document.getElementById('applyModalError'); if (jobIdEl) jobIdEl.value = jobId
+  || ''; if (titleEl) titleEl.textContent = 'Apply for: ' + (jobTitle ||
+  'Position'); if (errEl) { errEl.hidden = true; errEl.textContent = ''; } if
+  (modal) { modal.classList.add('careers-modal-open');
+  modal.setAttribute('aria-hidden', 'false'); } }; function filterPositions() {
+  var search = (document.getElementById('positionSearch') ||
+  {}).value.toLowerCase() || ''; var dept =
+  (document.getElementById('filterDepartment') || {}).value || ''; var loc =
+  (document.getElementById('filterLocation') || {}).value || ''; var typ =
+  (document.getElementById('filterType') || {}).value || ''; var cards =
+  document.querySelectorAll('#positionsList .position-card'); var visible = 0;
+  cards.forEach(function(card) { var title = (card.getAttribute('data-title') ||
+  '').toLowerCase(); var cardDept = card.getAttribute('data-department') || '';
+  var cardLoc = card.getAttribute('data-location') || ''; var cardTyp =
+  card.getAttribute('data-type') || ''; var matchSearch = !search ||
+  title.indexOf(search) >= 0; var matchDept = !dept || cardDept === dept; var
+  matchLoc = !loc || cardLoc === loc; var matchTyp = !typ || cardTyp === typ;
+  var show = matchSearch && matchDept && matchLoc && matchTyp;
+  card.style.display = show ? '' : 'none'; if (show) visible++; }); var noPos =
+  document.getElementById('noPositions'); if (noPos) noPos.hidden = visible > 0;
+  } function openModal(jobId, jobTitle) { var modal =
+  document.getElementById('applyModal'); var jobIdEl =
+  document.getElementById('careersJobId'); var titleEl =
+  document.getElementById('applyModalTitle'); var errEl =
+  document.getElementById('applyModalError'); if (jobIdEl) jobIdEl.value = jobId
+  || ''; if (titleEl) titleEl.textContent = 'Apply for: ' + (jobTitle ||
+  'Position'); if (errEl) { errEl.hidden = true; errEl.textContent = ''; } if
+  (modal) { modal.classList.add('careers-modal-open');
+  modal.setAttribute('aria-hidden', 'false'); } } function closeModal() { var
+  modal = document.getElementById('applyModal'); var form =
+  document.getElementById('careersApplyForm'); if (modal) {
+  modal.classList.remove('careers-modal-open');
+  modal.setAttribute('aria-hidden', 'true'); } if (form) form.reset(); var fn =
+  document.getElementById('resumeFileName'); if (fn) fn.textContent = ''; }
+  function showToast(msg, isErr) { var t =
+  document.getElementById('careersToast'); if (!t) return; t.textContent = msg;
+  t.className = 'careers-toast careers-toast-visible' + (isErr ? ' careers-toast-error' : ''); t.hidden = false; setTimeout(function() {
+  t.classList.remove('careers-toast-visible'); t.hidden = true; }, 4000); }
+  function findApplyBtn(el) { while (el && el !== document.body) { if
+  (el.classList && el.classList.contains('careers-apply-btn')) return el; el =
+  el.parentElement; } return null; } function bindApplyButtons() {
+  document.addEventListener('click', function(e) { var btn =
+  findApplyBtn(e.target); if (btn) { e.preventDefault(); e.stopPropagation();
+  openModal(btn.getAttribute('data-job-id'),
+  btn.getAttribute('data-job-title')); } }, true); } function initModal() { var
+  modal = document.getElementById('applyModal'); var overlay = modal &&
+  modal.querySelector('.careers-modal-overlay'); var closeBtn = modal &&
+  modal.querySelector('.careers-modal-close'); if (overlay)
+  overlay.addEventListener('click', closeModal); if (closeBtn)
+  closeBtn.addEventListener('click', closeModal); } function initForm() { var
+  form = document.getElementById('careersApplyForm'); if (!form) return;
+  form.addEventListener('submit', function(e) { e.preventDefault(); var btn =
+  document.getElementById('careersSubmitBtn'); var errEl =
+  document.getElementById('applyModalError'); var jobId =
+  document.getElementById('careersJobId').value; if (!jobId) { if (errEl) {
+  errEl.textContent = 'Please select a job.'; errEl.hidden = false; } return; }
+  var fd = new FormData(form); if (btn) { btn.disabled = true;
+  btn.classList.add('careers-loading'); } if (errEl) { errEl.hidden = true;
+  errEl.textContent = ''; } fetch('/careers/apply', { method: 'POST', body: fd,
+  headers: { 'Accept': 'application/json' } }) .then(function(r) { return
+  r.json().then(function(d) { return { ok: r.ok, data: d }; }); })
+  .then(function(result) { if (result.ok && result.data && result.data.success)
+  { showToast('Application submitted successfully!'); closeModal(); } else { if
+  (errEl) { errEl.textContent = (result.data && result.data.error) ||
+  'Submission failed.'; errEl.hidden = false; } } }) .catch(function() { if
+  (errEl) { errEl.textContent = 'Network error. Please try again.'; errEl.hidden
+  = false; } }) .finally(function() { if (btn) { btn.disabled = false;
+  btn.classList.remove('careers-loading'); } }); }); var resumeInput =
+  document.getElementById('careersResume'); var fileNameEl =
+  document.getElementById('resumeFileName'); if (resumeInput && fileNameEl)
+  resumeInput.addEventListener('change', function() { fileNameEl.textContent =
+  resumeInput.files[0] ? resumeInput.files[0].name : ''; }); } function
+  initFAQ() { document.querySelectorAll('.faq-question').forEach(function(btn) {
+  btn.addEventListener('click', function() { var expanded =
+  btn.getAttribute('aria-expanded') === 'true';
+  btn.setAttribute('aria-expanded', !expanded); var target =
+  document.getElementById(btn.getAttribute('aria-controls')); if (target)
+  target.classList.toggle('faq-open', !expanded); }); }); } function
+  initExpandDesc() {
+  var list = document.getElementById('positionsList');
+  if (!list) return;
+  list.addEventListener('click', function(e) {
+    var btn = e.target.closest && e.target.closest('.position-expand-btn');
     if (!btn) return;
-    var jobId = btn.getAttribute && btn.getAttribute('data-job-id');
-    var jobTitle = btn.getAttribute && btn.getAttribute('data-job-title');
-    var modal = document.getElementById('applyModal');
-    var jobIdEl = document.getElementById('careersJobId');
-    var titleEl = document.getElementById('applyModalTitle');
-    var errEl = document.getElementById('applyModalError');
-    if (jobIdEl) jobIdEl.value = jobId || '';
-    if (titleEl) titleEl.textContent = 'Apply for: ' + (jobTitle || 'Position');
-    if (errEl) { errEl.hidden = true; errEl.textContent = ''; }
-    if (modal) {
-      modal.classList.add('careers-modal-open');
-      modal.setAttribute('aria-hidden', 'false');
-    }
-  };
-  function filterPositions() {
-    var search = (document.getElementById('positionSearch') || {}).value.toLowerCase() || '';
-    var dept = (document.getElementById('filterDepartment') || {}).value || '';
-    var loc = (document.getElementById('filterLocation') || {}).value || '';
-    var typ = (document.getElementById('filterType') || {}).value || '';
-    var cards = document.querySelectorAll('#positionsList .position-card');
-    var visible = 0;
-    cards.forEach(function(card) {
-      var title = (card.getAttribute('data-title') || '').toLowerCase();
-      var cardDept = card.getAttribute('data-department') || '';
-      var cardLoc = card.getAttribute('data-location') || '';
-      var cardTyp = card.getAttribute('data-type') || '';
-      var matchSearch = !search || title.indexOf(search) >= 0;
-      var matchDept = !dept || cardDept === dept;
-      var matchLoc = !loc || cardLoc === loc;
-      var matchTyp = !typ || cardTyp === typ;
-      var show = matchSearch && matchDept && matchLoc && matchTyp;
-      card.style.display = show ? '' : 'none';
-      if (show) visible++;
-    });
-    var noPos = document.getElementById('noPositions');
-    if (noPos) noPos.hidden = visible > 0;
-  }
-  function openModal(jobId, jobTitle) {
-    var modal = document.getElementById('applyModal');
-    var jobIdEl = document.getElementById('careersJobId');
-    var titleEl = document.getElementById('applyModalTitle');
-    var errEl = document.getElementById('applyModalError');
-    if (jobIdEl) jobIdEl.value = jobId || '';
-    if (titleEl) titleEl.textContent = 'Apply for: ' + (jobTitle || 'Position');
-    if (errEl) { errEl.hidden = true; errEl.textContent = ''; }
-    if (modal) { modal.classList.add('careers-modal-open'); modal.setAttribute('aria-hidden', 'false'); }
-  }
-  function closeModal() {
-    var modal = document.getElementById('applyModal');
-    var form = document.getElementById('careersApplyForm');
-    if (modal) { modal.classList.remove('careers-modal-open'); modal.setAttribute('aria-hidden', 'true'); }
-    if (form) form.reset();
-    var fn = document.getElementById('resumeFileName');
-    if (fn) fn.textContent = '';
-  }
-  function showToast(msg, isErr) {
-    var t = document.getElementById('careersToast');
-    if (!t) return;
-    t.textContent = msg;
-    t.className = 'careers-toast careers-toast-visible' + (isErr ? ' careers-toast-error' : '');
-    t.hidden = false;
-    setTimeout(function() { t.classList.remove('careers-toast-visible'); t.hidden = true; }, 4000);
-  }
-  function findApplyBtn(el) {
-    while (el && el !== document.body) {
-      if (el.classList && el.classList.contains('careers-apply-btn')) return el;
-      el = el.parentElement;
-    }
-    return null;
-  }
-  function bindApplyButtons() {
-    document.addEventListener('click', function(e) {
-      var btn = findApplyBtn(e.target);
-      if (btn) {
-        e.preventDefault();
-        e.stopPropagation();
-        openModal(btn.getAttribute('data-job-id'), btn.getAttribute('data-job-title'));
-      }
-    }, true);
-  }
-  function initModal() {
-    var modal = document.getElementById('applyModal');
-    var overlay = modal && modal.querySelector('.careers-modal-overlay');
-    var closeBtn = modal && modal.querySelector('.careers-modal-close');
-    if (overlay) overlay.addEventListener('click', closeModal);
-    if (closeBtn) closeBtn.addEventListener('click', closeModal);
-  }
-  function initForm() {
-    var form = document.getElementById('careersApplyForm');
-    if (!form) return;
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      var btn = document.getElementById('careersSubmitBtn');
-      var errEl = document.getElementById('applyModalError');
-      var jobId = document.getElementById('careersJobId').value;
-      if (!jobId) { if (errEl) { errEl.textContent = 'Please select a job.'; errEl.hidden = false; } return; }
-      var fd = new FormData(form);
-      if (btn) { btn.disabled = true; btn.classList.add('careers-loading'); }
-      if (errEl) { errEl.hidden = true; errEl.textContent = ''; }
-      fetch('/careers/apply', { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } })
-        .then(function(r) { return r.json().then(function(d) { return { ok: r.ok, data: d }; }); })
-        .then(function(result) {
-          if (result.ok && result.data && result.data.success) {
-            showToast('Application submitted successfully!');
-            closeModal();
-          } else {
-            if (errEl) { errEl.textContent = (result.data && result.data.error) || 'Submission failed.'; errEl.hidden = false; }
-          }
-        })
-        .catch(function() {
-          if (errEl) { errEl.textContent = 'Network error. Please try again.'; errEl.hidden = false; }
-        })
-        .finally(function() {
-          if (btn) { btn.disabled = false; btn.classList.remove('careers-loading'); }
-        });
-    });
-    var resumeInput = document.getElementById('careersResume');
-    var fileNameEl = document.getElementById('resumeFileName');
-    if (resumeInput && fileNameEl) resumeInput.addEventListener('change', function() { fileNameEl.textContent = resumeInput.files[0] ? resumeInput.files[0].name : ''; });
-  }
-  function initFAQ() {
-    document.querySelectorAll('.faq-question').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        var expanded = btn.getAttribute('aria-expanded') === 'true';
-        btn.setAttribute('aria-expanded', !expanded);
-        var target = document.getElementById(btn.getAttribute('aria-controls'));
-        if (target) target.classList.toggle('faq-open', !expanded);
-      });
-    });
-  }
-  function init() {
-    ['positionSearch','filterDepartment','filterLocation','filterType'].forEach(function(id) {
-      var el = document.getElementById(id);
-      if (el) {
-        el.addEventListener('input', filterPositions);
-        el.addEventListener('change', filterPositions);
-      }
-    });
-    bindApplyButtons();
-    initModal();
-    initForm();
-    initFAQ();
-    filterPositions();
-    var qs = new URLSearchParams(window.location.search);
-    if (qs.get('success')) showToast(decodeURIComponent(qs.get('success')));
-    if (qs.get('error')) showToast(decodeURIComponent(qs.get('error')), true);
-  }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
-})();
+    e.preventDefault();
+    e.stopPropagation();
+    var descId = btn.getAttribute('data-desc-id');
+    var desc = descId ? document.getElementById(descId) : null;
+    if (!desc) return;
+    var expanded = desc.classList.toggle('position-desc--expanded');
+    btn.setAttribute('aria-expanded', expanded);
+  });
+} function init() {
+  ['positionSearch','filterDepartment','filterLocation','filterType'].forEach(function(id)
+  { var el = document.getElementById(id); if (el) { el.addEventListener('input',
+  filterPositions); el.addEventListener('change', filterPositions); } });
+  bindApplyButtons(); initModal(); initForm(); initFAQ(); initExpandDesc();
+  filterPositions(); var qs = new URLSearchParams(window.location.search); if
+  (qs.get('success')) showToast(decodeURIComponent(qs.get('success'))); if
+  (qs.get('error')) showToast(decodeURIComponent(qs.get('error')), true); } if
+  (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init); } else { init(); } })();
 </script>
 
 <style>
-  .careers-page-area { background: linear-gradient(135deg, #f8f9fc 0%, #f0f4ff
-  50%, #eef2ff 100%); isolation: isolate; } .careers-inner { max-width: 960px; margin: 0 auto; }
-  .dc-shadow { box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 12px 48px
-  rgba(0,0,0,0.06); border-radius: 20px; } .careers-hero { text-align: center;
-  padding: 48px 32px; background: linear-gradient(135deg, #0a0f2c 0%, #1b0f4f
-  100%); color: #fff; border-radius: 20px; margin-bottom: 56px; position: relative;
-  z-index: 1; } .careers-hero h1 { font-size: 38px; font-weight: 700; margin: 0
-  0 16px; letter-spacing: -0.5px; color: #fff !important; } .careers-hero p {
-  font-size: 18px; opacity: 1; margin: 0 0 32px; line-height: 1.6; max-width:
-  560px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.95)
-  !important; }
-  .careers-hero-cta { display: flex; flex-wrap: wrap; justify-content: center;
-  gap: 16px; } .careers-section { margin-bottom: 56px; } .careers-section h2 {
-  font-size: 28px; font-weight: 700; margin-bottom: 28px; color: #1a1a2e;
-  text-align: center; letter-spacing: -0.3px; } .benefits-grid { display: grid;
-  grid-template-columns: repeat(3, 1fr); gap: 24px; } .benefit-card { padding:
-  32px 28px; background: #fff; border-radius: 20px; text-align: center;
-  transition: all 0.3s ease; border: 1px solid rgba(108,92,231,0.08); }
-  .benefit-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px
-  rgba(108,92,231,0.15) !important; border-color: rgba(108,92,231,0.2); }
-  .benefit-card i { font-size: 48px; color: #6c5ce7; margin-bottom: 20px;
-  display: block; } .benefit-card h4 { font-size: 18px; font-weight: 600;
-  margin-bottom: 12px; color: #1a1a2e; } .benefit-card p { font-size: 15px;
-  color: #555; margin: 0; line-height: 1.6; } .positions-filters { display:
-  grid; grid-template-columns: 1fr auto auto auto; gap: 16px; padding: 24px;
-  background: #fff; border-radius: 20px; margin-bottom: 28px; align-items:
-  center; } .filter-search { padding: 14px 18px; border: 1px solid #e8ecf4;
-  border-radius: 12px; font-size: 15px; } .filter-search:focus { outline: none;
-  border-color: #6c5ce7; box-shadow: 0 0 0 3px rgba(108,92,231,0.12); }
-  .filter-select { padding: 14px 18px; border: 1px solid #e8ecf4; border-radius:
-  12px; font-size: 14px; min-width: 160px; } .positions-list { display: flex;
-  flex-direction: column; gap: 20px; } .position-card { display: flex;
-  flex-wrap: wrap; align-items: center; justify-content: space-between; gap:
-  24px; padding: 28px; background: #fff; border-radius: 20px; transition: all
-  0.3s ease; border: 1px solid rgba(0,0,0,0.04); } .position-card:hover {
-  box-shadow: 0 8px 32px rgba(0,0,0,0.08) !important; border-color:
-  rgba(108,92,231,0.15); } .position-info { flex: 1; min-width: 240px; }
-  .position-info h4 { font-size: 19px; font-weight: 600; margin: 0 0 10px;
-  color: #1a1a2e; } .position-desc { font-size: 15px; color: #555; margin: 0 0
-  14px; line-height: 1.55; } .position-meta { display: flex; flex-wrap: wrap;
-  gap: 20px; font-size: 14px; color: #555; } .position-meta span { display:
-  flex; align-items: center; gap: 8px; } .position-meta i { font-size: 18px;
-  color: #6c5ce7; } .position-skills { display: flex; flex-wrap: wrap; gap:
-  10px; margin-top: 14px; } .skill-tag { font-size: 12px; padding: 6px 12px;
-  background: linear-gradient(135deg, #f0f4ff, #f8f9ff); color: #6c5ce7;
-  border-radius: 10px; font-weight: 500; }   .btn-sm { padding: 12px 24px;
-  font-size: 14px; font-weight: 600; border-radius: 12px; }
-  .careers-apply-btn { cursor: pointer; pointer-events: auto !important; } .no-positions {
-  text-align: center; padding: 48px; color: #666; font-size: 16px; }
-  .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap:
-  24px; } .process-step { padding: 28px 24px; background: #fff; border-radius:
-  20px; text-align: center; transition: all 0.3s ease; } .process-step:hover {
-  transform: translateY(-4px); box-shadow: 0 12px 36px rgba(108,92,231,0.12)
-  !important; } .step-num { display: inline-flex; align-items: center;
-  justify-content: center; width: 48px; height: 48px; background:
-  linear-gradient(135deg, #6c5ce7, #5b4cdb); color: #fff; border-radius: 50%;
-  font-weight: 700; font-size: 18px; margin-bottom: 20px; } .process-step h4 {
-  font-size: 18px; font-weight: 600; margin: 0 0 10px; color: #1a1a2e; }
-  .process-step p { font-size: 14px; color: #555; margin: 0; line-height: 1.5; }
-  .faq-accordion { background: #fff; border-radius: 20px; overflow: hidden; }
-  .faq-item { border-bottom: 1px solid #eee; } .faq-item:last-child {
-  border-bottom: none; } .faq-question { width: 100%; display: flex;
-  align-items: center; justify-content: space-between; padding: 22px 28px;
-  background: none; border: none; font-size: 16px; font-weight: 600; color:
-  #1a1a2e; cursor: pointer; text-align: left; transition: background 0.2s; }
-  .faq-question:hover { background: #fafbff; } .faq-question i { font-size:
-  22px; color: #6c5ce7; transition: transform 0.3s; flex-shrink: 0; margin-left:
-  12px; } .faq-question[aria-expanded="true"] i { transform: rotate(180deg); }
-  .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s
-  ease; } .faq-answer.faq-open { max-height: 140px; } .faq-answer p { margin: 0;
-  padding: 0 28px 24px; color: #555; line-height: 1.65; font-size: 15px; }
-  .careers-apply-form { padding: 40px; background: #fff; border-radius: 20px;
-  max-width: 640px; margin: 0 auto; } .form-row { display: grid;
-  grid-template-columns: 1fr 1fr; gap: 24px; } .form-group { margin-bottom:
-  22px; } .form-group label { display: block; margin-bottom: 10px; font-weight:
-  600; color: #333; font-size: 14px; } .form-group input, .form-group select,
-  .form-group textarea { width: 100%; padding: 14px 18px; border: 1px solid
-  #e8ecf4; border-radius: 12px; font-size: 15px; } .form-group input:focus,
-  .form-group select:focus, .form-group textarea:focus { outline: none;
-  border-color: #6c5ce7; box-shadow: 0 0 0 3px rgba(108,92,231,0.12); }
-  .form-error { display: block; font-size: 12px; color: #dc3545; margin-top:
-  6px; } .file-name { font-size: 13px; color: #6c5ce7; margin-top: 6px; display:
-  block; font-weight: 500; } .careers-loading { opacity: 0.7; pointer-events:
-  none; } .careers-toast { position: fixed; bottom: 32px; left: 50%; transform:
-  translateX(-50%); background: #1a1a2e; color: #fff; padding: 16px 32px;
-  border-radius: 14px; font-size: 15px; z-index: 9999; opacity: 0; transition:
-  opacity 0.3s; box-shadow: 0 12px 40px rgba(0,0,0,0.2); }
-  .careers-toast-visible { opacity: 1; } .careers-toast-error { background:
-  #dc3545; } .careers-cta { text-align: center; padding: 40px 36px; background:
-  #fff; border-radius: 20px; } .careers-cta h3 { font-size: 22px; font-weight:
-  600; margin: 0 0 14px; color: #1a1a2e; } .careers-cta p { font-size: 16px;
-  color: #555; margin: 0; line-height: 1.6; }   .careers-cta a { color: #6c5ce7;
-  font-weight: 600; }
-  .careers-modal { position: fixed; inset: 0; z-index: 99999; display: flex; align-items: center; justify-content: center; padding: 20px; opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s; pointer-events: none; }
-  .careers-modal-open { opacity: 1; visibility: visible; pointer-events: auto; }
-  .careers-modal-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); }
-  .careers-modal-content { position: relative; background: #fff; border-radius: 20px; padding: 32px; max-width: 540px; width: 100%; max-height: 90vh; overflow-y: auto; }
-  .careers-modal-close { position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border: none; background: #f0f4ff; border-radius: 50%; font-size: 24px; cursor: pointer; color: #555; line-height: 1; }
-  .careers-modal-close:hover { background: #e0e4ec; color: #333; }
-  .careers-modal-content h3 { margin: 0 0 24px; font-size: 22px; color: #1a1a2e; }
-  .careers-modal-error { background: #f8d7da; color: #721c24; padding: 12px 16px; border-radius: 10px; margin-bottom: 16px; font-size: 14px; }
-  @media (max-width: 991px) { .benefits-grid {
-  grid-template-columns: 1fr; } .process-steps { grid-template-columns:
-  repeat(2, 1fr); } .positions-filters { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 767px) { .process-steps { grid-template-columns: 1fr; } }
-  @media (max-width: 575px) { .form-row { grid-template-columns: 1fr; }
-  .position-card { flex-direction: column; align-items: stretch; }
-  .positions-filters { grid-template-columns: 1fr; } .careers-hero h1 {
-  font-size: 28px; } .careers-hero { padding: 36px 24px; } }
+  .careers-page-area {
+    background: linear-gradient(135deg, #f8f9fc 0%, #f0f4ff 50%, #eef2ff 100%);
+    isolation: isolate;
+  }
+  .careers-inner {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .dc-shadow {
+    box-shadow:
+      0 4px 24px rgba(0, 0, 0, 0.08),
+      0 12px 48px rgba(0, 0, 0, 0.06);
+    border-radius: 20px;
+  }
+  .careers-hero {
+    text-align: center;
+    padding: 48px 32px;
+    background: linear-gradient(135deg, #0a0f2c 0%, #1b0f4f 100%);
+    color: #fff;
+    border-radius: 20px;
+    margin-bottom: 56px;
+    position: relative;
+    z-index: 1;
+  }
+  .careers-hero h1 {
+    font-size: 38px;
+    font-weight: 700;
+    margin: 0 0 16px;
+    letter-spacing: -0.5px;
+    color: #fff !important;
+  }
+  .careers-hero p {
+    font-size: 18px;
+    opacity: 1;
+    margin: 0 0 32px;
+    line-height: 1.6;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgba(255, 255, 255, 0.95) !important;
+  }
+  .careers-hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+  .careers-section {
+    margin-bottom: 56px;
+  }
+  .careers-section h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 28px;
+    color: #1a1a2e;
+    text-align: center;
+    letter-spacing: -0.3px;
+  }
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .benefit-card {
+    padding: 32px 28px;
+    background: #fff;
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(108, 92, 231, 0.08);
+  }
+  .benefit-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(108, 92, 231, 0.15) !important;
+    border-color: rgba(108, 92, 231, 0.2);
+  }
+  .benefit-card i {
+    font-size: 48px;
+    color: #6c5ce7;
+    margin-bottom: 20px;
+    display: block;
+  }
+  .benefit-card h4 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #1a1a2e;
+  }
+  .benefit-card p {
+    font-size: 15px;
+    color: #555;
+    margin: 0;
+    line-height: 1.6;
+  }
+  .positions-filters {
+    display: grid;
+    grid-template-columns: 1fr auto auto auto;
+    gap: 16px;
+    padding: 24px;
+    background: #fff;
+    border-radius: 20px;
+    margin-bottom: 28px;
+    align-items: center;
+  }
+  .filter-search {
+    padding: 14px 18px;
+    border: 1px solid #e8ecf4;
+    border-radius: 12px;
+    font-size: 15px;
+  }
+  .filter-search:focus {
+    outline: none;
+    border-color: #6c5ce7;
+    box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.12);
+  }
+  .filter-select {
+    padding: 14px 18px;
+    border: 1px solid #e8ecf4;
+    border-radius: 12px;
+    font-size: 14px;
+    min-width: 160px;
+  }
+  .positions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .position-card {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 28px;
+    background: #fff;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+  }
+  .position-card:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08) !important;
+    border-color: rgba(108, 92, 231, 0.15);
+  }
+  .position-info {
+    flex: 1;
+    min-width: 240px;
+  }
+  .position-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .position-info h4 {
+    font-size: 19px;
+    font-weight: 600;
+    margin: 0;
+    color: #1a1a2e;
+    flex: 1;
+  }
+  .position-expand-btn {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: #6c5ce7;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.2s;
+  }
+  .position-expand-btn:hover {
+    background: rgba(108, 92, 231, 0.1);
+  }
+  .position-expand-btn[aria-expanded="true"] i {
+    transform: rotate(180deg);
+  }
+  .position-expand-btn i {
+    font-size: 24px;
+    transition: transform 0.3s;
+  }
+  .position-desc {
+    font-size: 15px;
+    color: #555;
+    margin: 0 0 14px;
+    line-height: 1.55;
+    max-height: 3.2em;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    white-space: pre-line;
+  }
+  .position-desc.position-desc--expanded {
+    max-height: 5000px;
+    overflow: visible;
+  }
+  .position-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 14px;
+    color: #555;
+  }
+  .position-meta span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .position-meta i {
+    font-size: 18px;
+    color: #6c5ce7;
+  }
+  .position-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .skill-tag {
+    font-size: 12px;
+    padding: 6px 12px;
+    background: linear-gradient(135deg, #f0f4ff, #f8f9ff);
+    color: #6c5ce7;
+    border-radius: 10px;
+    font-weight: 500;
+  }
+  .btn-sm {
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 12px;
+  }
+  .careers-apply-btn {
+    cursor: pointer;
+    pointer-events: auto !important;
+  }
+  .no-positions {
+    text-align: center;
+    padding: 48px;
+    color: #666;
+    font-size: 16px;
+  }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .process-step {
+    padding: 28px 24px;
+    background: #fff;
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  .process-step:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(108, 92, 231, 0.12) !important;
+  }
+  .step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #6c5ce7, #5b4cdb);
+    color: #fff;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  .process-step h4 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 10px;
+    color: #1a1a2e;
+  }
+  .process-step p {
+    font-size: 14px;
+    color: #555;
+    margin: 0;
+    line-height: 1.5;
+  }
+  .faq-accordion {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .faq-item {
+    border-bottom: 1px solid #eee;
+  }
+  .faq-item:last-child {
+    border-bottom: none;
+  }
+  .faq-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 28px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a2e;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.2s;
+  }
+  .faq-question:hover {
+    background: #fafbff;
+  }
+  .faq-question i {
+    font-size: 22px;
+    color: #6c5ce7;
+    transition: transform 0.3s;
+    flex-shrink: 0;
+    margin-left: 12px;
+  }
+  .faq-question[aria-expanded="true"] i {
+    transform: rotate(180deg);
+  }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+  .faq-answer.faq-open {
+    max-height: 140px;
+  }
+  .faq-answer p {
+    margin: 0;
+    padding: 0 28px 24px;
+    color: #555;
+    line-height: 1.65;
+    font-size: 15px;
+  }
+  .careers-apply-form {
+    padding: 40px;
+    background: #fff;
+    border-radius: 20px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .form-group {
+    margin-bottom: 22px;
+  }
+  .form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1px solid #e8ecf4;
+    border-radius: 12px;
+    font-size: 15px;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: #6c5ce7;
+    box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.12);
+  }
+  .form-error {
+    display: block;
+    font-size: 12px;
+    color: #dc3545;
+    margin-top: 6px;
+  }
+  .file-name {
+    font-size: 13px;
+    color: #6c5ce7;
+    margin-top: 6px;
+    display: block;
+    font-weight: 500;
+  }
+  .careers-loading {
+    opacity: 0.7;
+    pointer-events: none;
+  }
+  .careers-toast {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1a1a2e;
+    color: #fff;
+    padding: 16px 32px;
+    border-radius: 14px;
+    font-size: 15px;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  }
+  .careers-toast-visible {
+    opacity: 1;
+  }
+  .careers-toast-error {
+    background: #dc3545;
+  }
+  .careers-cta {
+    text-align: center;
+    padding: 40px 36px;
+    background: #fff;
+    border-radius: 20px;
+  }
+  .careers-cta h3 {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0 0 14px;
+    color: #1a1a2e;
+  }
+  .careers-cta p {
+    font-size: 16px;
+    color: #555;
+    margin: 0;
+    line-height: 1.6;
+  }
+  .careers-cta a {
+    color: #6c5ce7;
+    font-weight: 600;
+  }
+  .careers-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.3s,
+      visibility 0.3s;
+    pointer-events: none;
+  }
+  .careers-modal-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .careers-modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  .careers-modal-content {
+    position: relative;
+    background: #fff;
+    border-radius: 20px;
+    padding: 32px;
+    max-width: 540px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  .careers-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: #f0f4ff;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    color: #555;
+    line-height: 1;
+  }
+  .careers-modal-close:hover {
+    background: #e0e4ec;
+    color: #333;
+  }
+  .careers-modal-content h3 {
+    margin: 0 0 24px;
+    font-size: 22px;
+    color: #1a1a2e;
+  }
+  .careers-modal-error {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    font-size: 14px;
+  }
+  @media (max-width: 991px) {
+    .benefits-grid {
+      grid-template-columns: 1fr;
+    }
+    .process-steps {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .positions-filters {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 767px) {
+    .process-steps {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 575px) {
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+    .position-card {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .positions-filters {
+      grid-template-columns: 1fr;
+    }
+    .careers-hero h1 {
+      font-size: 28px;
+    }
+    .careers-hero {
+      padding: 36px 24px;
+    }
+  }
 </style>
 <!-- End Careers Area -->
