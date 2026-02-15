@@ -9,6 +9,7 @@ const migrations = [
   '003_create_social_links.sql',
   '004_create_jobs.sql',
   '005_create_job_applications.sql',
+  '006_create_partners.sql',
 ];
 
 async function run() {

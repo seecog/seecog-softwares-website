@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({ path: 'properties.env' });
 
 module.exports = {
   development: {

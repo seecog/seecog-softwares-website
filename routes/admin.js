@@ -5,6 +5,7 @@ const adminAuth = require('../controllers/adminAuthController');
 const adminProfile = require('../controllers/adminProfileController');
 const adminJobs = require('../controllers/adminJobsController');
 const adminApplications = require('../controllers/adminApplicationsController');
+const adminPartners = require('../controllers/adminPartnersController');
 
 router.get('/login', adminAuth.getLogin);
 router.post('/login', adminAuth.postLogin);
@@ -32,5 +33,9 @@ router.post('/jobs/:id/toggle', adminJobs.postToggle);
 router.get('/applications', adminApplications.list);
 router.get('/jobs/:id/applications', adminApplications.listByJob);
 router.get('/applications/:id/resume', adminApplications.downloadResume);
+
+router.get('/partners', adminPartners.list);
+router.post('/partners/upload', adminPartners.postUpload);
+router.post('/partners/:id/delete', adminPartners.postDelete);
 
 module.exports = router;

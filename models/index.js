@@ -6,6 +6,7 @@ const SocialLinks = require('./SocialLinks')(sequelize, Sequelize.DataTypes);
 const Job = require('./Job')(sequelize, Sequelize.DataTypes);
 const JobApplication = require('./JobApplication')(sequelize, Sequelize.DataTypes);
 const ResumeTemplate = require('./ResumeTemplate')(sequelize, Sequelize.DataTypes);
+const Partner = require('./Partner')(sequelize, Sequelize.DataTypes);
 
 // Associations
 Job.belongsTo(AdminUser, { foreignKey: 'created_by' });
@@ -23,4 +24,5 @@ module.exports = {
   Job,
   JobApplication,
   ResumeTemplate,
+  Partner,
 };

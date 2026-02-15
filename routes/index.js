@@ -6,6 +6,7 @@ var careersController = require("../controllers/careersController");
 
 //start
 var dataInfo = null;
+var { Partner } = require("../models");
 function getDataSet() {
   const filePath = path.join(__dirname, "dataset/data.json");
   //   console.log("the fie : ", filePath);
@@ -136,7 +137,15 @@ router.get("/culture", function (req, res, next) {
 router.get("/careers", careersController.getCareers);
 router.post("/careers/apply", careersController.postApply);
 
-router.get("/partners", function (req, res, next) {
+router.get("/partners", async function (req, res, next) {
+  let partners = [];
+  try {
+    partners = await Partner.findAll({
+      order: [["display_order", "ASC"], ["createdAt", "ASC"]],
+    });
+  } catch (err) {
+    console.error("Partners fetch error:", err);
+  }
   const portfolio = (dataInfo && dataInfo.portfolio_page && dataInfo.portfolio_page.projects) || [];
   const selectedProjects = portfolio.slice(0, 3);
   res.render("partners", {
@@ -144,7 +153,8 @@ router.get("/partners", function (req, res, next) {
     data: {
       title: "Partners",
       subTitle: "Our trusted partners and valued clients",
-      selectedProjects: selectedProjects
+      selectedProjects: selectedProjects,
+      partners: partners.map((p) => p.get({ plain: true })),
     }
   });
 });
