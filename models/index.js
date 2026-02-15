@@ -8,6 +8,8 @@ const JobApplication = require('./JobApplication')(sequelize, Sequelize.DataType
 const ResumeTemplate = require('./ResumeTemplate')(sequelize, Sequelize.DataTypes);
 const Partner = require('./Partner')(sequelize, Sequelize.DataTypes);
 const PortfolioProject = require('./PortfolioProject')(sequelize, Sequelize.DataTypes);
+const Visit = require('./Visit')(sequelize, Sequelize.DataTypes);
+const CredentialsVault = require('./CredentialsVault')(sequelize, Sequelize.DataTypes);
 
 // Associations
 Job.belongsTo(AdminUser, { foreignKey: 'created_by' });
@@ -27,4 +29,6 @@ module.exports = {
   ResumeTemplate,
   Partner,
   PortfolioProject,
+  Visit,
+  CredentialsVault,
 };

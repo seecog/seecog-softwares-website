@@ -11,6 +11,8 @@ const migrations = [
   '005_create_job_applications.sql',
   '006_create_partners.sql',
   '007_create_portfolio_projects.sql',
+  '008_create_visits.sql',
+  '009_create_credentials_vault.sql',
 ];
 
 async function run() {

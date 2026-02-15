@@ -164,6 +164,11 @@ app.engine('hbs', hbs({
       eq: function (a, b) { return a === b; },
       array: function () {
          return Array.prototype.slice.call(arguments, 0, -1);
+      },
+      formatDate: function (date) {
+         if (!date) return '-';
+         const d = new Date(date);
+         return isNaN(d.getTime()) ? date : d.toLocaleString();
       }
    }
 }));
@@ -189,8 +194,9 @@ app.use(function (req, res, next) {
    MIDDLEWARE
 ================================ */
 app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+var bodyLimit = '200mb';
+app.use(express.json({ limit: bodyLimit }));
+app.use(express.urlencoded({ extended: false, limit: bodyLimit }));
 app.use(cookieParser());
 app.use(session({
    secret: process.env.SESSION_SECRET || 'seecog-admin-secret-change-in-production',
@@ -203,14 +209,17 @@ app.use(session({
    }
 }));
 app.use(flashMiddleware);
-app.use(express.static(path.join(__dirname, 'public')));
+const trackVisit = require('./middleware/trackVisit');
+app.use(trackVisit);
 
 /* ===============================
-   ROUTES
+   ROUTES (before static so /admin, /recruit take precedence)
 ================================ */
 app.use('/admin', adminRouter);
 app.use('/recruit', recruitRouter);
 app.use('/', indexRouter);
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 /* ===============================
    404 HANDLER
