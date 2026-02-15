@@ -51,7 +51,7 @@ async function getCareers(req, res) {
         department: j.department,
         location: j.location,
         job_type: j.job_type,
-        description: (j.description || '').substring(0, 200) + (j.description && j.description.length > 200 ? '...' : ''),
+        description: j.description || '',
         slug: j.slug,
       })),
     },
