@@ -53,11 +53,7 @@
                         placeholder="you@company.com" style="border-radius: 8px;">
                 </div>
 
-                <div class="form-group mb-3">
-                    <label class="form-label" style="font-size: 13px; font-weight: 600;">Website</label>
-                    <input type="url" name="companyWebsite" id="companyWebsite" class="form-control"
-                        placeholder="https://www.company.com" style="border-radius: 8px;">
-                </div>
+
             </div>
 
             <!-- Template Selection Card -->
@@ -271,7 +267,31 @@ Best regards,
     }
 
     // Add event listeners to all form fields
-    ['clientName', 'senderName', 'senderDesignation', 'companyName', 'senderPhone', 'senderEmail', 'companyWebsite'].forEach(id => {
-        document.getElementById(id).addEventListener('input', updateMessagePreview);
+    ['clientName', 'senderName', 'senderDesignation', 'senderPhone', 'senderEmail'].forEach(id => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.addEventListener('input', function () {
+                updateMessagePreview();
+                // Save to localStorage
+                if (['senderName', 'senderDesignation', 'senderPhone', 'senderEmail'].includes(id)) {
+                    localStorage.setItem('recruit_' + id, this.value);
+                }
+            });
+        }
+    });
+
+    // Load saved values from localStorage
+    document.addEventListener('DOMContentLoaded', function () {
+        ['senderName', 'senderDesignation', 'senderPhone', 'senderEmail'].forEach(id => {
+            const savedValue = localStorage.getItem('recruit_' + id);
+            if (savedValue) {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.value = savedValue;
+                }
+            }
+        });
+        // Update preview with loaded values
+        updateMessagePreview();
     });
 </script>

@@ -263,7 +263,7 @@ exports.postSendResumes = async (req, res) => {
       }));
 
       await transporter.sendMail({
-        from: `"${companyName || 'Seecog Softwares'}" <${process.env.EMAIL_USER}>`,
+        from: `"Seecog Softwares" <${process.env.EMAIL_USER}>`,
         to: toEmail,
         subject: `Shortlisted Candidate Profiles - ${templates.map(t => t.title).join(', ')}`,
         html: emailBody,
