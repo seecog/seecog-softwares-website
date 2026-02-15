@@ -1,0 +1,123 @@
+<header class="recruit-header">
+    <div class="recruit-title-section">
+        <h1>{{title}}</h1>
+        <p>Manage and edit your technology-specific resume templates</p>
+    </div>
+    <div class="recruit-actions">
+        <a href="/recruit/resumes/new" class="btn btn-primary"
+            style="background-color: var(--recruit-accent); border: none; padding: 10px 24px; border-radius: 8px;">
+            <i class='bx bx-plus'></i> Create Resume
+        </a>
+    </div>
+</header>
+
+<div class="row mb-4">
+    <div class="col-md-8">
+        <div class="input-group"
+            style="background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); overflow: hidden;">
+            <span class="input-group-text border-0 bg-white"><i class='bx bx-search'></i></span>
+            <input type="text" id="template-search" class="form-control border-0" placeholder="Search templates..."
+                style="box-shadow: none;">
+        </div>
+    </div>
+    <div class="col-md-4 text-end">
+        <select id="tech-filter" class="form-select"
+            style="border-radius: 12px; padding: 10px 16px; border: none; box-shadow: 0 2px 12px rgba(0,0,0,0.04);">
+            <option value="all">Template List: All Technologies</option>
+            <option value="Node.js">Node.js</option>
+            <option value="Next.js">Next.js</option>
+            <option value="ASP.Net">ASP.Net</option>
+        </select>
+    </div>
+</div>
+
+<div class="recruit-cards-grid" style="grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));">
+    {{#each templates}}
+    <div class="recruit-op-card template-card" data-title="{{title}}"
+        data-tech="{{#each technologies}}{{this}},{{/each}}"
+        style="text-align: left; padding: 24px; display: flex; flex-direction: column;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
+            <div
+                style="width: 40px; height: 40px; background: rgba(45, 96, 255, 0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--recruit-accent);">
+                <i class='bx bx-code-alt' style="font-size: 24px;"></i>
+            </div>
+            <div class="dropdown">
+                <button class="btn border-0 p-1" type="button" data-bs-toggle="dropdown">
+                    <i class='bx bx-dots-vertical-rounded'></i>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/recruit/resumes/{{id}}/edit">Edit</a></li>
+                    <li>
+                        <form action="/recruit/resumes/delete" method="POST"
+                            onsubmit="return confirm('Delete this resume template?')">
+                            <input type="hidden" name="id" value="{{id}}">
+                            <button type="submit" class="dropdown-item text-danger">Delete</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <h3 style="font-size: 18px; margin-bottom: 8px;">{{title}}</h3>
+        <p style="font-size: 12px; color: var(--recruit-text-muted); margin-bottom: 16px;">
+            <i class='bx bx-time'></i> Last edited {{updatedAt}}
+        </p>
+        <div style="flex: 1; background: #f8fafc; padding: 12px; border-radius: 8px; margin-bottom: 20px;">
+            <p style="font-size: 13px; color: #475569; margin: 0; line-height: 1.5;">
+                {{summary}}
+            </p>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;">
+            {{#each technologies}}
+            <span
+                style="background: #e2e8f0; color: #475569; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 600;">
+                {{this}}
+            </span>
+            {{/each}}
+        </div>
+        <div style="text-align: right;">
+            <a href="/recruit/resumes/{{id}}/edit"
+                style="color: var(--recruit-accent); font-weight: 600; font-size: 13px; text-decoration: none;">
+                <i class='bx bx-edit-alt'></i> Edit
+            </a>
+        </div>
+    </div>
+    {{else}}
+    <div class="text-center w-100 py-5">
+        <p class="text-muted">No templates found. Create your first template!</p>
+    </div>
+    {{/each}}
+</div>
+
+<footer class="recruit-footer-help">
+    <p>Need help? <a href="#">View Documentation</a> or contact support.</p>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchInput = document.getElementById('template-search');
+        const techFilter = document.getElementById('tech-filter');
+        const cards = document.querySelectorAll('.template-card');
+
+        function filterCards() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const techTerm = techFilter.value.toLowerCase();
+
+            cards.forEach(card => {
+                const title = card.getAttribute('data-title').toLowerCase();
+                const tech = card.getAttribute('data-tech').toLowerCase();
+
+                const matchesSearch = title.includes(searchTerm);
+                const matchesTech = techTerm === 'all' || tech.includes(techTerm);
+
+                if (matchesSearch && matchesTech) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        searchInput.addEventListener('input', filterCards);
+        techFilter.addEventListener('change', filterCards);
+    });
+</script>

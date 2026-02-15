@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RecruitPro - Seecog Softwares</title>
+  <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/css/boxicons.min.css">
+  <link rel="stylesheet" href="/assets/css/recruit_pro.css">
+  <link rel="icon" href="/assets/img/sm_logo.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="recruit-wrap">
+    <aside class="recruit-sidebar">
+      <div class="recruit-brand">
+        <span>Resumes</span>
+      </div>
+
+      <nav class="recruit-nav">
+        <a href="/recruit/resumes"
+          class="recruit-nav-item {{#if (eq title 'Resume Technology Database')}}active{{/if}}">
+          <i class='bx bx-file'></i>
+          <span>Manage Resumes</span>
+        </a>
+        <a href="/recruit/send" class="recruit-nav-item {{#if (eq title 'Send Resumes')}}active{{/if}}">
+          <i class='bx bx-send'></i>
+          <span>Send Resume</span>
+        </a>
+
+        <div style="margin-top: auto; padding-top: 40px;">
+          <a href="/admin/dashboard" class="recruit-nav-item" style="border-top: 1px solid rgba(255,255,255,0.1);">
+            <i class='bx bx-arrow-back'></i>
+            <span>Back to Admin</span>
+          </a>
+        </div>
+      </nav>
+    </aside>
+
+    <main class="recruit-main">
+      {{{body}}}
+    </main>
+  </div>
+
+  <script src="/assets/js/jquery.min.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+</body>
+
+</html>

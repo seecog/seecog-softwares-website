@@ -1,0 +1,217 @@
+:root {
+  --recruit-bg: #f5f7fa;
+  --recruit-sidebar: #0e1628;
+  --recruit-sidebar-hover: rgba(255, 255, 255, 0.1);
+  --recruit-accent: #2d60ff;
+  --recruit-text: #1a1a1a;
+  --recruit-text-muted: #64748b;
+  --recruit-card-bg: #ffffff;
+}
+
+.recruit-wrap {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--recruit-bg);
+  font-family: 'Inter', -apple-system, sans-serif;
+}
+
+/* Sidebar Styling */
+.recruit-sidebar {
+  width: 260px;
+  background-color: var(--recruit-sidebar);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.recruit-brand {
+  padding: 32px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--recruit-accent);
+}
+
+.recruit-nav {
+  padding: 20px 0;
+  flex: 1;
+}
+
+.recruit-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 24px;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: all 0.2s;
+  font-size: 14px;
+}
+
+.recruit-nav-item i {
+  font-size: 20px;
+}
+
+.recruit-nav-item:hover {
+  background-color: var(--recruit-sidebar-hover);
+  color: #ffffff;
+}
+
+.recruit-nav-item.active {
+  background-color: var(--recruit-accent);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.recruit-user-profile {
+  padding: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.recruit-user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.recruit-user-info {
+  flex: 1;
+}
+
+.recruit-user-name {
+  font-size: 14px;
+  font-weight: 600;
+  display: block;
+}
+
+.recruit-user-role {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Main Content Styling */
+.recruit-main {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+}
+
+.recruit-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 48px;
+}
+
+.recruit-title-section h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--recruit-text);
+  margin: 0 0 8px 0;
+}
+
+.recruit-title-section p {
+  color: var(--recruit-text-muted);
+  margin: 0;
+  font-size: 15px;
+}
+
+.recruit-session-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--recruit-text-muted);
+}
+
+.recruit-status-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #10b981;
+  border-radius: 50%;
+}
+
+/* Card Styling */
+.recruit-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 32px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.recruit-op-card {
+  background-color: var(--recruit-card-bg);
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.recruit-op-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+.recruit-card-img-wrap {
+  width: 100%;
+  height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  background-color: #f1f5f9;
+}
+
+.recruit-card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.recruit-op-card h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: var(--recruit-text);
+}
+
+.recruit-card-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--recruit-accent);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.recruit-card-btn:hover {
+  background-color: rgba(45, 96, 255, 0.05);
+}
+
+.recruit-footer-help {
+  text-align: center;
+  margin-top: 64px;
+  color: var(--recruit-text-muted);
+  font-size: 14px;
+}
+
+.recruit-footer-help a {
+  color: var(--recruit-accent);
+  text-decoration: none;
+  font-weight: 500;
+}

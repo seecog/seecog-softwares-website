@@ -1,0 +1,54 @@
+<header class="recruit-header">
+    <div class="recruit-title-section">
+        <h1>{{title}}</h1>
+        <p>{{subtitle}}</p>
+    </div>
+    {{#if success}}
+    <div class="alert alert-success alert-dismissible fade show" role="alert"
+        style="position: absolute; top: 20px; right: 20px; z-index: 1000; border-radius: 12px; box-shadow: 0 4px 20px rgba(16, 185, 129, 0.2);">
+        <i class='bx bx-check-circle'></i> {{success}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {{/if}}
+    {{#if error}}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert"
+        style="position: absolute; top: 20px; right: 20px; z-index: 1000; border-radius: 12px; box-shadow: 0 4px 20px rgba(239, 68, 68, 0.2);">
+        <i class='bx bx-error-circle'></i> {{error}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {{/if}}
+    <div class="recruit-session-status">
+        <span>Current Session: <strong>Active</strong></span>
+        <span class="recruit-status-dot"></span>
+    </div>
+</header>
+
+<div class="recruit-cards-grid">
+    <!-- Manage Resumes Card -->
+    <div class="recruit-op-card">
+        <div class="recruit-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&q=80&w=800"
+                alt="Manage Resumes">
+        </div>
+        <h3>Resume Technology Database</h3>
+        <a href="/recruit/resumes" class="recruit-card-btn">
+            Open Database <i class='bx bx-right-arrow-alt'></i>
+        </a>
+    </div>
+
+    <!-- Send Resumes Card -->
+    <div class="recruit-op-card">
+        <div class="recruit-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800"
+                alt="Send Resumes">
+        </div>
+        <h3>Send Resumes</h3>
+        <a href="/recruit/send" class="recruit-card-btn" style="color: #10b981;">
+            Compose Message <i class='bx bx-right-arrow-alt'></i>
+        </a>
+    </div>
+</div>
+
+<footer class="recruit-footer-help">
+    <p>Need help? <a href="#">View Documentation</a> or contact support.</p>
+</footer>

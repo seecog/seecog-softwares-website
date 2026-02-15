@@ -1,0 +1,277 @@
+<header class="recruit-header">
+    <div class="recruit-title-section">
+        <h1>{{title}}</h1>
+        <p>Compose a message and select templates to send to your client</p>
+    </div>
+</header>
+
+<form action="/recruit/send" method="POST">
+    <div class="row">
+        <div class="col-md-4">
+            <!-- Email Details Card -->
+            <div class="recruit-op-card" style="text-align: left; padding: 24px; margin-bottom: 16px;">
+                <h5 style="font-size: 16px; margin-bottom: 24px;"><i class='bx bx-envelope'></i> Email Details</h5>
+
+                <div class="form-group mb-3">
+                    <label class="form-label" style="font-size: 13px; font-weight: 600;">To (Client Email)</label>
+                    <input type="email" name="toEmail" class="form-control" required placeholder="client@company.com"
+                        style="border-radius: 8px;">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label class="form-label" style="font-size: 13px; font-weight: 600;">Client Name</label>
+                    <input type="text" name="clientName" id="clientName" class="form-control" required
+                        placeholder="John Doe" style="border-radius: 8px;">
+                </div>
+            </div>
+
+            <!-- Sender Information Card -->
+            <div class="recruit-op-card" style="text-align: left; padding: 24px; margin-bottom: 16px;">
+                <h5 style="font-size: 16px; margin-bottom: 24px;"><i class='bx bx-user'></i> Your Information</h5>
+
+                <div class="form-group mb-3">
+                    <label class="form-label" style="font-size: 13px; font-weight: 600;">Your Full Name</label>
+                    <input type="text" name="senderName" id="senderName" class="form-control" required
+                        placeholder="Your Name" style="border-radius: 8px;">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label class="form-label" style="font-size: 13px; font-weight: 600;">Designation</label>
+                    <input type="text" name="senderDesignation" id="senderDesignation" class="form-control" required
+                        placeholder="HR Manager" style="border-radius: 8px;">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label class="form-label" style="font-size: 13px; font-weight: 600;">Phone Number</label>
+                    <input type="tel" name="senderPhone" id="senderPhone" class="form-control" required
+                        placeholder="+1 234 567 8900" style="border-radius: 8px;">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label class="form-label" style="font-size: 13px; font-weight: 600;">Email Address</label>
+                    <input type="email" name="senderEmail" id="senderEmail" class="form-control" required
+                        placeholder="you@company.com" style="border-radius: 8px;">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label class="form-label" style="font-size: 13px; font-weight: 600;">Website</label>
+                    <input type="url" name="companyWebsite" id="companyWebsite" class="form-control"
+                        placeholder="https://www.company.com" style="border-radius: 8px;">
+                </div>
+            </div>
+
+            <!-- Template Selection Card -->
+            <div class="recruit-op-card" style="text-align: left; padding: 24px;">
+                <h5 style="font-size: 16px; margin-bottom: 16px;"><i class='bx bx-filter'></i> Filter & Send</h5>
+
+                <div class="form-group mb-4">
+                    <label class="form-label" style="font-size: 13px; font-weight: 600;">Filter Technology</label>
+                    <select class="form-select" id="tech-filter" style="border-radius: 8px;">
+                        <option value="all">Show All Templates</option>
+                        <option value="Node.js">Node.js</option>
+                        <option value="Next.js">Next.js</option>
+                        <option value="ASP.Net">ASP.Net</option>
+                    </select>
+                </div>
+
+                <div style="background: #f8fafc; border-radius: 12px; padding: 20px;">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <span style="font-size: 14px; font-weight: 600;">Selected Templates</span>
+                        <span id="selected-count" class="badge bg-primary"
+                            style="border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; padding: 0;">0</span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 py-3"
+                        style="background-color: var(--recruit-accent); border: none; border-radius: 12px; font-weight: 600;">
+                        <i class='bx bx-send'></i> Send Resumes
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <!-- Message Preview Card -->
+            <div class="recruit-op-card" style="text-align: left; padding: 24px; margin-bottom: 16px;">
+                <h5 style="font-size: 16px; margin-bottom: 16px;"><i class='bx bx-message-square-detail'></i> Email
+                    Message Preview</h5>
+                <div id="message-preview"
+                    style="background: #f8fafc; border-radius: 8px; padding: 20px; font-size: 14px; line-height: 1.8; color: #334155; white-space: pre-line;">
+                    Hi [Client Name],
+
+                    I hope you are doing well.
+
+                    As discussed, please find attached the shortlisted candidate profiles for your review based on your
+                    current requirements.
+
+                    <strong>Candidate Details Included:</strong>
+
+                    • Relevant technical skills and experience
+                    • Project background and domain expertise
+                    • Availability and notice period
+                    • Engagement model alignment
+
+                    We have carefully screened these candidates to match your technical and business expectations.
+                    Kindly review the attached resumes and share your feedback or preferred profiles so we can
+                    coordinate the next steps, including interview scheduling.
+
+                    If needed, we can also provide additional profiles or refine the shortlist further based on your
+                    specific preferences.
+
+                    Looking forward to your feedback.
+
+                    Best regards,
+                    [Your Full Name]
+                    [Your Designation]
+                    [Company Name]
+                    [Phone Number]
+                    [Email Address]
+                    [Website]
+                </div>
+            </div>
+
+            <!-- Resume Templates Grid -->
+            <div class="recruit-cards-grid"
+                style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px;">
+                {{#each templates}}
+                <div class="recruit-op-card template-checkbox-card" data-tech="{{technologies}}"
+                    style="text-align: left; padding: 20px; cursor: pointer; border: 2px solid transparent; transition: all 0.2s;">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+                        <div
+                            style="width: 32px; height: 32px; background: rgba(45, 96, 255, 0.1); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: var(--recruit-accent);">
+                            <i class='bx bx-file' style="font-size: 18px;"></i>
+                        </div>
+                        <input type="checkbox" name="resumeIds" value="{{id}}"
+                            class="form-check-input template-checkbox shadow-none" style="width: 20px; height: 20px;">
+                    </div>
+                    <h4 style="font-size: 15px; font-weight: 700; margin-bottom: 8px;">{{title}}</h4>
+                    <p style="font-size: 12px; color: var(--recruit-text-muted); margin-bottom: 12px;">{{summary}}</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 4px;">
+                        {{#each technologies}}
+                        <span
+                            style="background: #e2e8f0; color: #475569; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 600;">
+                            {{this}}
+                        </span>
+                        {{/each}}
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<script>
+    // Template card selection logic
+    document.querySelectorAll('.template-checkbox-card').forEach(card => {
+        card.addEventListener('click', function (e) {
+            if (e.target.type !== 'checkbox') {
+                const checkbox = this.querySelector('.template-checkbox');
+                checkbox.checked = !checkbox.checked;
+                updateCardState(this, checkbox.checked);
+            }
+        });
+    });
+
+    document.querySelectorAll('.template-checkbox').forEach(box => {
+        box.addEventListener('change', function () {
+            updateCardState(this.closest('.template-checkbox-card'), this.checked);
+        });
+    });
+
+    function updateCardState(card, isChecked) {
+        if (isChecked) {
+            card.style.borderColor = 'var(--recruit-accent)';
+            card.style.backgroundColor = 'rgba(45, 96, 255, 0.02)';
+        } else {
+            card.style.borderColor = 'transparent';
+            card.style.backgroundColor = 'var(--recruit-card-bg)';
+        }
+        updateCount();
+    }
+
+    function updateCount() {
+        const count = document.querySelectorAll('.template-checkbox:checked').length;
+        document.getElementById('selected-count').innerText = count;
+    }
+
+    // Technology filter
+    document.getElementById('tech-filter').addEventListener('change', function () {
+        const tech = this.value;
+        document.querySelectorAll('.template-checkbox-card').forEach(card => {
+            const cardTech = card.getAttribute('data-tech');
+            if (tech === 'all' || cardTech.includes(tech)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+
+    // Dynamic message preview update
+    const messageTemplate = `Hi [Client Name],
+
+I hope you are doing well.
+
+As discussed, please find attached the shortlisted candidate profiles for your review based on your current requirements.
+
+<strong>Candidate Details Included:</strong>
+
+• Relevant technical skills and experience
+• Project background and domain expertise
+• Availability and notice period
+• Engagement model alignment
+
+We have carefully screened these candidates to match your technical and business expectations. Kindly review the attached resumes and share your feedback or preferred profiles so we can coordinate the next steps, including interview scheduling.
+
+If needed, we can also provide additional profiles or refine the shortlist further based on your specific preferences.
+
+Looking forward to your feedback.
+
+Best regards,
+<b>[Your Full Name]</b>
+[Your Designation]
+[Phone Number]
+<a href="#" style="color: #007bff; text-decoration: none;">[Email Address]</a>
+<b>Seecog Softwares Pvt. Ltd.</b>
+
+🌐 Website: <a href="https://seecogsoftwares.com" style="color: #007bff; text-decoration: none;">https://seecogsoftwares.com</a>
+📞 Phone: +91 76250 67691
+✉️ Email: <a href="mailto:info@seecogsoftwares.com" style="color: #007bff; text-decoration: none;">info@seecogsoftwares.com</a>
+📍 Office: Prestige Cube, Site No. 26, Laskar Hosur Road, Adugodi, Koramangala, Bengaluru, Karnataka – 560030, India
+
+<div style="margin: 20px 0; color: #555; font-size: 12px; text-align: center;">
+<p style="margin: 0;">──────────────────────────────</p>
+<p style="margin: 5px 0; font-weight: bold;">Technology Expertise</p>
+<p style="margin: 0;">☁️ Cloud | 📱 Mobility | 🤖 Automation | 📊 BI & Data Warehousing | 🧠 Machine Learning | 🚀 SaaS | ⚙️ DevOps | 🏥 Healthcare IT | ☁️ Azure | 🧩 Salesforce (SFDC) | 🎨 Frontend (UI) | 🔄 Digital Transformation | 💻 Software Engineering Services</p>
+<p style="margin: 0;">──────────────────────────────</p>
+</div>
+
+<span style="font-size: 11px; color: #888; font-style: italic;">This email and any attachments are confidential and intended solely for the recipient. If you received this email by mistake, please notify the sender and delete it immediately.</span>`;
+
+    function updateMessagePreview() {
+        const clientName = document.getElementById('clientName').value || '[Client Name]';
+        const senderName = document.getElementById('senderName').value || '[Your Full Name]';
+        const senderDesignation = document.getElementById('senderDesignation').value || '[Your Designation]';
+        // Company Name is now hardcoded in the template as requested, ignoring input field for now
+        const senderPhone = document.getElementById('senderPhone').value || '[Phone Number]';
+        const senderEmail = document.getElementById('senderEmail').value || '[Email Address]';
+        // Company Website is hardcoded
+
+        let preview = messageTemplate
+            .replace('[Client Name]', clientName)
+            .replace('[Your Full Name]', senderName)
+            .replace('[Your Designation]', senderDesignation)
+            .replace('[Phone Number]', senderPhone)
+            .replace('[Email Address]', senderEmail);
+
+        document.getElementById('message-preview').innerHTML = preview;
+    }
+
+    // Add event listeners to all form fields
+    ['clientName', 'senderName', 'senderDesignation', 'companyName', 'senderPhone', 'senderEmail', 'companyWebsite'].forEach(id => {
+        document.getElementById(id).addEventListener('input', updateMessagePreview);
+    });
+</script>
