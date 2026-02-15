@@ -1,0 +1,116 @@
+<div class="admin-analytics-page">
+  <div class="analytics-header">
+    <h1>Analytics</h1>
+    <p>Visitor locations from the last 30 days</p>
+  </div>
+
+  {{#if flash.success}}<div class="analytics-alert analytics-alert--success"><i class='bx bx-check-circle'></i> {{flash.success}}</div>{{/if}}
+  {{#if flash.error}}<div class="analytics-alert analytics-alert--error"><i class='bx bx-error-circle'></i> {{flash.error}}</div>{{/if}}
+
+  <div class="analytics-summary">
+    <div class="analytics-stat-card">
+      <div class="analytics-stat-icon"><i class='bx bx-world'></i></div>
+      <div class="analytics-stat-content">
+        <span class="analytics-stat-value">{{totalVisits}}</span>
+        <span class="analytics-stat-label">Total Visits</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="analytics-grid">
+    <div class="analytics-card">
+      <h3><i class='bx bx-map-pin'></i> Visits by Country</h3>
+      {{#if byCountry.length}}
+      <div class="analytics-list">
+        {{#each byCountry}}
+        <div class="analytics-list-row">
+          <span class="analytics-location">{{this.country}}</span>
+          <span class="analytics-count">{{this.count}}</span>
+        </div>
+        {{/each}}
+      </div>
+      {{else}}
+      <p class="analytics-empty">No location data yet. Visit your site from different pages to populate analytics.</p>
+      {{/if}}
+    </div>
+
+    <div class="analytics-card">
+      <h3><i class='bx bx-building'></i> Visits by City</h3>
+      {{#if byCity.length}}
+      <div class="analytics-list">
+        {{#each byCity}}
+        <div class="analytics-list-row">
+          <span class="analytics-location">{{this.city}}{{#if this.country}}, {{this.country}}{{/if}}</span>
+          <span class="analytics-count">{{this.count}}</span>
+        </div>
+        {{/each}}
+      </div>
+      {{else}}
+      <p class="analytics-empty">No city data yet.</p>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="analytics-card analytics-recent">
+    <h3><i class='bx bx-time-five'></i> Recent Visits</h3>
+    {{#if recentVisits.length}}
+    <div class="analytics-table-wrap">
+      <table class="analytics-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Location</th>
+            <th>State</th>
+            <th>Page</th>
+            <th>IP</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each recentVisits}}
+          <tr>
+            <td>{{formatDate this.createdAt}}</td>
+            <td>{{#if this.city}}{{this.city}}, {{/if}}{{#if this.country}}{{this.country}}{{else}}—{{/if}}</td>
+            <td>{{#if this.region}}{{this.region}}{{else}}—{{/if}}</td>
+            <td>{{this.page_path}}</td>
+            <td><code>{{this.ip}}</code></td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    {{else}}
+    <p class="analytics-empty">No visits recorded yet. Browse your site to see analytics.</p>
+    {{/if}}
+  </div>
+</div>
+
+<style>
+  .admin-analytics-page { --ax-bg: #f8fafc; --ax-surface: #fff; --ax-border: #e2e8f0; --ax-text: #1e293b; --ax-muted: #64748b; --ax-accent: #6366f1; font-family: 'DM Sans', -apple-system, sans-serif; }
+  .analytics-header { margin-bottom: 28px; }
+  .analytics-header h1 { font-size: 26px; font-weight: 700; color: var(--ax-text); margin: 0 0 4px; }
+  .analytics-header p { font-size: 14px; color: var(--ax-muted); margin: 0; }
+  .analytics-alert { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: 10px; margin-bottom: 20px; font-size: 14px; }
+  .analytics-alert--success { background: #ecfdf5; color: #065f46; }
+  .analytics-alert--error { background: #fef2f2; color: #991b1b; }
+  .analytics-summary { margin-bottom: 24px; }
+  .analytics-stat-card { display: inline-flex; align-items: center; gap: 16px; padding: 20px 28px; background: var(--ax-surface); border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1px solid var(--ax-border); }
+  .analytics-stat-icon { width: 48px; height: 48px; background: linear-gradient(135deg, var(--ax-accent), #8b5cf6); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 24px; }
+  .analytics-stat-value { display: block; font-size: 28px; font-weight: 700; color: var(--ax-text); }
+  .analytics-stat-label { font-size: 13px; color: var(--ax-muted); }
+  .analytics-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 24px; }
+  .analytics-card { background: var(--ax-surface); border-radius: 16px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1px solid var(--ax-border); }
+  .analytics-card h3 { font-size: 18px; font-weight: 600; color: var(--ax-text); margin: 0 0 20px; display: flex; align-items: center; gap: 10px; }
+  .analytics-card h3 i { color: var(--ax-accent); }
+  .analytics-list { display: flex; flex-direction: column; gap: 12px; }
+  .analytics-list-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: var(--ax-bg); border-radius: 10px; }
+  .analytics-location { font-size: 14px; color: var(--ax-text); }
+  .analytics-count { font-size: 14px; font-weight: 600; color: var(--ax-accent); }
+  .analytics-empty { font-size: 14px; color: var(--ax-muted); margin: 0; padding: 20px 0; }
+  .analytics-recent { margin-bottom: 0; }
+  .analytics-table-wrap { overflow-x: auto; }
+  .analytics-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .analytics-table th { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--ax-border); color: var(--ax-muted); font-weight: 600; }
+  .analytics-table td { padding: 12px 14px; border-bottom: 1px solid var(--ax-border); color: var(--ax-text); }
+  .analytics-table code { font-size: 12px; background: var(--ax-bg); padding: 2px 8px; border-radius: 6px; }
+  @media (max-width: 991px) { .analytics-grid { grid-template-columns: 1fr; } }
+</style>
