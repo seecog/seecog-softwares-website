@@ -202,7 +202,11 @@ app.use(session({
    secret: process.env.SESSION_SECRET || 'seecog-admin-secret-change-in-production',
    resave: false,
    saveUninitialized: false,
-   cookie: { secure: process.env.NODE_ENV === 'production', httpOnly: true }
+   cookie: {
+     secure: process.env.USE_HTTPS === '1',
+     httpOnly: true,
+     maxAge: 24 * 60 * 60 * 1000
+   }
 }));
 app.use(flashMiddleware);
 const trackVisit = require('./middleware/trackVisit');
