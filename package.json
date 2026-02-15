@@ -9,7 +9,8 @@
     "start": "cross-env PORT=3003 node ./bin/www",
     "migrate": "node scripts/migrate.js",
     "seed": "node scripts/seed.js",
-    "seed-admin": "node scripts/seed.js"
+    "seed-admin": "node scripts/seed.js",
+    "seed-portfolio": "node scripts/seed-portfolio-from-json.js"
   },
   "type": "commonjs",
   "dependencies": {

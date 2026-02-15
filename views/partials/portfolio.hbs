@@ -9,44 +9,32 @@
         {{#if data.projects}}
         <div class="portfolio-grid">
             {{#each data.projects}}
-            <div class="portfolio-card-modern" data-aos="fade-up" data-aos-delay="{{@index}}00">
-                <div class="portfolio-card-image-wrapper">
-                    <img src="{{img}}" alt="{{title}}" class="portfolio-image">
-                    <div class="portfolio-overlay">
-                        <div class="portfolio-overlay-content">
-                            <span class="portfolio-number">#{{id}}</span>
-                                <h3>{{title}}</h3>
-                        </div>
-                    </div>
+            <div class="portfolio-card-modern">
+                <div class="portfolio-card-header">
+                    {{#if img}}<img src="{{img}}" alt="{{title}}" loading="lazy">{{else}}<div class="portfolio-image-placeholder"><i class='bx bx-image'></i></div>{{/if}}
                 </div>
                 <div class="portfolio-card-body">
-                    <div class="portfolio-header">
-                        <h3>{{title}}</h3>
-                        <span class="portfolio-badge">Project {{id}}</span>
-            </div>
+                    <h3>{{title}}</h3>
                     <p class="portfolio-description">{{desc}}</p>
-                    
                     {{#if modules}}
-                    <div class="portfolio-modules">
-                        <h4><i class='bx bx-list-check'></i> Key Modules</h4>
-                        <ul class="module-list">
-                                    {{#each modules}}
-                            <li><i class='bx bx-check-circle'></i> {{this}}</li>
-                                    {{/each}}
-                                </ul>
-                            </div>
+                    <ul class="portfolio-features">
+                        {{#each modules}}
+                        <li><i class='bx bx-check-circle'></i> {{this}}</li>
+                        {{/each}}
+                    </ul>
                     {{/if}}
-                    
                     {{#if technology_used}}
                     <div class="portfolio-tech">
-                        <h4><i class='bx bx-code-alt'></i> Technology Stack</h4>
                         <p class="tech-stack-text">{{technology_used}}</p>
                     </div>
                     {{/if}}
                 </div>
+                <div class="portfolio-card-footer">
+                    <a href="/contact" class="portfolio-link">Learn More <i class='bx bx-right-arrow-alt'></i></a>
+                </div>
             </div>
             {{/each}}
-    </div>
+        </div>
         {{else}}
         <div class="no-portfolio">
             <i class='bx bx-folder-open'></i>

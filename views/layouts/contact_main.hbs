@@ -23,6 +23,10 @@
         <link rel="stylesheet" href="/assets/css/magnific-popup.min.css">
         <!-- Style CSS -->
         <link rel="stylesheet" href="/assets/css/style.css">
+        <!-- Portfolio Page CSS -->
+        <link rel="stylesheet" href="/assets/css/portfolio.css">
+        <!-- Industries Page CSS -->
+        <link rel="stylesheet" href="/assets/css/industries.css">
         <!-- Responsive CSS -->
         <link rel="stylesheet" href="/assets/css/responsive.css">
 
@@ -31,7 +35,7 @@
         <link rel="icon" type="image/png" href="/assets/img/sm_logo.jpg">
     </head>
 
-    <body>
+    <body{{#if data.isPortfolioPage}} class="portfolio-page"{{/if}}{{#if data.isIndustriesPage}} class="industries-page"{{/if}}>
 
       
 
