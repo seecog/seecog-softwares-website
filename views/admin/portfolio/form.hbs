@@ -1,0 +1,195 @@
+<div class="admin-portfolio-form-page">
+  <div class="portfolio-form-header">
+    <a href="/admin/portfolio" class="portfolio-back"><i class='bx bx-arrow-back'></i> Back</a>
+    <h1>{{#if project.id}}Edit Project{{else}}New Project{{/if}}</h1>
+  </div>
+
+  {{#if flash.error}}
+  <div class="portfolio-alert portfolio-alert--error"><i class='bx bx-error-circle'></i> {{flash.error}}</div>
+  {{/if}}
+
+  <form method="POST" action="{{#if project.id}}/admin/portfolio/{{project.id}}{{else}}/admin/portfolio{{/if}}" enctype="multipart/form-data" class="portfolio-form">
+    <div class="portfolio-form-card">
+      <h3>Basic Info</h3>
+      <div class="portfolio-form-row">
+        <div class="portfolio-form-group">
+          <label>Project Name *</label>
+          <input type="text" name="title" required value="{{project.title}}" placeholder="e.g. Flok22 Dating App" />
+        </div>
+        <div class="portfolio-form-group portfolio-form-group--sm">
+          <label>Display Order</label>
+          <input type="number" name="display_order" value="{{project.display_order}}" min="0" />
+        </div>
+      </div>
+      <div class="portfolio-form-group">
+        <label>Description</label>
+        <textarea name="description" rows="5" placeholder="Project overview and outcomes...">{{project.description}}</textarea>
+      </div>
+    </div>
+
+    <div class="portfolio-form-card">
+      <h3>Project Image</h3>
+      <div class="portfolio-image-upload">
+        <input type="file" name="image" id="portfolioImage" accept="image/*" />
+        {{#if project.image_url}}
+        <div class="portfolio-image-preview" id="imagePreview">
+          <img src="{{project.image_url}}" alt="Current" id="previewImg" />
+          <span class="portfolio-image-hint">Upload new to replace</span>
+        </div>
+        <div class="portfolio-image-placeholder" id="imagePlaceholder" style="display:none;">
+          <i class='bx bx-image-add'></i>
+          <span>Click or drop image (PNG, JPG, max 5MB)</span>
+        </div>
+        {{else}}
+        <div class="portfolio-image-preview" id="imagePreview" style="display:none;">
+          <img src="" alt="Preview" id="previewImg" />
+        </div>
+        <div class="portfolio-image-placeholder" id="imagePlaceholder">
+          <i class='bx bx-image-add'></i>
+          <span>Click or drop image (PNG, JPG, max 5MB)</span>
+        </div>
+        {{/if}}
+      </div>
+    </div>
+
+    <div class="portfolio-form-card">
+      <div class="portfolio-form-card-header">
+        <h3>Key Modules</h3>
+        <button type="button" class="portfolio-add-btn" id="addModule"><i class='bx bx-plus'></i> Add Module</button>
+      </div>
+      <div class="portfolio-dynamic-list" id="modulesList">
+        {{#if project.modules.length}}
+        {{#each project.modules}}
+        <div class="portfolio-dynamic-row">
+          <input type="text" name="modules[]" value="{{this}}" placeholder="Module description" />
+          <button type="button" class="portfolio-remove-btn" data-remove><i class='bx bx-x'></i></button>
+        </div>
+        {{/each}}
+        {{else}}
+        <div class="portfolio-dynamic-row">
+          <input type="text" name="modules[]" placeholder="Module description" />
+          <button type="button" class="portfolio-remove-btn" data-remove><i class='bx bx-x'></i></button>
+        </div>
+        {{/if}}
+      </div>
+    </div>
+
+    <div class="portfolio-form-card">
+      <div class="portfolio-form-card-header">
+        <h3>Technology Stack</h3>
+        <button type="button" class="portfolio-add-btn" id="addTech"><i class='bx bx-plus'></i> Add Technology</button>
+      </div>
+      <div class="portfolio-dynamic-list" id="techList">
+        {{#if project.technology_stack.length}}
+        {{#each project.technology_stack}}
+        <div class="portfolio-dynamic-row">
+          <input type="text" name="technology_stack[]" value="{{this}}" placeholder="e.g. React, Node.js" />
+          <button type="button" class="portfolio-remove-btn" data-remove><i class='bx bx-x'></i></button>
+        </div>
+        {{/each}}
+        {{else}}
+        <div class="portfolio-dynamic-row">
+          <input type="text" name="technology_stack[]" placeholder="e.g. React, Node.js" />
+          <button type="button" class="portfolio-remove-btn" data-remove><i class='bx bx-x'></i></button>
+        </div>
+        {{/if}}
+      </div>
+    </div>
+
+    <div class="portfolio-form-actions">
+      <button type="submit" class="portfolio-btn portfolio-btn--primary">
+        <i class='bx bx-check'></i> {{#if project.id}}Update{{else}}Create{{/if}} Project
+      </button>
+      <a href="/admin/portfolio" class="portfolio-btn portfolio-btn--secondary">Cancel</a>
+    </div>
+  </form>
+</div>
+
+<style>
+  .admin-portfolio-form-page { --pf-bg: #f8fafc; --pf-surface: #fff; --pf-border: #e2e8f0; --pf-text: #1e293b; --pf-muted: #64748b; --pf-accent: #6366f1; font-family: 'DM Sans', -apple-system, sans-serif; }
+  .portfolio-form-header { margin-bottom: 24px; }
+  .portfolio-back { display: inline-flex; align-items: center; gap: 6px; color: var(--pf-muted); font-size: 14px; margin-bottom: 8px; }
+  .portfolio-back:hover { color: var(--pf-accent); }
+  .portfolio-form-header h1 { font-size: 24px; font-weight: 700; color: var(--pf-text); margin: 0; }
+  .portfolio-form-card { background: var(--pf-surface); border-radius: 16px; padding: 24px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); border: 1px solid var(--pf-border); }
+  .portfolio-form-card h3 { font-size: 18px; font-weight: 600; margin: 0 0 20px; color: var(--pf-text); }
+  .portfolio-form-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; }
+  .portfolio-form-card-header h3 { margin: 0; }
+  .portfolio-form-group { margin-bottom: 20px; }
+  .portfolio-form-group:last-child { margin-bottom: 0; }
+  .portfolio-form-group label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--pf-text); }
+  .portfolio-form-group input, .portfolio-form-group textarea { width: 100%; padding: 12px 14px; border: 1px solid var(--pf-border); border-radius: 10px; font-size: 15px; font-family: inherit; }
+  .portfolio-form-group input:focus, .portfolio-form-group textarea:focus { outline: none; border-color: var(--pf-accent); box-shadow: 0 0 0 3px rgba(99,102,241,0.15); }
+  .portfolio-form-row { display: flex; gap: 20px; flex-wrap: wrap; }
+  .portfolio-form-row .portfolio-form-group { flex: 1; min-width: 200px; }
+  .portfolio-form-group--sm { flex: 0 0 120px; }
+  .portfolio-image-upload { position: relative; border: 2px dashed var(--pf-border); border-radius: 12px; padding: 32px; text-align: center; cursor: pointer; background: #fafbfc; }
+  .portfolio-image-upload:hover { border-color: var(--pf-accent); background: #f5f3ff; }
+  .portfolio-image-upload input { position: absolute; inset: 0; opacity: 0; cursor: pointer; font-size: 0; }
+  .portfolio-image-placeholder { display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--pf-muted); }
+  .portfolio-image-placeholder i { font-size: 40px; color: var(--pf-accent); }
+  .portfolio-image-preview img { max-width: 100%; max-height: 200px; object-fit: contain; border-radius: 8px; }
+  .portfolio-image-hint { font-size: 12px; color: var(--pf-muted); margin-top: 8px; }
+  .portfolio-add-btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; font-size: 13px; font-weight: 600; background: #eef2ff; color: var(--pf-accent); border: none; border-radius: 8px; cursor: pointer; font-family: inherit; }
+  .portfolio-add-btn:hover { background: #e0e7ff; }
+  .portfolio-dynamic-list { display: flex; flex-direction: column; gap: 12px; }
+  .portfolio-dynamic-row { display: flex; gap: 10px; }
+  .portfolio-dynamic-row input { flex: 1; padding: 10px 14px; border: 1px solid var(--pf-border); border-radius: 8px; font-size: 14px; }
+  .portfolio-remove-btn { padding: 10px 14px; background: #fef2f2; color: #dc2626; border: none; border-radius: 8px; cursor: pointer; flex-shrink: 0; }
+  .portfolio-remove-btn:hover { background: #fee2e2; }
+  .portfolio-form-actions { display: flex; gap: 12px; margin-top: 24px; }
+  .portfolio-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; font-size: 15px; font-weight: 600; border-radius: 10px; text-decoration: none; border: none; cursor: pointer; font-family: inherit; transition: all 0.2s; }
+  .portfolio-btn--primary { background: linear-gradient(135deg, var(--pf-accent), #8b5cf6); color: #ffffff !important; }
+  .portfolio-btn--primary:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(99,102,241,0.4); color: #ffffff !important; }
+  .portfolio-btn--secondary { background: var(--pf-border); color: var(--pf-text); }
+  .portfolio-btn--secondary:hover { background: #cbd5e1; }
+</style>
+
+<script>
+(function() {
+  var addModule = document.getElementById('addModule');
+  var addTech = document.getElementById('addTech');
+  var modulesList = document.getElementById('modulesList');
+  var techList = document.getElementById('techList');
+  var fileInput = document.getElementById('portfolioImage');
+  var preview = document.getElementById('imagePreview');
+  var placeholder = document.getElementById('imagePlaceholder');
+
+  function addRow(container, name) {
+    var row = document.createElement('div');
+    row.className = 'portfolio-dynamic-row';
+    row.innerHTML = '<input type="text" name="' + name + '[]" placeholder="' + (name === 'modules' ? 'Module description' : 'e.g. React, Node.js') + '" /><button type="button" class="portfolio-remove-btn" data-remove><i class="bx bx-x"></i></button>';
+    container.appendChild(row);
+    row.querySelector('[data-remove]').addEventListener('click', function() {
+      if (container.querySelectorAll('.portfolio-dynamic-row').length > 1) row.remove();
+    });
+  }
+
+  function initRemove(container) {
+    container.querySelectorAll('[data-remove]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var row = btn.closest('.portfolio-dynamic-row');
+        if (container.querySelectorAll('.portfolio-dynamic-row').length > 1) row.remove();
+      });
+    });
+  }
+
+  addModule && addModule.addEventListener('click', function() { addRow(modulesList, 'modules'); });
+  addTech && addTech.addEventListener('click', function() { addRow(techList, 'technology_stack'); });
+  initRemove(modulesList);
+  initRemove(techList);
+
+  fileInput && fileInput.addEventListener('change', function() {
+    var f = this.files[0];
+    if (!f || !f.type.startsWith('image/')) return;
+    var r = new FileReader();
+    r.onload = function(e) {
+      var img = document.getElementById('previewImg');
+      if (img) { img.src = e.target.result; }
+      if (preview) { preview.style.display = 'block'; }
+      if (placeholder) { placeholder.style.display = 'none'; }
+    };
+    r.readAsDataURL(f);
+  });
+})();
+</script>

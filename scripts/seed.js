@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({ path: 'properties.env' });
 const bcrypt = require('bcrypt');
 const { sequelize, AdminUser, SiteProfile, SocialLinks } = require('../models');
 

@@ -1,0 +1,351 @@
+/*
+ * Portfolio Page - World-class CSS
+ * Refined, premium agency aesthetic with depth and intentional motion
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
+
+.portfolio-page-area {
+  --pf-bg: #f8fafc;
+  --pf-card: #ffffff;
+  --pf-card-hover: #ffffff;
+  --pf-border: rgba(30, 41, 59, 0.08);
+  --pf-text: #0f172a;
+  --pf-text-muted: #475569;
+  --pf-accent: #6366f1;
+  --pf-accent-light: #818cf8;
+  --pf-success: #059669;
+  font-family: 'Outfit', var(--font-primary);
+  background: var(--pf-bg);
+  padding: 64px 0 96px;
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-page-area::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -20%;
+  width: 70%;
+  height: 90%;
+  background: radial-gradient(ellipse at center, rgba(99, 102, 241, 0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.portfolio-page-area .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Section title */
+.portfolio-page-area .section-title {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.portfolio-page-area .section-title h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(36px, 4.5vw, 48px);
+  font-weight: 800;
+  color: var(--pf-text);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin: 0 0 16px;
+}
+
+.portfolio-page-area .section-title h2 span {
+  background: linear-gradient(135deg, var(--pf-accent), #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.portfolio-page-area .section-title p {
+  font-size: 18px;
+  color: var(--pf-text-muted);
+  max-width: 540px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Grid */
+.portfolio-page-area .portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 32px;
+  margin-top: 0;
+}
+
+/* Cards */
+.portfolio-page-area .portfolio-card-modern {
+  background: var(--pf-card);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--pf-border);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+}
+
+.portfolio-page-area .portfolio-card-modern::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), transparent 50%, rgba(139, 92, 246, 0.05));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.portfolio-page-area .portfolio-card-modern:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 24px 48px -12px rgba(99, 102, 241, 0.15),
+              0 12px 24px -8px rgba(0, 0, 0, 0.1);
+  border-color: rgba(99, 102, 241, 0.15);
+}
+
+.portfolio-page-area .portfolio-card-modern:hover::after {
+  opacity: 1;
+}
+
+/* Card header / image */
+.portfolio-page-area .portfolio-card-header {
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-page-area .portfolio-card-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(15, 23, 42, 0.03) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.portfolio-page-area .portfolio-card-header img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.portfolio-page-area .portfolio-card-modern:hover .portfolio-card-header img {
+  transform: scale(1.04);
+}
+
+.portfolio-page-area .portfolio-image-placeholder {
+  width: 100%;
+  height: 240px;
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  font-size: 48px;
+}
+
+/* Card body */
+.portfolio-page-area .portfolio-card-body {
+  padding: 32px 28px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolio-page-area .portfolio-card-body h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--pf-text);
+  margin: 0 0 14px;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  transition: color 0.3s ease;
+}
+
+.portfolio-page-area .portfolio-card-modern:hover .portfolio-card-body h3 {
+  color: var(--pf-accent);
+}
+
+.portfolio-page-area .portfolio-description {
+  color: var(--pf-text-muted);
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  -webkit-line-clamp: 3;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.portfolio-page-area .portfolio-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px;
+}
+
+.portfolio-page-area .portfolio-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 6px 0;
+  color: var(--pf-text-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.portfolio-page-area .portfolio-features li i {
+  color: var(--pf-success);
+  font-size: 20px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.portfolio-page-area .tech-stack-text {
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0;
+  padding: 14px 18px;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-radius: 12px;
+  border-left: 4px solid var(--pf-accent);
+  color: var(--pf-text-muted);
+}
+
+.portfolio-page-area .portfolio-card-modern:hover .tech-stack-text {
+  border-left-color: var(--pf-accent-light);
+}
+
+/* Card footer / link */
+.portfolio-page-area .portfolio-card-footer {
+  margin-top: auto;
+  padding: 0 28px 28px;
+}
+
+.portfolio-page-area .portfolio-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--pf-accent);
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+
+.portfolio-page-area .portfolio-link:hover {
+  color: #8b5cf6;
+  gap: 14px;
+}
+
+.portfolio-page-area .portfolio-link i {
+  font-size: 20px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.portfolio-page-area .portfolio-link:hover i {
+  transform: translateX(4px);
+}
+
+/* Empty state */
+.portfolio-page-area .no-portfolio {
+  padding: 120px 32px;
+  text-align: center;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border-radius: 24px;
+  border: 1px dashed #e2e8f0;
+}
+
+.portfolio-page-area .no-portfolio i {
+  font-size: 72px;
+  color: #cbd5e1;
+  margin-bottom: 24px;
+  display: block;
+}
+
+.portfolio-page-area .no-portfolio h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--pf-text);
+  margin: 0 0 12px;
+}
+
+.portfolio-page-area .no-portfolio p {
+  color: var(--pf-text-muted);
+  font-size: 16px;
+  margin: 0;
+}
+
+/* Page theme */
+body.portfolio-page {
+  background: var(--pf-bg);
+}
+
+body.portfolio-page .page-title-area {
+  background: #1a0a2e;
+}
+
+body.portfolio-page .page-title-content h2 {
+  color: #ffffff;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .portfolio-page-area .portfolio-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .portfolio-page-area {
+    padding: 48px 0 64px;
+  }
+
+  .portfolio-page-area .section-title {
+    margin-bottom: 40px;
+  }
+
+  .portfolio-page-area .section-title h2 {
+    font-size: 32px;
+  }
+
+  .portfolio-page-area .section-title p {
+    padding: 0 16px;
+  }
+
+  .portfolio-page-area .portfolio-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .portfolio-page-area .portfolio-card-header img,
+  .portfolio-page-area .portfolio-image-placeholder {
+    height: 200px;
+  }
+
+  .portfolio-page-area .portfolio-card-body {
+    padding: 24px 20px;
+  }
+
+  .portfolio-page-area .portfolio-card-body h3 {
+    font-size: 20px;
+  }
+
+  .portfolio-page-area .portfolio-card-footer {
+    padding: 0 20px 24px;
+  }
+}

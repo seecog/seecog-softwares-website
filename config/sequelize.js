@@ -1,5 +1,5 @@
 const { Sequelize } = require('sequelize');
-require('dotenv').config();
+require('dotenv').config({ path: 'properties.env' });
 
 const env = process.env.NODE_ENV || 'development';
 const config = require('./database')[env];

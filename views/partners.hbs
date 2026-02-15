@@ -35,44 +35,22 @@
       <!-- Clients Grid -->
       <div class="partners-section" id="clients-section">
         <h2>Clients We Work With</h2>
+        {{#if data.partners.length}}
         <div class="clients-logos-grid">
+          {{#each data.partners}}
           <div class="single-partner-logo dc-shadow"><img
-              src="/assets/img/clients-image/1.png"
-              alt="Client"
+              src="{{this.image_url}}"
+              alt="{{this.name}}"
+              loading="lazy"
             /></div>
-          <div class="single-partner-logo dc-shadow"><img
-              src="/assets/img/clients-image/2.png"
-              alt="Client"
-            /></div>
-          <div class="single-partner-logo dc-shadow"><img
-              src="/assets/img/clients-image/3.png"
-              alt="Client"
-            /></div>
-          <div class="single-partner-logo dc-shadow"><img
-              src="/assets/img/clients-image/4.png"
-              alt="Client"
-            /></div>
-          <div class="single-partner-logo dc-shadow"><img
-              src="/assets/img/clients-image/5.png"
-              alt="Client"
-            /></div>
-          <div class="single-partner-logo dc-shadow"><img
-              src="/assets/img/clients-image/6.png"
-              alt="Client"
-            /></div>
-          <div class="single-partner-logo dc-shadow"><img
-              src="/assets/img/clients-image/7.png"
-              alt="Client"
-            /></div>
-          <div class="single-partner-logo dc-shadow"><img
-              src="/assets/img/clients-image/8.png"
-              alt="Client"
-            /></div>
-          <div class="single-partner-logo dc-shadow"><img
-              src="/assets/img/clients-image/9.png"
-              alt="Client"
-            /></div>
+          {{/each}}
         </div>
+        {{else}}
+        <div class="clients-logos-placeholder dc-shadow">
+          <p>Our valued client partnerships will be showcased here.</p>
+          <a href="/contact" class="default-btn"><i class="bx bx-paper-plane"></i> Partner With Us <span></span></a>
+        </div>
+        {{/if}}
       </div>
 
       <!-- Technology & Delivery Partners -->
@@ -211,7 +189,10 @@
   #555; margin: 0 0 14px; line-height: 1.55; display: -webkit-box;
   -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
   .case-study-link { font-size: 14px; color: #6c5ce7; font-weight: 600; display:
-  inline-flex; align-items: center; gap: 8px; } .case-studies-placeholder {
+  inline-flex; align-items: center; gap: 8px; }   .clients-logos-placeholder { padding: 48px; background: #fff;
+  border-radius: 20px; text-align: center; }
+  .clients-logos-placeholder p { margin-bottom: 20px; color: #555; font-size: 16px; }
+  .case-studies-placeholder {
   padding: 56px; background: #fff; border-radius: 20px; text-align: center; }
   .case-studies-placeholder p { margin-bottom: 24px; color: #555; font-size:
   16px; } .partners-cta { text-align: center; padding: 44px 40px; background:

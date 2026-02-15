@@ -6,6 +6,7 @@ var careersController = require("../controllers/careersController");
 
 //start
 var dataInfo = null;
+var { Partner, PortfolioProject } = require("../models");
 function getDataSet() {
   const filePath = path.join(__dirname, "dataset/data.json");
   //   console.log("the fie : ", filePath);
@@ -48,8 +49,8 @@ router.get("/industries", function (req, res, next) {
     layout: "contact_main",
     data: {
       title: "Industries",
-      subTitle:
-        "We support many industries. : Healthcare , retail , Multimedia etc",
+      subTitle: "We support many industries. : Healthcare , retail , Multimedia etc",
+      isIndustriesPage: true,
     },
   });
 });
@@ -102,10 +103,37 @@ router.get("/services", function (req, res, next) {
     },
   });
 });
-router.get("/portfolio", function (req, res, next) {
+router.get("/portfolio", async function (req, res, next) {
+  let projects = [];
+  try {
+    const rows = await PortfolioProject.findAll({
+      order: [["display_order", "ASC"], ["createdAt", "ASC"]],
+    });
+    projects = rows.map((p) => {
+      const plain = p.get({ plain: true });
+      return {
+        id: plain.id,
+        title: plain.title,
+        img: plain.image_url,
+        desc: plain.description,
+        modules: plain.modules || [],
+        technology_used: Array.isArray(plain.technology_stack)
+          ? plain.technology_stack.join(", ")
+          : (plain.technology_stack || ""),
+      };
+    });
+  } catch (err) {
+    console.error("Portfolio fetch error:", err);
+  }
+  const fallback = dataInfo && dataInfo.portfolio_page;
   res.render("portfolio", {
     layout: "contact_main",
-    data: dataInfo.portfolio_page
+    data: {
+      title: (fallback && fallback.title) || "Portfolio",
+      subTitle: (fallback && fallback.subTitle) || "Showcasing innovative solutions that drive success for our clients",
+      projects: projects.length ? projects : (fallback && fallback.projects) || [],
+      isPortfolioPage: true,
+    }
   });
 });
 
@@ -136,7 +164,15 @@ router.get("/culture", function (req, res, next) {
 router.get("/careers", careersController.getCareers);
 router.post("/careers/apply", careersController.postApply);
 
-router.get("/partners", function (req, res, next) {
+router.get("/partners", async function (req, res, next) {
+  let partners = [];
+  try {
+    partners = await Partner.findAll({
+      order: [["display_order", "ASC"], ["createdAt", "ASC"]],
+    });
+  } catch (err) {
+    console.error("Partners fetch error:", err);
+  }
   const portfolio = (dataInfo && dataInfo.portfolio_page && dataInfo.portfolio_page.projects) || [];
   const selectedProjects = portfolio.slice(0, 3);
   res.render("partners", {
@@ -144,7 +180,8 @@ router.get("/partners", function (req, res, next) {
     data: {
       title: "Partners",
       subTitle: "Our trusted partners and valued clients",
-      selectedProjects: selectedProjects
+      selectedProjects: selectedProjects,
+      partners: partners.map((p) => p.get({ plain: true })),
     }
   });
 });
