@@ -260,3 +260,60 @@ app.use(function (err, req, res, next) {
    EXPORT APP
 ================================ */
 module.exports = app;
+
+/* ===============================
+   STARTUP (when run directly: node app.js)
+================================ */
+if (require.main === module) {
+  const http = require('http');
+  const { runMigrations } = require('./scripts/migrate');
+
+  const port = normalizePort(process.env.PORT || '3002');
+  app.set('port', port);
+  const server = http.createServer(app);
+  server.on('error', onError);
+  server.on('listening', onListening);
+
+  function normalizePort(val) {
+    const p = parseInt(val, 10);
+    if (isNaN(p)) return val;
+    if (p >= 0) return p;
+    return false;
+  }
+
+  function onError(error) {
+    if (error.syscall !== 'listen') throw error;
+    const bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
+    if (error.code === 'EACCES') {
+      console.error(bind + ' requires elevated privileges');
+      process.exit(1);
+    }
+    if (error.code === 'EADDRINUSE') {
+      console.error(bind + ' is already in use');
+      process.exit(1);
+    }
+    throw error;
+  }
+
+  function onListening() {
+    const addr = server.address();
+    const bind = typeof addr === 'string' ? addr : addr.port;
+    console.log('Server running on port', bind);
+  }
+
+  runMigrations()
+    .then(function () {
+      console.log('Migrations complete.');
+      if (process.env.SEED_ON_STARTUP === '1') {
+        return require('./scripts/seed').runSeed().then(function () {
+          console.log('Seed complete.');
+          server.listen(port);
+        });
+      }
+      server.listen(port);
+    })
+    .catch(function (err) {
+      console.error('Startup failed (migrations):', err);
+      process.exit(1);
+    });
+}

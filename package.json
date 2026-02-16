@@ -6,7 +6,7 @@
   },
   "private": true,
   "scripts": {
-    "start": "cross-env PORT=3003 node ./bin/www",
+    "start": "cross-env PORT=3003 node app.js",
     "migrate": "node scripts/migrate.js",
     "migrate:dev": "cross-env NODE_ENV=development node scripts/migrate.js",
     "migrate:deploy": "cross-env NODE_ENV=production node scripts/migrate.js",
