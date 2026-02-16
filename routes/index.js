@@ -182,6 +182,7 @@ router.get("/partners", async function (req, res, next) {
       subTitle: "Our trusted partners and valued clients",
       selectedProjects: selectedProjects,
       partners: partners.map((p) => p.get({ plain: true })),
+      isPartnersPage: true,
     }
   });
 });

@@ -213,6 +213,17 @@ const trackVisit = require('./middleware/trackVisit');
 app.use(trackVisit);
 
 /* ===============================
+   TRAILING SLASH REDIRECT (avoids 404 for /partners/ etc)
+================================ */
+app.use(function (req, res, next) {
+  if (req.path.length > 1 && req.path.endsWith('/')) {
+    const redirect = req.path.slice(0, -1) + (req.url.slice(req.path.length) || '');
+    return res.redirect(301, redirect);
+  }
+  next();
+});
+
+/* ===============================
    ROUTES (before static so /admin, /recruit take precedence)
 ================================ */
 app.use('/admin', adminRouter);
@@ -225,6 +236,7 @@ app.use(express.static(path.join(__dirname, 'public')));
    404 HANDLER
 ================================ */
 app.use(function (req, res, next) {
+   console.error('[404] Not Found:', req.method, req.originalUrl);
    next(createError(404));
 });
 
@@ -236,8 +248,12 @@ app.use(function (err, req, res, next) {
    res.locals.message = err.message;
    res.locals.error = req.app.get('env') === 'development' ? err : {};
    res.status(err.status || 500);
-   // Force NO layout for error page to see the actual error content instead of the homepage fallback
-   res.render('error', { layout: false });
+   res.render('error', {
+     layout: false,
+     message: err.message,
+     error: { status: err.status || 500, stack: req.app.get('env') === 'development' ? err.stack : null },
+     is404: (err.status || 500) === 404
+   });
 });
 
 /* ===============================

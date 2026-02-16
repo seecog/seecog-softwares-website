@@ -1,3 +1,38 @@
-<h1>{{message}}</h1>
-<h2>{{error.status}}</h2>
-<pre>{{error.stack}}</pre>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{#if is404}}Page Not Found{{else}}Error{{/if}} - Seecog Softwares</title>
+  <link rel="icon" href="/assets/img/sm_logo.jpg">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f8fafc; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }
+    .error-box { text-align: center; max-width: 480px; }
+    .error-code { font-size: 120px; font-weight: 800; line-height: 1; color: #e2e8f0; }
+    .error-title { font-size: 24px; font-weight: 700; color: #1e293b; margin: 24px 0 12px; }
+    .error-msg { font-size: 16px; color: #64748b; margin-bottom: 32px; line-height: 1.6; }
+    .error-links { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .error-links a { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: #4f46e5; color: #fff; text-decoration: none; border-radius: 10px; font-weight: 600; transition: background 0.2s; }
+    .error-links a:hover { background: #4338ca; }
+    .error-links a.secondary { background: #fff; color: #4f46e5; border: 2px solid #4f46e5; }
+    .error-links a.secondary:hover { background: #eef2ff; }
+    pre { text-align: left; font-size: 12px; padding: 16px; background: #1e293b; color: #e2e8f0; border-radius: 8px; overflow-x: auto; margin-top: 24px; max-height: 200px; overflow-y: auto; }
+  </style>
+</head>
+<body>
+  <div class="error-box">
+    <div class="error-code">{{#if error.status}}{{error.status}}{{else}}500{{/if}}</div>
+    <h1 class="error-title">{{#if is404}}Page Not Found{{else}}Something Went Wrong{{/if}}</h1>
+    <p class="error-msg">{{#if is404}}The page you're looking for doesn't exist or has been moved.{{else}}{{message}}{{/if}}</p>
+    <div class="error-links">
+      <a href="/"><i class='bx bx-home'></i> Back to Home</a>
+      <a href="/contact" class="secondary"><i class='bx bx-envelope'></i> Contact Us</a>
+    </div>
+    {{#if error.stack}}
+    <pre>{{error.stack}}</pre>
+    {{/if}}
+  </div>
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+</body>
+</html>

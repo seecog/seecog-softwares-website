@@ -3,7 +3,7 @@
   <div class="container">
     <div class="partners-inner">
       <!-- Hero -->
-      <div class="partners-hero dc-shadow">
+      <div class="partners-hero">
         <h1>Partners &amp; Clients</h1>
         <p>Collaborations that help us deliver reliable, scalable solutions.</p>
         <div class="partners-hero-cta">
@@ -20,7 +20,7 @@
       </div>
 
       <!-- Trust Strip -->
-      <div class="partners-trust-strip dc-shadow" id="trust-strip">
+      <div class="partners-trust-strip" id="trust-strip">
         <h2>What You Can Expect</h2>
         <ul class="trust-bullets">
           <li><i class="bx bx-check-circle"></i>
@@ -38,7 +38,7 @@
         {{#if data.partners.length}}
         <div class="clients-logos-grid">
           {{#each data.partners}}
-          <div class="single-partner-logo dc-shadow"><img
+          <div class="single-partner-logo"><img
               src="{{this.image_url}}"
               alt="{{this.name}}"
               loading="lazy"
@@ -46,7 +46,7 @@
           {{/each}}
         </div>
         {{else}}
-        <div class="clients-logos-placeholder dc-shadow">
+        <div class="clients-logos-placeholder">
           <p>Our valued client partnerships will be showcased here.</p>
           <a href="/contact" class="default-btn"><i class="bx bx-paper-plane"></i> Partner With Us <span></span></a>
         </div>
@@ -57,22 +57,22 @@
       <div class="partners-section partners-tech">
         <h2>Technology &amp; Delivery Partners</h2>
         <div class="tech-partners-grid">
-          <div class="tech-partner-card dc-shadow">
+          <div class="tech-partner-card">
             <i class="bx bx-cloud"></i>
             <h4>Cloud Providers</h4>
             <p>AWS / Azure / GCP</p>
           </div>
-          <div class="tech-partner-card dc-shadow">
+          <div class="tech-partner-card">
             <i class="bx bx-message-dots"></i>
             <h4>Messaging &amp; Communication</h4>
             <p>WhatsApp / Email</p>
           </div>
-          <div class="tech-partner-card dc-shadow">
+          <div class="tech-partner-card">
             <i class="bx bx-credit-card"></i>
             <h4>Payments &amp; Billing</h4>
             <p>Integrated solutions</p>
           </div>
-          <div class="tech-partner-card dc-shadow">
+          <div class="tech-partner-card">
             <i class="bx bx-bar-chart-alt"></i>
             <h4>Analytics &amp; Monitoring</h4>
             <p>Data-driven insights</p>
@@ -86,7 +86,7 @@
         {{#if data.selectedProjects}}
           <div class="case-studies-grid">
             {{#each data.selectedProjects}}
-              <a href="/portfolio" class="case-study-card dc-shadow">
+              <a href="/portfolio" class="case-study-card">
                 <div class="case-study-img">
                   <img src="{{img}}" alt="{{title}}" />
                 </div>
@@ -100,7 +100,7 @@
             {{/each}}
           </div>
         {{else}}
-          <div class="case-studies-placeholder dc-shadow">
+          <div class="case-studies-placeholder">
             <p>Explore our portfolio of successful projects.</p>
             <a href="/portfolio" class="default-btn"><i
                 class="bx bx-folder"
@@ -112,7 +112,7 @@
       </div>
 
       <!-- CTA -->
-      <div class="partners-cta dc-shadow">
+      <div class="partners-cta">
         <h3>Want to Partner With Us?</h3>
         <p>Let's discuss collaboration opportunities and delivery models.</p>
         <div class="partners-cta-buttons">
@@ -130,82 +130,18 @@
 </section>
 
 <script>
-  (function() { document.querySelectorAll('a[href^="#"]').forEach(function(a) {
-  var href = a.getAttribute('href'); if (href === '#') return;
-  a.addEventListener('click', function(e) { var target =
-  document.querySelector(href); if (target) { e.preventDefault();
-  target.scrollIntoView({ behavior: 'smooth', block: 'start' }); } }); }); })();
+(function() {
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    var href = a.getAttribute('href');
+    if (href === '#') return;
+    a.addEventListener('click', function(e) {
+      var target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+})();
 </script>
-
-<style>
-  .partners-page-area { background: linear-gradient(135deg, #f8f9fc 0%, #f0f4ff
-  50%, #eef2ff 100%); } .partners-inner { max-width: 960px; margin: 0 auto; }
-  .dc-shadow { box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 12px 48px
-  rgba(0,0,0,0.06); border-radius: 20px; } .partners-hero { text-align: center;
-  padding: 48px 32px; background: linear-gradient(135deg, #0a0f2c 0%, #1b0f4f
-  100%); color: #fff; border-radius: 20px; margin-bottom: 56px; } .partners-hero
-  h1 { font-size: 38px; font-weight: 700; margin: 0 0 16px; letter-spacing:
-  -0.5px; } .partners-hero p { font-size: 18px; opacity: 0.92; margin: 0 0 32px;
-  line-height: 1.6; } .partners-hero-cta { display: flex; flex-wrap: wrap;
-  justify-content: center; gap: 16px; } .partners-trust-strip { padding: 36px
-  40px; background: #fff; border-radius: 20px; margin-bottom: 56px; }
-  .partners-trust-strip h2 { font-size: 26px; font-weight: 700; margin: 0 0
-  24px; color: #1a1a2e; text-align: center; } .trust-bullets { list-style: none;
-  padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content:
-  center; gap: 28px 56px; } .trust-bullets li { display: flex; align-items:
-  center; gap: 12px; font-size: 16px; color: #444; } .trust-bullets i {
-  font-size: 26px; color: #6c5ce7; flex-shrink: 0; } .partners-section {
-  margin-bottom: 56px; } .partners-section h2 { font-size: 28px; font-weight:
-  700; margin-bottom: 28px; color: #1a1a2e; text-align: center; letter-spacing:
-  -0.3px; } .clients-logos-grid { display: grid; grid-template-columns:
-  repeat(auto-fill, minmax(150px, 1fr)); gap: 24px; align-items: center;
-  justify-items: center; } .single-partner-logo { padding: 28px; background:
-  #fff; border-radius: 16px; display: flex; align-items: center;
-  justify-content: center; min-height: 110px; transition: all 0.3s ease; width:
-  100%; max-width: 180px; } .single-partner-logo:hover { transform:
-  translateY(-6px); box-shadow: 0 12px 40px rgba(108,92,231,0.12) !important; }
-  .single-partner-logo img { max-width: 100%; max-height: 64px; object-fit:
-  contain; filter: grayscale(40%); transition: filter 0.3s; }
-  .single-partner-logo:hover img { filter: grayscale(0); } .tech-partners-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-  .tech-partner-card { padding: 32px 28px; background: #fff; border-radius:
-  20px; text-align: center; transition: all 0.3s ease; }
-  .tech-partner-card:hover { transform: translateY(-6px); box-shadow: 0 12px
-  40px rgba(108,92,231,0.12) !important; } .tech-partner-card i { font-size:
-  44px; color: #6c5ce7; margin-bottom: 16px; display: block; }
-  .tech-partner-card h4 { font-size: 16px; font-weight: 600; margin: 0 0 8px;
-  color: #1a1a2e; } .tech-partner-card p { font-size: 13px; color: #555; margin:
-  0; } .case-studies-grid { display: grid; grid-template-columns: repeat(3,
-  1fr); gap: 24px; } .case-study-card { display: block; background: #fff;
-  border-radius: 20px; overflow: hidden; text-decoration: none; color: inherit;
-  transition: all 0.3s ease; } .case-study-card:hover { transform:
-  translateY(-6px); box-shadow: 0 12px 40px rgba(108,92,231,0.12) !important;
-  color: inherit; } .case-study-img { height: 200px; overflow: hidden;
-  background: #f0f4ff; } .case-study-img img { width: 100%; height: 100%;
-  object-fit: cover; transition: transform 0.3s; } .case-study-card:hover
-  .case-study-img img { transform: scale(1.05); } .case-study-content { padding:
-  28px; } .case-study-content h4 { font-size: 18px; font-weight: 600; margin: 0
-  0 12px; color: #1a1a2e; } .case-study-content p { font-size: 14px; color:
-  #555; margin: 0 0 14px; line-height: 1.55; display: -webkit-box;
-  -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-  .case-study-link { font-size: 14px; color: #6c5ce7; font-weight: 600; display:
-  inline-flex; align-items: center; gap: 8px; }   .clients-logos-placeholder { padding: 48px; background: #fff;
-  border-radius: 20px; text-align: center; }
-  .clients-logos-placeholder p { margin-bottom: 20px; color: #555; font-size: 16px; }
-  .case-studies-placeholder {
-  padding: 56px; background: #fff; border-radius: 20px; text-align: center; }
-  .case-studies-placeholder p { margin-bottom: 24px; color: #555; font-size:
-  16px; } .partners-cta { text-align: center; padding: 44px 40px; background:
-  #fff; border-radius: 20px; } .partners-cta h3 { font-size: 26px; font-weight:
-  700; margin: 0 0 14px; color: #1a1a2e; } .partners-cta p { font-size: 16px;
-  color: #555; margin-bottom: 28px; line-height: 1.6; } .partners-cta-buttons {
-  display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; } @media
-  (max-width: 991px) { .tech-partners-grid { grid-template-columns: repeat(2,
-  1fr); } .case-studies-grid { grid-template-columns: repeat(2, 1fr); } } @media
-  (max-width: 767px) { .case-studies-grid { grid-template-columns: 1fr; }
-  .clients-logos-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-  .trust-bullets { flex-direction: column; align-items: center; gap: 16px; } }
-  @media (max-width: 575px) { .partners-hero h1 { font-size: 28px; }
-  .partners-hero { padding: 36px 24px; } }
-</style>
 <!-- End Partners Area -->
