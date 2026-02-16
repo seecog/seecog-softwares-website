@@ -8,6 +8,11 @@
   "scripts": {
     "start": "cross-env PORT=3003 node ./bin/www",
     "migrate": "node scripts/migrate.js",
+    "migrate:dev": "cross-env NODE_ENV=development node scripts/migrate.js",
+    "migrate:deploy": "cross-env NODE_ENV=production node scripts/migrate.js",
+    "migrate:prod": "cross-env NODE_ENV=production node scripts/migrate.js",
+    "migrate:status": "node scripts/migrate-status.js",
+    "reset:dev": "cross-env NODE_ENV=development node scripts/reset-dev.js",
     "seed": "node scripts/seed.js",
     "seed-admin": "node scripts/seed.js",
     "seed-portfolio": "node scripts/seed-portfolio-from-json.js",

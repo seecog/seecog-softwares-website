@@ -97,6 +97,7 @@
 var app = require('../app');   // MUST export express app
 var debug = require('debug')('seecog-softwares-website:server');
 var http = require('http');
+var { runMigrations } = require('../scripts/migrate');
 
 /**
  * Get port from environment and store in Express.
@@ -112,10 +113,24 @@ app.set('port', port);
 var server = http.createServer(app);
 
 /**
- * Listen on provided port, on all network interfaces.
+ * Run migrations then listen on provided port.
  */
 
-server.listen(port);
+runMigrations()
+  .then(function () {
+    console.log('Migrations complete.');
+    if (process.env.SEED_ON_STARTUP === '1') {
+      return require('../scripts/seed').runSeed().then(function () {
+        console.log('Seed complete.');
+        server.listen(port);
+      });
+    }
+    server.listen(port);
+  })
+  .catch(function (err) {
+    console.error('Startup failed (migrations):', err);
+    process.exit(1);
+  });
 server.on('error', onError);
 server.on('listening', onListening);
 
