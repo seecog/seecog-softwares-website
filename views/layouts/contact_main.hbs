@@ -27,6 +27,8 @@
         <link rel="stylesheet" href="/assets/css/portfolio.css">
         <!-- Industries Page CSS -->
         <link rel="stylesheet" href="/assets/css/industries.css">
+        <!-- Partners Page CSS -->
+        <link rel="stylesheet" href="/assets/css/partners.css">
         <!-- Responsive CSS -->
         <link rel="stylesheet" href="/assets/css/responsive.css">
 
@@ -35,7 +37,7 @@
         <link rel="icon" type="image/png" href="/assets/img/sm_logo.jpg">
     </head>
 
-    <body{{#if data.isPortfolioPage}} class="portfolio-page"{{/if}}{{#if data.isIndustriesPage}} class="industries-page"{{/if}}>
+    <body{{#if data.isPortfolioPage}} class="portfolio-page"{{/if}}{{#if data.isIndustriesPage}} class="industries-page"{{/if}}{{#if data.isPartnersPage}} class="partners-page"{{/if}}>
 
       
 
@@ -191,7 +193,7 @@
             {{!-- <div class="container"> --}}
                 <div class="page-title-content">
                     <h2>{{data.title}}</h2>
-                    {{!-- <p>{{data.subTitle}}</p> --}}
+                    {{#if data.subTitle}}<p>{{data.subTitle}}</p>{{/if}}
                 </div>
             {{!-- </div> --}}
         </div>

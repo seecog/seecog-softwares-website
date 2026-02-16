@@ -19,10 +19,12 @@ async function credentialsPage(req, res) {
     const vault = await getOrCreateVault();
     const unlocked = req.session.credentialsUnlocked === true;
 
+    const flash = res.locals.flash || {};
+
     if (!vault) {
       return res.render('admin/credentials/setup', {
         layout: 'admin',
-        flash: res.locals.flash,
+        flash,
         activeCredentials: true,
       });
     }
@@ -30,16 +32,21 @@ async function credentialsPage(req, res) {
     if (!unlocked) {
       return res.render('admin/credentials/unlock', {
         layout: 'admin',
-        flash: res.locals.flash,
+        flash,
         activeCredentials: true,
       });
     }
 
-    const plainContent = decrypt(vault.content_encrypted);
+    let plainContent = '';
+    try {
+      plainContent = decrypt(vault.content_encrypted);
+    } catch (decErr) {
+      console.error('Credentials decrypt error:', decErr);
+    }
     return res.render('admin/credentials/editor', {
       layout: 'admin',
-      content: plainContent,
-      flash: res.locals.flash,
+      content: plainContent || '',
+      flash,
       activeCredentials: true,
     });
   } catch (err) {
