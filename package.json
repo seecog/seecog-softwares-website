@@ -2,17 +2,17 @@
   "name": "myapp",
   "version": "0.0.0",
   "engines": {
-    "node": ">=10.24.0 <10.24.1"
+    "node": ">=18"
   },
   "private": true,
   "scripts": {
-    "start": "cross-env PORT=3003 node app.js",
+    "start": "node app.js",
     "migrate": "node scripts/migrate.js",
-    "migrate:dev": "cross-env NODE_ENV=development node scripts/migrate.js",
-    "migrate:deploy": "cross-env NODE_ENV=production node scripts/migrate.js",
-    "migrate:prod": "cross-env NODE_ENV=production node scripts/migrate.js",
+    "migrate:dev": "NODE_ENV=development node scripts/migrate.js",
+    "migrate:deploy": "NODE_ENV=production node scripts/migrate.js",
+    "migrate:prod": "NODE_ENV=production node scripts/migrate.js",
     "migrate:status": "node scripts/migrate-status.js",
-    "reset:dev": "cross-env NODE_ENV=development node scripts/reset-dev.js",
+    "reset:dev": "NODE_ENV=development node scripts/reset-dev.js",
     "seed": "node scripts/seed.js",
     "seed-admin": "node scripts/seed.js",
     "seed-portfolio": "node scripts/seed-portfolio-from-json.js",
@@ -22,6 +22,7 @@
   "dependencies": {
     "bcrypt": "^5.1.1",
     "cookie-parser": "^1.4.4",
+    "cross-env": "^10.1.0",
     "debug": "~2.6.9",
     "dotenv": "^16.3.1",
     "express": "~4.16.1",
@@ -44,7 +45,5 @@
     "slugify": "^1.6.6",
     "swiper": "^11.1.15"
   },
-  "devDependencies": {
-    "cross-env": "^10.1.0"
-  }
+  "devDependencies": {}
 }
