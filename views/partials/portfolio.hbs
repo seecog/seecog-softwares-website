@@ -10,8 +10,8 @@
         <div class="portfolio-grid">
             {{#each data.projects}}
             <div class="portfolio-card-modern">
-                <div class="portfolio-card-header">
-                    {{#if img}}<img src="{{img}}" alt="{{title}}" loading="lazy">{{else}}<div class="portfolio-image-placeholder"><i class='bx bx-image'></i></div>{{/if}}
+                <div class="portfolio-card-header{{#if imageFit}} portfolio-card-header--{{imageFit}}{{/if}}">
+                    {{#if img}}<img src="{{img}}" alt="{{title}}" loading="lazy"{{#if imageFit}} style="object-fit: {{imageFit}}; padding: 36px; box-sizing: border-box; background: #fff;"{{/if}}>{{else}}<div class="portfolio-image-placeholder"><i class='bx bx-image'></i></div>{{/if}}
                 </div>
                 <div class="portfolio-card-body">
                     <h3>{{title}}</h3>
@@ -19,7 +19,7 @@
                     {{#if modules}}
                     <ul class="portfolio-features">
                         {{#each modules}}
-                        <li><i class='bx bx-check-circle'></i> {{this}}</li>
+                        <li><i class='bx bx-check-circle'></i> <span>{{{this}}}</span></li>
                         {{/each}}
                     </ul>
                     {{/if}}
@@ -30,7 +30,7 @@
                     {{/if}}
                 </div>
                 <div class="portfolio-card-footer">
-                    <a href="/contact" class="portfolio-link">Learn More <i class='bx bx-right-arrow-alt'></i></a>
+                    <a href="{{#if url}}{{url}}{{else}}/contact{{/if}}" class="portfolio-link"{{#if url}} target="_blank" rel="noopener noreferrer"{{/if}}>Learn More <i class='bx bx-right-arrow-alt'></i></a>
                 </div>
             </div>
             {{/each}}

@@ -10,8 +10,8 @@
         <div class="col-lg-4 col-md-6 mb-4">
           <div class="product-card product-card--mobile-center" style="background: #fff; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 32px; height: 100%; display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease;">
             {{#if this.image}}
-            <div class="product-image-wrap" style="margin: -32px -32px 20px -32px; border-radius: 16px 16px 0 0; overflow: hidden;">
-              <img src="{{this.image}}" alt="{{this.title}}" class="product-image" style="width: 100%; height: 280px; object-fit: cover; display: block;" />
+            <div class="product-image-wrap{{#if this.imageFit}} product-image-wrap--{{this.imageFit}}{{/if}}" style="margin: -32px -32px 20px -32px; border-radius: 16px 16px 0 0; overflow: hidden; background: #fff;">
+              <img src="{{this.image}}" alt="{{this.title}}" class="product-image" style="width: 100%; height: 280px; object-fit: {{#if this.imageFit}}{{this.imageFit}}{{else}}cover{{/if}}; display: block;{{#if this.imageFit}} padding: 40px; box-sizing: border-box;{{/if}}" />
             </div>
             {{/if}}
             {{!-- <div class="product-icon product-card__icon" style="width: 64px; height: 64px; background: linear-gradient(135deg, #6c5ce7 0%, #5b4cdb 100%); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">

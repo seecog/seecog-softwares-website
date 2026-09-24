@@ -16,6 +16,16 @@
         "products": [
           {
             "id": 1,
+            "icon": "bx bx-task",
+            "image": "/assets/img/opspick-logo.png",
+            "imageFit": "contain",
+            "title": "Mini-Project-Manager",
+            "description": "Plan, track, and deliver projects with clarity and control. Mini-Project-Manager is a lightweight yet powerful project management platform that helps teams manage tasks, it ensures transparency, accountability, and on-time delivery for both internal and client projects.",
+            "url": "https://www.opspick.com",
+            "buttonText": "Visit Now"
+          },
+          {
+            "id": 2,
             "icon": "bx bx-user-circle",
             "image": "/assets/img/services/mini-hr-360.png",
             "title": "Mini-hr-360",
@@ -24,7 +34,7 @@
             "buttonText": "Visit Now"
           },
           {
-            "id": 2,
+            "id": 3,
             "icon": "bx bx-group",
             "image": "/assets/img/services/mini-crm-360.png",
             "title": "Mini-crm-360",
@@ -33,25 +43,14 @@
             "buttonText": "Visit Now"
           },
           {
-            "id": 3,
+            "id": 4,
             "icon": "bx bx-book-open",
             "image": "/assets/img/services/mini-wiki-360.png",
             "title": "Mini-Wiki-360",
             "description": "Centralize your company knowledge in one organized workspace. Mini-Wiki-360 is a Confluence-style knowledge management platform that helps teams create and organize documents, folders, access control, and easy collaboration.",
             "url": "https://miniwiki360.seecogsoftwares.com",
             "buttonText": "Visit Now"
-          },
-          {
-            "id": 4,
-            "icon": "bx bx-task",
-            "image": "/assets/img/services/mini-project-manager.png",
-            "title": "Mini-Project-Manager",
-            "description": "Plan, track, and deliver projects with clarity and control. Mini-Project-Manager is a lightweight yet powerful project management platform that helps teams manage tasks, it ensures transparency, accountability, and on-time delivery for both internal and client projects.",
-            "url": "https://miniprojectmanager.seecogsoftwares.com",
-            "buttonText": "Visit Now"
           }
-
-
         ]
       },
       "portfolio_page" : {
@@ -59,6 +58,59 @@
         "subTitle":
           "We support many industries. : Healthcare , retail , Multimedia etc",
         "projects": [
+          {
+            "id": 0,
+            "left": false,
+            "img": "/assets/img/indovyapar-customer-logo.png",
+            "imageFit": "contain",
+            "url": "https://www.indovyapar.com",
+            "technology_used": "Next.js, React Native / Flutter shell, Prisma, MySQL, TypeScript",
+            "title": "IndoVyapar Customer",
+            "desc": "IndoVyapar Customer is the shopper-facing marketplace experience — browse products from multiple vendors, search and filter catalogs, manage wishlist and cart, and complete secure checkout with order tracking and support.",
+            "modules": [
+              "<strong>Smart Marketplace Browsing:</strong> Discover products across vendors with search, categories, filters, ratings, and personalized recommendations.",
+              "<strong>Cart &amp; Checkout:</strong> Add items from multiple sellers, apply offers, choose delivery preferences, and complete payment including COD where available.",
+              "<strong>Order Tracking:</strong> Follow order status from placement through shipping and delivery with clear timelines and notifications.",
+              "<strong>Wishlist &amp; Profile:</strong> Save products, manage addresses, and keep account details ready for faster repeat shopping.",
+              "<strong>Customer Support:</strong> Raise tickets, ask product questions, and get help without leaving the marketplace experience.",
+              "<strong>Mobile App Experience:</strong> Shop on iOS and Android with a native-shell WebView experience tuned for IndoVyapar customers."
+            ]
+          },
+          {
+            "id": 0,
+            "left": true,
+            "img": "/assets/img/indovyapar-vendor-logo.png",
+            "imageFit": "contain",
+            "url": "https://www.indovyapar.com/vendor",
+            "technology_used": "Next.js, Expo / React Native, Prisma, MySQL, TypeScript",
+            "title": "IndoVyapar Vendor",
+            "desc": "IndoVyapar Vendor is the seller platform — onboard with KYC, list and manage products, fulfill orders, track earnings and payouts, and grow a storefront on India's multi-vendor marketplace.",
+            "modules": [
+              "<strong>Vendor Onboarding &amp; KYC:</strong> Register a seller account, submit business documents, and get approved to sell on the marketplace.",
+              "<strong>Product Catalog Management:</strong> Create listings with images, pricing, stock, GST, variations, and submit products for admin moderation.",
+              "<strong>Order Fulfillment:</strong> Accept orders, update processing and shipping status, and keep customers informed through the delivery lifecycle.",
+              "<strong>Earnings &amp; Payouts:</strong> Track revenue, commission, settlements, and payout history from a dedicated vendor dashboard.",
+              "<strong>Store Profile &amp; Settings:</strong> Manage store identity, bank details, notifications, and seller preferences in one place.",
+              "<strong>Vendor Mobile App:</strong> Run day-to-day selling workflows from the IndoVyapar Vendor iOS/Android app shell."
+            ]
+          },
+          {
+            "id": 0,
+            "left": false,
+            "img": "/assets/img/coinarts-logo.png",
+            "imageFit": "contain",
+            "title": "CoinArts",
+            "desc": "CoinArts is a mobile order application for precious-metal coins and bars — browse catalog by metal and style, pick denominations by weight, build carts with live weight totals, and place or reorder wholesale-style orders from iPhone and iPad.",
+            "technology_used": "iOS, iPadOS, Mobile App Development, Order Management",
+            "modules": [
+              "<strong>Product Catalog:</strong> Browse gold, silver, and specialty coins/bars with search and filters for 3D/plain coins, colored silver, bars, trays, and more.",
+              "<strong>Denomination Ordering:</strong> Select exact weights (5g, 10g, 20g, 50g, 100g, and beyond) per design and add quantities in one flow.",
+              "<strong>Smart Cart:</strong> Review selected coins, adjust quantities, and see live totals for coin count and combined weight before placing an order.",
+              "<strong>Order Management:</strong> Track order history with status, itemized weights, reorder shortcuts, and sheet/export actions for operations teams.",
+              "<strong>Saved Orders:</strong> Save frequently ordered carts and reuse them later for faster repeat wholesale ordering.",
+              "<strong>Cross-Device Apps:</strong> Optimized experience for iPhone and iPad with branded CoinArts catalog, cart, orders, and account navigation."
+            ]
+          },
           {
             "id": 1,
             "left": true,
@@ -68,10 +120,10 @@
             "title": "Flok22",
             "desc": "The collaboration between our team and the client culminates in the creation of Flok22, an innovative dating app that connects individuals through shared locations. The project's success is evident through: Location-Centric Connections: Flok22 successfully introduces a novel way of dating, allowing users to connect based on shared physical locations.",
             "modules": [
-              "Location-Based Matching: Developing a sophisticated algorithm that matches users based on their shared physical locations, enhancing compatibility. ",
-              "User-Friendly Interface: Designing an intuitive and visually appealing interface that enables users to easily browse matches and initiate conversations.",
-              "Real-Time Check-ins: Implementing real-time check-in features that allow users to indicate their current location, facilitating the connection process.",
-              "Chat Integration: Creating a seamless chat system that enables matched users to engage in conversations and get to know each other better."
+              "<strong>Location-Based Matching:</strong> Developing a sophisticated algorithm that matches users based on their shared physical locations, enhancing compatibility.",
+              "<strong>User-Friendly Interface:</strong> Designing an intuitive and visually appealing interface that enables users to easily browse matches and initiate conversations.",
+              "<strong>Real-Time Check-ins:</strong> Implementing real-time check-in features that allow users to indicate their current location, facilitating the connection process.",
+              "<strong>Chat Integration:</strong> Creating a seamless chat system that enables matched users to engage in conversations and get to know each other better."
             ]
           },
           {
@@ -82,9 +134,9 @@
             "desc": "The collaboration between our team and the client culminates in the creation of Dentalhive, a transformative recruitment app for the dental industry.Innovative Dental Recruitment The app's success lies in its innovative approach to dental industry recruitment, transforming the way talents and clinics connect. In conclusion, the collaboration between our team and the client has led to Dentalhive's development, revolutionising dental industry recruitment. Its success establishes it as an essential tool for dental clinics and talents, offering them a platform to connect, collaborate, and streamline the job placement process, ultimately enhancing the dental community's growth and success.",
             "technology_used": " React,  React Native",
             "modules": [
-              "Empowered Talents: Dental talents benefit from access to a wide range of job opportunities, tailored to their skills and preferences. ",
-              "Simplified Communication: The app's features enable transparent communication between dental clinics and talents, enhancing collaboration.",
-              "Growing User Base: The platform gains traction among dental clinics and talents, attracting a growing community of users committed to efficient job placement."
+              "<strong>Empowered Talents:</strong> Dental talents benefit from access to a wide range of job opportunities, tailored to their skills and preferences.",
+              "<strong>Simplified Communication:</strong> The app's features enable transparent communication between dental clinics and talents, enhancing collaboration.",
+              "<strong>Growing User Base:</strong> The platform gains traction among dental clinics and talents, attracting a growing community of users committed to efficient job placement."
             ]
           },
           {
@@ -95,9 +147,9 @@
             "desc": "PayToAll's specialty is to provide the recharge without a Gmail or Facebook interface. PayToAll PAY is one of the best recharge-level websites in India. PayToAll PAY provides the user with multiple operators recharges in a single balance. It means the retailer doesn't have to invest separately for each operator hence saving the hassle of maintaining separate sims and mobiles for different operators. The recharge solutions have been developed and scrubbed to ensure their availability at no extra cost to the end user so that the user can transact securely from any location at his convenience. PayToAll PAY Service came into existence as one of the fastest online mobile recharge service providers in India.",
             "technology_used": "HTML, CSS, JavaScript, TypeScript, React Native",
             "modules": [
-              "We provide online mobile recharges for Airtel, Idea, Vodafone, BSNL, RelianceJio and other can be recharged using our service. ",
-              "We provide online DTH recharges for AirtelDTH, DishTV,TataSky, SunDirect,VideoconD2H .",
-              "Instant money transfer across all the major banks in India can be done within seconds by registering with us."
+              "<strong>Mobile Recharges:</strong> Online recharges for Airtel, Idea, Vodafone, BSNL, Reliance Jio and other major operators from a single balance.",
+              "<strong>DTH Recharges:</strong> Support for Airtel DTH, DishTV, Tata Sky, Sun Direct, Videocon D2H and more.",
+              "<strong>Instant Money Transfer:</strong> Transfer money across major banks in India within seconds after registering with PayToAll."
             ]
           },
           {
@@ -108,9 +160,9 @@
             "desc": "The Riter Tool is a software tool designed to support students, researchers, and academic writers throughout their writing process. It provides a comprehensive suite of resources, including a writing style guide, citation and bibliography generator, word processor, and research organization tools. Additionally, it features grammar tools to help writers produce grammatically correct and error-free text, with a customizable grammar checker that identifies and suggests corrections for grammar, punctuation, and spelling errors, as well as suggestions for improving sentence structure, word choice, and other elements of writing style.",
             "technology_used": "HTML, CSS, JavaScript, TypeScript, React Native",
             "modules": [
-              "The goal of this tool is to help writers produce high-quality, clear, and error-free writing, essential for academic success.",
-              "Tools like these can be very helpful for organizing ideas, generating citations, and improving writing skills. If you have a specific question or need information about a particular tool, feel free to ask!",
-              "There are various content writing tools and software available that can assist with generating, editing, or optimizing content."
+              "<strong>Academic Writing Support:</strong> Help writers produce high-quality, clear, and error-free writing essential for academic success.",
+              "<strong>Research Organization:</strong> Organize ideas, generate citations, and improve writing skills with dedicated tooling.",
+              "<strong>Content Optimization:</strong> Assist with generating, editing, and optimizing content for clarity and correctness."
             ]
           },
           {
@@ -121,9 +173,9 @@
             "desc": "It launched an influencer marketing campaign for its new store opening, and is sent over 300 influencers. The main goal of this campaign was to build brand awareness and generate buzz around the new store, create a strong social media presence, engage with the target audience, and encourage customers to share their store experiences online.",
             "technology_used": "HTML, CSS, JavaScript, TypeScript, React Native",
             "modules": [
-              "It provides World-class support and 24/7Live campaign management services, in order to coordinate and manage direct follow-up with the best service that the user needs anytime throughout the day.",
-              "One can launch their campaigns in any country, city, or area, or in several places around the globe, at the same time, from one place.",
-              " Start your success story now, and join over 1000 successful brands, locally and globally, with Grand Community."
+              "<strong>24/7 Campaign Management:</strong> World-class support and live campaign management with direct follow-up whenever needed.",
+              "<strong>Global Reach:</strong> Launch campaigns in any country, city, or area — or several places at once — from one place.",
+              "<strong>Brand Growth:</strong> Join over 1000 successful brands, locally and globally, and start your success story with Grand Community."
             ]
           },
           {

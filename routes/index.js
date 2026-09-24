@@ -105,33 +105,117 @@ router.get("/services", function (req, res, next) {
 });
 router.get("/portfolio", async function (req, res, next) {
   let projects = [];
+  const featuredProjects = [
+    {
+      id: "indovyapar-customer",
+      title: "IndoVyapar Customer",
+      img: "/assets/img/indovyapar-customer-logo.png",
+      imageFit: "contain",
+      url: "https://www.indovyapar.com",
+      desc: "IndoVyapar Customer is the shopper-facing marketplace experience — browse products from multiple vendors, search and filter catalogs, manage wishlist and cart, and complete secure checkout with order tracking and support.",
+      modules: [
+        "<strong>Smart Marketplace Browsing:</strong> Discover products across vendors with search, categories, filters, ratings, and personalized recommendations.",
+        "<strong>Cart &amp; Checkout:</strong> Add items from multiple sellers, apply offers, choose delivery preferences, and complete payment including COD where available.",
+        "<strong>Order Tracking:</strong> Follow order status from placement through shipping and delivery with clear timelines and notifications.",
+        "<strong>Wishlist &amp; Profile:</strong> Save products, manage addresses, and keep account details ready for faster repeat shopping.",
+        "<strong>Customer Support:</strong> Raise tickets, ask product questions, and get help without leaving the marketplace experience.",
+        "<strong>Mobile App Experience:</strong> Shop on iOS and Android with a native-shell WebView experience tuned for IndoVyapar customers.",
+      ],
+      technology_used: "Next.js, React Native / Flutter shell, Prisma, MySQL, TypeScript",
+    },
+    {
+      id: "indovyapar-vendor",
+      title: "IndoVyapar Vendor",
+      img: "/assets/img/indovyapar-vendor-logo.png",
+      imageFit: "contain",
+      url: "https://www.indovyapar.com/vendor",
+      desc: "IndoVyapar Vendor is the seller platform — onboard with KYC, list and manage products, fulfill orders, track earnings and payouts, and grow a storefront on India's multi-vendor marketplace.",
+      modules: [
+        "<strong>Vendor Onboarding &amp; KYC:</strong> Register a seller account, submit business documents, and get approved to sell on the marketplace.",
+        "<strong>Product Catalog Management:</strong> Create listings with images, pricing, stock, GST, variations, and submit products for admin moderation.",
+        "<strong>Order Fulfillment:</strong> Accept orders, update processing and shipping status, and keep customers informed through the delivery lifecycle.",
+        "<strong>Earnings &amp; Payouts:</strong> Track revenue, commission, settlements, and payout history from a dedicated vendor dashboard.",
+        "<strong>Store Profile &amp; Settings:</strong> Manage store identity, bank details, notifications, and seller preferences in one place.",
+        "<strong>Vendor Mobile App:</strong> Run day-to-day selling workflows from the IndoVyapar Vendor iOS/Android app shell.",
+      ],
+      technology_used: "Next.js, Expo / React Native, Prisma, MySQL, TypeScript",
+    },
+    {
+      id: "coinarts",
+      title: "CoinArts",
+      img: "/assets/img/coinarts-logo.png",
+      imageFit: "contain",
+      url: null,
+      desc: "CoinArts is a mobile order application for precious-metal coins and bars — browse catalog by metal and style, pick denominations by weight, build carts with live weight totals, and place or reorder wholesale-style orders from iPhone and iPad.",
+      modules: [
+        "<strong>Product Catalog:</strong> Browse gold, silver, and specialty coins/bars with search and filters for 3D/plain coins, colored silver, bars, trays, and more.",
+        "<strong>Denomination Ordering:</strong> Select exact weights (5g, 10g, 20g, 50g, 100g, and beyond) per design and add quantities in one flow.",
+        "<strong>Smart Cart:</strong> Review selected coins, adjust quantities, and see live totals for coin count and combined weight before placing an order.",
+        "<strong>Order Management:</strong> Track order history with status, itemized weights, reorder shortcuts, and sheet/export actions for operations teams.",
+        "<strong>Saved Orders:</strong> Save frequently ordered carts and reuse them later for faster repeat wholesale ordering.",
+        "<strong>Cross-Device Apps:</strong> Optimized experience for iPhone and iPad with branded CoinArts catalog, cart, orders, and account navigation.",
+      ],
+      technology_used: "iOS, iPadOS, Mobile App Development, Order Management",
+    },
+  ];
+  const featuredTitles = new Set(
+    featuredProjects
+      .map((p) => p.title.toLowerCase())
+      .concat(["indovyapar", "opspick", "coin arts"])
+  );
+
+  function formatModuleBullet(text) {
+    if (!text || typeof text !== "string") return text;
+    if (text.includes("<strong>")) return text;
+    const idx = text.indexOf(":");
+    if (idx > 0 && idx < 80) {
+      return "<strong>" + text.slice(0, idx + 1) + "</strong>" + text.slice(idx + 1);
+    }
+    return text;
+  }
+
   try {
     const rows = await PortfolioProject.findAll({
       order: [["display_order", "ASC"], ["createdAt", "ASC"]],
     });
-    projects = rows.map((p) => {
-      const plain = p.get({ plain: true });
-      return {
-        id: plain.id,
-        title: plain.title,
-        img: plain.image_url,
-        desc: plain.description,
-        modules: plain.modules || [],
-        technology_used: Array.isArray(plain.technology_stack)
-          ? plain.technology_stack.join(", ")
-          : (plain.technology_stack || ""),
-      };
-    });
+    projects = rows
+      .map((p) => {
+        const plain = p.get({ plain: true });
+        const title = plain.title || "";
+        const modules = (plain.modules || []).map(formatModuleBullet);
+        return {
+          id: plain.id,
+          title,
+          img: plain.image_url,
+          desc: plain.description,
+          modules,
+          technology_used: Array.isArray(plain.technology_stack)
+            ? plain.technology_stack.join(", ")
+            : (plain.technology_stack || ""),
+          url: null,
+          imageFit: null,
+        };
+      })
+      .filter((p) => !featuredTitles.has((p.title || "").toLowerCase()));
   } catch (err) {
     console.error("Portfolio fetch error:", err);
   }
+
   const fallback = dataInfo && dataInfo.portfolio_page;
+  const fallbackProjects = ((fallback && fallback.projects) || [])
+    .filter((p) => !featuredTitles.has((p.title || "").toLowerCase()))
+    .map((p) => ({
+      ...p,
+      modules: (p.modules || []).map(formatModuleBullet),
+    }));
+  const rest = projects.length ? projects : fallbackProjects;
+
   res.render("portfolio", {
     layout: "contact_main",
     data: {
       title: (fallback && fallback.title) || "Portfolio",
       subTitle: (fallback && fallback.subTitle) || "Showcasing innovative solutions that drive success for our clients",
-      projects: projects.length ? projects : (fallback && fallback.projects) || [],
+      projects: featuredProjects.concat(rest),
       isPortfolioPage: true,
     }
   });
