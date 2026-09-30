@@ -19,10 +19,11 @@
             "icon": "bx bx-task",
             "image": "/assets/img/opspick-logo.png",
             "imageFit": "contain",
-            "title": "Mini-Project-Manager",
-            "description": "Plan, track, and deliver projects with clarity and control. Mini-Project-Manager is a lightweight yet powerful project management platform that helps teams manage tasks, it ensures transparency, accountability, and on-time delivery for both internal and client projects.",
+            "title": "OpsPick",
+            "description": "Plan, track, and deliver projects with clarity and control. OpsPick is a lightweight yet powerful project management platform that helps teams manage tasks, it ensures transparency, accountability, and on-time delivery for both internal and client projects.",
             "url": "https://www.opspick.com",
-            "buttonText": "Visit Now"
+            "buttonText": "Visit Now",
+            "showButton": true
           },
           {
             "id": 2,
