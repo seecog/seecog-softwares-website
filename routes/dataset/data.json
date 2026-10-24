@@ -132,11 +132,22 @@
           {
             "id": 4,
             "icon": "bx bx-book-open",
-            "image": "/assets/img/services/mini-wiki-360.png",
-            "title": "Mini-Wiki-360",
-            "description": "Centralize your company knowledge in one organized workspace. Mini-Wiki-360 is a Confluence-style knowledge management platform that helps teams create and organize documents, folders, access control, and easy collaboration.",
+            "premium": true,
+            "theme": "forest",
+            "badge": "Team knowledge base",
+            "image": "/assets/img/products/quire-card.webp",
+            "title": "Quire Workspace",
+            "description": "Your team's knowledge in one place. Organise docs, decisions and runbooks into spaces, comment right in the margin, publish versions you can trust, and find any page in seconds with Ctrl K.",
+            "features": [
+              "Spaces & page tree",
+              "Margin comments",
+              "Version history",
+              "Search everything"
+            ],
+            "platforms": "Web · Mobile",
             "url": "https://miniwiki360.seecogsoftwares.com",
-            "buttonText": "Visit Now"
+            "buttonText": "Explore Quire",
+            "showButton": true
           }
         ]
       },
