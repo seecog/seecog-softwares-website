@@ -7,7 +7,74 @@
 
     <div class="row">
       {{#each data.products}}
+        {{#unless this.hidden}}
         <div class="col-lg-4 col-md-6 mb-4">
+          {{#if this.apps}}
+          <div class="premium-card premium-card--{{this.apps.[0].theme}} premium-card--apps" data-app-card>
+            <div class="premium-card__media">
+              {{#each this.apps}}
+              <div class="premium-card__slide{{#if @first}} is-active{{/if}}" data-app-slide data-theme="{{this.theme}}"{{#unless @first}} aria-hidden="true"{{/unless}}>
+                <img src="{{this.image}}" alt="{{../title}} {{this.name}} app screens" loading="lazy" />
+                {{#if this.badge}}<span class="premium-card__badge">{{this.badge}}</span>{{/if}}
+              </div>
+              {{/each}}
+              <div class="premium-card__dots">
+                {{#each this.apps}}<button type="button" class="{{#if @first}}is-active{{/if}}" data-app-dot aria-label="Show {{this.name}}"></button>{{/each}}
+              </div>
+            </div>
+            <div class="premium-card__body">
+              <div class="premium-card__head">
+                <h3 class="premium-card__title">{{this.title}}</h3>
+                <span class="premium-card__count">{{this.apps.length}} apps</span>
+              </div>
+              <div class="premium-card__tabs" role="tablist" aria-label="{{this.title}} apps">
+                {{#each this.apps}}<button type="button" role="tab" class="{{#if @first}}is-active{{/if}}" aria-selected="{{#if @first}}true{{else}}false{{/if}}" data-app-tab>{{this.name}}</button>{{/each}}
+              </div>
+              {{#each this.apps}}
+              <div class="premium-card__pane{{#if @first}} is-active{{/if}}" role="tabpanel" data-app-pane{{#unless @first}} hidden{{/unless}}>
+                {{#if this.platforms}}<span class="premium-card__platforms"><i class="bx bx-mobile-alt"></i>{{this.platforms}}</span>{{/if}}
+                <p class="premium-card__desc">{{this.description}}</p>
+                {{#if this.features}}
+                <ul class="premium-card__features">
+                  {{#each this.features}}<li><i class="bx bx-check"></i>{{this}}</li>{{/each}}
+                </ul>
+                {{/if}}
+                {{#if ../showButton}}
+                <a href="{{this.url}}" class="premium-card__btn" target="_blank" rel="noopener">
+                  <span>{{this.buttonText}}</span>
+                  <i class="bx bx-right-arrow-alt"></i>
+                </a>
+                {{/if}}
+              </div>
+              {{/each}}
+            </div>
+          </div>
+          {{else if this.premium}}
+          <div class="premium-card premium-card--{{this.theme}}">
+            <div class="premium-card__media">
+              <img src="{{this.image}}" alt="{{this.title}} app screens" loading="lazy" />
+              {{#if this.badge}}<span class="premium-card__badge">{{this.badge}}</span>{{/if}}
+            </div>
+            <div class="premium-card__body">
+              <div class="premium-card__head">
+                <h3 class="premium-card__title">{{this.title}}</h3>
+                {{#if this.platforms}}<span class="premium-card__platforms"><i class="bx bx-mobile-alt"></i>{{this.platforms}}</span>{{/if}}
+              </div>
+              <p class="premium-card__desc">{{this.description}}</p>
+              {{#if this.features}}
+              <ul class="premium-card__features">
+                {{#each this.features}}<li><i class="bx bx-check"></i>{{this}}</li>{{/each}}
+              </ul>
+              {{/if}}
+              {{#if this.showButton}}
+              <a href="{{this.url}}" class="premium-card__btn" target="_blank" rel="noopener">
+                <span>{{this.buttonText}}</span>
+                <i class="bx bx-right-arrow-alt"></i>
+              </a>
+              {{/if}}
+            </div>
+          </div>
+          {{else}}
           <div class="product-card product-card--mobile-center" style="background: #fff; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 32px; height: 100%; display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease;">
             {{#if this.image}}
             <div class="product-image-wrap{{#if this.imageFit}} product-image-wrap--{{this.imageFit}}{{/if}}" style="margin: -32px -32px 20px -32px; border-radius: 16px 16px 0 0; overflow: hidden; background: #fff;">
@@ -30,7 +97,9 @@
             </a>
             {{/if}}
           </div>
+          {{/if}}
         </div>
+        {{/unless}}
       {{/each}}
     </div>
   </div>
@@ -65,6 +134,262 @@
     transform: translateY(-2px);
   }
 
+  /* Premium app cards (OpsPick app family) */
+  .premium-card {
+    --pc-from: #4338ca;
+    --pc-to: #7c3aed;
+    --pc-ink: #3730a3;
+    --pc-soft: #eef2ff;
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset, 0 10px 30px -12px rgba(20, 18, 43, 0.18);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+  .premium-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: 20px;
+    background: linear-gradient(140deg, var(--pc-from), rgba(255, 255, 255, 0) 45%, var(--pc-to));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .premium-card--amber { --pc-from: #ea580c; --pc-to: #4f46e5; --pc-ink: #c2410c; --pc-soft: #fff7ed; }
+  .premium-card--emerald { --pc-from: #059669; --pc-to: #84cc16; --pc-ink: #047857; --pc-soft: #ecfdf5; }
+  .premium-card--ocean { --pc-from: #1e3a8a; --pc-to: #14b8a6; --pc-ink: #1d4ed8; --pc-soft: #eff6ff; }
+  .premium-card--navy { --pc-from: #1a2347; --pc-to: #d9962b; --pc-ink: #1a2347; --pc-soft: #fff4e0; }
+  .premium-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 28px 60px -20px color-mix(in srgb, var(--pc-from) 45%, transparent);
+  }
+  .premium-card__media {
+    position: relative;
+    aspect-ratio: 1200 / 820;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--pc-from), var(--pc-to));
+  }
+  .premium-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+  .premium-card:hover .premium-card__media img { transform: scale(1.04); }
+  .premium-card__badge {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .premium-card__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 26px 28px 28px;
+  }
+  .premium-card__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+  .premium-card__title {
+    margin: 0;
+    font-size: 21px;
+    font-weight: 700;
+    color: #14122b;
+    line-height: 1.25;
+  }
+  .premium-card__platforms {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--pc-soft);
+    color: var(--pc-ink);
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .premium-card__desc {
+    margin: 0 0 18px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #4b4866;
+  }
+  .premium-card__features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 14px;
+    margin: 0 0 24px;
+    padding: 0;
+    list-style: none;
+    flex: 1;
+    align-content: start;
+  }
+  .premium-card__features li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2a2745;
+  }
+  .premium-card__features i {
+    display: grid;
+    place-items: center;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: var(--pc-soft);
+    color: var(--pc-ink);
+    font-size: 16px;
+  }
+  .premium-card__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 24px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--pc-from), var(--pc-to));
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 10px 24px -10px var(--pc-from);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .premium-card__btn:hover {
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 16px 32px -12px var(--pc-from);
+  }
+  .premium-card__btn i { font-size: 18px; transition: transform 0.3s ease; }
+  .premium-card__btn:hover i { transform: translateX(3px); }
+
+  /* Multi-app premium card: one product, several apps in a slider */
+  .premium-card--apps .premium-card__slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+  }
+  .premium-card--apps .premium-card__slide.is-active {
+    opacity: 1;
+    visibility: visible;
+  }
+  .premium-card__dots {
+    position: absolute;
+    left: 50%;
+    bottom: 14px;
+    z-index: 3;
+    display: flex;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transform: translateX(-50%);
+  }
+  .premium-card__dots button {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.55);
+    cursor: pointer;
+    transition: width 0.3s ease, background 0.3s ease;
+  }
+  .premium-card__dots button.is-active {
+    width: 22px;
+    background: #fff;
+  }
+  .premium-card__count {
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--pc-soft);
+    color: var(--pc-ink);
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .premium-card__tabs {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    gap: 4px;
+    margin-bottom: 16px;
+    padding: 4px;
+    border-radius: 12px;
+    background: #f3f2f8;
+  }
+  .premium-card__tabs button {
+    padding: 8px 6px;
+    border: 0;
+    border-radius: 9px;
+    background: transparent;
+    color: #5c5874;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .premium-card__tabs button.is-active {
+    background: #fff;
+    color: var(--pc-ink);
+    box-shadow: 0 2px 8px rgba(20, 18, 43, 0.1);
+  }
+  .premium-card__tabs button:focus-visible,
+  .premium-card__dots button:focus-visible {
+    outline: 2px solid var(--pc-from);
+    outline-offset: 2px;
+  }
+  .premium-card__pane {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    animation: premium-pane-in 0.4s ease;
+  }
+  .premium-card__pane[hidden] { display: none; }
+  .premium-card__pane .premium-card__platforms {
+    align-self: flex-start;
+    margin-bottom: 12px;
+  }
+  @keyframes premium-pane-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .premium-card--apps .premium-card__slide,
+    .premium-card__pane { transition: none; animation: none; }
+  }
+
   /* Mobile: center card content */
   @media (max-width: 767px) {
     .product-card--mobile-center {
@@ -84,3 +409,73 @@
     }
   }
 </style>
+
+<script>
+  (function () {
+    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    document.querySelectorAll("[data-app-card]").forEach(function (card) {
+      var slides = Array.prototype.slice.call(card.querySelectorAll("[data-app-slide]"));
+      var dots = Array.prototype.slice.call(card.querySelectorAll("[data-app-dot]"));
+      var tabs = Array.prototype.slice.call(card.querySelectorAll("[data-app-tab]"));
+      var panes = Array.prototype.slice.call(card.querySelectorAll("[data-app-pane]"));
+      var index = 0;
+      var timer = null;
+      var touchX = null;
+
+      function show(next) {
+        var prevTheme = slides[index].getAttribute("data-theme");
+        index = (next + slides.length) % slides.length;
+        card.classList.remove("premium-card--" + prevTheme);
+        card.classList.add("premium-card--" + slides[index].getAttribute("data-theme"));
+        slides.forEach(function (slide, i) {
+          slide.classList.toggle("is-active", i === index);
+          slide.setAttribute("aria-hidden", i === index ? "false" : "true");
+        });
+        dots.forEach(function (dot, i) { dot.classList.toggle("is-active", i === index); });
+        tabs.forEach(function (tab, i) {
+          tab.classList.toggle("is-active", i === index);
+          tab.setAttribute("aria-selected", i === index ? "true" : "false");
+        });
+        panes.forEach(function (pane, i) { pane.hidden = i !== index; });
+      }
+
+      function stop() {
+        if (timer) {
+          window.clearInterval(timer);
+          timer = null;
+        }
+      }
+
+      function start() {
+        if (reduceMotion || timer || slides.length < 2) return;
+        timer = window.setInterval(function () { show(index + 1); }, 4500);
+      }
+
+      function go(next) {
+        show(next);
+        stop();
+        start();
+      }
+
+      dots.forEach(function (dot, i) { dot.addEventListener("click", function () { go(i); }); });
+      tabs.forEach(function (tab, i) { tab.addEventListener("click", function () { go(i); }); });
+      card.addEventListener("mouseenter", stop);
+      card.addEventListener("mouseleave", start);
+      card.addEventListener("focusin", stop);
+      card.addEventListener("focusout", function (event) {
+        if (!card.contains(event.relatedTarget)) start();
+      });
+      card.addEventListener("touchstart", function (event) {
+        touchX = event.changedTouches[0].clientX;
+      }, { passive: true });
+      card.addEventListener("touchend", function (event) {
+        if (touchX == null) return;
+        var delta = event.changedTouches[0].clientX - touchX;
+        if (Math.abs(delta) > 40) go(delta < 0 ? index + 1 : index - 1);
+        touchX = null;
+      }, { passive: true });
+
+      start();
+    });
+  })();
+</script>

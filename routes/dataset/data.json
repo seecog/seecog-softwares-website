@@ -17,16 +17,101 @@
           {
             "id": 1,
             "icon": "bx bx-task",
-            "image": "/assets/img/opspick-logo.png",
-            "imageFit": "contain",
+            "premium": true,
+            "theme": "ocean",
+            "badge": "For software teams",
+            "image": "/assets/img/products/opspick-card.webp",
             "title": "OpsPick",
-            "description": "Plan, track, and deliver projects with clarity and control. OpsPick is a lightweight yet powerful project management platform that helps teams manage tasks, it ensures transparency, accountability, and on-time delivery for both internal and client projects.",
+            "description": "Sprints, timesheets and client updates in one place. Plan the backlog, run sprints on a live board, track burndown and velocity, log billable hours, and keep clients in the loop with a shared portal.",
+            "features": [
+              "Sprint board",
+              "Backlog & roadmap",
+              "Burndown reports",
+              "Billable timesheets"
+            ],
+            "platforms": "Web · iOS · Android",
             "url": "https://www.opspick.com",
-            "buttonText": "Visit Now",
+            "buttonText": "Explore OpsPick",
+            "showButton": true
+          },
+          {
+            "id": 5,
+            "premium": true,
+            "title": "Pakka Kaam",
+            "apps": [
+              {
+                "name": "Marketplace",
+                "theme": "indigo",
+                "badge": "Builders & site teams",
+                "image": "/assets/img/products/opspick-marketplace-card.webp",
+                "description": "One app for directors, project managers, site engineers and buyers — track every project, approve bills and POs, and order cement, steel, services and labour from verified vendors straight to site.",
+                "features": [
+                  "Project tracking",
+                  "PO approvals",
+                  "Multi-vendor cart",
+                  "Site delivery"
+                ],
+                "platforms": "iOS · Android · Web",
+                "url": "https://www.opspick.com",
+                "buttonText": "Explore Marketplace"
+              },
+              {
+                "name": "Seller",
+                "theme": "amber",
+                "badge": "For material vendors",
+                "image": "/assets/img/products/opspick-seller-card.webp",
+                "description": "Sell building materials to live construction sites. Onboard with GST and KYC, accept orders with clear delivery slots, and get weekly payouts with commission, TCS and TDS broken down.",
+                "features": [
+                  "KYC onboarding",
+                  "Order inbox",
+                  "Weekly payouts",
+                  "Review replies"
+                ],
+                "platforms": "iOS · Android",
+                "url": "https://www.opspick.com",
+                "buttonText": "Explore Seller App"
+              },
+              {
+                "name": "Worker",
+                "theme": "emerald",
+                "badge": "For site workers",
+                "image": "/assets/img/products/opspick-worker-card.webp",
+                "description": "A simple, Hindi-first app for masons and labour — find nearby work, mark attendance with a photo, and see every rupee earned with wages paid straight to the bank each week.",
+                "features": [
+                  "Nearby jobs",
+                  "Photo attendance",
+                  "Weekly wages",
+                  "Hindi first"
+                ],
+                "platforms": "Android · iOS",
+                "url": "https://www.opspick.com",
+                "buttonText": "Explore Worker App"
+              }
+            ],
+            "showButton": true
+          },
+          {
+            "id": 8,
+            "premium": true,
+            "theme": "navy",
+            "badge": "For restaurants",
+            "image": "/assets/img/products/kitcheneye-card.webp",
+            "title": "KitchenEye",
+            "description": "See every outlet's kitchen from one app. Owners, managers, cooks, cleaners and security each get their own view — daily checklists with photo proof, selfie clock-in, overdue alerts and outlet scores before service starts.",
+            "features": [
+              "Outlet scores",
+              "Photo checklists",
+              "Selfie attendance",
+              "Role-based views"
+            ],
+            "platforms": "iOS · Android · Web",
+            "url": "https://www.opspick.com",
+            "buttonText": "Explore KitchenEye",
             "showButton": true
           },
           {
             "id": 2,
+            "hidden": true,
             "icon": "bx bx-user-circle",
             "image": "/assets/img/services/mini-hr-360.png",
             "title": "Mini-hr-360",
@@ -36,6 +121,7 @@
           },
           {
             "id": 3,
+            "hidden": true,
             "icon": "bx bx-group",
             "image": "/assets/img/services/mini-crm-360.png",
             "title": "Mini-crm-360",
