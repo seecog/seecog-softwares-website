@@ -13,7 +13,11 @@
     "products_page" : {
         "title": "Our Products",
         "subTitle": "Innovative solutions to streamline your business",
-        "products": [
+        "industries": [
+          {
+            "title": "Business Suite",
+            "summary": "Teamaangan, OpsPick and Quire Workspace — talk with your team and clients, plan the work, then keep the docs, decisions, and runbooks the team runs on.",
+            "products": [
           {
             "id": 9,
             "icon": "bx bx-message-square-dots",
@@ -54,6 +58,32 @@
             "buttonText": "Explore OpsPick",
             "showButton": true
           },
+          {
+            "id": 4,
+            "icon": "bx bx-book-open",
+            "premium": true,
+            "theme": "forest",
+            "badge": "Team knowledge base",
+            "image": "/assets/img/products/quire-card.webp",
+            "title": "Quire Workspace",
+            "description": "Your team's knowledge in one place. Organise docs, decisions and runbooks into spaces, comment right in the margin, publish versions you can trust, and find any page in seconds with Ctrl K.",
+            "features": [
+              "Spaces & page tree",
+              "Margin comments",
+              "Version history",
+              "Search everything"
+            ],
+            "platforms": "Web · Mobile",
+            "url": "https://miniwiki360.seecogsoftwares.com",
+            "buttonText": "Explore Quire",
+            "showButton": true
+          }
+            ]
+          },
+          {
+            "title": "Construction",
+            "summary": "Marketplace, seller, and worker apps for construction sites, material vendors, and labour.",
+            "products": [
           {
             "id": 5,
             "premium": true,
@@ -109,7 +139,13 @@
               }
             ],
             "showButton": true
+          }
+            ]
           },
+          {
+            "title": "Restaurants",
+            "summary": "Kitchen checklists, attendance, and outlet scores for restaurant owners and floor teams.",
+            "products": [
           {
             "id": 8,
             "premium": true,
@@ -128,7 +164,11 @@
             "url": "https://www.opspick.com",
             "buttonText": "Explore KitchenEye",
             "showButton": true
-          },
+          }
+            ]
+          }
+        ],
+        "products": [
           {
             "id": 2,
             "hidden": true,
@@ -148,26 +188,6 @@
             "description": "Manage customer relationships, track leads, automate sales pipelines, and grow your business with powerful CRM tools. Mini CRM 360 helps you close deals faster and build lasting customer connections.",
             "url": "http://15.206.19.156:3005",
             "buttonText": "Visit Now"
-          },
-          {
-            "id": 4,
-            "icon": "bx bx-book-open",
-            "premium": true,
-            "theme": "forest",
-            "badge": "Team knowledge base",
-            "image": "/assets/img/products/quire-card.webp",
-            "title": "Quire Workspace",
-            "description": "Your team's knowledge in one place. Organise docs, decisions and runbooks into spaces, comment right in the margin, publish versions you can trust, and find any page in seconds with Ctrl K.",
-            "features": [
-              "Spaces & page tree",
-              "Margin comments",
-              "Version history",
-              "Search everything"
-            ],
-            "platforms": "Web · Mobile",
-            "url": "https://miniwiki360.seecogsoftwares.com",
-            "buttonText": "Explore Quire",
-            "showButton": true
           }
         ]
       },

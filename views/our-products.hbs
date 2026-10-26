@@ -5,10 +5,17 @@
       <p style="color: #555; font-size: 16px;">{{data.subTitle}}</p>
     </div>
 
-    <div class="row">
-      {{#each data.products}}
+    {{#each data.industries}}
+    <div class="product-industry">
+      <div class="product-industry__head">
+        <p class="product-industry__kicker">Industry</p>
+        <h2>{{this.title}}</h2>
+        <p>{{this.summary}}</p>
+      </div>
+      <div class="row">
+      {{#each this.products}}
         {{#unless this.hidden}}
-        <div class="col-lg-4 col-md-6 mb-4">
+        <div class="col-md-6 mb-4 {{#if (eq ../layout "pair")}}col-lg-6{{else}}col-lg-4{{/if}}">
           {{#if this.apps}}
           <div class="premium-card premium-card--{{this.apps.[0].theme}} premium-card--apps" data-app-card>
             <div class="premium-card__media">
@@ -101,12 +108,44 @@
         </div>
         {{/unless}}
       {{/each}}
+      </div>
     </div>
+    {{/each}}
   </div>
 </section>
 <!-- End Our Products Area -->
 
 <style>
+  .product-industry + .product-industry {
+    margin-top: 28px;
+    padding-top: 56px;
+    border-top: 1px solid #eceaf3;
+  }
+  .product-industry__head {
+    max-width: 680px;
+    margin: 0 0 28px;
+  }
+  .product-industry__kicker {
+    margin: 0 0 8px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #6c5ce7;
+  }
+  .product-industry__head h2 {
+    margin: 0 0 8px;
+    font-size: 32px;
+    font-weight: 700;
+    color: #14122b;
+    line-height: 1.2;
+  }
+  .product-industry__head p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+  }
   .product-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 40px rgba(108, 92, 231, 0.15) !important;
