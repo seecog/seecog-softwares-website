@@ -15,6 +15,26 @@
         "subTitle": "Innovative solutions to streamline your business",
         "products": [
           {
+            "id": 9,
+            "icon": "bx bx-message-square-dots",
+            "premium": true,
+            "theme": "ember",
+            "badge": "Team chat",
+            "image": "/assets/img/products/teamaangan-card.webp",
+            "title": "Teamaangan",
+            "description": "Team chat built for Indian businesses. Talk in channels, DMs and threads, invite clients free into shared channels that show exactly who can see them, and jump into a Gather call when typing is too slow.",
+            "features": [
+              "Channels & threads",
+              "Free client channels",
+              "Gather calls",
+              "Desktop & mobile apps"
+            ],
+            "platforms": "Mac · Windows · Web · Mobile",
+            "url": "https://teamaangan.com",
+            "buttonText": "Explore Teamaangan",
+            "showButton": true
+          },
+          {
             "id": 1,
             "icon": "bx bx-task",
             "premium": true,
