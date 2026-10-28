@@ -1,0 +1,24 @@
+<title>{{seo.title}}</title>
+<meta name="description" content="{{seo.description}}">
+<link rel="canonical" href="{{seo.url}}">
+<meta name="theme-color" content="#0f172a">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{seo.siteName}}">
+<meta property="og:title" content="{{seo.title}}">
+<meta property="og:description" content="{{seo.description}}">
+<meta property="og:url" content="{{seo.url}}">
+<meta property="og:image" content="{{seo.image}}">
+<meta property="og:locale" content="en_IN">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@seecogsoftwares">
+<meta name="twitter:title" content="{{seo.title}}">
+<meta name="twitter:description" content="{{seo.description}}">
+<meta name="twitter:image" content="{{seo.image}}">
+
+<link rel="icon" type="image/jpeg" href="/assets/img/sm_logo.jpg">
+<link rel="apple-touch-icon" href="/assets/img/logo.jpg">
+{{#if seo.schema}}
+<script type="application/ld+json">{{{seo.schema}}}</script>
+{{/if}}

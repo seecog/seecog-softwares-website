@@ -298,7 +298,7 @@ body.portfolio-page .page-title-area {
   background: #1a0a2e;
 }
 
-body.portfolio-page .page-title-content h2 {
+body.portfolio-page .page-title-content h1, body.portfolio-page .page-title-content h2 {
   color: #ffffff;
 }
 

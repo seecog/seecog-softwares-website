@@ -3155,7 +3155,7 @@ html {
   z-index: 1;
 }
 
-.page-title-content h2 {
+.page-title-content h1, .page-title-content h2 {
   font-size: clamp(32px, 5vw, 56px);
   font-weight: var(--font-weight-extrabold);
   color: var(--white);
@@ -4878,5 +4878,27 @@ textarea.form-control-modern {
 
   .product-rail-controls {
     justify-content: flex-end;
+  }
+}
+
+/* ========================================
+   Desktop nav: keep every item on one line
+   (10 items wrap below ~1400px with 20px gutters)
+======================================== */
+.strax-nav .navbar .navbar-nav .nav-item .nav-link {
+  white-space: nowrap;
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1399px) {
+  .strax-nav .navbar .navbar-nav .nav-item .nav-link {
+    font-size: 14px !important;
+    margin: 0 10px !important;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1150px) {
+  .strax-nav .navbar .navbar-nav .nav-item .nav-link {
+    font-size: 13px !important;
+    margin: 0 6px !important;
   }
 }

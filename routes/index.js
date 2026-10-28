@@ -19,6 +19,10 @@ function getDataSet() {
 getDataSet();
 //end
 
+router.get("/favicon.ico", function (req, res) {
+  res.redirect(301, "/assets/img/sm_logo.jpg");
+});
+
 /* GET home page. */
 
 router.get("/", function (req, res, next) {
@@ -29,9 +33,9 @@ router.get("/technologies", function (req, res, next) {
   res.render("technologies", {
     layout: "contact_main",
     data: {
-      title: "Our technologies",
+      title: "Our Technologies",
       subTitle:
-        "React Js,Node Js,Java , Spring,Data Science, Machine learning ",
+        "The frontend, backend, mobile, cloud, data and AI stack we build on.",
     },
   });
 });
@@ -49,7 +53,7 @@ router.get("/industries", function (req, res, next) {
     layout: "contact_main",
     data: {
       title: "Industries",
-      subTitle: "We support many industries. : Healthcare , retail , Multimedia etc",
+      subTitle: "Software and AI for the businesses that run on products, orders, people and knowledge.",
       isIndustriesPage: true,
     },
   });
@@ -98,8 +102,8 @@ router.get("/services", function (req, res, next) {
   res.render("services", {
     layout: "contact_main",
     data: {
-      title: "Our services",
-      subTitle: "We provide software development , ERP solutions",
+      title: "Our Services",
+      subTitle: "Product engineering, AI agents and dedicated teams — built around your product.",
     },
   });
 });
@@ -231,7 +235,7 @@ router.get("/my-digital-card", function (req, res, next) {
     layout: "contact_main",
     data: {
       title: "My Digital Card",
-      subTitle: "Your digital identity at a glance",
+      subTitle: "Save, scan or connect with Seecog Softwares instantly.",
       companyName: "Seecog Softwares Pvt Ltd",
       ...contactData
     }

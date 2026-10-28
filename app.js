@@ -211,6 +211,7 @@ app.use(session({
 app.use(flashMiddleware);
 const trackVisit = require('./middleware/trackVisit');
 app.use(trackVisit);
+app.use(require('./utils/seo'));
 
 /* ===============================
    TRAILING SLASH REDIRECT (avoids 404 for /partners/ etc)

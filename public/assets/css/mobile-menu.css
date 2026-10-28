@@ -441,3 +441,74 @@
   }
 }
 
+
+/* ========================================
+   Mobile Brand (logo beside the hamburger)
+======================================== */
+
+.mobile-brand {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  z-index: 9999998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 2px solid rgba(0, 212, 255, 0.3);
+  border-radius: 12px;
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+}
+
+.mobile-brand img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.mobile-menu-wrapper:has(.mobile-menu-panel.active) .mobile-brand {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Footer follows the nav instead of overlapping it on short screens */
+.mobile-menu-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-menu-footer {
+  position: static;
+  margin-top: auto;
+}
+
+.mobile-menu-panel > * {
+  flex-shrink: 0;
+}
+
+/* Keep the brand button in line with the hamburger as it shrinks */
+@media only screen and (max-width: 768px) {
+  .mobile-brand {
+    top: 15px;
+    left: 15px;
+    width: 45px;
+    height: 45px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .mobile-brand {
+    top: 12px;
+    left: 12px;
+    width: 42px;
+    height: 42px;
+  }
+}

@@ -1,18 +1,18 @@
 {
     "contact_page" : {
-        "title" : "Contact us",
-        "subTitle" : "One stop solution",
+        "title" : "Contact Us",
+        "subTitle" : "Tell us what you are building — we reply within 24 hours.",
         "email" : "info@seecogsoftwares.com",
         "contact" : "+91 7625067691",
         "address" : "Site No. 26, Prestige Cube Building, Laskar, Hosur Rd, Adugodi, Koramangala, Bengaluru, Karnataka 560030"
     } ,
     "culture_page" : {
         "title": "Our Culture",
-        "subTitle": "We work as a family"
+        "subTitle": "How we work: ownership, teamwork, quality and curiosity."
       },
     "products_page" : {
         "title": "Our Products",
-        "subTitle": "Innovative solutions to streamline your business",
+        "subTitle": "Software we build, run and improve ourselves — grouped by the industry it serves.",
         "industries": [
           {
             "title": "Business Suite",
@@ -166,6 +166,31 @@
             "showButton": true
           }
             ]
+          },
+          {
+            "title": "Commerce",
+            "summary": "A multi-vendor marketplace with separate apps for shoppers and sellers.",
+            "products": [
+              {
+                "id": 9,
+                "premium": true,
+                "theme": "amber",
+                "badge": "Shoppers & sellers",
+                "image": "/assets/img/products/indovyapar-card.webp",
+                "title": "Indovyapar",
+                "description": "Shopping and selling in one marketplace. Customers browse a multi-vendor catalogue, check out once across sellers and track every order; vendors onboard with KYC, list products with GST and manage orders and payouts.",
+                "features": [
+                  "Multi-vendor catalogue",
+                  "One cart, many sellers",
+                  "Vendor KYC & listings",
+                  "Orders & payouts"
+                ],
+                "platforms": "Web · iOS · Android",
+                "url": "https://www.indovyapar.com",
+                "buttonText": "Explore Indovyapar",
+                "showButton": true
+              }
+            ]
           }
         ],
         "products": [
@@ -194,7 +219,7 @@
       "portfolio_page" : {
         "title": "Portfolio",
         "subTitle":
-          "We support many industries. : Healthcare , retail , Multimedia etc",
+          "Products we have designed, built and shipped for our clients.",
         "projects": [
           {
             "id": 0,

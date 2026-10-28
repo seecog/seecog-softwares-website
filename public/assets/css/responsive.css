@@ -612,7 +612,7 @@
     padding-top: 60px;
     padding-bottom: 50px;
   }
-  .page-title-content h2 {
+  .page-title-content h1, .page-title-content h2 {
     font-size: 30px;
   }
   .page-title-content p {
@@ -1631,7 +1631,7 @@
     padding-top: 80px;
     padding-bottom: 70px;
   }
-  .page-title-content h2 {
+  .page-title-content h1, .page-title-content h2 {
     font-size: 30px;
   }
   .page-title-content p {

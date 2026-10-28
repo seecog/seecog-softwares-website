@@ -26,7 +26,7 @@
   z-index: 1;
 }
 
-.partners-page .page-title-content h2 {
+.partners-page .page-title-content h1, .partners-page .page-title-content h2 {
   color: #ffffff;
   font-family: 'Outfit', sans-serif;
   font-size: clamp(36px, 5vw, 52px);
@@ -100,7 +100,7 @@
   z-index: 2;
 }
 
-.partners-hero h1 {
+.partners-hero h1, .partners-hero h2 {
   font-family: 'Outfit', sans-serif;
   font-size: clamp(28px, 3.5vw, 36px);
   font-weight: 700;
@@ -615,7 +615,7 @@
   .partners-hero {
     padding: 36px 24px;
   }
-  .partners-hero h1 {
+  .partners-hero h1, .partners-hero h2 {
     font-size: 24px;
   }
   .partners-hero p {

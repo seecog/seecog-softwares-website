@@ -1,17 +1,12 @@
 <!doctype html>
-<html lang="zxx">
+<html lang="en">
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
 
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="Seecog Softwares Pvt Ltd is an innovation services firm focused on building commercial technology solutions for SaaS, e-business, e-learning, healthcare, and e-commerce organizations.">
+        {{> seo}}
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"/>
-
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Permanent+Marker&display=swap" rel="stylesheet">
 
         <!-- Bootstrap Min CSS -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -26,17 +21,14 @@
         <!-- MeanMenu CSS -->
         <link rel="stylesheet" href="assets/css/meanmenu.css">
         <!-- Mobile Menu CSS - New Custom Design -->
-        <link rel="stylesheet" href="assets/css/mobile-menu.css">
+        <link rel="stylesheet" href="assets/css/mobile-menu.css?v=phase1c">
         <!-- Magnific Popup Min CSS -->
         <link rel="stylesheet" href="assets/css/magnific-popup.min.css">
         <!-- Style CSS -->
-        <link rel="stylesheet" href="assets/css/style.css?v=hero7">
+        <link rel="stylesheet" href="assets/css/style.css?v=phase1c">
         <!-- Responsive CSS -->
         <link rel="stylesheet" href="assets/css/responsive.css">
 
-        <title>Seecog Softwares</title>
-
-        <link rel="icon" type="image/png" href="assets/img/logo.jpg">
     </head>
 
     <body>
@@ -45,6 +37,11 @@
 
         <!-- New Mobile Menu Wrapper -->
         <div class="mobile-menu-wrapper">
+            <!-- Brand (the template's responsive logo is hidden by meanmenu) -->
+            <a class="mobile-brand" href="/" aria-label="Seecog Softwares home">
+                <img src="/assets/img/sm_logo.jpg" alt="Seecog Softwares">
+            </a>
+
             <!-- Hamburger Toggle Button -->
             <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
                 <span></span>
@@ -61,7 +58,7 @@
                 <div class="mobile-menu-header">
                     <div class="logo">
                         <a href="/">
-                            <img src="./assets/img/sm_logo.jpg" alt="logo">
+                            <img src="/assets/img/sm_logo.jpg" alt="Seecog Softwares">
                         </a>
                         <span class="logo-text">Seecog Softwares</span>
                     </div>
@@ -120,7 +117,7 @@
                         </li>
                         <li>
                             <a href="/partners" class="nav-link">
-                                <i class='bx bx-handshake'></i>
+                                <i class='bx bx-link'></i>
                                 <span>Partners</span>
                             </a>
                         </li>
@@ -136,13 +133,13 @@
                 <!-- Menu Footer -->
                 <div class="mobile-menu-footer">
                     <div class="social-links">
-                        <a href="#" aria-label="Facebook"><i class='bx bxl-facebook'></i></a>
-                        <a href="#" aria-label="Twitter"><i class='bx bxl-twitter'></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class='bx bxl-linkedin'></i></a>
-                        <a href="#" aria-label="Instagram"><i class='bx bxl-instagram'></i></a>
+                        <a href="https://www.linkedin.com/company/seecog-softwares-pvt-ltd/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class='bx bxl-linkedin'></i></a>
+                        <a href="https://twitter.com/seecogsoftwares" target="_blank" rel="noopener" aria-label="Twitter"><i class='bx bxl-twitter'></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61585373592616" target="_blank" rel="noopener" aria-label="Facebook"><i class='bx bxl-facebook'></i></a>
+                        <a href="https://wa.me/917348820668" target="_blank" rel="noopener" aria-label="WhatsApp"><i class='bx bxl-whatsapp'></i></a>
                     </div>
                     <div class="copyright">
-                        <p>&copy; 2024 Seecog Softwares. All rights reserved.</p>
+                        <p>&copy; {{year}} Seecog Softwares Pvt Ltd. All rights reserved.</p>
                     </div>
                 </div>
             </div>
@@ -154,7 +151,7 @@
                     <div class="strax-responsive-menu">
                         <div class="logo">
                             <a href="/">
-                                <img src="./assets/img/sm_logo.jpg" class="responsive-logo" alt="logo">
+                                <img src="./assets/img/sm_logo.jpg" class="responsive-logo" alt="Seecog Softwares">
                             </a>
                         </div>
                     </div>
@@ -165,7 +162,7 @@
                 <div class="container">
                     <nav class="navbar navbar-expand-md navbar-light">
                         <a class="navbar-brand" href="/">
-                            <img src="./assets/img/sm_logo.jpg" class="main-logo" alt="logo">
+                            <img src="./assets/img/sm_logo.jpg" class="main-logo" alt="Seecog Softwares">
                         </a>
 
                         <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
@@ -484,7 +481,7 @@
             </div> --}}
 {{!-- 
             <div class="shape9">
-                <img src="assets/img/shape/9.png" alt="image">
+                <img src="assets/img/shape/9.png" alt="" aria-hidden="true">
             </div> --}}
         {{!-- </section> --}}
         <!-- End Services Area -->
@@ -510,12 +507,12 @@
                         <i class="bx bx-play"></i>
                     </a>
 
-                    <div class="shape1"><img src="assets/img/shape/1.png" alt="image"></div>
-                    <div class="shape2"><img src="assets/img/shape/2.png" alt="image"></div>
-                    <div class="shape3"><img src="assets/img/shape/3.png" alt="image"></div>
-                    <div class="shape4"><img src="assets/img/shape/4.png" alt="image"></div>
-                    <div class="shape5"><img src="assets/img/shape/5.png" alt="image"></div>
-                    <div class="shape6"><img src="assets/img/shape/6.png" alt="image"></div>
+                    <div class="shape1"><img src="assets/img/shape/1.png" alt="" aria-hidden="true"></div>
+                    <div class="shape2"><img src="assets/img/shape/2.png" alt="" aria-hidden="true"></div>
+                    <div class="shape3"><img src="assets/img/shape/3.png" alt="" aria-hidden="true"></div>
+                    <div class="shape4"><img src="assets/img/shape/4.png" alt="" aria-hidden="true"></div>
+                    <div class="shape5"><img src="assets/img/shape/5.png" alt="" aria-hidden="true"></div>
+                    <div class="shape6"><img src="assets/img/shape/6.png" alt="" aria-hidden="true"></div>
                 </div>
 
                 <div class="funfacts-inner">
@@ -577,10 +574,10 @@
                 </div>
             </div>
 
-            <div class="shape-map1"><img src="assets/img/map1.png" alt="image"></div>
-            <div class="shape7"><img src="assets/img/shape/7.png" alt="image"></div>
-            <div class="shape8"><img src="assets/img/shape/8.png" alt="image"></div>
-            <div class="shape9"><img src="assets/img/shape/9.png" alt="image"></div>
+            <div class="shape-map1"><img src="assets/img/map1.png" alt="" aria-hidden="true"></div>
+            <div class="shape7"><img src="assets/img/shape/7.png" alt="" aria-hidden="true"></div>
+            <div class="shape8"><img src="assets/img/shape/8.png" alt="" aria-hidden="true"></div>
+            <div class="shape9"><img src="assets/img/shape/9.png" alt="" aria-hidden="true"></div>
         </section> --}}
         <!-- End Video Presentation Area -->
 
@@ -1044,56 +1041,56 @@
                 <div class="clients-logo-list align-items-center">
                     <div class="single-clients-logo">
                         <a href="#">
-                            <img src="assets/img/technologies/react.png" alt="image" class="tech-logo">
+                            <img src="assets/img/technologies/react.png" alt="React" class="tech-logo">
                         </a>
                     </div>
 
                     <div class="single-clients-logo">
                         <a href="#">
-                            <img src="assets/img/technologies/angular.png" alt="image" class="tech-logo">
+                            <img src="assets/img/technologies/angular.png" alt="Angular" class="tech-logo">
                         </a>
                     </div>
 
 
                     <div class="single-clients-logo">
                         <a href="#">
-                            <img src="assets/img/technologies/blockchain.png" alt="image" class="tech-logo">
+                            <img src="assets/img/technologies/blockchain.png" alt="Blockchain" class="tech-logo">
                         </a>
                     </div>
 
                     <div class="single-clients-logo">
                         <a href="#">
-                            <img src="assets/img/technologies/java.png" alt="image" class="tech-logo">
+                            <img src="assets/img/technologies/java.png" alt="Java" class="tech-logo">
                         </a>
                     </div>
 
                     <div class="single-clients-logo">
                         <a href="#">
-                            <img src="assets/img/technologies/python.png" alt="image" class="tech-logo">
+                            <img src="assets/img/technologies/python.png" alt="Python" class="tech-logo">
                         </a>
                     </div>
 
                     <div class="single-clients-logo">
                         <a href="#">
-                            <img src="assets/img/technologies/android.png" alt="image" class="tech-logo">
+                            <img src="assets/img/technologies/android.png" alt="Android" class="tech-logo">
                         </a>
                     </div>
 
                     <div class="single-clients-logo">
                         <a href="#">
-                            <img src="assets/img/technologies/ios.png" alt="image" class="tech-logo">
+                            <img src="assets/img/technologies/ios.png" alt="iOS" class="tech-logo">
                         </a>
                     </div>
 
                     <div class="single-clients-logo">
                         <a href="#">
-                            <img src="assets/img/technologies/ml.png" alt="image" class="tech-logo">
+                            <img src="assets/img/technologies/ml.png" alt="Machine learning" class="tech-logo">
                         </a>
                     </div>
 
                     <div class="single-clients-logo">
                         <a href="#">
-                            <img src="assets/img/technologies/ai.png" alt="image" class="tech-logo">
+                            <img src="assets/img/technologies/ai.png" alt="Artificial intelligence" class="tech-logo">
                         </a>
                     </div>
                 </div>
@@ -1119,10 +1116,10 @@
                 </div>
             </div>
 
-            <div class="shape10"><img src="assets/img/shape/10.png" alt="image"></div>
-            <div class="shape11"><img src="assets/img/shape/7.png" alt="image"></div>
-            <div class="shape12"><img src="assets/img/shape/11.png" alt="image"></div>
-            <div class="shape13"><img src="assets/img/shape/12.png" alt="image"></div>
+            <div class="shape10"><img src="assets/img/shape/10.png" alt="" aria-hidden="true"></div>
+            <div class="shape11"><img src="assets/img/shape/7.png" alt="" aria-hidden="true"></div>
+            <div class="shape12"><img src="assets/img/shape/11.png" alt="" aria-hidden="true"></div>
+            <div class="shape13"><img src="assets/img/shape/12.png" alt="" aria-hidden="true"></div>
         </section>
         <!-- End Free Trial Area -->
 
@@ -1132,69 +1129,6 @@
 
         <div class="go-top"><i class='bx bx-chevron-up'></i></div>
         
-        <script>
-        const industries = [
-            "Healthcare",
-            "Finance",
-            "Retail",
-            "Education",
-            "Manufacturing",
-            "Transportation",
-            "Energy",
-            "Real Estate",
-            "Government",
-            "Telecom"
-        ];
-
-        const canvas = document.getElementById("industryCanvas");
-        const ctx = canvas.getContext("2d");
-        const centerX = canvas.width / 2;
-        const centerY = canvas.height / 2;
-        const radius = 200;
-        const textRadius = 240;
-
-        // Draw the circular banner
-        function drawBanner() {
-            // Draw outer circle
-            ctx.beginPath();
-            ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
-            ctx.fillStyle = "#cce7ff";
-            ctx.fill();
-            ctx.lineWidth = 5;
-            ctx.strokeStyle = "#80bfff";
-            ctx.stroke();
-        }
-
-        // Draw industries in a circular layout
-        function drawIndustries() {
-            const angleStep = (2 * Math.PI) / industries.length;
-            ctx.font = "16px Poppins";
-            ctx.fillStyle = "#333";
-            ctx.textAlign = "center";
-            ctx.textBaseline = "middle";
-
-            industries.forEach((industry, index) => {
-                const angle = index * angleStep - Math.PI / 2; // Offset to start from top
-                const x = centerX + textRadius * Math.cos(angle);
-                const y = centerY + textRadius * Math.sin(angle);
-
-                // Draw industry text
-                ctx.save();
-                ctx.translate(x, y);
-                ctx.rotate(angle + Math.PI / 2);
-                ctx.fillText(industry, 0, 0);
-                ctx.restore();
-            });
-        }
-
-        // Draw all elements
-        function drawCanvas() {
-            drawBanner();
-            drawIndustries();
-        }
-
-        drawCanvas();
-    </script>
         <!-- jQuery Min JS -->
         <script src="assets/js/jquery.min.js"></script>
         <!-- Popper Min JS -->

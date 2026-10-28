@@ -227,7 +227,7 @@ body.industries-page .page-title-area {
   background: #1a0a2e;
 }
 
-body.industries-page .page-title-content h2 {
+body.industries-page .page-title-content h1, body.industries-page .page-title-content h2 {
   color: #ffffff;
 }
 

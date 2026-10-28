@@ -4,7 +4,7 @@
     <div class="partners-inner">
       <!-- Hero -->
       <div class="partners-hero">
-        <h1>Partners &amp; Clients</h1>
+        <h2>Partners &amp; Clients</h2>
         <p>Collaborations that help us deliver reliable, scalable solutions.</p>
         <div class="partners-hero-cta">
           <a href="#clients-section" class="default-btn"><i
@@ -40,7 +40,7 @@
           {{#each data.partners}}
           <div class="single-partner-logo"><img
               src="{{this.image_url}}"
-              alt="{{this.name}}"
+              alt="{{#if this.name}}{{this.name}}{{else}}Seecog Softwares client logo{{/if}}"
               loading="lazy"
             /></div>
           {{/each}}
