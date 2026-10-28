@@ -26,6 +26,7 @@
             "badge": "Team chat",
             "image": "/assets/img/products/teamaangan-card.webp",
             "title": "Teamaangan",
+            "slug": "teamaangan",
             "description": "Team chat built for Indian businesses. Talk in channels, DMs and threads, invite clients free into shared channels that show exactly who can see them, and jump into a Gather call when typing is too slow.",
             "features": [
               "Channels & threads",
@@ -46,6 +47,7 @@
             "badge": "For software teams",
             "image": "/assets/img/products/opspick-card.webp",
             "title": "OpsPick",
+            "slug": "opspick",
             "description": "Sprints, timesheets and client updates in one place. Plan the backlog, run sprints on a live board, track burndown and velocity, log billable hours, and keep clients in the loop with a shared portal.",
             "features": [
               "Sprint board",
@@ -66,6 +68,7 @@
             "badge": "Team knowledge base",
             "image": "/assets/img/products/quire-card.webp",
             "title": "Quire Workspace",
+            "slug": "quire",
             "description": "Your team's knowledge in one place. Organise docs, decisions and runbooks into spaces, comment right in the margin, publish versions you can trust, and find any page in seconds with Ctrl K.",
             "features": [
               "Spaces & page tree",
@@ -88,6 +91,7 @@
             "id": 5,
             "premium": true,
             "title": "Pakka Kaam",
+            "slug": "pakka-kaam",
             "apps": [
               {
                 "name": "Marketplace",
@@ -153,6 +157,7 @@
             "badge": "For restaurants",
             "image": "/assets/img/products/kitcheneye-card.webp",
             "title": "KitchenEye",
+            "slug": "kitcheneye",
             "description": "See every outlet's kitchen from one app. Owners, managers, cooks, cleaners and security each get their own view — daily checklists with photo proof, selfie clock-in, overdue alerts and outlet scores before service starts.",
             "features": [
               "Outlet scores",
@@ -178,6 +183,7 @@
                 "badge": "Shoppers & sellers",
                 "image": "/assets/img/products/indovyapar-card.webp",
                 "title": "Indovyapar",
+                "slug": "indovyapar",
                 "description": "Shopping and selling in one marketplace. Customers browse a multi-vendor catalogue, check out once across sellers and track every order; vendors onboard with KYC, list products with GST and manage orders and payouts.",
                 "features": [
                   "Multi-vendor catalogue",

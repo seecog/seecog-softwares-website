@@ -1,0 +1,208 @@
+{{!-- Home page sections below the product hero. Content comes from routes/dataset/home.json. --}}
+<div class="home26">
+
+    <!-- Proof strip: client logos + numbers -->
+    {{#if home.showProof}}
+    <section class="home26-proof">
+        <div class="home26-wrap">
+            {{#if home.logos.items.length}}
+            <p class="home26-proof__title">{{home.logos.title}}</p>
+            <ul class="home26-logos">
+                {{#each home.logos.items}}
+                <li class="home26-logo{{#if this.placeholder}} is-placeholder{{/if}}">
+                    {{#if this.image}}<img src="{{this.image}}" alt="{{this.name}}" loading="lazy">{{else}}<span>{{this.name}}</span>{{/if}}
+                </li>
+                {{/each}}
+            </ul>
+            {{/if}}
+            {{#if home.stats.length}}
+            <dl class="home26-stats">
+                {{#each home.stats}}
+                <div class="home26-stat{{#if this.placeholder}} is-placeholder{{/if}}">
+                    <dt>{{this.value}}</dt>
+                    <dd>{{this.label}}</dd>
+                </div>
+                {{/each}}
+            </dl>
+            {{/if}}
+        </div>
+    </section>
+    {{/if}}
+
+    <!-- AI -->
+    <section class="home26-ai" id="ai">
+        <div class="home26-wrap">
+            <div class="home26-head home26-head--light">
+                <p class="home26-kicker">{{home.ai.kicker}}</p>
+                <h2>{{home.ai.title}}</h2>
+                <p>{{home.ai.intro}}</p>
+            </div>
+            <div class="home26-ai__grid">
+                {{#each home.ai.items}}
+                <article class="home26-ai__card">
+                    <span class="home26-ai__icon"><i class="{{this.icon}}" aria-hidden="true"></i></span>
+                    <h3>{{this.title}}</h3>
+                    <p>{{this.text}}</p>
+                    <ul class="home26-chips">
+                        {{#each this.tags}}<li>{{this}}</li>{{/each}}
+                    </ul>
+                </article>
+                {{/each}}
+            </div>
+            <div class="home26-ai__guardrails">
+                <span><i class="bx bx-shield-quarter" aria-hidden="true"></i> Built safe by default</span>
+                <ul>
+                    {{#each home.ai.guardrails}}<li><i class="bx bx-check-circle" aria-hidden="true"></i>{{this}}</li>{{/each}}
+                </ul>
+                <a href="/services#ai-agents" class="home26-link home26-link--light">Explore AI services <i class="bx bx-right-arrow-alt" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="home26-services">
+        <div class="home26-wrap">
+            <div class="home26-head">
+                <p class="home26-kicker">What we do</p>
+                <h2>One team for product, AI and the engineers to run it</h2>
+            </div>
+            <div class="home26-services__grid">
+                <a class="home26-service" href="/services#ai-agents">
+                    <i class="bx bx-bot" aria-hidden="true"></i>
+                    <h3>AI Agents &amp; Automation</h3>
+                    <p>Agents that use your tools to complete defined, multi-step work.</p>
+                </a>
+                <a class="home26-service" href="/services#ai-in-product">
+                    <i class="bx bx-chip" aria-hidden="true"></i>
+                    <h3>AI Inside Your Product</h3>
+                    <p>Reasoning, document search, and text, image or voice features.</p>
+                </a>
+                <a class="home26-service" href="/services#connected-ai">
+                    <i class="bx bx-shield-quarter" aria-hidden="true"></i>
+                    <h3>Connected &amp; Controlled AI</h3>
+                    <p>MCP connections with identity, permissions, audit and evaluation.</p>
+                </a>
+                <a class="home26-service" href="/services#product-engineering">
+                    <i class="bx bx-layer" aria-hidden="true"></i>
+                    <h3>Product Engineering</h3>
+                    <p>SaaS platforms, web apps and backends, built and modernised.</p>
+                </a>
+                <a class="home26-service" href="/services#mobile-ai">
+                    <i class="bx bx-mobile-alt" aria-hidden="true"></i>
+                    <h3>Mobile &amp; On-Device AI</h3>
+                    <p>iOS and Android apps, from first release to maintenance.</p>
+                </a>
+                <a class="home26-service" href="/services#dedicated-teams">
+                    <i class="bx bx-group" aria-hidden="true"></i>
+                    <h3>Dedicated Teams</h3>
+                    <p>Engineers who join your product team and stay after launch.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case studies -->
+    <section class="home26-cases">
+        <div class="home26-wrap">
+            <div class="home26-head home26-head--row">
+                <div>
+                    <p class="home26-kicker">{{home.cases.kicker}}</p>
+                    <h2>{{home.cases.title}}</h2>
+                </div>
+                <a href="/portfolio" class="home26-link">See all work <i class="bx bx-right-arrow-alt" aria-hidden="true"></i></a>
+            </div>
+            <div class="home26-cases__grid">
+                {{#each home.cases.items}}
+                <a class="home26-case" href="{{this.url}}">
+                    <div class="home26-case__media"><img src="{{this.image}}" alt="{{this.title}} app screens" loading="lazy"></div>
+                    <div class="home26-case__body">
+                        <p class="home26-case__tag">{{this.tag}}</p>
+                        <h3>{{this.title}}</h3>
+                        <p>{{this.problem}}</p>
+                        {{#if this.result}}<p class="home26-case__result">{{this.result}}</p>{{/if}}
+                    </div>
+                </a>
+                {{/each}}
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries -->
+    <section class="home26-industries">
+        <div class="home26-wrap">
+            <div class="home26-head home26-head--row">
+                <div>
+                    <p class="home26-kicker">Industries</p>
+                    <h2>Built for how your business already works</h2>
+                </div>
+                <a href="/industries" class="home26-link">All industries <i class="bx bx-right-arrow-alt" aria-hidden="true"></i></a>
+            </div>
+            <ul class="home26-industries__list">
+                <li><i class="bx bx-code-alt" aria-hidden="true"></i><strong>Software &amp; SaaS</strong><span>Platforms, AI features and team extension</span></li>
+                <li><i class="bx bx-cart" aria-hidden="true"></i><strong>Commerce &amp; Distribution</strong><span>Marketplaces, ordering and vendor apps</span></li>
+                <li><i class="bx bx-building-house" aria-hidden="true"></i><strong>Construction</strong><span>Site, vendor and workforce apps</span></li>
+                <li><i class="bx bx-restaurant" aria-hidden="true"></i><strong>Restaurants &amp; Hospitality</strong><span>Checklists, attendance and outlet scores</span></li>
+                <li><i class="bx bx-briefcase-alt" aria-hidden="true"></i><strong>Enterprise Operations</strong><span>HR, CRM and ERP workflows with AI</span></li>
+                <li><i class="bx bx-book-open" aria-hidden="true"></i><strong>Learning &amp; Knowledge</strong><span>Knowledge bases and document search</span></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section class="home26-process">
+        <div class="home26-wrap">
+            <div class="home26-head">
+                <p class="home26-kicker">How we work</p>
+                <h2>From first call to production — without the guesswork</h2>
+            </div>
+            <ol class="home26-process__list">
+                {{#each home.process}}
+                <li>
+                    <span class="home26-process__step">{{this.step}}</span>
+                    <h3>{{this.title}}</h3>
+                    <p>{{this.text}}</p>
+                </li>
+                {{/each}}
+            </ol>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    {{#if home.testimonials.length}}
+    <section class="home26-quotes">
+        <div class="home26-wrap">
+            <div class="home26-head">
+                <p class="home26-kicker">What clients say</p>
+                <h2>Teams that build with us</h2>
+            </div>
+            <div class="home26-quotes__grid">
+                {{#each home.testimonials}}
+                <figure class="home26-quote{{#if this.placeholder}} is-placeholder{{/if}}">
+                    <i class="bx bxs-quote-alt-left" aria-hidden="true"></i>
+                    <blockquote>{{this.quote}}</blockquote>
+                    <figcaption><strong>{{this.name}}</strong><span>{{this.role}}</span></figcaption>
+                </figure>
+                {{/each}}
+            </div>
+        </div>
+    </section>
+    {{/if}}
+
+    <!-- Final call to action -->
+    <section class="home26-cta">
+        <div class="home26-wrap">
+            <div class="home26-cta__box">
+                <div>
+                    <h2>Have a product or an AI idea to build?</h2>
+                    <p>Tell us what you're building. You'll get a reply within 24 hours and a clear next step — scope, timeline and team.</p>
+                </div>
+                <div class="home26-cta__actions">
+                    <a href="/contact" class="product-hero-btn">Book a call →</a>
+                    <a href="https://wa.me/917348820668" class="home26-cta__wa" target="_blank" rel="noopener"><i class="bx bxl-whatsapp" aria-hidden="true"></i> WhatsApp us</a>
+                    <a href="mailto:info@seecogsoftwares.com" class="home26-cta__mail">info@seecogsoftwares.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>

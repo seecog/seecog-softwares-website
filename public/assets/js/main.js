@@ -399,3 +399,14 @@ $(window).on('load', function () {
 	});
 
 }(jQuery));
+// Re-align to a #hash target once the page has loaded: the navbar turns sticky
+// on scroll and images load late, so the browser's first jump lands too high.
+window.addEventListener('load', function () {
+    if (!location.hash) return;
+    var target = document.getElementById(location.hash.slice(1));
+    if (!target) return;
+    target.scrollIntoView({ behavior: 'instant' });
+    // That scroll makes the navbar fixed, which pulls the page up by its height;
+    // align once more after the sticky class is applied.
+    setTimeout(function () { target.scrollIntoView({ behavior: 'instant' }); }, 60);
+});

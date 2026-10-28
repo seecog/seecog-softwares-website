@@ -512,3 +512,32 @@
     height: 42px;
   }
 }
+
+/* Grouped mobile nav with a Book a call button */
+.mobile-menu-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 0 20px 8px;
+  min-height: 46px;
+  border-radius: 12px;
+  background: #e6b325;
+  color: #1a0a2e;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.mobile-menu-cta:hover {
+  color: #1a0a2e;
+}
+
+.mobile-menu-group {
+  margin: 14px 24px 4px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8a86a3;
+}

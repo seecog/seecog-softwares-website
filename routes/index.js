@@ -19,6 +19,29 @@ function getDataSet() {
 getDataSet();
 //end
 
+// Home page sections (stats, AI, case studies, testimonials). Entries marked
+// "placeholder" are left out until real content replaces them in home.json.
+var homeData = (function () {
+  var raw = JSON.parse(
+    fs.readFileSync(path.join(__dirname, "dataset/home.json"), "utf8")
+  );
+  var real = function (item) { return !item.placeholder; };
+  var stats = raw.stats.filter(real);
+  var logos = raw.logos.items.filter(real);
+  return Object.assign({}, raw, {
+    logos: Object.assign({}, raw.logos, { items: logos }),
+    // A single number on its own reads oddly, so the bar needs at least two.
+    stats: stats.length >= 2 ? stats : [],
+    showProof: logos.length > 0 || stats.length >= 2,
+    cases: Object.assign({}, raw.cases, {
+      items: raw.cases.items.map(function (c) {
+        return c.placeholder ? Object.assign({}, c, { result: null }) : c;
+      }),
+    }),
+    testimonials: raw.testimonials.filter(real),
+  });
+})();
+
 router.get("/favicon.ico", function (req, res) {
   res.redirect(301, "/assets/img/sm_logo.jpg");
 });
@@ -26,7 +49,7 @@ router.get("/favicon.ico", function (req, res) {
 /* GET home page. */
 
 router.get("/", function (req, res, next) {
-  res.render("home3", { layout: "main" });
+  res.render("home3", { layout: "main", home: homeData });
 });
 
 router.get("/technologies", function (req, res, next) {

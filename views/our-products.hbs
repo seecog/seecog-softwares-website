@@ -11,7 +11,7 @@
       <div class="row">
       {{#each this.products}}
         {{#unless this.hidden}}
-        <div class="col-md-6 mb-4 {{#if (eq ../layout "pair")}}col-lg-6{{else}}col-lg-4{{/if}}">
+        <div{{#if this.slug}} id="{{this.slug}}"{{/if}} class="product-anchor col-md-6 mb-4 {{#if (eq ../layout "pair")}}col-lg-6{{else}}col-lg-4{{/if}}">
           {{#if this.apps}}
           <div class="premium-card premium-card--{{this.apps.[0].theme}} premium-card--apps" data-app-card>
             <div class="premium-card__media">

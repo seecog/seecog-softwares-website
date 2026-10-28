@@ -1,0 +1,96 @@
+{
+    "_readme": "Home page content. Anything with \"placeholder\": true is shown with a dashed outline and must be replaced with real content before deploying.",
+
+    "logos": {
+        "title": "Trusted by teams building in retail, construction, food and SaaS",
+        "items": [
+            { "name": "Client logo 1", "placeholder": true },
+            { "name": "Client logo 2", "placeholder": true },
+            { "name": "Client logo 3", "placeholder": true },
+            { "name": "Client logo 4", "placeholder": true },
+            { "name": "Client logo 5", "placeholder": true },
+            { "name": "Client logo 6", "placeholder": true }
+        ]
+    },
+
+    "stats": [
+        { "value": "6", "label": "products of our own, live in production" },
+        { "value": "XX+", "label": "apps and platforms shipped for clients", "placeholder": true },
+        { "value": "20XX", "label": "building software since", "placeholder": true },
+        { "value": "XX", "label": "engineers on the team", "placeholder": true }
+    ],
+
+    "ai": {
+        "kicker": "AI that does the work",
+        "title": "AI agents and AI features that run inside real businesses",
+        "intro": "We put AI where work actually happens — in your app, your tools and your WhatsApp — with permissions, audit trails and humans in the loop where it matters.",
+        "items": [
+            {
+                "icon": "bx bx-bot",
+                "title": "Operations agents",
+                "text": "Agents that follow up on overdue work, chase approvals and escalate to the right person — the same pattern that runs KitchenEye's checklist alerts.",
+                "tags": ["Task follow-up", "Escalation", "Daily summaries"]
+            },
+            {
+                "icon": "bx bx-search-alt",
+                "title": "Answers from your documents",
+                "text": "Search and Q&A over your company's docs, tickets and policies, with sources shown for every answer and access limited to what each person may see.",
+                "tags": ["Knowledge search", "Cited answers", "Role-based access"]
+            },
+            {
+                "icon": "bx bxl-whatsapp",
+                "title": "Customer-facing assistants",
+                "text": "Ordering, booking and support assistants on WhatsApp, web and in-app that hand over to a person when they should.",
+                "tags": ["WhatsApp", "Voice & text", "Human handover"]
+            }
+        ],
+        "guardrails": ["MCP connections to approved tools", "Identity & permissions", "Audit logs", "Evaluation before launch"]
+    },
+
+    "cases": {
+        "kicker": "Selected work",
+        "title": "Products we've designed, built and run",
+        "items": [
+            {
+                "tag": "Commerce · Marketplace",
+                "title": "Indovyapar",
+                "image": "/assets/img/products/indovyapar-card.webp",
+                "problem": "Shoppers and sellers needed one marketplace — catalogue, single checkout across vendors, and vendor onboarding with KYC and payouts.",
+                "result": "Result: [add a number — e.g. vendors onboarded, orders per month, launch time]",
+                "placeholder": true,
+                "url": "/portfolio"
+            },
+            {
+                "tag": "Restaurants · Operations",
+                "title": "KitchenEye",
+                "image": "/assets/img/products/kitcheneye-card.webp",
+                "problem": "Owners of multi-outlet kitchens couldn't see whether daily checklists were actually done before service.",
+                "result": "Result: [add a number — e.g. outlets live, checklist completion rate]",
+                "placeholder": true,
+                "url": "/our-products#kitcheneye"
+            },
+            {
+                "tag": "Construction · Marketplace",
+                "title": "Pakka Kaam",
+                "image": "/assets/img/products/opspick-marketplace-card.webp",
+                "problem": "Builders, material vendors and site workers ran on calls and paper — orders, attendance and wages had no single record.",
+                "result": "Result: [add a number — e.g. sites live, workers paid weekly]",
+                "placeholder": true,
+                "url": "/our-products#pakka-kaam"
+            }
+        ]
+    },
+
+    "process": [
+        { "step": "01", "title": "Discover", "text": "A short call and a written scope: users, workflows, what success looks like and where AI genuinely helps." },
+        { "step": "02", "title": "Prototype", "text": "A clickable prototype or working slice in about two weeks, so you can test it with real users early." },
+        { "step": "03", "title": "Build & launch", "text": "Weekly releases you can try, with web, mobile and backend built by one team and shipped to production." },
+        { "step": "04", "title": "Run & improve", "text": "We stay on after launch — monitoring, support and the next features, with the same engineers." }
+    ],
+
+    "testimonials": [
+        { "quote": "Client quote about speed, quality or results goes here — one or two sentences.", "name": "Client name", "role": "Role, Company", "placeholder": true },
+        { "quote": "Client quote about how the team works with them goes here.", "name": "Client name", "role": "Role, Company", "placeholder": true },
+        { "quote": "Client quote about AI or a product launch goes here.", "name": "Client name", "role": "Role, Company", "placeholder": true }
+    ]
+}
