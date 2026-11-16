@@ -16,7 +16,7 @@
         "industries": [
           {
             "title": "Business Suite",
-            "summary": "Teamaangan, OpsPick and Quire Workspace — talk with your team and clients, plan the work, then keep the docs, decisions, and runbooks the team runs on.",
+            "summary": "Teamaangan, OpsPick and Kenfolio — talk with your team and clients, plan the work, then keep the docs, decisions, and runbooks the team runs on.",
             "products": [
           {
             "id": 9,
@@ -66,9 +66,9 @@
             "premium": true,
             "theme": "forest",
             "badge": "Team knowledge base",
-            "image": "/assets/img/products/quire-card.webp",
-            "title": "Quire Workspace",
-            "slug": "quire",
+            "image": "/assets/img/products/kenfolio-card.webp",
+            "title": "Kenfolio",
+            "slug": "kenfolio",
             "description": "Your team's knowledge in one place. Organise docs, decisions and runbooks into spaces, comment right in the margin, publish versions you can trust, and find any page in seconds with Ctrl K.",
             "features": [
               "Spaces & page tree",
@@ -77,8 +77,8 @@
               "Search everything"
             ],
             "platforms": "Web · Mobile",
-            "url": "https://miniwiki360.seecogsoftwares.com",
-            "buttonText": "Explore Quire",
+            "url": "https://kenfolio.com",
+            "buttonText": "Explore Kenfolio",
             "showButton": true
           }
             ]

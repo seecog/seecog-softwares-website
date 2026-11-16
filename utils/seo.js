@@ -10,7 +10,7 @@ const DEFAULT_IMAGE = SITE_URL + '/assets/img/logo.jpg';
 const PAGES = {
   '/': {
     title: 'Seecog Softwares | AI-Native Product Engineering & SaaS Development',
-    description: 'Seecog Softwares builds SaaS platforms, web and mobile products, and AI agents for businesses — and runs its own products like Teamaangan, OpsPick, KitchenEye and Quire Workspace.',
+    description: 'Seecog Softwares builds SaaS platforms, web and mobile products, and AI agents for businesses — and runs its own products like Teamaangan, OpsPick, KitchenEye and Kenfolio.',
   },
   '/services': {
     title: 'Services | Product Engineering, AI Agents & Dedicated Teams — Seecog Softwares',
@@ -21,7 +21,7 @@ const PAGES = {
     description: 'Software and AI for SaaS companies, digital commerce and distribution, workforce and enterprise operations, and learning and knowledge businesses.',
   },
   '/our-products': {
-    title: 'Our Products | Teamaangan, OpsPick, Pakka Kaam, KitchenEye, Quire, Indovyapar',
+    title: 'Our Products | Teamaangan, OpsPick, Pakka Kaam, KitchenEye, Kenfolio, Indovyapar',
     description: 'Products built and run by Seecog Softwares: team chat, sprint and timesheet tracking, a team knowledge base, construction and restaurant operations apps, and a multi-vendor marketplace.',
   },
   '/portfolio': {
